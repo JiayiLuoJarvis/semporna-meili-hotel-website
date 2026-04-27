@@ -34,7 +34,7 @@ export function HotelIntro() {
       className="relative z-10 w-full overflow-hidden bg-[--color-cream]"
     >
       {/* 调整了上下间距，避免过于空旷，同时兼顾移动端、平板到大屏的渐进过渡 */}
-      <div className="py-16 md:py-24 lg:py-32">
+      <div className="py-10 md:py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 sm:px-8 text-center flex flex-col items-center">
           
           {/* Title - 单行展示，字号适中，自然换行留给移动端 */}
