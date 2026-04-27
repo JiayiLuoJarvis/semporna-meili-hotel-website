@@ -24,62 +24,61 @@ export function HotelIntro() {
   const isInView = useInView(sectionRef, {
     once: true,
     margin: '0px 0px -40px 0px',
-    amount: 0.05,
+    amount: 0.1,
   });
 
   return (
     <section
       id="about"
       ref={sectionRef}
-      className="relative z-10 w-full overflow-hidden bg-about-bg"
+      className="relative z-10 w-full overflow-hidden bg-[--color-cream]"
     >
-      <div className="py-32 md:py-40 lg:py-52">
-        {/* 统一容器宽度 1280px (max-w-7xl)，内部所有元素共享同一阅读宽度 max-w-3xl 实现左右对齐 */}
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            {/* 标题 — headingLine1 + headingLine2 单行展示 */}
-            <motion.h2
-              custom={0}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-              className="font-serif font-light leading-[1.2] tracking-tight text-section-text text-balance"
-              style={{ fontSize: 'clamp(1.875rem, 4.5vw, 3.5rem)' }}
-            >
-              {t('headingLine1')}，{t('headingLine2')}
-            </motion.h2>
+      {/* 调整了上下间距，避免过于空旷，同时兼顾移动端、平板到大屏的渐进过渡 */}
+      <div className="py-16 md:py-24 lg:py-32">
+        <div className="mx-auto max-w-4xl px-6 sm:px-8 text-center flex flex-col items-center">
+          
+          {/* Title - 单行展示，字号适中，自然换行留给移动端 */}
+          <motion.h2
+            custom={0}
+            variants={fadeUp}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="font-serif font-light leading-[1.3] tracking-wider text-[--color-section-text] text-balance mb-10 md:mb-14"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
+          >
+            {t('headingLine1')}。
+          </motion.h2>
 
-            {/* 描述 — body1 与 body2 合并为一段 */}
-            <motion.p
-              custom={0.18}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-              className="mt-12 font-sans text-[0.9375rem] font-light leading-[2] text-[#5a5347] sm:mt-16 sm:text-base"
-            >
-              {t('body1')}
-              {t('body2')}
-            </motion.p>
+          {/* Body Text - 融合成具有实体感的纯文本块，排版上如同一块基石 */}
+          <motion.div
+            custom={0.1}
+            variants={fadeUp}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="max-w-[720px] font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-[2.2] md:leading-[2.4] text-[#5a5347]"
+          >
+            <p>{t('body1')}</p>
+          </motion.div>
 
-            {/* CTA — 纯文字 + 箭头，无下划线 */}
-            <motion.div
-              custom={0.32}
-              variants={fadeUp}
-              initial="hidden"
-              animate={isInView ? 'visible' : 'hidden'}
-              className="mt-14 sm:mt-20"
+          {/* CTA - 在移动端缩小文字和字位，保持精致感 */}
+          <motion.div
+            custom={0.2}
+            variants={fadeUp}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="mt-12 md:mt-20"
+          >
+            <Link
+              href="/villas"
+              className="group inline-flex items-center gap-3 font-sans text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.25em] md:tracking-[0.3em] text-[--color-section-text] border-b border-[--color-section-text]/30 pb-2 transition-colors hover:border-[--color-section-text]"
             >
-              <Link
-                href="/villas"
-                className="group inline-flex items-center gap-3 font-sans text-[0.7rem] uppercase tracking-[0.35em] text-section-text"
-              >
-                {t('cta')}
-                <span className="text-gold-warm transition-transform duration-700 ease-out group-hover:translate-x-2">
-                  &#8594;
-                </span>
-              </Link>
-            </motion.div>
-          </div>
+              {t('cta')}
+              <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">
+                &#8594;
+              </span>
+            </Link>
+          </motion.div>
+
         </div>
       </div>
     </section>

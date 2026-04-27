@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import useEmblaCarousel from 'embla-carousel-react';
+import Link from 'next/link';
 
 const ROOMS = [
   {
@@ -32,144 +31,99 @@ const ROOMS = [
 export function VillasAndSuites() {
   const t = useTranslations('Villas');
   const roomItems = t.raw('items') as Array<{ title: string; desc: string }>;
-  const [emblaRef, emblaApi] = useEmblaCarousel({ 
-    loop: true, 
-    align: 'center',
-    skipSnaps: false,
-    dragFree: false
-  });
-  
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
+  // Auto cycle for demo purposes, can be removed if strictly manual is preferred
   useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on('select', onSelect);
-    emblaApi.on('reInit', onSelect);
-  }, [emblaApi, onSelect]);
+    const timer = setInterval(() => {
+      setSelectedIndex((prev) => (prev + 1) % ROOMS.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section className="w-full py-20 md:py-32 bg-[--color-cream] overflow-hidden">
-      <div className="text-center mb-10 sm:mb-16">
-        <h2 className="font-serif text-[--color-section-text] text-3xl md:text-4xl lg:text-5xl mb-4">
-          {t('subtitle')}
-        </h2>
-      </div>
+    <section className="w-full py-32 md:py-48 bg-[--color-cream] overflow-hidden">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        
+        {/* Editorial Layout: Left text list, Right image gallery */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+          
+          {/* Left Column: Index & Room List */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            <div className="mb-20">
+              <h2 className="font-serif text-[--color-section-text] text-3xl md:text-5xl lg:text-6xl mb-6">
+                {t('title')}
+              </h2>
+              <p className="font-sans text-[0.8rem] tracking-[0.2em] text-[--color-warm-text] uppercase uppercase">
+                {t('subtitle')}
+              </p>
+            </div>
 
-      <div className="w-full relative max-w-480 mx-auto">
-        <div className="overflow-visible" ref={emblaRef}>
-          <div className="flex w-full items-center touch-pan-y">
-            {ROOMS.map((room, index) => {
-              const isActive = index === selectedIndex;
-              const roomItem = roomItems[index];
-              return (
-                <div 
-                  key={room.id}
-                  className="relative flex-[0_0_72%] sm:flex-[0_0_60%] md:flex-[0_0_55%] lg:flex-[0_0_40%] xl:flex-[0_0_35%] px-2 md:px-4"
-                  style={{
-                    zIndex: isActive ? 10 : 1,
-                  }}
-                >
+            {/* Room Selectors */}
+            <div className="flex flex-col gap-8 md:gap-10">
+              {ROOMS.map((room, index) => {
+                const isActive = index === selectedIndex;
+                const roomItem = roomItems[index];
+
+                return (
                   <div 
-                    onClick={() => !isActive && emblaApi?.scrollTo(index)}
-                    style={{
-                      transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
-                      '--card-scale': isActive ? '1' : '0.85',
-                      '--card-opacity': isActive ? '1' : '0.4',
-                      cursor: isActive ? 'default' : 'pointer',
-                    } as React.CSSProperties}
-                    className={`bg-white flex flex-col h-full mx-auto scale-100 opacity-100 shadow-md sm:scale-(--card-scale) sm:opacity-(--card-opacity) ${
-                      isActive ? 'sm:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]' : 'sm:shadow-none'
-                    }`}
+                    key={room.id}
+                    className="relative cursor-pointer group"
+                    onClick={() => setSelectedIndex(index)}
                   >
-                    <div className="relative w-full h-90 sm:h-70 md:h-96 lg:h-110 shrink-0">
-                      <Image
-                        src={room.image}
-                        alt={roomItem?.title ?? room.id}
-                        fill
-                        sizes="(max-width: 768px) 85vw, (max-width: 1200px) 55vw, 35vw"
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <div className="flex flex-col items-center text-center p-6 md:p-8 flex-1">
-                      <h3 className="font-serif text-[--color-section-text] text-base md:text-lg font-bold">
+                    <div className={`transition-all duration-700 ease-out ${isActive ? 'opacity-100 translate-x-4' : 'opacity-40 group-hover:opacity-60'}`}>
+                      <h3 className="font-serif text-[--color-section-text] text-xl md:text-2xl mb-3">
                         {roomItem?.title}
                       </h3>
-
+                      
+                      {/* Description expands only for active item */}
                       <div 
-                        className="hidden sm:flex flex-col items-center justify-center w-full overflow-hidden"
-                        style={{
-                          transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
-                          maxHeight: isActive ? '400px' : '0px',
-                          opacity: isActive ? 1 : 0,
-                          marginTop: isActive ? '1.5rem' : '0px',
-                        }}
+                        className={`overflow-hidden transition-all duration-700 ease-in-out`}
+                        style={{ maxHeight: isActive ? '120px' : '0px', opacity: isActive ? 1 : 0 }}
                       >
-                        <div className="w-8 h-px bg-[--color-gold-warm] mb-6" />
-                        
-                        <p className="font-sans text-sm text-[--color-warm-text] leading-loose mb-8">
+                        <p className="font-sans text-sm text-[--color-warm-text] leading-relaxed max-w-md pt-2">
                           {roomItem?.desc}
                         </p>
-
-                        <div className="flex flex-col sm:flex-row items-center gap-4 w-full mt-auto">
-                          <button className="flex-1 w-full bg-primary text-white py-3 text-xs tracking-widest hover:bg-primary/90 transition-colors uppercase whitespace-nowrap">
+                        <div className="mt-6 flex items-center gap-6">
+                          <Link href="/villas" className="font-sans text-[0.65rem] tracking-[0.3em] uppercase border-b border-[--color-section-text]/30 pb-1 text-[--color-section-text] transition-colors hover:border-[--color-section-text]">
                             {t('checkRates')}
-                          </button>
-                          <button className="flex-1 w-full flex items-center justify-center gap-2 text-[--color-section-text] py-3 text-xs tracking-widest hover:opacity-70 transition-opacity uppercase whitespace-nowrap">
-                            {t('details')} <ChevronRight className="w-4 h-4" />
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Right Column: Large Image Reveal */}
+          <div className="lg:col-span-7 relative h-[60vh] md:h-[75vh] lg:h-[85vh] w-full">
+            {ROOMS.map((room, index) => {
+              const isActive = index === selectedIndex;
+              return (
+                <div
+                  key={room.id}
+                  className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                    isActive ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                >
+                  {/* Subtle scale effect on active image */}
+                  <div className={`w-full h-full relative transition-transform duration-[10s] ease-out ${isActive ? 'scale-105' : 'scale-100'}`}>
+                    <Image
+                      src={room.image}
+                      alt={roomItems[index]?.title ?? room.id}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      className="object-cover object-center"
+                      priority={index === 0}
+                    />
                   </div>
                 </div>
               );
             })}
           </div>
-        </div>
-        
-        {/* Buttons overlay on desktop for easier navigation (matches Apple style) */}
-        <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 left-4 z-20">
-          <button 
-            onClick={scrollPrev}
-            className="p-3 bg-white/80 backdrop-blur-md rounded-full shadow-md text-[--color-section-text] hover:bg-white transition-all focus:outline-none"
-          >
-            <ChevronLeft className="w-6 h-6" strokeWidth={1.5} />
-          </button>
-        </div>
-        <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 right-4 z-20">
-          <button 
-            onClick={scrollNext}
-            className="p-3 bg-white/80 backdrop-blur-md rounded-full shadow-md text-[--color-section-text] hover:bg-white transition-all focus:outline-none"
-          >
-            <ChevronRight className="w-6 h-6" strokeWidth={1.5} />
-          </button>
-        </div>
-      </div>
 
-      <div className="flex items-center justify-center gap-6 mt-10 md:mt-12">
-        <div className="flex items-center gap-2">
-          {ROOMS.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                index === selectedIndex 
-                  ? 'w-8 bg-[--color-section-text]' 
-                  : 'w-2 bg-[--color-section-text]/20 hover:bg-[--color-section-text]/40'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
         </div>
       </div>
     </section>
