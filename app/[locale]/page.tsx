@@ -3,7 +3,8 @@ import { HotelIntro } from '@/components/home/HotelIntro';
 import { VillasAndSuites } from '@/components/home/VillasAndSuites';
 import { Storytelling } from '@/components/home/Storytelling';
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return (
     <main className="relative w-full grow" style={{ backgroundColor: 'var(--color-cream)' }}>
       {/* 1. Hero 视频大图 */}
@@ -13,7 +14,7 @@ export default function Home() {
       <HotelIntro />
 
       {/* 3. 别墅与套房 */}
-      <VillasAndSuites />
+      <VillasAndSuites locale={locale} />
 
       {/* 4. 优惠精选 */}
       {/* <SpecialOffers /> */}

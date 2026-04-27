@@ -28,7 +28,7 @@ const ROOMS = [
   },
 ];
 
-export function VillasAndSuites() {
+export function VillasAndSuites({ locale }: { locale: string }) {
   const t = useTranslations('Villas');
   const roomItems = t.raw('items') as Array<{ title: string; desc: string }>;
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -64,9 +64,9 @@ export function VillasAndSuites() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
           
           {/* Left Column: Index & Room List (Desktop Only) */}
-          <div className="hidden lg:flex lg:col-span-5 flex-col justify-center mt-4 lg:mt-0">
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-center mt-4 lg:mt-0 lg:h-162.5 xl:h-187.5 overflow-hidden">
             {/* Desktop Header */}
-            <div className="mb-16">
+            <div className="mb-10">
               <p className="font-sans text-[0.75rem] tracking-[0.3em] text-[--color-warm-text] uppercase mb-6">
                 {t('subtitle')}
               </p>
@@ -79,7 +79,7 @@ export function VillasAndSuites() {
             </div>
 
             {/* Room Selectors */}
-            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
+            <div className="flex flex-col gap-4 md:gap-5 lg:gap-6">
               {ROOMS.map((room, index) => {
                 const isActive = index === selectedIndex;
                 const roomItem = roomItems[index];
@@ -91,7 +91,7 @@ export function VillasAndSuites() {
                     onClick={() => setSelectedIndex(index)}
                   >
                     <div className={`transition-all duration-700 ease-out ${isActive ? 'opacity-100 translate-x-2 lg:translate-x-4' : 'opacity-40 group-hover:opacity-60'}`}>
-                      <h3 className="font-serif text-[--color-section-text] text-xl md:text-2xl mb-2 lg:mb-3">
+                      <h3 className={`font-serif text-[--color-section-text] mb-2 lg:mb-3 ${locale === 'zh' ? 'text-xl md:text-2xl' : 'text-sm lg:text-base'}`}>
                         {roomItem?.title}
                       </h3>
                       
