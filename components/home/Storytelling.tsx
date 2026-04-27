@@ -21,36 +21,17 @@ const STORY_IMAGES = [
   'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkawaaae7q/villa-premium-1.png',
 ];
 
-// 内置 Story 数组（规避旧翻译文件里没有配置 posts 或者配置残缺的问题），补足内容量
-const STORIES = [
-  {
-    tag: "生态保育",
-    date: "2026.04",
-    title: "写给海洋的诗：蔚蓝深处的生态承诺",
-    desc: "以百年铁木筑底，零排放活水过滤系统循环流转。在此，我们从不征服自然，而是以最虔诚的姿态致敬脚下的万顷琉璃。"
-  },
-  {
-    tag: "人文探索",
-    date: "2026.03",
-    title: "海之吉普赛：巴瑶族的千年渔歌",
-    desc: "乘木船驶入隐秘浅滩部落，在原住民纯澈无垠的笑容与篝火歌声中，放慢时钟，进行一场超越语言的时空对谈。"
-  },
-  {
-    tag: "风味鉴赏",
-    date: "2026.01",
-    title: "深海极鲜，悬崖之巅的味蕾交响",
-    desc: "清晨渔船直供的深海极鲜，佐以主厨特调南洋珍品。在凌空而降的悬崖餐厅中，任海风与醇酒点缀每分每秒的私密时光。"
-  }
-];
+
 
 export function Storytelling() {
   const t = useTranslations('Story');
+  const storyPosts = t.raw('posts') as Array<{ tag: string; date: string; title: string; desc: string }>;
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
     <section ref={sectionRef} className="relative w-full py-10 md:py-16 lg:py-20 bg-[--color-cream] overflow-hidden">
-      <div className="mx-auto max-w-[85rem] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-340 px-5 sm:px-8 lg:px-12">
         {/* Header - 统一对齐到 1280 容器左侧或居中，保持高级感 */}
         <motion.div 
           custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
@@ -70,7 +51,7 @@ export function Storytelling() {
         {/* 方案B 进化版: 统一左图右文结构，固定图片比例，细化线条分隔样式 */}
         <div className="relative w-full text-[--color-section-text] border-b border-[#e0dad0]">
           
-          {STORIES.map((story, index) => {
+          {storyPosts.map((story, index) => {
             const imgSrc = STORY_IMAGES[index % STORY_IMAGES.length];
             return (
               <div key={index} className="flex flex-col md:flex-row group border-t border-[#e0dad0] py-12 md:py-20 lg:py-24 gap-10 md:gap-16 lg:gap-24">
@@ -80,7 +61,7 @@ export function Storytelling() {
                   variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "0px 0px -50px 0px" }}
                   className="w-full md:w-5/12 lg:w-[45%] shrink-0"
                 >
-                  <div className="relative aspect-video md:aspect-[4/3] w-full overflow-hidden bg-[#e0dad0]/20">
+                  <div className="relative aspect-video md:aspect-4/3 w-full overflow-hidden bg-[#e0dad0]/20">
                     <Image
                       src={imgSrc}
                       alt={story.title}

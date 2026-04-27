@@ -45,7 +45,7 @@ export function VillasAndSuites() {
 
   return (
     <section className="w-full py-10 md:py-16 lg:py-20 bg-[--color-cream] overflow-hidden">
-      <div className="mx-auto max-w-[85rem] px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-340 px-5 sm:px-8 lg:px-12">
         
         {/* Mobile Header (Hidden on Desktop) */}
         <div className="block lg:hidden mb-10 text-center">
@@ -117,7 +117,7 @@ export function VillasAndSuites() {
           </div>
 
           {/* Right Column: Large Image Reveal */}
-          <div className="lg:col-span-7 relative h-[130vw] sm:h-[100vw] md:h-[60vh] lg:h-[650px] xl:h-[750px] w-full overflow-hidden">
+          <div className="lg:col-span-7 relative h-[130vw] sm:h-[100vw] md:h-[60vh] lg:h-162.5 xl:h-187.5 w-full overflow-hidden">
             {ROOMS.map((room, index) => {
               const isActive = index === selectedIndex;
               return (
@@ -168,7 +168,7 @@ export function VillasAndSuites() {
                   className="flex-1 py-2 cursor-pointer focus:outline-none group"
                   aria-label={`Go to room ${index + 1}`}
                 >
-                  <div className={`h-[2px] transition-all duration-500 ${index === selectedIndex ? 'bg-[--color-section-text] w-full opacity-100' : 'bg-[--color-section-text] w-full opacity-20 group-hover:opacity-40'}`} />
+                  <div className={`h-0.5 transition-all duration-500 ${index === selectedIndex ? 'bg-[--color-section-text] w-full opacity-100' : 'bg-[--color-section-text] w-full opacity-20 group-hover:opacity-40'}`} />
                 </button>
               ))}
             </div>

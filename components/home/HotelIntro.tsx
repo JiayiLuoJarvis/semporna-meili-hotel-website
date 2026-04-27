@@ -55,7 +55,7 @@ export function HotelIntro() {
             variants={fadeUp}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="max-w-[720px] font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-[2.2] md:leading-[2.4] text-[#5a5347]"
+            className="max-w-180 font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-[2.2] md:leading-[2.4] text-[#5a5347]"
           >
             <p>{t('body1')}</p>
           </motion.div>

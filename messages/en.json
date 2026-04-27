@@ -151,29 +151,22 @@
     "btn": "EXPLORE OUR JOURNEY",
     "posts": [
       {
-        "tag": "Marine Life",
-        "title": "Swimming with Mantas: A Pre-Dawn Encounter",
-        "date": "Nov 12, 2025"
+        "tag": "Ecological Conservation",
+        "date": "Apr 2026",
+        "title": "A Poem for the Ocean: Our Pledge from the Depths",
+        "desc": "Built upon century-old ironwood, our zero-emission living-water filtration system flows in endless cycles. Here, we never conquer nature — we bow before it in the most devoted reverence."
       },
       {
-        "tag": "Island Living",
-        "title": "72 Hours of Pure Life in the Overwater Suite",
-        "date": "Oct 28, 2025"
+        "tag": "Cultural Exploration",
+        "date": "Mar 2026",
+        "title": "Sea Gypsies: A Thousand-Year Ballad of the Bajau",
+        "desc": "Board a wooden boat into a hidden shallow-water village. In the pure, boundless smiles and bonfire songs of the indigenous people, slow the clock and engage in a dialogue that transcends language across time."
       },
       {
-        "tag": "Slow Travel",
-        "title": "Semporna's Last Handcraft Fishing Village",
-        "date": "Oct 5, 2025"
-      },
-      {
-        "tag": "Gastronomy",
-        "title": "Born of the Sea: A Late-Night Feast",
-        "date": "Sep 18, 2025"
-      },
-      {
-        "tag": "Conservation",
-        "title": "A Day in the Life of a Reef Restorer",
-        "date": "Aug 30, 2025"
+        "tag": "Culinary Discovery",
+        "date": "Jan 2026",
+        "title": "Deep-Sea Freshness: A Symphony of Flavour at the Cliff's Edge",
+        "desc": "The freshest deep-sea catch delivered directly from morning fishing boats, paired with the chef's signature Nanyang treasures. In a clifftop restaurant suspended above the sea, let the ocean breeze and fine wine grace every private moment."
       }
     ]
   },

@@ -151,29 +151,22 @@
     "btn": "TEROKAI PERJALANAN KAMI",
     "posts": [
       {
-        "tag": "Hidupan Marin",
-        "title": "Berenang Bersama Manta: Pertemuan Sebelum Fajar",
-        "date": "12 Nov 2025"
+        "tag": "Pemuliharaan Ekologi",
+        "date": "Apr 2026",
+        "title": "Sebuah Puisi untuk Lautan: Janji Kami dari Kedalaman",
+        "desc": "Dibina di atas kayu besi berusia beratus tahun, sistem penapisan air kami yang sifar pelepasan terus mengalir dalam kitaran tanpa henti. Di sini, kami tidak pernah menakluki alam semula jadi — kami tunduk di hadapannya dengan penuh hormat."
       },
       {
-        "tag": "Kehidupan Pulau",
-        "title": "72 Jam Kehidupan Murni di Suite Air",
-        "date": "28 Okt 2025"
+        "tag": "Penerokaan Budaya",
+        "date": "Mac 2026",
+        "title": "Gipsi Laut: Lagu Nelayan Bajau Selama Seribu Tahun",
+        "desc": "Naiki perahu kayu menuju ke kampung tersembunyi di tepi pantai cetek. Dalam senyuman tulus dan nyanyian api unggun penduduk asli, perlahankan masa dan jalani dialog yang melampaui bahasa melintasi zaman."
       },
       {
-        "tag": "Perjalanan Santai",
-        "title": "Kampung Nelayan Kraf Terakhir Semporna",
-        "date": "5 Okt 2025"
-      },
-      {
-        "tag": "Gastronomi",
-        "title": "Lahir dari Laut: Perjamuan Lewat Malam",
-        "date": "18 Sep 2025"
-      },
-      {
-        "tag": "Pemuliharaan",
-        "title": "Sehari dalam Kehidupan Pemulih Terumbu",
-        "date": "30 Ogos 2025"
+        "tag": "Penemuan Kulinari",
+        "date": "Jan 2026",
+        "title": "Kesegaran Laut Dalam: Simfoni Rasa di Tepi Tebing",
+        "desc": "Tangkapan laut dalam paling segar dihantar terus dari bot pagi, dipadankan dengan keistimewaan Nanyang khas chef. Di restoran tebing yang tergantung di atas laut, biarkan angin laut dan wain halus menghiasi setiap saat yang bersifat peribadi."
       }
     ]
   },
