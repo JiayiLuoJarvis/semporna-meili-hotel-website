@@ -38,29 +38,48 @@ export function VillasAndSuites() {
     const timer = setInterval(() => {
       setSelectedIndex((prev) => (prev + 1) % ROOMS.length);
     }, 6000);
+    
+    // Reset timer when selectedIndex changes (e.g., manual click)
     return () => clearInterval(timer);
-  }, []);
+  }, [selectedIndex]);
 
   return (
-    <section className="w-full py-32 md:py-48 bg-[--color-cream] overflow-hidden">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <section className="w-full py-20 md:py-24 lg:py-32 bg-[--color-cream] overflow-hidden">
+      <div className="mx-auto max-w-[85rem] px-5 sm:px-8 lg:px-12">
         
+        {/* Mobile Header (Hidden on Desktop) */}
+        <div className="block lg:hidden mb-10 text-center">
+          <p className="font-sans text-[0.65rem] tracking-[0.3em] text-[--color-warm-text] uppercase mb-4">
+            {t('subtitle')}
+          </p>
+          <h2 
+            className="font-serif font-light leading-[1.3] tracking-wider text-[--color-section-text] text-balance"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
+          >
+            {t('title')}
+          </h2>
+        </div>
+
         {/* Editorial Layout: Left text list, Right image gallery */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-20 items-center">
           
-          {/* Left Column: Index & Room List */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div className="mb-20">
-              <h2 className="font-serif text-[--color-section-text] text-3xl md:text-5xl lg:text-6xl mb-6">
-                {t('title')}
-              </h2>
-              <p className="font-sans text-[0.8rem] tracking-[0.2em] text-[--color-warm-text] uppercase uppercase">
+          {/* Left Column: Index & Room List (Desktop Only) */}
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-center mt-4 lg:mt-0">
+            {/* Desktop Header */}
+            <div className="mb-16">
+              <p className="font-sans text-[0.75rem] tracking-[0.3em] text-[--color-warm-text] uppercase mb-6">
                 {t('subtitle')}
               </p>
+              <h2 
+                className="font-serif font-light leading-[1.3] tracking-wider text-[--color-section-text] text-balance"
+                style={{ fontSize: 'clamp(2rem, 3.5vw, 3.5rem)' }}
+              >
+                {t('title')}
+              </h2>
             </div>
 
             {/* Room Selectors */}
-            <div className="flex flex-col gap-8 md:gap-10">
+            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
               {ROOMS.map((room, index) => {
                 const isActive = index === selectedIndex;
                 const roomItem = roomItems[index];
@@ -71,20 +90,20 @@ export function VillasAndSuites() {
                     className="relative cursor-pointer group"
                     onClick={() => setSelectedIndex(index)}
                   >
-                    <div className={`transition-all duration-700 ease-out ${isActive ? 'opacity-100 translate-x-4' : 'opacity-40 group-hover:opacity-60'}`}>
-                      <h3 className="font-serif text-[--color-section-text] text-xl md:text-2xl mb-3">
+                    <div className={`transition-all duration-700 ease-out ${isActive ? 'opacity-100 translate-x-2 lg:translate-x-4' : 'opacity-40 group-hover:opacity-60'}`}>
+                      <h3 className="font-serif text-[--color-section-text] text-xl md:text-2xl mb-2 lg:mb-3">
                         {roomItem?.title}
                       </h3>
                       
                       {/* Description expands only for active item */}
                       <div 
-                        className={`overflow-hidden transition-all duration-700 ease-in-out`}
-                        style={{ maxHeight: isActive ? '120px' : '0px', opacity: isActive ? 1 : 0 }}
+                        className="overflow-hidden transition-all duration-700 ease-in-out"
+                        style={{ maxHeight: isActive ? '160px' : '0px', opacity: isActive ? 1 : 0 }}
                       >
-                        <p className="font-sans text-sm text-[--color-warm-text] leading-relaxed max-w-md pt-2">
+                        <p className="font-sans text-[0.875rem] md:text-sm text-[--color-warm-text] leading-relaxed max-w-md pt-1 lg:pt-2">
                           {roomItem?.desc}
                         </p>
-                        <div className="mt-6 flex items-center gap-6">
+                        <div className="mt-4 lg:mt-6 flex items-center gap-6">
                           <Link href="/villas" className="font-sans text-[0.65rem] tracking-[0.3em] uppercase border-b border-[--color-section-text]/30 pb-1 text-[--color-section-text] transition-colors hover:border-[--color-section-text]">
                             {t('checkRates')}
                           </Link>
@@ -98,7 +117,7 @@ export function VillasAndSuites() {
           </div>
 
           {/* Right Column: Large Image Reveal */}
-          <div className="lg:col-span-7 relative h-[60vh] md:h-[75vh] lg:h-[85vh] w-full">
+          <div className="lg:col-span-7 relative h-[130vw] sm:h-[100vw] md:h-[60vh] lg:h-[650px] xl:h-[750px] w-full overflow-hidden">
             {ROOMS.map((room, index) => {
               const isActive = index === selectedIndex;
               return (
@@ -118,10 +137,41 @@ export function VillasAndSuites() {
                       className="object-cover object-center"
                       priority={index === 0}
                     />
+                    
+                    {/* Mobile Text Overlay (Hidden on Desktop) - 浅色磨砂质感卡片 */}
+                    <div className="absolute bottom-0 left-0 right-0 lg:hidden backdrop-blur-md bg-white/60 border-t border-white/40 p-6 sm:p-8 pb-12 shadow-lg">
+                      <div className={`transition-all duration-700 delay-200 transform ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+                        <h3 className="font-serif text-[--color-section-text] text-xl sm:text-2xl mb-2 font-medium">
+                          {roomItems[index]?.title}
+                        </h3>
+                        <p className="font-sans text-[0.8rem] sm:text-sm text-[--color-section-text]/80 leading-relaxed line-clamp-2">
+                          {roomItems[index]?.desc}
+                        </p>
+                        <div className="mt-5">
+                          <Link href="/villas" className="inline-block font-sans text-[0.65rem] tracking-[0.2em] uppercase border-b border-[--color-section-text]/40 pb-1 text-[--color-section-text] transition-colors hover:border-[--color-section-text]">
+                            {t('checkRates')}
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
             })}
+
+            {/* Mobile Indicators (Hidden on Desktop) - 极细指示线 */}
+            <div className="absolute bottom-4 left-6 right-6 lg:hidden z-20 flex gap-2">
+              {ROOMS.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedIndex(index)}
+                  className="flex-1 py-2 cursor-pointer focus:outline-none group"
+                  aria-label={`Go to room ${index + 1}`}
+                >
+                  <div className={`h-[2px] transition-all duration-500 ${index === selectedIndex ? 'bg-[--color-section-text] w-full opacity-100' : 'bg-[--color-section-text] w-full opacity-20 group-hover:opacity-40'}`} />
+                </button>
+              ))}
+            </div>
           </div>
 
         </div>
