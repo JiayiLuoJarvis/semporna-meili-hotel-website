@@ -37,7 +37,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
     <>
       {/* Backdrop overlay */}
       <div
-        className={`fixed inset-0 z-100 bg-black/40 transition-opacity duration-500 lg:hidden ${
+        className={`fixed inset-0 z-100 bg-black/40 transition-opacity duration-500 ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={onClose}
@@ -45,7 +45,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
 
       {/* Drawer */}
       <div
-        className={`fixed inset-y-0 right-0 z-101 flex h-full w-[88vw] max-w-100 flex-col bg-white text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-101 flex h-full w-[88vw] max-w-100 flex-col bg-white text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >

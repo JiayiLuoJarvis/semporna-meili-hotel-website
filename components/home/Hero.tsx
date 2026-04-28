@@ -78,7 +78,7 @@ export function Hero() {
           <div className="flex h-full w-full flex-col items-start justify-end px-6 md:px-12 lg:px-20 xl:pl-[8vw] xl:pr-6">
             {/* Subtitle */}
             <p
-              className="animate-fade-in mb-4 font-sans text-xs uppercase tracking-[0.4em] text-white/70 md:text-sm"
+              className="animate-fade-in mb-4 font-sans text-xs uppercase tracking-[0.4em] text-white md:text-sm"
               style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
             >
               {t('subtitle')}
@@ -100,7 +100,7 @@ export function Hero() {
 
             {/* Tagline */}
             <p
-              className="animate-fade-in mt-6 max-w-lg font-sans text-sm font-light leading-relaxed text-white/80 md:text-base"
+              className="animate-fade-in mt-6 max-w-lg font-sans text-sm font-light leading-relaxed text-white md:text-base"
               style={{
                 animationDelay: '1s',
                 animationFillMode: 'both',
@@ -116,21 +116,21 @@ export function Hero() {
               style={{ animationDelay: '1.3s', animationFillMode: 'both' }}
             >
               <span
-                className="font-sans text-[0.6875rem] font-light uppercase tracking-[0.12em] text-white/70"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}
+                className="font-sans text-xs font-light uppercase tracking-[0.12em] text-white"
+                style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
               >
                 {t('address')}
               </span>
               <a
                 href="tel:+60123456789"
-                className="font-sans text-[0.6875rem] font-light tracking-[0.12em] text-white/70 transition-colors duration-500 hover:text-white"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}
+                className="font-sans text-xs font-light tracking-[0.12em] text-white transition-colors duration-500 hover:text-white/70"
+                style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
               >
                 {t('phone')}
               </a>
               <span
-                className="font-sans text-[0.6875rem] font-light tracking-[0.12em] text-white/70"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}
+                className="font-sans text-xs font-light tracking-[0.12em] text-white"
+                style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
               >
                 reservations@sempornameili.com
               </span>
@@ -158,7 +158,7 @@ export function Hero() {
           }`}
           style={{ transitionDelay: hasScrolled ? '0s' : '3.5s' }}
         >
-          <span className="mb-3 ml-[0.3em] font-sans text-[0.6rem] uppercase tracking-[0.3em] text-white/50">
+          <span className="mb-3 ml-[0.3em] font-sans text-[0.65rem] uppercase tracking-[0.3em] text-white/80">
             {t('scroll')}
           </span>
           <div className="relative h-10 w-px overflow-hidden bg-white/30">
