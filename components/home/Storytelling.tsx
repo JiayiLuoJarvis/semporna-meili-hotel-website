@@ -30,7 +30,7 @@ export function Storytelling() {
   const isInView = useInView(sectionRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
-    <section ref={sectionRef} className="relative w-full py-10 md:py-16 lg:py-20 bg-[--color-cream] overflow-hidden">
+    <section ref={sectionRef} className="relative w-full py-10 md:py-16 lg:py-20 bg-background overflow-hidden">
       <div className="mx-auto max-w-340 px-5 sm:px-8 lg:px-12">
         {/* Header - 统一对齐到 1280 容器左侧或居中，保持高级感 */}
         <motion.div 

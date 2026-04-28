@@ -31,42 +31,42 @@ export function HotelIntro() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative z-10 w-full overflow-hidden bg-[--color-cream]"
+      className="relative z-10 w-full overflow-hidden bg-background"
     >
-      {/* 调整了上下间距，避免过于空旷，同时兼顾移动端、平板到大屏的渐进过渡 */}
-      <div className="py-10 md:py-16 lg:py-20">
+      {/* Soneva Style 极大留白：通过夸张的 padding 制造呼吸感和高级感 */}
+      <div className="py-20 md:py-28 lg:py-40">
         <div className="mx-auto max-w-4xl px-6 sm:px-8 text-center flex flex-col items-center">
           
-          {/* Title - 单行展示，字号适中，自然换行留给移动端 */}
+          {/* Title - Soneva Style 优雅字号，克制不臃肿 */}
           <motion.h2
             custom={0}
             variants={fadeUp}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="font-serif font-light leading-[1.3] tracking-wider text-[--color-section-text] text-balance mb-10 md:mb-14"
-            style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
+            className="font-serif font-light leading-[1.2] tracking-wide text-[--color-section-text] text-balance mb-6 md:mb-8"
+            style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)' }}
           >
-            {t('headingLine1')}。
+            {t('headingLine1')}
           </motion.h2>
 
-          {/* Body Text - 融合成具有实体感的纯文本块，排版上如同一块基石 */}
+          {/* Body Text - Soneva Style 窄容器、浅灰色、行高舒展 */}
           <motion.div
             custom={0.1}
             variants={fadeUp}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="max-w-180 font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-[2.2] md:leading-[2.4] text-[#5a5347]"
+            className="max-w-2xl font-sans text-sm md:text-[0.95rem] font-light leading-relaxed md:leading-loose text-[--color-warm-text]"
           >
             <p>{t('body1')}</p>
           </motion.div>
 
-          {/* CTA - 在移动端缩小文字和字位，保持精致感 */}
+          {/* CTA - 极其细微的点缀 */}
           <motion.div
             custom={0.2}
             variants={fadeUp}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="mt-12 md:mt-20"
+            className="mt-10 md:mt-16"
           >
             <Link
               href="/villas"
