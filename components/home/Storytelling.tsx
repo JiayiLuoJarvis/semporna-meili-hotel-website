@@ -35,7 +35,7 @@ export function Storytelling() {
         {/* Header - 统一对齐到 1280 容器左侧或居中，保持高级感 */}
         <motion.div 
           custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-          className="mb-16 md:mb-24 lg:mb-32 text-center md:text-left"
+          className="mb-10 md:mb-24 lg:mb-32 text-center md:text-left"
         >
           <p className="font-sans text-[0.65rem] md:text-[0.75rem] tracking-[0.3em] text-[--color-warm-text] uppercase mb-4 md:mb-6">
             {t('subtitle')}
@@ -54,7 +54,7 @@ export function Storytelling() {
           {storyPosts.map((story, index) => {
             const imgSrc = STORY_IMAGES[index % STORY_IMAGES.length];
             return (
-              <div key={index} className="flex flex-col md:flex-row group border-t border-[#e0dad0] py-12 md:py-20 lg:py-24 gap-10 md:gap-16 lg:gap-24">
+              <div key={index} className="flex flex-col md:flex-row group border-t border-[#e0dad0] py-8 md:py-20 lg:py-24 gap-6 md:gap-16 lg:gap-24">
                 
                 {/* 左侧：严谨一致的固定比例大图 */}
                 <motion.div 
@@ -80,18 +80,18 @@ export function Storytelling() {
                 >
                   <div className="flex flex-col max-w-lg lg:pl-8">
                     {/* Tag / Date 带装饰线 （去除了数字索引） */}
-                    <div className="flex items-center gap-4 mb-8 md:mb-10 text-[#a59a85] font-sans text-[0.65rem] md:text-[0.7rem] tracking-[0.25em] uppercase">
+                    <div className="flex items-center gap-4 mb-5 md:mb-10 text-[#a59a85] font-sans text-[0.65rem] md:text-[0.7rem] tracking-[0.25em] uppercase">
                       <span className="block w-6 md:w-8 h-px bg-[#a59a85]/50"></span>
                       <span>{story.tag} &nbsp;&nbsp;|&nbsp;&nbsp; {story.date}</span>
                     </div>
                     
                     {/* Title */}
-                    <h3 className="font-serif text-2xl lg:text-[2rem] leading-[1.3] tracking-wide mb-6 md:mb-8 text-[--color-section-text]">
+                    <h3 className="font-serif text-xl md:text-2xl lg:text-[2rem] leading-[1.3] tracking-wide mb-4 md:mb-8 text-[--color-section-text]">
                       {story.title}
                     </h3>
                     
                     {/* Excerpt */}
-                    <p className="font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-[2.2] md:leading-[2.4] text-[#5a5347] mb-12">
+                    <p className="font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-relaxed md:leading-[2.2] text-[#5a5347] mb-8 md:mb-12">
                       {story.desc}
                     </p>
 
