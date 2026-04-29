@@ -175,7 +175,7 @@ export function Hero() {
       {/* ======================= */}
       {/*   Mobile Hero  (<md)    */}
       {/* ======================= */}
-      <section className="flex w-full flex-col overflow-x-hidden bg-background pt-17 sm:pt-20 md:hidden">
+      <section className="flex w-full flex-col overflow-x-hidden bg-background md:hidden">
         {/* Full-width image with title overlay */}
         <div className="relative h-[50vh] min-h-80 w-full">
           <Image
