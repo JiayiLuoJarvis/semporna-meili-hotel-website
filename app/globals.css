@@ -8,11 +8,11 @@
 /* 英文正文衬线 / 大段落：Newsreader（36pt 光学尺寸，优雅排版） */
 @import '@fontsource-variable/newsreader/opsz.css';
 @import '@fontsource-variable/newsreader/opsz-italic.css';
-/* 中文衬线：思源宋体 Noto Serif SC（简中子集，按需按字重加载） */
-@import '@fontsource/noto-serif-sc/chinese-simplified-400.css';
-@import '@fontsource/noto-serif-sc/chinese-simplified-500.css';
-@import '@fontsource/noto-serif-sc/chinese-simplified-600.css';
-@import '@fontsource/noto-serif-sc/chinese-simplified-700.css';
+/* 中文黑体：思源黑体 Noto Sans SC（简中子集，主用中文字体） */
+@import '@fontsource/noto-sans-sc/chinese-simplified-400.css';
+@import '@fontsource/noto-sans-sc/chinese-simplified-500.css';
+@import '@fontsource/noto-sans-sc/chinese-simplified-700.css';
+
 
 @plugin 'tailwindcss-animate';
 @plugin '@tailwindcss/typography';
@@ -41,14 +41,14 @@
   /* --- 字体 Typography --- */
   /* 角色分工：
      sans  = Newsreader Variable     — 英文正文段落 / 大号排版引言 (取代过去的无衬线)
-                                       + Noto Serif SC 作为中文 fallback
+                                       + Noto Sans SC 作为中文 fallback（黑体）
      serif = Cinzel Variable         — 英文大标题（h1/h2，全大写碑铭气质）
-                                       + Noto Serif SC 作为中文 fallback
+                                       + Noto Sans SC 作为中文 fallback（黑体）
      text  = Newsreader Variable     — 给部分强声明准备的 alias
   */
-  --font-sans: 'Newsreader Variable', 'Newsreader', 'Noto Serif SC', '思源宋体', serif;
-  --font-serif: 'Cinzel Variable', 'Cinzel', 'Noto Serif SC', '思源宋体', serif;
-  --font-text: 'Newsreader Variable', 'Newsreader', 'Noto Serif SC', '思源宋体', serif;
+  --font-sans: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', '思源黑体', sans-serif;
+  --font-serif: 'Cinzel Variable', 'Cinzel', 'Noto Sans SC', '思源黑体', sans-serif;
+  --font-text: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', '思源黑体', sans-serif;
 
   /* --- v19 品牌颜色 Token (从 Semporna Meili Resort Web_v19 迁移) --- */
   /* Primary Theme Color — 仙本那深海蓝 #003365 */
