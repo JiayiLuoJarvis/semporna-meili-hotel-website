@@ -170,9 +170,9 @@ export function BookingBar() {
                 </div>
 
                 {/* CTA */}
-                <div className="shrink-0">
+                <div className="shrink-0 md:self-stretch">
                   <button
-                    className="whitespace-nowrap rounded-lg px-6 py-2.5 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300"
+                    className="h-full w-full whitespace-nowrap rounded-lg px-6 py-2.5 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300"
                     style={{
                       background: 'var(--color-primary)',
                       color: 'white',
