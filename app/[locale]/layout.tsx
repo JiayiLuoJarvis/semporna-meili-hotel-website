@@ -55,7 +55,7 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <SmoothScrolling>
-            <Header />
+            <Header />1
             {children}
             <Footer />
           </SmoothScrolling>
