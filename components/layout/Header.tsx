@@ -56,21 +56,22 @@ export function Header() {
       {/*  Hidden on mobile (md:flex), visible on PC    */}
       {/* ============================================= */}
       <header
-        className={`fixed top-0 right-0 left-0 z-50 flex h-18 items-center justify-between px-6 transition-all duration-700 lg:px-10 ${
+        className={`fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between px-4 transition-all duration-700 md:h-16 md:px-6 lg:h-18 lg:px-10 ${
           isScrolled ? 'bg-primary shadow-sm' : 'bg-transparent'
         }`}
       >
         {/* Left: hamburger + language switcher */}
-        <div className="flex shrink-0 items-center gap-4">
+        <div className="flex shrink-0 items-center gap-3 md:gap-4">
           <button
             onClick={() => setNavOpen(true)}
-            className="cursor-pointer p-2 text-white transition-opacity hover:opacity-70"
+            className="cursor-pointer p-1.5 text-white transition-opacity hover:opacity-70 md:p-2"
             aria-label={t('openMenu')}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="22"
               height="22"
+              className="md:h-6 md:w-6 lg:h-7 lg:w-7"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -88,7 +89,7 @@ export function Header() {
           <div ref={langRef} className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold tracking-wider text-white/80 uppercase transition-opacity hover:opacity-70"
+              className="flex cursor-pointer items-center gap-1.5 text-sm font-semibold tracking-wider text-white/80 uppercase transition-opacity hover:opacity-70"
               aria-label="Select language"
             >
               <span>{LOCALES.find((l) => l.code === locale)?.short ?? locale.toUpperCase()}</span>
@@ -157,11 +158,11 @@ export function Header() {
           aria-label={t('brand')}
         >
           <Image
-            src="/images/logo-h-new.png"
+            src="/images/logo-color.png"
             alt="Meili Resort"
-            width={180}
-            height={60}
-            className="h-10 w-auto object-contain brightness-0 invert"
+            width={2665}
+            height={2823}
+            className="h-10 w-auto object-contain brightness-0 invert md:h-12 lg:h-16"
             priority
           />
         </Link>
@@ -169,7 +170,7 @@ export function Header() {
         {/* Right: Book Now */}
         <button
           onClick={handleBookNow}
-          className="shrink-0 cursor-pointer rounded-full border border-white/60 px-5 py-2 font-sans text-xs tracking-widest text-white uppercase transition-all duration-300 hover:border-white hover:bg-white/15"
+          className="shrink-0 cursor-pointer rounded-full border border-white/60 px-3 py-1.5 font-sans text-[11px] tracking-widest text-white uppercase transition-all duration-300 hover:border-white hover:bg-white/15 md:px-4 md:py-2 md:text-xs lg:px-5 lg:text-sm"
         >
           {t('bookNow')}
         </button>
