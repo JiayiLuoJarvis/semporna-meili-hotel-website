@@ -25,7 +25,7 @@ export function VillasAndSuites({ locale }: { locale?: string }) {
 
   return (
     <section className="w-full py-20 md:py-28 lg:py-40 bg-[--color-cream] overflow-hidden">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-350 px-5 sm:px-8 lg:px-12">
         {/* Editorial Grid: 3 columns vertical array */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {ROOMS.slice(0, 3).map((room, index) => {
