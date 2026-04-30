@@ -60,31 +60,24 @@ export function Header() {
           isScrolled ? 'bg-primary shadow-sm' : 'bg-transparent'
         }`}
       >
-        {/* Left: hamburger + language switcher */}
-        <div className="flex shrink-0 items-center gap-3 md:gap-4">
-          <button
-            onClick={() => setNavOpen(true)}
-            className="cursor-pointer p-1.5 text-white transition-opacity hover:opacity-70 md:p-2"
-            aria-label={t('openMenu')}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
-              className="md:h-6 md:w-6 lg:h-7 lg:w-7"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
+        {/* Left: Logo */}
+        <Link
+          href="/"
+          className="shrink-0 transition-opacity hover:opacity-80"
+          aria-label={t('brand')}
+        >
+          <Image
+            src="/images/logo-color.png"
+            alt="Meili Resort"
+            width={2665}
+            height={2823}
+            className="h-10 w-auto object-contain brightness-0 invert md:h-12 lg:h-16"
+            priority
+          />
+        </Link>
 
+        {/* Right: Language switcher + hamburger + Book Now */}
+        <div className="flex shrink-0 items-center gap-3 md:gap-4">
           {/* Language switcher */}
           <div ref={langRef} className="relative">
             <button
@@ -110,7 +103,7 @@ export function Header() {
             </button>
 
             <div
-              className={`absolute top-full left-0 z-50 mt-3 min-w-35 origin-top-left overflow-hidden rounded-sm border border-black/10 bg-white shadow-xl transition-all duration-200 ${
+              className={`absolute top-full right-0 z-50 mt-3 min-w-35 origin-top-right overflow-hidden rounded-sm border border-black/10 bg-white shadow-xl transition-all duration-200 ${
                 langOpen
                   ? 'pointer-events-auto scale-100 opacity-100'
                   : 'pointer-events-none scale-95 opacity-0'
@@ -149,31 +142,39 @@ export function Header() {
               </div>
             </div>
           </div>
+
+          {/* Book Now */}
+          <button
+            onClick={handleBookNow}
+            className="shrink-0 cursor-pointer rounded-full border border-white/60 px-3 py-1.5 font-sans text-[11px] tracking-widest text-white uppercase transition-all duration-300 hover:border-white hover:bg-white/15 md:px-4 md:py-2 md:text-xs lg:px-5 lg:text-sm"
+          >
+            {t('bookNow')}
+          </button>
+
+          {/* Hamburger */}
+          <button
+            onClick={() => setNavOpen(true)}
+            className="cursor-pointer p-1.5 text-white transition-opacity hover:opacity-70 md:p-2"
+            aria-label={t('openMenu')}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              className="md:h-6 md:w-6 lg:h-7 lg:w-7"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
         </div>
-
-        {/* Center: logo — absolutely positioned to stay centered regardless of side items */}
-        <Link
-          href="/"
-          className="absolute left-1/2 -translate-x-1/2 transition-opacity hover:opacity-80"
-          aria-label={t('brand')}
-        >
-          <Image
-            src="/images/logo-color.png"
-            alt="Meili Resort"
-            width={2665}
-            height={2823}
-            className="h-10 w-auto object-contain brightness-0 invert md:h-12 lg:h-16"
-            priority
-          />
-        </Link>
-
-        {/* Right: Book Now */}
-        <button
-          onClick={handleBookNow}
-          className="shrink-0 cursor-pointer rounded-full border border-white/60 px-3 py-1.5 font-sans text-[11px] tracking-widest text-white uppercase transition-all duration-300 hover:border-white hover:bg-white/15 md:px-4 md:py-2 md:text-xs lg:px-5 lg:text-sm"
-        >
-          {t('bookNow')}
-        </button>
       </header>
 
       {/* Nav Drawer (all screen sizes) */}
