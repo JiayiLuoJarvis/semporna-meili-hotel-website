@@ -86,7 +86,7 @@ export function Storytelling() {
                     </div>
                     
                     {/* Title */}
-                    <h3 className="font-serif text-xl md:text-2xl lg:text-[2rem] leading-[1.3] tracking-wide mb-4 md:mb-8 text-[--color-section-text]">
+                    <h3 className="font-serif font-light text-xl md:text-2xl lg:text-[2rem] leading-[1.3] tracking-wide mb-4 md:mb-8 text-[--color-section-text]">
                       {story.title}
                     </h3>
                     

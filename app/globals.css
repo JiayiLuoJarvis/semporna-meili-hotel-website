@@ -8,10 +8,8 @@
 /* 英文正文衬线 / 大段落：Newsreader（36pt 光学尺寸，优雅排版） */
 @import '@fontsource-variable/newsreader/opsz.css';
 @import '@fontsource-variable/newsreader/opsz-italic.css';
-/* 中文黑体：思源黑体 Noto Sans SC（简中子集，主用中文字体） */
-@import '@fontsource/noto-sans-sc/chinese-simplified-400.css';
-@import '@fontsource/noto-sans-sc/chinese-simplified-500.css';
-@import '@fontsource/noto-sans-sc/chinese-simplified-700.css';
+/* 中文黑体：思源黑体 Noto Sans SC 300（细黑，中文全站主字体） */
+@import '@fontsource/noto-sans-sc/chinese-simplified-300.css';
 
 
 @plugin 'tailwindcss-animate';
@@ -46,9 +44,9 @@
                                        + Noto Sans SC 作为中文 fallback（黑体）
      text  = Newsreader Variable     — 给部分强声明准备的 alias
   */
-  --font-sans: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', '思源黑体', sans-serif;
-  --font-serif: 'Cinzel Variable', 'Cinzel', 'Noto Sans SC', '思源黑体', sans-serif;
-  --font-text: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', '思源黑体', sans-serif;
+  --font-sans: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', sans-serif;
+  --font-serif: 'Cinzel Variable', 'Cinzel', 'Noto Sans SC', sans-serif;
+  --font-text: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', sans-serif;
 
   /* --- v19 品牌颜色 Token (从 Semporna Meili Resort Web_v19 迁移) --- */
   /* Primary Theme Color — 仙本那深海蓝 #003365 */
@@ -98,10 +96,10 @@
     overscroll-behavior-y: none;
   }
 
-  /* 使得所有引用 font-serif（大标题）默认成为 SemiBold (600) */
+  /* 使得所有引用 font-serif（大标题）默认成为 Light (300) */
   h1, h2, h3, h4, h5, h6, .font-serif {
     font-family: var(--font-serif);
-    font-weight: 600;
+    font-weight: 300;
   }
 
   /* 针对 Lenis 平滑滚动的核心托底 */
