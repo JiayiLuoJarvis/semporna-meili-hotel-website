@@ -1,81 +1,205 @@
 'use client';
 
+import { useState, useCallback, useEffect } from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const ROOMS = [
   {
     id: 'room-1',
-    image: 'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkbryaafaa/villa-ocean-view-1.png',
+    title: '单卧室海滩景观水上别墅套房',
+    desc: '下榻礁湖边的别墅套房，从配备家居的宽敞平台上可将酒店的白沙滩尽收眼底。',
+    image:
+      'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkbryaafaa/villa-ocean-view-1.png',
   },
   {
     id: 'room-2',
-    image: 'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkb6qaafba/villa-overwater-1.png',
+    title: '双卧室 POERAVA 水上别墅套房',
+    desc: '享受极致奢华的双卧空间，带有私人冷水池，直通清澈见底的仙本那海洋。',
+    image:
+      'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkb6qaafba/villa-overwater-1.png',
   },
   {
     id: 'room-3',
-    image: 'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkawaaae7q/villa-premium-1.png',
+    title: '三卧室尊贵海滨别墅宅邸',
+    desc: '无与伦比的私密滨海庄园，适合家庭至臻度假，紧邻细白沙滩与椰林。',
+    image:
+      'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkawaaae7q/villa-premium-1.png',
+  },
+  {
+    id: 'room-4',
+    title: '双卧室尊贵海滨别墅宅邸',
+    desc: '在专属的海滨庭院享受私密时光，宽敞的起居空间与自然环境完美融合。',
+    image:
+      'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkcoyaafaq/villa-ocean-view-2.png',
+  },
+  {
+    id: 'room-5',
+    title: '单卧室奥特曼努冷水池水上别墅套房',
+    desc: '标志性的奥特曼努山景，专属冷水池与浪漫的水上生活空间。',
+    image:
+      'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkalaaae7a/villa-overwater-2.png',
+  },
+  {
+    id: 'room-1-1',
+    title: '单卧室海滩景观水上别墅套房',
+    desc: '下榻礁湖边的别墅套房，从配备家居的宽敞平台上可将酒店的白沙滩尽收眼底。',
+    image:
+      'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkbryaafaa/villa-ocean-view-1.png',
+  },
+  {
+    id: 'room-2-1',
+    title: '双卧室 POERAVA 水上别墅套房',
+    desc: '享受极致奢华的双卧空间，带有私人冷水池，直通清澈见底的仙本那海洋。',
+    image:
+      'https://mgx-backend-cdn.metadl.com/generate/images/1129659/2026-04-18/m3bkb6qaafba/villa-overwater-1.png',
   },
 ];
 
-export function VillasAndSuites({ locale }: { locale?: string }) {
+export function VillasAndSuites() {
   const t = useTranslations('Villas');
-  const roomItems = t.raw('items') as Array<{ title: string; desc: string }>;
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+    skipSnaps: false,
+    dragFree: false,
+  });
+
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.internalEngine().index.get());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
 
   return (
-    <section className="w-full py-16 md:py-28 lg:py-40 bg-[--color-cream] overflow-hidden">
-      <div className="mx-auto max-w-350 px-5 sm:px-8 lg:px-12">
-        {/* 移动端：横向滑动卡片；桌面：3列网格 */}
-        <div
-          className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-3 gap-5 md:gap-8 lg:gap-12 -mx-5 px-5 sm:-mx-8 sm:px-8 md:mx-0 md:px-0 pb-6 md:pb-0"
-          style={{ scrollbarWidth: 'none' }}
-        >
-          {ROOMS.slice(0, 3).map((room, index) => {
-            const item = roomItems[index];
+    <section className="w-full overflow-hidden bg-[--color-cream] py-20 md:py-32">
+      <div className="mb-10 text-center sm:mb-16">
+        <h2 className="mb-4 font-serif text-3xl text-[--color-section-text] md:text-4xl lg:text-5xl">
+          {t('subtitle')}
+        </h2>
+      </div>
 
-            return (
-              <Link
-                key={room.id}
-                href="/villas"
-                className="group flex flex-col gap-4 md:gap-6 cursor-pointer shrink-0 w-[76vw] snap-center md:w-auto"
-              >
-                {/* 纵向大图 */}
-                <div className="relative w-full aspect-3/4 overflow-hidden bg-[--color-cream]">
-                  <Image
-                    src={room.image}
-                    alt={item?.title ?? room.id}
-                    fill
-                    sizes="(max-width: 768px) 76vw, 33vw"
-                    className="object-cover object-center transition-transform duration-1000 ease-out group-hover:scale-105"
-                  />
-                </div>
+      <div className="relative mx-auto w-full max-w-480">
+        <div className="overflow-visible" ref={emblaRef}>
+          <div className="flex w-full touch-pan-y items-center">
+            {ROOMS.map((room, index) => {
+              const isActive = index === selectedIndex;
+              return (
+                <div
+                  key={room.id}
+                  className="relative flex-[0_0_78%] px-2 sm:flex-[0_0_55%] md:flex-[0_0_42%] md:px-4 lg:flex-[0_0_40%] xl:flex-[0_0_30%] 2xl:flex-[0_0_25%]"
+                  style={{
+                    zIndex: isActive ? 10 : 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+                      opacity: isActive ? 1 : 0.4,
+                      transform: isActive ? 'scale(1)' : 'scale(0.85)',
+                      boxShadow: isActive ? '0 25px 50px -12px rgb(0 0 0 / 0.25)' : 'none',
+                    }}
+                    className="mx-auto flex h-full flex-col bg-white"
+                  >
+                    <div
+                      className="relative w-full shrink-0"
+                      style={{
+                        paddingBottom: isActive ? '80%' : '130%',
+                        transition: 'padding-bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+                      }}
+                    >
+                      <Image
+                        src={room.image}
+                        alt={room.title}
+                        fill
+                        sizes="(max-width: 768px) 85vw, (max-width: 1200px) 55vw, 35vw"
+                        className="object-cover"
+                      />
+                    </div>
 
-                {/* 极简文字区 */}
-                <div className="flex flex-col items-center text-center">
-                  <h3 className="font-serif text-[--color-section-text] text-lg md:text-xl lg:text-2xl mb-3 font-light tracking-wide group-hover:opacity-70 transition-opacity">
-                    {item?.title}
-                  </h3>
-                  <div className="w-8 h-px bg-[--color-section-text]/30 mb-3 transition-all duration-500 group-hover:w-16" />
-                  <span className="font-sans text-[0.65rem] tracking-[0.2em] uppercase text-[--color-warm-text]">
-                    {t('checkRates')}
-                  </span>
+                    <div className="flex flex-1 flex-col items-center p-6 text-center md:p-8">
+                      <h3 className="font-serif text-base font-bold text-[--color-section-text] md:text-lg">
+                        {room.title}
+                      </h3>
+
+                      <div
+                        className="flex w-full flex-col items-center justify-center overflow-hidden"
+                        style={{
+                          transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+                          maxHeight: isActive ? '400px' : '0px',
+                          opacity: isActive ? 1 : 0,
+                          marginTop: isActive ? '1.5rem' : '0px',
+                        }}
+                      >
+                        <div className="mb-6 h-px w-8 bg-[--color-gold-warm]" />
+
+                        <p className="mb-8 font-sans text-sm leading-loose text-[--color-warm-text]">
+                          {room.desc}
+                        </p>
+
+                        <div className="mt-auto flex w-full flex-col items-center gap-4 sm:flex-row">
+                          <button className="bg-primary hover:bg-primary/90 w-full flex-1 py-3 text-xs tracking-widest whitespace-nowrap text-white uppercase transition-colors">
+                            {t('checkRates')}
+                          </button>
+                          <button className="flex w-full flex-1 items-center justify-center gap-2 py-3 text-xs tracking-widest whitespace-nowrap text-[--color-section-text] uppercase transition-opacity hover:opacity-70">
+                            {t('details')} <ChevronRight className="h-4 w-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </Link>
-            );
-          })}
-          {/* 尾部留白，让最后一张卡片滑到合适位置后右侧有呼吸感 */}
-          <div className="shrink-0 w-5 sm:w-8 md:hidden" aria-hidden="true" />
+              );
+            })}
+          </div>
         </div>
 
-        {/* 底部查看所有按钮 */}
-        <div className="mt-10 md:mt-24 flex justify-center">
-          <Link
-            href="/villas"
-            className="inline-block px-12 py-4 border border-[--color-section-text]/20 font-sans text-[0.7rem] uppercase tracking-[0.2em] text-[--color-section-text] transition-all hover:bg-[--color-section-text] hover:text-white"
+        {/* Buttons overlay on desktop for easier navigation (matches Apple style) */}
+        <div className="absolute top-1/2 left-4 z-20 hidden -translate-y-1/2 md:flex">
+          <button
+            onClick={scrollPrev}
+            className="rounded-full bg-white/80 p-3 text-[--color-section-text] shadow-md backdrop-blur-md transition-all hover:bg-white focus:outline-none"
           >
-            {t('title') || 'View All Villas'}
-          </Link>
+            <ChevronLeft className="h-6 w-6" strokeWidth={1.5} />
+          </button>
+        </div>
+        <div className="absolute top-1/2 right-4 z-20 hidden -translate-y-1/2 md:flex">
+          <button
+            onClick={scrollNext}
+            className="rounded-full bg-white/80 p-3 text-[--color-section-text] shadow-md backdrop-blur-md transition-all hover:bg-white focus:outline-none"
+          >
+            <ChevronRight className="h-6 w-6" strokeWidth={1.5} />
+          </button>
+        </div>
+      </div>
+
+      <div className="mt-10 flex items-center justify-center gap-6 md:mt-12">
+        <div className="flex items-center gap-2">
+          {ROOMS.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                index === selectedIndex
+                  ? 'w-8 bg-[--color-section-text]'
+                  : 'w-2 bg-[--color-section-text]/20 hover:bg-[--color-section-text]/40'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

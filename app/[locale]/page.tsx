@@ -24,7 +24,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <HotelIntro />
 
       {/* 3. 别墅与套房 */}
-      <VillasAndSuites locale={locale} />
+      <VillasAndSuites />
 
       {/* 4. 优惠精选 */}
       {/* <SpecialOffers /> */}
