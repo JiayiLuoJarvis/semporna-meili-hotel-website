@@ -629,6 +629,14 @@
       "whatsapp": "WhatsApp"
     }
   },
+  "Offers": {
+    "nav": {
+      "group": "Group Deals",
+      "member": "Members",
+      "promotional": "Promotions",
+      "contact": "Enquire"
+    }
+  },
   "OffersHeader": {
     "tag": "SPECIAL OFFERS · MEILI RESORT",
     "title": "Your Privilege, Your Journey",

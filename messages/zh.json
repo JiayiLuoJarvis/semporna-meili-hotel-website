@@ -628,10 +628,13 @@
       "whatsapp": "WhatsApp"
     }
   },
-  "OffersHeader": {
-    "tag": "优惠精选 · SPECIAL OFFERS",
-    "title": "开启您的专属旅程",
-    "subtitle": "团购 · 会员 · 促销 · 2026年10月正式开放"
+  "Offers": {
+    "nav": {
+      "group": "团购专属",
+      "member": "会员专享",
+      "promotional": "促销优惠",
+      "contact": "咨询预订"
+    }
   },
   "OffersGroup": {
     "items": [

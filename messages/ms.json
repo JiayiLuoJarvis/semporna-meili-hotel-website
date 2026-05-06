@@ -629,6 +629,14 @@
       "whatsapp": "WhatsApp"
     }
   },
+  "Offers": {
+    "nav": {
+      "group": "Tawaran Kumpulan",
+      "member": "Ahli Sahaja",
+      "promotional": "Promosi",
+      "contact": "Hubungi"
+    }
+  },
   "OffersHeader": {
     "tag": "TAWARAN ISTIMEWA · MEILI RESORT",
     "title": "Keistimewaan Anda, Perjalanan Anda",
