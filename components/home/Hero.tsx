@@ -69,11 +69,11 @@ export function Hero() {
       </div>
 
       {/* Content — left-aligned editorial layout */}
-      <div className="relative z-10 h-full w-full pb-16 md:pb-28">
-        <div className="flex h-full w-full flex-col items-start justify-end px-6 md:px-12 lg:px-20 xl:pl-[8vw] xl:pr-6">
+      <div className="relative z-10 h-full w-full pb-12 md:pb-20">
+        <div className="flex h-full w-full flex-col items-start justify-end px-6 md:px-10 lg:px-14">
           {/* Subtitle */}
           <p
-            className="animate-fade-in mb-3 font-sans text-[10px] uppercase tracking-[0.35em] text-white md:mb-4 md:text-sm md:tracking-[0.4em]"
+            className="animate-fade-in mb-2 font-sans text-[10px] uppercase tracking-[0.35em] text-white md:mb-3 md:text-sm md:tracking-[0.4em]"
             style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
           >
             {t('subtitle')}
@@ -83,7 +83,7 @@ export function Hero() {
           <h1
             className="animate-fade-in-up max-w-3xl font-serif leading-[1.05] text-white"
             style={{
-              fontSize: 'clamp(2rem, 6vw, 4rem)',
+              fontSize: 'clamp(1.75rem, 5vw, 3rem)',
               letterSpacing: '0.04em',
               animationDelay: '0.6s',
               animationFillMode: 'both',
@@ -95,7 +95,7 @@ export function Hero() {
 
           {/* Tagline */}
           <p
-            className="animate-fade-in mt-4 max-w-sm font-sans text-xs font-light leading-relaxed text-white md:mt-6 md:max-w-lg md:text-base"
+            className="animate-fade-in mt-2 max-w-sm font-sans text-xs font-light leading-relaxed text-white md:mt-3 md:max-w-lg md:text-sm"
             style={{
               animationDelay: '1s',
               animationFillMode: 'both',
@@ -107,7 +107,7 @@ export function Hero() {
 
           {/* Bottom info bar */}
           <div
-            className="animate-fade-in mt-8 flex flex-wrap items-center gap-4 border-t border-white/20 pt-5 md:mt-16 md:gap-10 md:pt-6"
+            className="animate-fade-in mt-4 flex flex-wrap items-center gap-3 border-t border-white/20 pt-3 md:mt-6 md:gap-6 md:pt-4"
             style={{ animationDelay: '1.3s', animationFillMode: 'both' }}
           >
             <span
@@ -146,25 +146,7 @@ export function Hero() {
         )}
       </button>
 
-      {/* Scroll indicator */}
-      <div
-        className={`absolute bottom-0 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center transition-opacity duration-700 ${
-          hasScrolled ? 'opacity-0' : 'opacity-100'
-        }`}
-        style={{ transitionDelay: hasScrolled ? '0s' : '3.5s' }}
-      >
-        <span className="mb-3 ml-[0.3em] font-sans text-[0.65rem] uppercase tracking-[0.3em] text-white/80">
-          {t('scroll')}
-        </span>
-        <div className="relative h-10 w-px overflow-hidden bg-white/30">
-          <motion.div
-            initial={{ y: '-100%' }}
-            animate={{ y: '100%' }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-            className="h-full w-full bg-white"
-          />
-        </div>
-      </div>
+
     </motion.section>
   );
 }

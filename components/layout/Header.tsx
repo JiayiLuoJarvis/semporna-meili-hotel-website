@@ -82,7 +82,7 @@ export function Header() {
           <div ref={langRef} className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="flex cursor-pointer items-center gap-1.5 text-sm font-semibold tracking-wider text-white/80 uppercase transition-opacity hover:opacity-70"
+              className="flex cursor-pointer items-center gap-1.5 text-xs font-light tracking-[0.2em] text-white/70 uppercase transition-opacity hover:opacity-100"
               aria-label="Select language"
             >
               <span>{LOCALES.find((l) => l.code === locale)?.short ?? locale.toUpperCase()}</span>
@@ -142,14 +142,6 @@ export function Header() {
               </div>
             </div>
           </div>
-
-          {/* Book Now */}
-          <button
-            onClick={handleBookNow}
-            className="shrink-0 cursor-pointer rounded-full border border-white/60 px-3 py-1.5 font-sans text-[11px] tracking-widest text-white uppercase transition-all duration-300 hover:border-white hover:bg-white/15 md:px-4 md:py-2 md:text-xs lg:px-5 lg:text-sm"
-          >
-            {t('bookNow')}
-          </button>
 
           {/* Hamburger */}
           <button
