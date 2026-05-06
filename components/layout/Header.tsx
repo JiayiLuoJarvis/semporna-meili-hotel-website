@@ -2,9 +2,10 @@
 
 import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
+import { BookingBar } from '../home/BookingBar';
 import { useState, useRef, useEffect } from 'react';
 import { useLenis } from 'lenis/react';
-import { Link, useRouter, usePathname } from '@/i18n/routing';
+import { useRouter, usePathname, Link } from '@/i18n/routing';
 import { MobileNavDrawer } from './MobileNavDrawer';
 
 const LOCALES = [
@@ -15,29 +16,25 @@ const LOCALES = [
 
 export function Header() {
   const t = useTranslations('Header');
+  const tBooking = useTranslations('BookingBar');
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+
   const [isScrolled, setIsScrolled] = useState(false);
-  const [navOpen, setNavOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const lastScrollY = useRef(0);
   const langRef = useRef<HTMLDivElement>(null);
 
-  const lenis = useLenis(
-    ({ scroll }) => {
-      setIsScrolled(scroll > 80);
-    },
-    [],
-  );
-
-  const handleBookNow = () => {
-    lenis?.scrollTo('#booking-bar');
-  };
-
-  const switchLocale = (next: string) => {
-    router.replace(pathname, { locale: next });
-    setLangOpen(false);
-  };
+  // 延迟 3.5 秒后自动展开预定表单，等首屏动画渲染完成
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsBookingOpen(true);
+    }, 3500);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -49,130 +46,185 @@ export function Header() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  const switchLocale = (next: string) => {
+    router.replace(pathname, { locale: next });
+    setLangOpen(false);
+  };
+
+  const currentShort = LOCALES.find((l) => l.code === locale)?.short ?? locale.toUpperCase();
+
+  // useLenis 替代 window.addEventListener('scroll') — 与 lenis 平滑滚动完全同步
+  useLenis(
+    ({ scroll }) => {
+      setIsScrolled(scroll > 150);
+      lastScrollY.current = scroll;
+    },
+    [isScrolled],
+  );
+
+  const navItems = [
+    { key: 'nav1', href: '/' },
+    { key: 'nav2', href: '/booking' },
+    { key: 'nav3', href: '/gallery' },
+    { key: 'nav4', href: '/location' },
+    { key: 'nav5', href: '/offers' },
+    { key: 'nav6', href: '/contact' },
+  ] as const;
+
   return (
     <>
-      {/* ============================================= */}
-      {/*  Unified Header: hamburger | logo | book now  */}
-      {/*  Hidden on mobile (md:flex), visible on PC    */}
-      {/* ============================================= */}
-      <header
-        className={`fixed top-0 right-0 left-0 z-50 flex h-14 items-center justify-between px-4 transition-all duration-700 md:h-16 md:px-6 lg:h-18 lg:px-10 ${
-          isScrolled ? 'bg-primary shadow-sm' : 'bg-transparent'
-        }`}
-      >
-        {/* Left: Logo */}
-        <Link
-          href="/"
-          className="shrink-0 transition-opacity hover:opacity-80"
-          aria-label={t('brand')}
+      <header className="pointer-events-none fixed top-0 right-0 left-0 z-50 flex w-full flex-col">
+        {/* ======================= */}
+        {/*     Desktop Header      */}
+        {/* ======================= */}
+        <nav
+          className={`pointer-events-auto relative z-50 hidden w-full transition-all duration-700 lg:block ${
+            isScrolled
+              ? 'bg-primary py-3 text-white shadow-sm backdrop-blur-sm'
+              : 'from-primary/95 bg-linear-to-b to-transparent py-5'
+          }`}
         >
-          <Image
-            src="/images/logo-color.png"
-            alt="Meili Resort"
-            width={2665}
-            height={2823}
-            className="h-10 w-auto object-contain brightness-0 invert md:h-12 lg:h-16"
-            priority
-          />
-        </Link>
+          <div className="mx-auto flex max-w-350 items-center justify-between px-6 lg:px-20">
+            {/* Logo */}
+            <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
+              <Image
+                src="/images/logo-h-new.png"
+                alt="Meili Resort Hotel"
+                width={240}
+                height={81}
+                className="h-14 w-auto object-contain"
+                priority
+              />
+            </Link>
 
-        {/* Right: Language switcher + hamburger + Book Now */}
-        <div className="flex shrink-0 items-center gap-3 md:gap-4">
-          {/* Language switcher */}
-          <div ref={langRef} className="relative">
-            <button
-              onClick={() => setLangOpen(!langOpen)}
-              className="flex cursor-pointer items-center gap-1.5 text-xs font-light tracking-[0.2em] text-white/70 uppercase transition-opacity hover:opacity-100"
-              aria-label="Select language"
-            >
-              <span>{LOCALES.find((l) => l.code === locale)?.short ?? locale.toUpperCase()}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className={`transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`}
-              >
-                <path d="m6 9 6 6 6-6" />
-              </svg>
-            </button>
-
-            <div
-              className={`absolute top-full right-0 z-50 mt-3 min-w-35 origin-top-right overflow-hidden rounded-sm border border-black/10 bg-white shadow-xl transition-all duration-200 ${
-                langOpen
-                  ? 'pointer-events-auto scale-100 opacity-100'
-                  : 'pointer-events-none scale-95 opacity-0'
-              }`}
-            >
-              <div className="py-1">
-                {LOCALES.map((loc) => (
-                  <button
-                    key={loc.code}
-                    onClick={() => switchLocale(loc.code)}
-                    className={`flex w-full items-center justify-between px-4 py-3 text-left tracking-widest transition-colors duration-150 ${
-                      locale === loc.code
-                        ? 'bg-black/5 font-semibold text-black'
-                        : 'text-black/60 hover:bg-black/5 hover:text-black'
+            {/* Desktop Nav Links */}
+            <div className="flex items-center gap-7 lg:gap-9">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    prefetch={false}
+                    className={`relative pb-1 font-sans text-[0.75rem] tracking-[0.15em] transition-colors duration-500 after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:origin-left after:transition-transform after:duration-300 after:content-[''] ${
+                      isActive
+                        ? isScrolled
+                          ? 'font-normal text-white after:scale-x-100 after:bg-white'
+                          : 'font-light text-white after:scale-x-100 after:bg-white'
+                        : isScrolled
+                          ? 'font-normal text-white/80 after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
+                          : 'font-light text-white/90 after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
                     }`}
                   >
-                    <span className="text-[12px] uppercase">{loc.label}</span>
-                    {locale === loc.code && (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="shrink-0"
+                    {t(item.key)}
+                  </Link>
+                );
+              })}
+
+              {/* Language Switcher */}
+              <div className="relative" ref={langRef}>
+                <button
+                  onClick={() => setLangOpen(!langOpen)}
+                  className={`flex items-center gap-1.5 font-sans text-[0.75rem] tracking-widest transition-colors duration-500 ${isScrolled ? 'font-light text-white/80 hover:text-white' : 'font-light text-white/80 hover:text-white'}`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+                    <path d="M2 12h20" />
+                  </svg>
+                  <span>{currentShort}</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-200 ${langOpen ? 'rotate-180' : ''}`}
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                {langOpen && (
+                  <div className="absolute top-full right-0 mt-2 min-w-35 overflow-hidden rounded-sm border border-[--color-warm-gray] bg-white shadow-lg">
+                    {LOCALES.map((loc) => (
+                      <button
+                        key={loc.code}
+                        onClick={() => switchLocale(loc.code)}
+                        className={`block w-full px-4 py-2.5 text-left font-sans text-xs tracking-wide transition-colors ${
+                          locale === loc.code
+                            ? 'text-primary bg-[--color-cream] font-medium'
+                            : 'hover:text-primary text-zinc-700 hover:bg-[--color-cream]'
+                        }`}
                       >
-                        <path d="M20 6 9 17l-5-5" />
-                      </svg>
-                    )}
-                  </button>
-                ))}
+                        {loc.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           </div>
+        </nav>
 
-          {/* Hamburger */}
-          <button
-            onClick={() => setNavOpen(true)}
-            className="cursor-pointer p-1.5 text-white transition-opacity hover:opacity-70 md:p-2"
-            aria-label={t('openMenu')}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
-              className="md:h-6 md:w-6 lg:h-7 lg:w-7"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {/* ======================= */}
+        {/*     Mobile Header       */}
+        {/* ======================= */}
+        <div className="pointer-events-auto flex h-17 w-full items-center justify-between bg-white px-4 shadow-xs transition-all duration-300 sm:h-20 sm:px-6 lg:hidden">
+          <Link href="/" className="shrink-0">
+            <Image
+              src="/images/logo-color.png"
+              alt="Logo"
+              width={140}
+              height={40}
+              className="h-8 w-auto object-contain sm:h-10"
+            />
+          </Link>
+          <div className="flex shrink-0 items-center justify-end gap-3 sm:gap-4">
+            <button
+              onClick={() => setMobileNavOpen(true)}
+              className="-mr-1 cursor-pointer p-1 text-black transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2"
+              aria-label="Open Menu"
             >
-              <line x1="3" y1="6" x2="21" y2="6" />
-              <line x1="3" y1="12" x2="21" y2="12" />
-              <line x1="3" y1="18" x2="21" y2="18" />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="26"
+                height="26"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Nav Drawer (all screen sizes) */}
+      {/* ======================= */}
+      {/*   Mobile Nav Drawer     */}
+      {/* ======================= */}
       <MobileNavDrawer
-        isOpen={navOpen}
-        onClose={() => setNavOpen(false)}
+        isOpen={mobileNavOpen}
+        onClose={() => setMobileNavOpen(false)}
         locales={LOCALES}
       />
     </>
