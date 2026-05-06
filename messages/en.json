@@ -262,26 +262,6 @@
         "Pets are not permitted; smoking in designated outdoor areas only"
       ]
     },
-    "route": {
-      "tag": "ARRIVAL ROUTE · FULL TRANSFER",
-      "title": "All-Inclusive Arrival Transfers",
-      "selfZone": "Arranged by you",
-      "airport": "Any Airport in Malaysia",
-      "airportHint": "We recommend flying direct via Tawau (TWU)",
-      "divider": "Everything below is arranged by Meili Resort",
-      "tawauLabel": "Tawau Airport",
-      "tawauSub": "Tawau Airport · TWU",
-      "tawauMode": "Private Hotel Vehicle",
-      "tawauDuration": "~ 1 hour",
-      "jettyLabel": "Semporna Jetty",
-      "jettySub": "Semporna Jetty",
-      "jettyMode": "Private Speedboat",
-      "jettyDuration": "~ 30 minutes",
-      "resortLabel": "Meili Resort Hotel",
-      "resortSub": "Meili Resort Hotel ★",
-      "included": "Included in all-inclusive package",
-      "promise": "From Tawau Airport onward, our team accompanies you every step of the way. At every transfer point, someone from our team will be waiting."
-    },
     "schedule": {
       "tag": "TRANSFER SCHEDULE",
       "title": "Private Transfer Schedule",
@@ -302,22 +282,6 @@
     "map": {
       "tag": "EXPLORE THE AREA",
       "caption": "★ Meili Resort · 📍 Semporna Jetty · ✈️ Tawau Airport · 🤿 Sipadan Island"
-    },
-    "prepare": {
-      "tag": "BUTLER'S NOTE",
-      "title": "We've Thought of Everything",
-      "subtitle": "This list is drawn from years of welcoming guests like you",
-      "items": [
-        "Passport or ID document",
-        "Booking confirmation (screenshot is fine — we already have your record)",
-        "Personal medications",
-        "Swimwear (multiple sets)",
-        "Sunscreen (reef-safe recommended)",
-        "Non-slip shoes (for the speedboat deck)",
-        "Sunglasses and sun hat",
-        "Underwater camera equipment (optional)"
-      ],
-      "tip": "Everything on the island is prepared for you. Travel light. Your personal butler handles the rest."
     },
     "cta": {
       "title": "Your Journey Begins the Moment You Book",
@@ -348,6 +312,24 @@
       "scheduleDep2": "Semporna Jetty → Tawau Airport",
       "footer": "Your arrival is handled from the moment you land. Share your flight details after booking, and your personal butler will take care of the rest.",
       "cta": "Contact Us to Arrange Transfers"
+    },
+    "essentialInfo": {
+      "tag": "NOTE",
+      "title": "Essential Information",
+      "items": [
+        {
+          "heading": "Passports and Visas",
+          "content": "All international travelers arriving in Sabah, Malaysia, must hold a passport valid for at least six months, along with a valid Malaysian visa or visa-free/visa-on-arrival entry permit. Entry policies may change over time, so please consult the relevant authorities regarding the latest requirements before your departure."
+        },
+        {
+          "heading": "Flights and Transfers",
+          "content": "Guests are required to book their own flights to Tawau Airport (TWU). Upon arrival in Tawau, a 70-minute drive will take you to Semporna Pier. From there, we will arrange a private speedboat to carry you across the crystal-blue waters for about 45 minutes to our overwater resort. For safety reasons, speedboat transfers may be restricted at night; late arrivals may require an overnight stay in Semporna town before transferring to the island the following morning."
+        },
+        {
+          "heading": "Climate and Attire",
+          "content": "Located near the equator, Semporna enjoys a warm, sun-drenched climate year-round. We recommend packing light and comfortable summer clothing, non-slip shoes for the speedboat deck, and ample sun protection. To preserve our fragile coral reef ecosystem and protect turtles and marine life, we kindly request that you bring and use only reef-safe sunscreen."
+        }
+      ]
     }
   },
   "Gallery": {

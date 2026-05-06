@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useInView } from 'framer-motion';
-import { Plane, Car, Anchor, MapPin } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -18,252 +17,76 @@ const fadeUp = {
   }),
 };
 
-interface ScheduleRow {
-  route: string;
-  time1: string;
-  time2: string;
-}
-
 export default function LocationTransport() {
   const t = useTranslations('Location');
 
-  const arrivalRows: ScheduleRow[] = [
-    { route: t('arrival.scheduleArr1'), time1: '08:30', time2: '10:30' },
-    { route: t('arrival.scheduleArr2'), time1: '10:00', time2: '12:30' },
-  ];
-
-  const departureRows: ScheduleRow[] = [
-    { route: t('arrival.scheduleDep1'), time1: '11:00', time2: '13:30' },
-    { route: t('arrival.scheduleDep2'), time1: '12:00', time2: '14:30' },
-  ];
-
-  const scheduleNotices = [
-    t('schedule.notice1'),
-    t('schedule.notice2'),
-    t('schedule.notice3'),
-  ];
-
-  const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
-
-  const leftInView = useInView(leftRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
-  const rightInView = useInView(rightRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
     <section
       id="location-transport"
-      className="bg-cream pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-20 md:pb-28 lg:pb-36"
+      className="bg-cream pt-20 sm:pt-28 md:pt-36 pb-20 sm:pb-28 md:pb-36"
     >
-      <div className="px-page max-w-350 mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-        
-        {/* ════════════════════════════════════════
-            左列：到达路线图 & 联系方式
-        ════════════════════════════════════════ */}
-        <div ref={leftRef} className="w-full lg:w-5/12 flex flex-col">
-          <motion.h2
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-10 sm:mb-14"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+      <div ref={ref} className="px-page max-w-6xl mx-auto flex flex-col items-center">
+        <motion.div
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="flex flex-col items-center text-center mb-16 sm:mb-24 md:mb-32"
+        >
+          <h2
+            className="font-serif text-[--color-section-text] leading-[1.15] mb-6"
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}
           >
-            {t('route.title')}
-          </motion.h2>
+            {t('arrival.title')}
+          </h2>
+          <p className="font-sans text-[--color-section-text]/60 text-sm sm:text-base max-w-2xl leading-relaxed">
+            {t('arrival.subtitle')}
+          </p>
+        </motion.div>
 
-          {/* 时间轴 */}
-          <motion.div
-            custom={0.1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="relative"
-          >
-            {/* 自行安排标签 */}
-            <div className="flex items-center gap-4 mb-6 ml-12">
-              <span className="font-sans text-[0.6rem] uppercase tracking-[0.25em] text-[--color-warm-text] border border-[--color-section-text]/20 px-3 py-1">
-                {t('route.selfZone')}
-              </span>
-            </div>
-
-            {/* 节点 1：塔瓦机场 */}
-            <div className="flex items-start gap-4 mb-8">
-              <div className="shrink-0 w-11 h-11 rounded-full border border-gold-warm flex items-center justify-center bg-cream z-10">
-                <Plane size={16} className="text-gold-warm" />
-              </div>
-              <div className="pt-2">
-                <p className="font-serif text-[--color-section-text] text-base leading-tight">
-                  {t('route.tawauLabel')}
-                </p>
-                <p className="font-sans text-[--color-warm-text] text-xs mt-1">
-                  {t('route.tawauSub')}
-                </p>
-                <p className="font-sans text-[--color-warm-text] text-[0.65rem] mt-1 italic">
-                  {t('route.airportHint')}
-                </p>
-              </div>
-            </div>
-
-            {/* 分割标签：以下由我们安排 */}
-            <div className="flex items-center gap-4 mb-8 ml-12">
-              <div className="h-px w-8 bg-gold-warm/40" />
-              <span className="font-sans text-[0.6rem] uppercase tracking-[0.2em] text-gold-warm whitespace-nowrap px-3">
-                {t('route.divider')}
-              </span>
-              <div className="h-px flex-1 bg-gold-warm/40" />
-            </div>
-
-            {/* 节点 2：专属车辆 */}
-            <div className="flex items-start gap-4 mb-6">
-              <div className="shrink-0 w-11 h-11 rounded-full border border-gold-warm flex items-center justify-center bg-cream z-10">
-                <Car size={16} className="text-gold-warm" />
-              </div>
-              <div className="pt-2">
-                <p className="font-serif text-[--color-section-text] text-base leading-tight">
-                  {t('route.tawauLabel')} → {t('route.jettyLabel')}
-                </p>
-                <p className="font-sans text-[--color-warm-text] text-xs mt-1">
-                  {t('route.tawauMode')} · {t('route.tawauDuration')}
-                </p>
-                <p className="font-sans text-gold-warm/70 text-[0.6rem] mt-1 uppercase tracking-[0.15em]">
-                  ✓ {t('route.included')}
-                </p>
-              </div>
-            </div>
-
-            {/* 节点 3：专属快艇 */}
-            <div className="flex items-start gap-4 mb-6">
-              <div className="shrink-0 w-11 h-11 rounded-full border border-gold-warm flex items-center justify-center bg-cream z-10">
-                <Anchor size={16} className="text-gold-warm" />
-              </div>
-              <div className="pt-2">
-                <p className="font-serif text-[--color-section-text] text-base leading-tight">
-                  {t('route.jettyLabel')} → {t('route.resortLabel')}
-                </p>
-                <p className="font-sans text-[--color-warm-text] text-xs mt-1">
-                  {t('route.jettyMode')} · {t('route.jettyDuration')}
-                </p>
-                <p className="font-sans text-gold-warm/70 text-[0.6rem] mt-1 uppercase tracking-[0.15em]">
-                  ✓ {t('route.included')}
-                </p>
-              </div>
-            </div>
-
-            {/* 节点 4：美丽度假酒店 */}
-            <div className="flex items-start gap-4">
-              <div className="shrink-0 w-11 h-11 rounded-full border border-gold-warm flex items-center justify-center bg-gold-warm/20 z-10">
-                <MapPin size={16} className="text-gold-warm" />
-              </div>
-              <div className="pt-2">
-                <p className="font-serif text-[--color-section-text] text-base leading-tight">
-                  {t('route.resortLabel')}
-                </p>
-                <p className="font-sans text-[--color-warm-text] text-xs mt-1">
-                  {t('route.resortSub')}
-                </p>
-              </div>
-            </div>
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-16">
+          
+          <motion.div custom={0.1} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="flex flex-col items-center text-center">
+            <span className="font-serif italic text-3xl sm:text-4xl text-[--color-section-text]/20 mb-6">
+              01
+            </span>
+            <h3 className="font-serif text-[--color-section-text] text-xl sm:text-2xl mb-4">
+              {t('arrival.stage1Label')}
+            </h3>
+            <p className="font-sans text-[--color-section-text]/75 text-sm leading-loose max-w-70 md:max-w-none lg:px-4">
+              {t('arrival.stage1Body')}
+            </p>
           </motion.div>
 
-          {/* 承诺引言 */}
-          <motion.p
-            custom={0.15}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="font-text italic text-[--color-section-text]/60 text-sm sm:text-base leading-relaxed mt-12 sm:mt-16"
-          >
-            &ldquo;{t('route.promise')}&rdquo;
-          </motion.p>
-        </div>
-
-        {/* ════════════════════════════════════════
-            右列：班次时刻表
-        ════════════════════════════════════════ */}
-        <div ref={rightRef} className="w-full lg:w-7/12 mt-20 lg:mt-0">
-          {/* 将 schedule 整体对齐上沿 */}
-          <motion.h2
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={rightInView ? 'visible' : 'hidden'}
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-10 sm:mb-14"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
-          >
-            {t('schedule.title')}
-          </motion.h2>
-
-          {/* 右侧主时刻表区域 */}
-          <motion.div
-            custom={0.1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={rightInView ? 'visible' : 'hidden'}
-            className="overflow-x-auto"
-          >
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="border-b border-[--color-section-text]/10">
-                  <th className="text-left font-sans text-[0.6rem] text-[--color-warm-text] uppercase tracking-[0.2em] pb-3 pr-2 whitespace-nowrap">{t('schedule.colRoute')}</th>
-                  <th className="text-center font-sans text-[0.6rem] text-[--color-warm-text] uppercase tracking-[0.2em] pb-3 px-2 whitespace-nowrap">{t('schedule.colTime1')}</th>
-                  <th className="text-center font-sans text-[0.6rem] text-[--color-warm-text] uppercase tracking-[0.2em] pb-3 whitespace-nowrap">{t('schedule.colTime2')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* 到达分组标签 */}
-                <tr>
-                  <td colSpan={3} className="pt-5 pb-2">
-                    <span className="font-sans text-[0.65rem] uppercase tracking-[0.3em] text-gold-warm">
-                      {t('schedule.arrivalTitle')}
-                    </span>
-                  </td>
-                </tr>
-                {arrivalRows.map((row) => (
-                  <tr key={row.route} className="border-b border-[--color-section-text]/5">
-                    <td className="py-4 pr-2 font-sans text-[--color-section-text]/75 text-sm leading-snug">{row.route}</td>
-                    <td className="py-4 px-2 text-center">
-                      <span className="font-serif text-[--color-section-text] text-lg">{row.time1}</span>
-                    </td>
-                    <td className="py-4 text-center">
-                      <span className="font-serif text-[--color-section-text] text-lg">{row.time2}</span>
-                    </td>
-                  </tr>
-                ))}
-                {/* 离开分组标签 */}
-                <tr>
-                  <td colSpan={3} className="pt-6 pb-2">
-                    <span className="font-sans text-[0.65rem] uppercase tracking-[0.3em] text-gold-warm">
-                      {t('schedule.departureTitle')}
-                    </span>
-                  </td>
-                </tr>
-                {departureRows.map((row) => (
-                  <tr key={row.route} className="border-b border-[--color-section-text]/5">
-                    <td className="py-4 pr-2 font-sans text-[--color-section-text]/75 text-sm leading-snug">{row.route}</td>
-                    <td className="py-4 px-2 text-center">
-                      <span className="font-serif text-[--color-section-text] text-lg">{row.time1}</span>
-                    </td>
-                    <td className="py-4 text-center">
-                      <span className="font-serif text-[--color-section-text] text-lg">{row.time2}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-
-            {/* 时刻表提示 */}
-            <ul className="mt-8 sm:mt-10 space-y-3">
-              {scheduleNotices.map((notice, i) => (
-                <li key={i} className="font-sans text-xs sm:text-sm text-[--color-warm-text] leading-relaxed pl-4 border-l border-[--color-section-text]/10">
-                  {notice}
-                </li>
-              ))}
-            </ul>
+          <motion.div custom={0.2} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="flex flex-col items-center text-center">
+            <span className="font-serif italic text-3xl sm:text-4xl text-[--color-section-text]/20 mb-6">
+              02
+            </span>
+            <h3 className="font-serif text-[--color-section-text] text-xl sm:text-2xl mb-4">
+              {t('arrival.stage2Label')}
+            </h3>
+            <p className="font-sans text-[--color-section-text]/75 text-sm leading-loose max-w-70 md:max-w-none lg:px-4">
+              {t('arrival.stage2Body')}
+            </p>
           </motion.div>
-        </div>
 
+          <motion.div custom={0.3} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="flex flex-col items-center text-center">
+            <span className="font-serif italic text-3xl sm:text-4xl text-[--color-section-text]/20 mb-6">
+              03
+            </span>
+            <h3 className="font-serif text-[--color-section-text] text-xl sm:text-2xl mb-4">
+              {t('arrival.stage3Label')}
+            </h3>
+            <p className="font-sans text-[--color-section-text]/75 text-sm leading-loose max-w-70 md:max-w-none lg:px-4">
+              {t('arrival.stage3Body')}
+            </p>
+          </motion.div>
+
+        </div>
       </div>
-
     </section>
   );
 }

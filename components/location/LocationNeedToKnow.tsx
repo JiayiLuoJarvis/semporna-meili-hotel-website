@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useInView } from 'framer-motion';
-import { Check } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,123 +19,56 @@ const fadeUp = {
 
 export default function LocationNeedToKnow() {
   const t = useTranslations('Location');
-  const checklistItems = t.raw('info.checklistItems') as string[];
-  const stayItems = t.raw('info.stayItems') as string[];
+  const items = t.raw('essentialInfo.items') as { heading: string; content: string }[];
 
-  const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
-  const leftInView = useInView(leftRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
-  const rightInView = useInView(rightRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
     <section
       id="location-info"
-      className="bg-white pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-20"
+      className="bg-white pt-24 sm:pt-32 md:pt-40 pb-24 sm:pb-32 md:pb-40"
     >
-      <div className="px-page max-w-350 mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
+      <div ref={ref} className="px-page max-w-4xl mx-auto flex flex-col">
 
-        {/* ════════════════════════════════════════
-            左列：行前清单  BUTLER'S NOTE
-        ════════════════════════════════════════ */}
-        <div ref={leftRef} className="w-full lg:w-1/2">
-
-          {/* 主标题 */}
-          <motion.h2
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-8 sm:mb-10"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+        <motion.div
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="mb-16 sm:mb-24 flex flex-col items-center text-center"
+        >
+          <span className="font-serif italic text-[--color-section-text]/30 text-2xl sm:text-3xl mb-6">
+            {t('essentialInfo.tag')}
+          </span>
+          <h2
+            className="font-serif text-[--color-section-text] leading-[1.15]"
+            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
           >
-            {t('info.checklistTitle')}
-          </motion.h2>
+            {t('essentialInfo.title')}
+          </h2>
+        </motion.div>
 
-          {/* 清单条目 */}
-          <motion.ul
-            custom={0.1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="space-y-6 sm:space-y-8 mb-10"
-          >
-            {checklistItems.map((item) => (
-              <li key={item} className="flex items-start gap-4">
-                <Check
-                  size={16}
-                  strokeWidth={2}
-                  className="text-gold-warm shrink-0 mt-0.5"
-                />
-                <span className="font-sans text-sm sm:text-base text-[--color-section-text]/75 leading-relaxed tracking-wide">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </motion.ul>
-
-          {/* 收笔斜体 — 管家承诺语气 */}
-          <motion.p
-            custom={0.15}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="font-text italic text-[--color-warm-text] text-sm sm:text-base leading-relaxed mt-12"
-          >
-            {t('info.closingNote')}
-          </motion.p>
+        <div className="flex flex-col gap-12 sm:gap-16 w-full text-left border-t border-[--color-section-text]/10 pt-16 sm:pt-20">
+          {items.map((item, index) => (
+            <motion.div
+              key={item.heading}
+              custom={0.1 + index * 0.1}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              className="flex flex-col md:flex-row gap-4 md:gap-16"
+            >
+              <h3 className="font-serif text-lg sm:text-xl text-[--color-section-text] w-full md:w-1/3 shrink-0 pt-1">
+                {item.heading}
+              </h3>
+              <p className="font-sans text-sm sm:text-base text-[--color-section-text]/75 leading-relaxed md:w-2/3">
+                {item.content}
+              </p>
+            </motion.div>
+          ))}
         </div>
-
-        {/* ════════════════════════════════════════
-            右列：入住须知  STAY ESSENTIALS
-        ════════════════════════════════════════ */}
-        <div ref={rightRef} className="w-full lg:w-1/2">
-
-          {/* 主标题（替代原本巨大的时间显示，与左侧标题对齐对称） */}
-          <motion.h2
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={rightInView ? 'visible' : 'hidden'}
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-8 sm:mb-10"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
-          >
-            {t('info.stayTitle')}
-          </motion.h2>
-
-          {/* 须知条款 — 去除割裂的横线，使用与左侧同样的行距与文字质感 */}
-          <motion.ul
-            custom={0.1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={rightInView ? 'visible' : 'hidden'}
-            className="space-y-6 sm:space-y-8"
-          >
-            {/* 将原本占地方的入住/退房时间整合成第一条须知 */}
-            <li className="flex items-start gap-4">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-warm/60 shrink-0 mt-2" />
-              <span className="font-sans text-sm sm:text-base text-[--color-section-text]/75 leading-relaxed tracking-wide">
-                <span className="text-[--color-section-text]">{t('info.checkinLabel')}：</span>
-                {t('info.checkinValue')} 
-                <span className="mx-3 opacity-40">|</span> 
-                <span className="text-[--color-section-text]">{t('info.checkoutLabel')}：</span>
-                {t('info.checkoutValue')}
-              </span>
-            </li>
-
-            {stayItems.map((item) => (
-              <li
-                key={item}
-                className="flex items-start gap-4"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-warm/60 shrink-0 mt-2" />
-                <span className="font-sans text-sm sm:text-base text-[--color-section-text]/75 leading-relaxed tracking-wide">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </motion.ul>
-        </div>
-
+        
       </div>
     </section>
   );

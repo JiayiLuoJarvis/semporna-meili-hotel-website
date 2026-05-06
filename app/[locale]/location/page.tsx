@@ -2,8 +2,7 @@
 
 import LocationSubNav from '@/components/location/LocationSubNav';
 import LocationCulture from '@/components/location/LocationCulture';
-import LocationNeedToKnow from '@/components/location/LocationNeedToKnow';
-import LocationTransport from '@/components/location/LocationTransport';
+import LocationArrival from '@/components/location/LocationArrival';
 import LocationCTA from '@/components/location/LocationCTA';
 
 export default function LocationPage() {
@@ -11,8 +10,7 @@ export default function LocationPage() {
     <main className="w-full flex-1">
       <LocationSubNav />
       <LocationCulture />
-      <LocationTransport />
-      <LocationNeedToKnow />
+      <LocationArrival />
       <LocationCTA />
     </main>
   );

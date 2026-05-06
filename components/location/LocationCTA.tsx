@@ -43,21 +43,6 @@ export default function LocationCTA() {
       {/* ── 内容：叠在遮罩上，居中 ── */}
       <div className="relative z-10 w-full px-page py-20 sm:py-28 flex flex-col items-center text-center">
 
-        {/* 序章标签 */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="flex items-center gap-4 mb-8 sm:mb-10"
-        >
-          <div className="w-8 sm:w-12 h-px bg-gold-warm/60" />
-          <span className="font-sans text-[0.55rem] sm:text-[0.6rem] uppercase tracking-[0.45em] text-gold-warm">
-            {t('cta.titleEn')}
-          </span>
-          <div className="w-8 sm:w-12 h-px bg-gold-warm/60" />
-        </motion.div>
-
         {/* 主标题 */}
         <motion.h2
           custom={0.1}

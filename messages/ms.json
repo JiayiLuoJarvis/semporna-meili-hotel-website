@@ -262,26 +262,6 @@
         "Haiwan peliharaan tidak dibenarkan; merokok di kawasan terbuka yang ditetapkan sahaja"
       ]
     },
-    "route": {
-      "tag": "LALUAN KETIBAAN · PEMINDAHAN PENUH",
-      "title": "Pemindahan Ketibaan Inklusif Penuh",
-      "selfZone": "Diatur oleh anda",
-      "airport": "Mana-mana Lapangan Terbang di Malaysia",
-      "airportHint": "Kami syorkan terbang terus melalui Tawau (TWU)",
-      "divider": "Semua di bawah diatur oleh Meili Resort",
-      "tawauLabel": "Lapangan Terbang Tawau",
-      "tawauSub": "Tawau Airport · TWU",
-      "tawauMode": "Kenderaan Hotel Peribadi",
-      "tawauDuration": "~ 1 jam",
-      "jettyLabel": "Jeti Semporna",
-      "jettySub": "Semporna Jetty",
-      "jettyMode": "Bot Laju Peribadi",
-      "jettyDuration": "~ 30 minit",
-      "resortLabel": "Meili Resort Hotel",
-      "resortSub": "Meili Resort Hotel ★",
-      "included": "Termasuk dalam pakej all-inclusive",
-      "promise": "Dari Lapangan Terbang Tawau, pasukan kami menemani anda di setiap langkah. Di setiap titik pemindahan, seseorang dari pasukan kami akan menunggu."
-    },
     "schedule": {
       "tag": "TRANSFER SCHEDULE",
       "title": "Jadual Pemindahan Eksklusif",
@@ -302,22 +282,6 @@
     "map": {
       "tag": "EXPLORE THE AREA",
       "caption": "★ Meili Resort · 📍 Jeti Semporna · ✈️ Lapangan Terbang Tawau · 🤿 Pulau Sipadan"
-    },
-    "prepare": {
-      "tag": "NOTA BUTLER",
-      "title": "Kami Sudah Fikirkan Segalanya",
-      "subtitle": "Senarai ini dibina daripada pengalaman bertahun-tahun menyambut tetamu seperti anda",
-      "items": [
-        "Pasport atau dokumen ID",
-        "Pengesahan tempahan (tangkapan skrin sudah cukup — kami sudah ada rekod anda)",
-        "Ubat peribadi",
-        "Pakaian renang (beberapa set)",
-        "Pelindung matahari (mesra terumbu karang disyorkan)",
-        "Kasut tidak licin (untuk dek bot laju)",
-        "Cermin mata hitam dan topi matahari",
-        "Peralatan kamera bawah air (pilihan)"
-      ],
-      "tip": "Segala-galanya di pulau sudah disediakan untuk anda. Bawa barang ringkas. Butler peribadi anda akan uruskan selebihnya."
     },
     "cta": {
       "title": "Perjalanan Anda Bermula Sebaik Anda Membuat Tempahan",
@@ -348,6 +312,24 @@
       "scheduleDep2": "Jeti Semporna → Lapangan Terbang Tawau",
       "footer": "Perjalanan ketibaan anda diurus dari saat anda mendarat. Kongsi butiran penerbangan selepas tempahan, dan butler peribadi anda akan menguruskan selebihnya.",
       "cta": "Hubungi Kami untuk Mengatur Pemindahan"
+    },
+    "essentialInfo": {
+      "tag": "NOTA",
+      "title": "Maklumat Penting",
+      "items": [
+        {
+          "heading": "Pasport dan Visa",
+          "content": "Semua tetamu antarabangsa yang tiba di Sabah, Malaysia, mesti memegang pasport yang sah selama sekurang-kurangnya enam bulan, bersama-sama dengan visa Malaysia yang sah atau permit masuk tanpa visa/visa semasa ketibaan. Polisi kemasukan mungkin berubah dari semasa ke semasa, jadi sila rujuk pihak berkuasa yang berkaitan mengenai keperluan terkini sebelum pelepasan anda."
+        },
+        {
+          "heading": "Penerbangan dan Pemindahan",
+          "content": "Para tetamu dikehendaki menempah penerbangan mereka sendiri ke Lapangan Terbang Tawau (TWU). Setibanya di Tawau, perjalanan sejauh 70 minit akan membawa anda ke Jeti Semporna. Dari situ, kami akan menguruskan bot laju peribadi untuk membawa anda merentasi perairan birai kristal selama kira-kira 45 minit ke resort atas air kami. Disebabkan sekatan navigasi malam bagi tujuan keselamatan, ketibaan lewat malam mungkin memerlukan penginapan bermalam di pekan Semporna sebelum bergerak ke pulau pada keesokan harinya."
+        },
+        {
+          "heading": "Iklim dan Pakaian",
+          "content": "Terletak berhampiran khatulistiwa, Semporna menikmati iklim yang panas sepanjang tahun. Kami mengesyorkan anda membawa pakaian musim panas yang ringan dan selesa, kasut tidak licin untuk dek bot laju, dan perlindungan matahari yang mencukupi. Untuk memelihara ekosistem terumbu karang kami yang rapuh, perlindungan penyu dan hidupan marin, kami secara ikhlasnya memohon anda untuk membawa dan menggunakan hanya krim pelindung matahari yang mesra terumbu karang (reef-safe)."
+        }
+      ]
     }
   },
   "Gallery": {
