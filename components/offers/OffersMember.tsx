@@ -1,132 +1,123 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Clock, Tag, Gift, Bell, MessageCircle, Lock } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 40 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.8,
+      duration: 1,
       delay,
-      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+      ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
     },
   }),
 };
 
-const fadeScale = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1.2,
-      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
-    },
-  },
-};
-
-const icons = [Clock, Tag, Gift, Bell, MessageCircle, Lock];
+// 使用不同质感的高级实景图代表不同的团购场景
+const SCENE_IMAGES = [
+  'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1200',
+  'https://images.unsplash.com/photo-1542314831-c6a4d14fff8e?auto=format&fit=crop&q=80&w=1200',
+  'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200'
+];
 
 export default function OffersMember() {
   const t = useTranslations('OffersMember');
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, {
-    once: true,
-    margin: '0px 0px -20% 0px',
-    amount: 0.2,
-  });
-
+  
+  // 巧妙利用现有的 translation keys，将其进行重组，融入到无边框的画报式卡片中
+  // 摒弃 01、02 的冰冷合同式罗列，改为“场景-体验”式的叙事
+  const items = (t.raw('items') || []) as string[];
+  
+  const scenes = [
+    { title: t('badge'), image: SCENE_IMAGES[0], paragraphs: [items[0], items[1]].filter(Boolean) },
+    { title: t('badge'), image: SCENE_IMAGES[1], paragraphs: [items[2], items[3]].filter(Boolean) },
+    { title: t('badge'), image: SCENE_IMAGES[2], paragraphs: [items[4], items[5]].filter(Boolean) }
+  ].filter(scene => scene.paragraphs.length > 0);
   return (
-    <section id="member" className="bg-background py-16 sm:py-20 md:py-28 lg:py-36 xl:py-44 px-page overflow-hidden" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
+    <section id="group" className="bg-cream py-12 md:py-20 lg:py-28 overflow-hidden">
+      <div className="max-w-350 mx-auto">
         
-        {/* Left: Image Card Side */}
-        <motion.div 
-          custom={0} variants={fadeScale} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-          className="w-full lg:w-[45%] relative aspect-4/5 sm:aspect-4/5 lg:aspect-3/4 shrink-0"
-        >
-          <Image 
-            src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=1200" 
-            alt="Member Privileges" 
-            fill 
-            className="object-cover"
-            unoptimized
-          />
-          {/* Subtle gold border decoration around the image */}
-          <div className="absolute -inset-4 md:-inset-6 border border-gold-warm/30 z-[-1] hidden md:block" />
-        </motion.div>
-
-        {/* Right: Content Side */}
-        <div className="w-full lg:w-[55%] flex flex-col justify-center text-left">
-          
+        {/* 引言区：高对比度的极简排版 */}
+        <div className="flex flex-col items-center text-center gap-8 mb-10 md:mb-16 px-page">
           <motion.div 
-            custom={0.1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="inline-flex border border-gold-warm px-4 py-2 text-gold-warm text-xs font-sans tracking-[0.25em] mb-8 w-fit uppercase"
+            custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+            className="max-w-3xl flex flex-col items-center"
           >
-            {t('badge')}
+            <h2 
+              className="font-serif text-[--color-section-text] leading-[1.15] tracking-[0.04em] text-balance mb-8"
+              style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+            >
+              {t('badge')}
+            </h2>
+            <div className="w-12 sm:w-16 h-px bg-[--color-gold-warm]" />
           </motion.div>
+        </div>
 
-          <motion.p
-            custom={0.2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="font-text italic text-section-text/90 leading-[1.2] mb-12"
-            style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}
-          >
-            &ldquo;{t('subtitle')}&rdquo;
-          </motion.p>
+        {/* 画报式无边框排版（移动端横向滑动，桌面网格） */}
+        <div className="flex flex-nowrap overflow-x-auto md:grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-16 snap-x snap-mandatory px-page pb-8 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+          {scenes.map((scene, idx) => (
+            <motion.div 
+              key={idx}
+              custom={idx * 0.15} 
+              variants={fadeUp} 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+              className="flex flex-col group w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center"
+            >
+              {/* 大比例沉浸式图片，不添加任何边框与阴影 */}
+              <div className="relative aspect-[3/4] sm:aspect-[4/3] md:aspect-[4/5] w-full overflow-hidden bg-muted mb-6 md:mb-10">
+                <Image 
+                  src={scene.image}
+                  alt={scene.title}
+                  fill
+                  className="object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-105"
+                  unoptimized
+                />
+                <div className="absolute inset-0 bg-black/5" />
+              </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 mb-16 w-full">
-            {icons.map((Icon, idx) => {
-              const text = t(`items.${idx}`);
-              return (
-                <motion.div 
-                  key={idx}
-                  custom={0.3 + idx * 0.05} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="w-12 h-12 rounded-full border border-gold-warm/30 flex items-center justify-center shrink-0 text-gold-warm transition-colors duration-500 group-hover:border-gold-warm group-hover:text-gold-warm mt-1">
-                    <Icon className="w-5 h-5" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-center min-h-12">
-                    <h3 className="font-serif text-section-text text-base leading-snug group-hover:text-gold-warm transition-colors duration-300">
-                      {text}
-                    </h3>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+              {/* 取消罗列与数字，采用情绪化标题+正文段落组合 */}
+              <div className="flex-1 flex flex-col">
+                <h3 className="font-serif text-xl md:text-2xl text-[--color-section-text] mb-5 md:mb-6 leading-tight">
+                  {scene.title}
+                </h3>
+                <div className="w-8 h-px bg-[--color-gold-warm]/40 mb-4 md:mb-5 transition-all duration-500 group-hover:w-16" />
+                
+                <p className="font-sans text-[--color-warm-text] text-sm md:text-[0.95rem] leading-relaxed font-light">
+                  {scene.paragraphs.join('，')}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
+        <div className="px-page mt-10 md:mt-24 pt-8 md:pt-12 border-t border-[--color-gold-warm]/20">
           <motion.div 
-            custom={0.6} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="pt-10 border-t border-section-text/10 w-full"
+            custom={0.5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10"
           >
-            <p className="font-sans text-sm text-warm-text mb-10 leading-relaxed max-w-lg">
-              {t('note')}
-            </p>
-
-            <div className="flex flex-wrap gap-x-6 gap-y-4 items-center">
-              <Link 
-                href="#contact-form"
-                className="flex items-center justify-center min-w-40 min-h-11 border border-section-text bg-transparent text-section-text px-8 py-3 text-sm font-bold tracking-widest uppercase transition-colors hover:border-primary-light hover:text-primary-light"
-              >
-                {t('ctaMain')}
-              </Link>
-              <a 
-                href="mailto:amy@meilihotel.com" 
-                className="inline-flex items-center"
-              >
-                {t('ctaSub')}
-              </a>
-            </div>
+            <Link 
+              href="#contact-form"
+              className="inline-flex min-h-11 items-center justify-center bg-primary text-white px-8 py-3 text-xs md:text-sm tracking-[0.2em] uppercase transition-colors hover:bg-primary-light"
+            >
+              {t('ctaMain')}
+            </Link>
+            <a 
+              href="https://wa.me/60112780399" 
+              target="_blank" 
+              rel="noreferrer"
+              className="group flex flex-shrink-0 items-center min-h-11 gap-4 text-sm tracking-[0.2em] text-[--color-gold-warm] uppercase transition-colors hover:text-[--color-section-text]"
+            >
+              {t('ctaSub')}
+              <ArrowRight className="w-5 h-5 transition-transform duration-500 ease-out group-hover:translate-x-2" />
+            </a>
           </motion.div>
-
         </div>
 
       </div>

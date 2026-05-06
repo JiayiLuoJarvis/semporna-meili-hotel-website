@@ -173,23 +173,12 @@
     ]
   },
   "Offers": {
-    "title": "Tawaran Istimewa",
-    "viewOffer": "Lihat Tawaran",
-    "allOffers": "Semua Tawaran",
-    "items": [
-      {
-        "title": "Tempahan Awal",
-        "desc": "Tempah 60 hari lebih awal untuk menikmati diskaun sehingga 20% pada penginapan anda."
-      },
-      {
-        "title": "Kredit Pengalaman Resort",
-        "desc": "Termasuk kredit resort harian $200 untuk santapan bertaraf Michelin dan spa."
-      },
-      {
-        "title": "Bulan Madu Romantik",
-        "desc": "Makan malam champagne di pantai yang disesuaikan dan rawatan aromaterapi untuk pasangan."
-      }
-    ]
+    "nav": {
+      "group": "Tawaran Kumpulan",
+      "member": "Ahli Sahaja",
+      "promotional": "Promosi",
+      "contact": "Hubungi"
+    }
   },
   "Location": {
     "nav": {
@@ -629,14 +618,6 @@
       "whatsapp": "WhatsApp"
     }
   },
-  "Offers": {
-    "nav": {
-      "group": "Tawaran Kumpulan",
-      "member": "Ahli Sahaja",
-      "promotional": "Promosi",
-      "contact": "Hubungi"
-    }
-  },
   "OffersHeader": {
     "tag": "TAWARAN ISTIMEWA · MEILI RESORT",
     "title": "Keistimewaan Anda, Perjalanan Anda",
@@ -657,14 +638,14 @@
     "ctaSub": "Terus ke WhatsApp wa.me/60112780399"
   },
   "OffersMember": {
-    "items": {
-      "0": "Tempahan keutamaan sebelum dilancarkan",
-      "1": "Kadar diskaun ahli eksklusif",
-      "2": "Keistimewaan hari lahir: naik taraf atau hadiah",
-      "3": "Akses terawal tawaran & acara baharu",
-      "4": "Saluran perkhidmatan ahli khusus",
-      "5": "Pakej eksklusif ahli sahaja"
-    },
+    "items": [
+      "Tempahan keutamaan sebelum dilancarkan",
+      "Kadar diskaun ahli eksklusif",
+      "Keistimewaan hari lahir: naik taraf atau hadiah",
+      "Akses terawal tawaran & acara baharu",
+      "Saluran perkhidmatan ahli khusus",
+      "Pakej eksklusif ahli sahaja"
+    ],
     "badge": "EKSKLUSIF AHLI",
     "subtitle": "Tiada ambang. Akses keutamaan. Kelebihan tersembunyi — Sertai kami.",
     "note": "Hantar borang di bawah. Pasukan kami akan sahkan dalam 48 jam. Percuma & tiada yuran.",
@@ -672,13 +653,6 @@
     "ctaSub": "Emel kami di amy@meilihotel.com"
   },
   "OffersPromotional": {
-    "includes": [
-      "Penginapan Meili Breeze Villa × 1",
-      "Makanan penuh harian × 2 pax",
-      "Pemindahan darat Lapangan Terbang Tawau ↔ Jeti Semporna",
-      "Pemindahan bot laju Jeti Semporna ↔ Resort",
-      "Snorkeling · Mencerap bintang · Kolam infiniti"
-    ],
     "badge": "TERHAD AWAL",
     "tag": "Tawaran Pembukaan Terhad",
     "title": "Pakej Resort Penuh Eksklusif",
@@ -693,7 +667,14 @@
     "termsTitle": "Terma & Syarat",
     "terms": "Tanpa bayaran balik · Prabayar penuh · Maklumat diperlukan 3 hari awal · Untuk 2 pax",
     "ctaMain": "Tempah Sekarang",
-    "ctaSub": "WhatsApp wa.me/60112780399"
+    "ctaSub": "WhatsApp wa.me/60112780399",
+    "items": [
+      "Penginapan Meili Breeze Villa × 1",
+      "Makanan penuh harian × 2 pax",
+      "Pemindahan darat Lapangan Terbang Tawau ↔ Jeti Semporna",
+      "Pemindahan bot laju Jeti Semporna ↔ Resort",
+      "Snorkeling · Mencerap bintang · Kolam infiniti"
+    ]
   },
   "OffersContactForm": {
     "title": "Satu Langkah. Biarkan Kami Uruskan.",

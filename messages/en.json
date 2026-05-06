@@ -173,23 +173,12 @@
     ]
   },
   "Offers": {
-    "title": "Special Offers",
-    "viewOffer": "View Offer",
-    "allOffers": "All Offers",
-    "items": [
-      {
-        "title": "Advance Purchase",
-        "desc": "Book 60 days in advance to enjoy up to a 20% discount on your stay."
-      },
-      {
-        "title": "Resort Credit Experience",
-        "desc": "Includes $200 daily resort credit for Michelin-grade dining and spa."
-      },
-      {
-        "title": "Romantic Honeymoon",
-        "desc": "Custom beach champagne dinner and couples aromatherapy treatments."
-      }
-    ]
+    "nav": {
+      "group": "Group Deals",
+      "member": "Members",
+      "promotional": "Promotions",
+      "contact": "Enquire"
+    }
   },
   "Location": {
     "nav": {
@@ -629,14 +618,6 @@
       "whatsapp": "WhatsApp"
     }
   },
-  "Offers": {
-    "nav": {
-      "group": "Group Deals",
-      "member": "Members",
-      "promotional": "Promotions",
-      "contact": "Enquire"
-    }
-  },
   "OffersHeader": {
     "tag": "SPECIAL OFFERS · MEILI RESORT",
     "title": "Your Privilege, Your Journey",
@@ -657,14 +638,14 @@
     "ctaSub": "Direct via WhatsApp wa.me/60112780399"
   },
   "OffersMember": {
-    "items": {
-      "0": "Priority booking before public release",
-      "1": "Exclusive member discount rate",
-      "2": "Birthday privileges: room upgrade or custom welcome gift",
-      "3": "First access to new offers & events",
-      "4": "Dedicated service channel via WeChat or Email",
-      "5": "Member-only packages, not listed publicly"
-    },
+    "items": [
+      "Priority booking before public release",
+      "Exclusive member discount rate",
+      "Birthday privileges: room upgrade or custom welcome gift",
+      "First access to new offers & events",
+      "Dedicated service channel via WeChat or Email",
+      "Member-only packages, not listed publicly"
+    ],
     "badge": "MEMBER ONLY",
     "subtitle": "No threshold. Priority access. Hidden perks — Join before the doors open.",
     "note": "Submit the registration form below. Our team will confirm within 48 hours. No annual fee, zero threshold.",
@@ -672,13 +653,6 @@
     "ctaSub": "Email us at amy@meilihotel.com"
   },
   "OffersPromotional": {
-    "includes": [
-      "Meili Breeze Villa accommodation × 1",
-      "Daily full board meals: Breakfast/Lunch/Dinner/Tea × 2 pax",
-      "Tawau Airport ↔ Semporna Jetty land transfer",
-      "Semporna Jetty ↔ Resort speedboat transfer",
-      "Snorkeling/Diving · Stargazing · Infinity Pool · Overwater Gym"
-    ],
     "badge": "EARLY BIRD",
     "tag": "Limited Opening Offer",
     "title": "Exclusive Full Board Escape",
@@ -693,7 +667,14 @@
     "termsTitle": "Terms & Conditions",
     "terms": "Non-refundable · Full prepayment required · Passenger info required 3 days prior · For 2 guests",
     "ctaMain": "Book Now",
-    "ctaSub": "Direct via WhatsApp wa.me/60112780399"
+    "ctaSub": "Direct via WhatsApp wa.me/60112780399",
+    "items": [
+      "Meili Breeze Villa accommodation × 1",
+      "Daily full board meals: Breakfast/Lunch/Dinner/Tea × 2 pax",
+      "Tawau Airport ↔ Semporna Jetty land transfer",
+      "Semporna Jetty ↔ Resort speedboat transfer",
+      "Snorkeling/Diving · Stargazing · Infinity Pool · Overwater Gym"
+    ]
   },
   "OffersContactForm": {
     "title": "One Step. We'll Take It From Here.",
