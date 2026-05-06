@@ -33,12 +33,12 @@ export default function LocationCulture() {
       className="bg-[--color-about-bg]"
     >
       <div className="mx-auto max-w-350 px-page">
-        <div className="relative w-full border-b border-[#e0dad0]">
+        <div className="relative w-full border-b border-warm-gray">
 
           {/* ── 1-A 地理优势 ── */}
           <div
             ref={geoRef}
-            className="flex flex-col md:flex-row group border-t border-[#e0dad0] py-8 md:py-20 lg:py-24 gap-6 md:gap-16 lg:gap-24"
+            className="flex flex-col md:flex-row group border-t border-warm-gray py-8 md:py-20 lg:py-24 gap-6 md:gap-16 lg:gap-24"
           >
             {/* 左图 */}
             <motion.div
@@ -77,7 +77,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={geoInView ? 'visible' : 'hidden'}
-                  className="font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-relaxed md:leading-[2.2] text-[#5a5347] mb-4"
+                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text mb-4"
                 >
                   {t('intro.desc1')}
                 </motion.p>
@@ -86,7 +86,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={geoInView ? 'visible' : 'hidden'}
-                  className="font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-relaxed md:leading-[2.2] text-[#5a5347] mb-4"
+                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text mb-4"
                 >
                   {t('intro.desc2')}
                 </motion.p>
@@ -95,7 +95,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={geoInView ? 'visible' : 'hidden'}
-                  className="font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-relaxed md:leading-[2.2] text-[#5a5347]"
+                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text"
                 >
                   {t('intro.desc3')}
                 </motion.p>
@@ -106,7 +106,7 @@ export default function LocationCulture() {
           {/* ── 1-B 巴瑶族 ── */}
           <div
             ref={bajauRef}
-            className="flex flex-col md:flex-row group border-t border-[#e0dad0] py-8 md:py-20 lg:py-24 gap-6 md:gap-16 lg:gap-24"
+            className="flex flex-col md:flex-row group border-t border-warm-gray py-8 md:py-20 lg:py-24 gap-6 md:gap-16 lg:gap-24"
           >
             {/* 左图 */}
             <motion.div
@@ -145,7 +145,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={bajauInView ? 'visible' : 'hidden'}
-                  className="font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-relaxed md:leading-[2.2] text-[#5a5347] mb-4"
+                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text mb-4"
                 >
                   {t('culture.bajau.desc1')}
                 </motion.p>
@@ -154,7 +154,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={bajauInView ? 'visible' : 'hidden'}
-                  className="font-sans text-[0.875rem] md:text-[0.95rem] font-light leading-relaxed md:leading-[2.2] text-[#5a5347]"
+                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text"
                 >
                   {t('culture.bajau.desc2')}
                 </motion.p>

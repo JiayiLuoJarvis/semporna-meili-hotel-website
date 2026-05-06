@@ -27,33 +27,32 @@ export default function LocationArrival() {
   return (
     <section
       id="location-arrival"
-      className="bg-cream pt-20 sm:pt-28 md:pt-32 pb-20 sm:pb-28 md:pb-32"
+      className="bg-cream pt-20 pb-20 sm:pt-28 sm:pb-28 md:pt-32 md:pb-32"
     >
-      <div ref={ref} className="px-page max-w-6xl mx-auto flex flex-col">
-
+      <div ref={ref} className="px-page mx-auto flex max-w-6xl flex-col">
         {/* 统一的页面大标：修正字号，恢复全站统一的古典比例 */}
         <motion.div
           custom={0}
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-24 border-b border-[--color-section-text]/10 pb-8 sm:pb-12"
+          className="mb-16 flex flex-col justify-between gap-8 border-b border-[--color-section-text]/10 pb-8 sm:mb-24 sm:pb-12 md:flex-row md:items-end"
         >
           <div className="max-w-2xl">
-            <span className="font-serif italic text-[--color-section-text]/40 text-lg sm:text-xl mb-4 block">
+            <span className="mb-4 block font-serif text-lg text-[--color-section-text]/40 italic sm:text-xl">
               {t('essentialInfo.tag')}
             </span>
-            <h2 className="font-serif text-[--color-section-text] text-3xl sm:text-4xl md:text-5xl leading-[1.1] mb-6">
+            <h2 className="mb-6 font-serif text-3xl leading-[1.1] text-[--color-section-text] sm:text-4xl md:text-5xl">
               {t('arrival.title')}
             </h2>
-            <p className="font-sans text-[--color-section-text]/60 text-sm sm:text-base leading-relaxed max-w-xl">
+            <p className="max-w-xl font-sans text-sm leading-relaxed text-[--color-section-text]/60 sm:text-base">
               {t('arrival.subtitle')}
             </p>
           </div>
         </motion.div>
 
         {/* 线性叙事流：更细腻的留白与比例 */}
-        <div className="flex flex-col gap-16 sm:gap-24 w-full text-left">
+        <div className="flex w-full flex-col gap-16 text-left sm:gap-24">
           {essentials.map((item, index) => (
             <motion.div
               key={item.heading}
@@ -61,33 +60,33 @@ export default function LocationArrival() {
               variants={fadeUp}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="flex flex-col lg:flex-row gap-6 lg:gap-20 items-start"
+              className="flex flex-col items-start gap-6 lg:flex-row lg:gap-20"
             >
               {/* 左侧：提纲减小字重与字号，更显精致 */}
-              <div className="w-full lg:w-1/4 shrink-0">
-                <h3 className="font-serif text-xl sm:text-2xl text-[--color-section-text] sticky top-32">
+              <div className="w-full shrink-0 lg:w-1/4">
+                <h3 className="sticky top-32 font-serif text-xl text-[--color-section-text] sm:text-2xl">
                   {item.heading}
                 </h3>
               </div>
 
               {/* 右侧：主体文案 */}
-              <div className="w-full lg:w-3/4 flex flex-col gap-6">
-                <p className="font-sans text-sm sm:text-base text-[--color-section-text]/75 leading-relaxed font-light">
+              <div className="flex w-full flex-col gap-6 lg:w-3/4">
+                <p className="font-sans text-sm leading-relaxed font-light text-[--color-section-text]/75 sm:text-base">
                   {item.content}
                 </p>
 
                 {/* 将“三步曲”从突兀的方框改为极简的附录式网格 */}
                 {index === 1 && (
-                  <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-8 pt-8 border-t border-[--color-section-text]/10">
+                  <div className="mt-8 grid grid-cols-1 gap-8 border-t border-[--color-section-text]/10 pt-8 sm:grid-cols-3">
                     {[1, 2, 3].map((num) => (
                       <div key={num} className="flex flex-col gap-2">
-                        <span className="font-serif italic text-sm text-[--color-section-text]/40 mb-1 tracking-wider uppercase">
+                        <span className="mb-1 font-serif text-sm tracking-wider text-[--color-section-text]/40 uppercase italic">
                           Phase 0{num}
                         </span>
-                        <h4 className="font-serif text-[--color-section-text] text-base font-medium">
+                        <h4 className="font-serif text-base font-medium text-[--color-section-text]">
                           {t(`arrival.stage${num}Label`)}
                         </h4>
-                        <p className="font-sans text-[--color-section-text]/60 text-xs sm:text-sm leading-relaxed">
+                        <p className="font-sans text-xs leading-relaxed text-[--color-section-text]/60 sm:text-sm">
                           {t(`arrival.stage${num}Body`)}
                         </p>
                       </div>
@@ -98,7 +97,6 @@ export default function LocationArrival() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

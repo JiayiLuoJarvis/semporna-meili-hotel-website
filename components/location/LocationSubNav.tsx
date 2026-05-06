@@ -8,8 +8,7 @@ import { motion } from 'framer-motion';
 
 const SECTIONS = [
   { id: 'location-culture', key: 'culture' as const, en: 'Culture' },
-  { id: 'location-transport', key: 'transport' as const, en: 'Getting Here' },
-  { id: 'location-info', key: 'info' as const, en: 'Need to Know' },
+  { id: 'location-arrival', key: 'transport' as const, en: 'Getting Here' },
 ] as const;
 
 const navContainer = {
@@ -54,7 +53,11 @@ export default function LocationSubNav() {
     if (!el) return;
     const offset = -80;
     if (lenis) {
-      lenis.scrollTo(el, { offset, duration: 1.4, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+      lenis.scrollTo(el, {
+        offset,
+        duration: 1.4,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      });
     } else {
       const top = el.getBoundingClientRect().top + window.scrollY + offset;
       window.scrollTo({ top, behavior: 'smooth' });
@@ -63,7 +66,6 @@ export default function LocationSubNav() {
 
   const labels: Record<string, string> = {
     culture: t('culture'),
-    info: t('info'),
     transport: t('transport'),
   };
 
@@ -75,7 +77,7 @@ export default function LocationSubNav() {
       {/* Sub-nav */}
       <nav aria-label="位置页内导航">
         <motion.div
-          className="flex justify-center items-center px-page flex-wrap"
+          className="px-page flex flex-wrap items-center justify-center"
           variants={navContainer}
           initial="initial"
           animate="animate"
@@ -83,10 +85,15 @@ export default function LocationSubNav() {
           {SECTIONS.map(({ id, key, en }, idx) => {
             const isActive = active === id;
             return (
-              <motion.span key={id} className="flex items-center shrink-0" variants={navItem} transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}>
+              <motion.span
+                key={id}
+                className="flex shrink-0 items-center"
+                variants={navItem}
+                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+              >
                 {idx > 0 && (
                   <span
-                    className="mx-4 sm:mx-8 lg:mx-12 text-white/30 select-none font-sans text-xs"
+                    className="mx-4 font-sans text-xs text-white/30 select-none sm:mx-8 lg:mx-12"
                     aria-hidden="true"
                   >
                     •
@@ -95,12 +102,12 @@ export default function LocationSubNav() {
 
                 <button
                   onClick={() => handleClick(id)}
-                  className="group relative flex flex-col items-center gap-1.5 sm:gap-2 pt-6 pb-8 sm:pt-8 sm:pb-10 cursor-pointer focus-visible:outline-none"
+                  className="group relative flex cursor-pointer flex-col items-center gap-1.5 pt-6 pb-8 focus-visible:outline-none sm:gap-2 sm:pt-8 sm:pb-10"
                 >
                   {/* 中文主标签 */}
                   <span
                     className={clsx(
-                      'font-sans text-sm sm:text-base tracking-[0.2em] whitespace-nowrap transition-colors duration-300',
+                      'font-sans text-sm tracking-[0.2em] whitespace-nowrap transition-colors duration-300 sm:text-base',
                       isActive ? 'text-white' : 'text-white/60 group-hover:text-white',
                     )}
                   >
@@ -110,7 +117,7 @@ export default function LocationSubNav() {
                   {/* 英文副标签 */}
                   <span
                     className={clsx(
-                      'font-sans text-[0.5rem] sm:text-[0.55rem] uppercase tracking-[0.25em] whitespace-nowrap transition-colors duration-300',
+                      'font-sans text-[0.5rem] tracking-[0.25em] whitespace-nowrap uppercase transition-colors duration-300 sm:text-[0.55rem]',
                       isActive ? 'text-white/55' : 'text-white/30 group-hover:text-white/60',
                     )}
                   >
@@ -120,7 +127,7 @@ export default function LocationSubNav() {
                   {/* 激活指示线 */}
                   <span
                     className={clsx(
-                      'absolute bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 h-px bg-white transition-all duration-500',
+                      'absolute bottom-4 left-1/2 h-px -translate-x-1/2 bg-white transition-all duration-500 sm:bottom-5',
                       isActive ? 'w-6 opacity-100' : 'w-0 opacity-0',
                     )}
                   />
