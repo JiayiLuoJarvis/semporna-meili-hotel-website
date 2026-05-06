@@ -12,13 +12,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <Hero />
 
       {/* 2. BookingBar — sticky，顶部贴紧 header 后固定，只在 md+ 显示 */}
-      <div
-        id="booking-bar"
-        className="sticky z-40 hidden md:block"
-        style={{ top: 'var(--header-height, 72px)' }}
-      >
-        <BookingBar />
-      </div>
+      <BookingBar />
 
       {/* 3. 酒店介绍 */}
       <HotelIntro />

@@ -28,17 +28,13 @@ export default function LocationCulture() {
   const bajauInView = useInView(bajauRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
-    <section
-      id="location-culture"
-      className="bg-[--color-about-bg]"
-    >
-      <div className="mx-auto max-w-350 px-page">
-        <div className="relative w-full border-b border-warm-gray">
-
+    <section id="location-culture" className="bg-[--color-about-bg]">
+      <div className="px-page mx-auto max-w-350">
+        <div className="border-warm-gray relative w-full border-b">
           {/* ── 1-A 地理优势 ── */}
           <div
             ref={geoRef}
-            className="flex flex-col md:flex-row group border-t border-warm-gray py-8 md:py-20 lg:py-24 gap-6 md:gap-16 lg:gap-24"
+            className="group border-warm-gray flex flex-col gap-6 py-8 md:flex-row md:gap-16 md:py-20 lg:gap-24 lg:py-24"
           >
             {/* 左图 */}
             <motion.div
@@ -46,28 +42,28 @@ export default function LocationCulture() {
               variants={fadeUp}
               initial="hidden"
               animate={geoInView ? 'visible' : 'hidden'}
-              className="w-full md:w-5/12 shrink-0"
+              className="w-full shrink-0 md:w-5/12"
             >
-              <div className="relative aspect-video md:aspect-4/3 w-full overflow-hidden">
+              <div className="relative aspect-video w-full overflow-hidden md:aspect-4/3">
                 <Image
                   src="https://picsum.photos/seed/meili_loc_1/1920/1080"
                   alt={t('info.imageAlt.geo')}
                   fill
-                  className="object-cover transition-transform duration-[2s] group-hover:scale-105 ease-out"
+                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 45vw"
                 />
               </div>
             </motion.div>
 
             {/* 右文 */}
-            <div className="w-full md:w-7/12 flex flex-col justify-center py-4 lg:py-10">
-              <div className="flex flex-col max-w-lg lg:pl-8">
+            <div className="flex w-full flex-col justify-center py-4 md:w-7/12 lg:py-10">
+              <div className="flex max-w-lg flex-col lg:pl-8">
                 <motion.h3
                   custom={0}
                   variants={fadeUp}
                   initial="hidden"
                   animate={geoInView ? 'visible' : 'hidden'}
-                  className="font-serif font-light text-xl md:text-2xl lg:text-[2rem] leading-[1.3] tracking-wide mb-4 md:mb-8 text-[--color-section-text]"
+                  className="mb-4 font-serif text-xl leading-[1.3] font-light tracking-wide text-[--color-section-text] md:mb-8 md:text-2xl lg:text-[2rem]"
                 >
                   {t('intro.title1')}
                 </motion.h3>
@@ -77,7 +73,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={geoInView ? 'visible' : 'hidden'}
-                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text mb-4"
+                  className="text-warm-text mb-4 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
                 >
                   {t('intro.desc1')}
                 </motion.p>
@@ -86,7 +82,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={geoInView ? 'visible' : 'hidden'}
-                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text mb-4"
+                  className="text-warm-text mb-4 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
                 >
                   {t('intro.desc2')}
                 </motion.p>
@@ -95,7 +91,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={geoInView ? 'visible' : 'hidden'}
-                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text"
+                  className="text-warm-text font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
                 >
                   {t('intro.desc3')}
                 </motion.p>
@@ -106,7 +102,7 @@ export default function LocationCulture() {
           {/* ── 1-B 巴瑶族 ── */}
           <div
             ref={bajauRef}
-            className="flex flex-col md:flex-row group border-t border-warm-gray py-8 md:py-20 lg:py-24 gap-6 md:gap-16 lg:gap-24"
+            className="group border-warm-gray flex flex-col gap-6 border-t py-8 md:flex-row md:gap-16 md:py-20 lg:gap-24 lg:py-24"
           >
             {/* 左图 */}
             <motion.div
@@ -114,28 +110,28 @@ export default function LocationCulture() {
               variants={fadeUp}
               initial="hidden"
               animate={bajauInView ? 'visible' : 'hidden'}
-              className="w-full md:w-5/12 shrink-0"
+              className="w-full shrink-0 md:w-5/12"
             >
-              <div className="relative aspect-video md:aspect-4/3 w-full overflow-hidden">
+              <div className="relative aspect-video w-full overflow-hidden md:aspect-4/3">
                 <Image
                   src="https://picsum.photos/seed/meili_loc_2/1920/1080"
                   alt={t('info.imageAlt.bajau')}
                   fill
-                  className="object-cover transition-transform duration-[2s] group-hover:scale-105 ease-out"
+                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 45vw"
                 />
               </div>
             </motion.div>
 
             {/* 右文 */}
-            <div className="w-full md:w-7/12 flex flex-col justify-center py-4 lg:py-10">
-              <div className="flex flex-col max-w-lg lg:pl-8">
+            <div className="flex w-full flex-col justify-center py-4 md:w-7/12 lg:py-10">
+              <div className="flex max-w-lg flex-col lg:pl-8">
                 <motion.h3
                   custom={0}
                   variants={fadeUp}
                   initial="hidden"
                   animate={bajauInView ? 'visible' : 'hidden'}
-                  className="font-serif font-light text-xl md:text-2xl lg:text-[2rem] leading-[1.3] tracking-wide mb-4 md:mb-8 text-[--color-section-text]"
+                  className="mb-4 font-serif text-xl leading-[1.3] font-light tracking-wide text-[--color-section-text] md:mb-8 md:text-2xl lg:text-[2rem]"
                 >
                   {t('culture.bajau.title')}
                 </motion.h3>
@@ -145,7 +141,7 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={bajauInView ? 'visible' : 'hidden'}
-                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text mb-4"
+                  className="text-warm-text mb-4 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
                 >
                   {t('culture.bajau.desc1')}
                 </motion.p>
@@ -154,14 +150,13 @@ export default function LocationCulture() {
                   variants={fadeUp}
                   initial="hidden"
                   animate={bajauInView ? 'visible' : 'hidden'}
-                  className="font-sans text-sm font-light leading-relaxed md:leading-[2.2] text-warm-text"
+                  className="text-warm-text font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
                 >
                   {t('culture.bajau.desc2')}
                 </motion.p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
