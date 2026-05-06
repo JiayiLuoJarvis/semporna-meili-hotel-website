@@ -31,7 +31,7 @@ export function Storytelling() {
 
   return (
     <section ref={sectionRef} className="relative w-full py-10 md:py-16 lg:py-20 bg-background overflow-hidden">
-      <div className="mx-auto max-w-340 px-5 sm:px-8 lg:px-12">
+      <div className="mx-auto max-w-350 px-page">
         {/* Header - 统一对齐到 1280 容器左侧或居中，保持高级感 */}
         <motion.div 
           custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}

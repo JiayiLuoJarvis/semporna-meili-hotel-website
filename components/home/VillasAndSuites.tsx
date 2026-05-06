@@ -86,7 +86,7 @@ export function VillasAndSuites() {
 
   return (
     <section id="villas" className="w-full overflow-hidden bg-[--color-cream] py-20 md:py-32">
-      <div className="mb-10 text-center sm:mb-16">
+      <div className="mx-auto max-w-350 px-page mb-10 text-center sm:mb-16">
         <h2 className="mb-4 font-serif text-3xl text-[--color-section-text] md:text-4xl lg:text-5xl">
           {t('subtitle')}
         </h2>

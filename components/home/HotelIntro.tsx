@@ -35,7 +35,7 @@ export function HotelIntro() {
     >
       {/* Soneva Style 极大留白：通过夸张的 padding 制造呼吸感和高级感 */}
       <div className="py-12 md:py-28 lg:py-40">
-        <div className="mx-auto max-w-4xl px-6 sm:px-8 text-center flex flex-col items-center">
+        <div className="mx-auto max-w-4xl px-page text-center flex flex-col items-center">
           
           {/* Title - Soneva Style 优雅字号，克制不臃肿 */}
           <motion.h2
