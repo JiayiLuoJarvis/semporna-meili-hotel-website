@@ -58,7 +58,7 @@
 
 BELIAN 铁木是酒店最核心的物质差异，UI 需要把这种质感带入屏幕：
 - `--color-gold`（品牌金 `#b18b74`）和 `--color-gold-warm`（`#c2996c`）直接取自铁木色调
-- 金色只做点睛——章节序号、CTA 底线、装饰金线——不做大面积填充
+- 金色只做点睛——CTA 底线、预订按钮边框、价格数字——不做大面积填充，绝对禁止作为小标题前缀使用
 - 暖米色区块（`--color-about-bg`）是呼应木质温度的背景色
 - 字体 Cinzel 的碑铭气质，类似铁木雕刻的厚重感
 
@@ -625,11 +625,11 @@ className="mb-4 sm:mb-6 md:mb-8 lg:mb-10"
 ```
 ✅ 金色的正确使用场景：
   - CTA 链接文字（"立即预订"底线）
-  - 章节序号与装饰横线
   - Header 预订按钮边框
   - 价格数字强调
 
 ❌ 金色的错误使用：
+  - 页面设置不要使用金色之类小字标题这种取巧性的设计，拉低整体的档次
   - 大面积背景填充
   - 同一视口内超过 3 处金色元素
   - 替代主色（primary）用于普通按钮
@@ -779,31 +779,21 @@ useLenis(({ scroll }) => {
 
 ## Part 6：组件模式库 (Component Patterns)
 
-### 6.1 章节标签
+### 6.1 章节标签排版排雷（封禁规范）
 
-**亮色区块**：
+**🚫 绝对禁止项（取巧性设计）**：页面结构设置**不要使用金色之类小字标题**（或带前缀序号、花哨修饰）这种取巧性的设计，会拉低整体的奢华档次。应当放弃利用那些细碎花边填充空白的偷懒做法，直接用足够自信的大片留白配合主体排版。
 
 ```tsx
-<motion.div
-  custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-  className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center"
->
-  <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-[--color-gold-warm]">01</span>
-  <div className="w-8 sm:w-12 h-px bg-[--color-gold-warm]" />
-  <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-    ABOUT MEILI
-  </span>
+// ❌ 错误示范：绝对禁止使用细碎的金色小字附带装饰线
+<motion.div>
+  <div className="flex items-center gap-3 mb-6 justify-center">
+    <span className="text-[0.6rem] tracking-[0.35em] text-[--color-gold-warm]">01</span>
+    <div className="w-8 h-px bg-[--color-gold-warm]" />
+    <span className="text-[0.6rem] text-[--color-warm-text]">ABOUT MEILI</span>
+  </div>
 </motion.div>
-```
 
-**深色区块（villas-bg 背景）**：
-
-```tsx
-<div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
-  <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold">02</span>
-  <div className="w-8 sm:w-12 h-px bg-gold/40" />
-  <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-white/50">OUR VILLAS</span>
-</div>
+// ✅ 正确做法：直接依赖主题文字本身的字号落差与极致留白（详见附带的标题模式）
 ```
 
 ### 6.2 标题模式
@@ -1297,3 +1287,49 @@ export default function LocationPage() {
 - [ ] 图片是否 `<Image />` + 有意义 alt？
 - [ ] 比例类名是否用 Tailwind 原生类（`aspect-4/5`、`aspect-video`、`aspect-square`），而非 `aspect-[4/5]` 任意值？
 - [ ] 是否混用了 `inline-block` 与 `flex`？若需行内 flex，直接用 `inline-flex`。
+
+---
+
+## Part 12：Location 页面架构参考
+
+Location 页面是标准的展示型页面，其结构完美遵循了「全宽图作叙事间隔」以及「禁用取巧性小标题设计」的奢华品牌调性。
+
+### 12.1 页面区块流 (Content Flow)
+
+```text
+┌──────────────────────────────────────────────────────┐
+│  GalleryPageHeader（页头引言，深色遮罩）                 │
+│  bg-[--color-about-bg]｜ 含有 H1 和极简引言              │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationSubNav (子导航 sticky)                        │
+│  bg-[--color-subnav-bg]｜ 随滚动吸顶                     │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationCulture（在地文化 - 文字+图片网格）             │
+│  bg-background（纯白）｜ 极简标题 + 留白，无廉价金色序号标签 │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  全屏过度大图（作为叙事分割线，不使用硬性底色切换）         │
+│  （在 Location 页面中可能表现为大图 banner）             │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationArrival（抵达方式 - 信息列表）                  │
+│  bg-[--color-cream]（米白）｜ 仅用文字间距和大小区分层级     │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationCTA（图文覆盖的尾部引导）                       │
+│  底图铺满 (h-[85vh]) ｜ 文字带半透明遮挡 ｜ 优雅收尾        │
+└──────────────────────────────────────────────────────┘
+```
+
+### 12.2 核心启示
+
+- **绝对禁用小装饰**：`LocationCulture` 和 `LocationArrival` 原本被添加了金色 `01` 之类的序号和下折线，已被彻底禁用并移除。这种强商业属性的设计会让奢华度假村页面显得廉价。只用纯净的字号落差（如 H2 和正文的区别）即可。
+- **页面不是 PPT**：PPT 倾向于给每页上方加一个规整的装饰条和小标题。酒店网站是连贯的画轴。不许为了填补页面上方所谓的"空白"去随意增加装饰线和标码标题，留白本身就是一种"重"。
+- **背景连贯与吸顶体验**：通过 `<div className="sticky top-0 z-40 bg-[--color-subnav-bg]">`，子导航以及预订条可以在不打断正常流的情况下完成吸附。不要滥用复杂的 `useLenis` 来计算高度或手动监听滚动，原生的 CSS Sticky 最顺滑且不干扰页面布局。
