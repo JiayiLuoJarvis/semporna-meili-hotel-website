@@ -16,8 +16,8 @@ export function Hero() {
   const t = useTranslations('Index');
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [hasScrolled, setHasScrolled] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const hasScrolledRef = useRef(false);
   const [isMd, setIsMd] = useState<boolean>(() =>
     typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false
   );
@@ -31,10 +31,10 @@ export function Hero() {
 
   useLenis(({ scroll }) => {
     setScrollY(scroll);
-    if (scroll > 20 && !hasScrolled) {
-      setHasScrolled(true);
+    if (scroll > 20 && !hasScrolledRef.current) {
+      hasScrolledRef.current = true;
     }
-  }, [hasScrolled]);
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
