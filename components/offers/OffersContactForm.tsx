@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
 const fadeUp = {
@@ -20,13 +20,6 @@ const fadeUp = {
 
 export default function OffersContactForm() {
   const t = useTranslations('OffersContactForm');
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, {
-    once: true,
-    margin: '0px 0px -20% 0px',
-    amount: 0.2,
-  });
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -34,7 +27,6 @@ export default function OffersContactForm() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Create a mailto link with the form data as fallback
     const formData = new FormData(e.currentTarget);
     const type = formData.get('type') as string;
     const typeLabel = t(`types.${type}`);
@@ -56,7 +48,6 @@ export default function OffersContactForm() {
       `Notes: \n${notes}`
     );
 
-    // Simulate an API call, then fallback to mailto if it's just static
     setTimeout(() => {
       window.location.href = `mailto:amy@meilihotel.com?subject=${subject}&body=${body}`;
       setIsSubmitting(false);
@@ -65,121 +56,125 @@ export default function OffersContactForm() {
   };
 
   return (
-    <section id="contact-form" className="bg-background text-primary py-16 sm:py-20 md:py-28 lg:py-36 xl:py-44 px-page relative" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="contact-form" className="bg-background py-24 md:py-32 lg:py-48">
+      <div className="max-w-4xl mx-auto px-page">
         
         <motion.div 
-          custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-          className="text-center mb-16"
+          custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+          className="text-center mb-20 md:mb-28"
         >
-          <h2 className="font-serif leading-[1.15] mb-6" style={{ fontSize: 'clamp(1.8rem, 4vw, 4rem)' }}>
+          <h2 
+            className="font-serif text-[--color-section-text] leading-[1.15] mb-8" 
+            style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)' }}
+          >
             {t('title')}
           </h2>
-          <div className="w-12 h-px bg-gold-warm mx-auto" />
+          <div className="w-12 sm:w-16 h-px bg-[--color-gold-warm] mx-auto" />
         </motion.div>
 
         {isSuccess ? (
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-cream border border-gold-warm/20 p-12 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center max-w-2xl mx-auto"
           >
-            <p className="font-serif text-gold-warm mb-6" style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)' }}>
+            <p className="font-serif text-[--color-section-text] mb-6" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}>
               {t('successMsg')}
             </p>
-            <p className="font-sans text-primary/80 mb-8">
+            <p className="font-sans text-[--color-warm-text] mb-12 text-sm md:text-base">
               {t('whatsappAlt')}
             </p>
             <a 
               href="https://wa.me/60112780399" 
               target="_blank" 
               rel="noreferrer"
-              className="inline-flex items-center min-h-11 border border-primary bg-transparent text-primary px-8 py-3 text-sm font-bold tracking-widest uppercase transition-colors hover:border-primary-light hover:text-primary-light"
+              className="inline-flex min-h-11 items-center justify-center bg-primary text-white px-10 py-3 text-xs tracking-widest uppercase transition-colors duration-300 hover:bg-primary-light"
             >
               WhatsApp Us
             </a>
           </motion.div>
         ) : (
           <motion.form 
-            custom={0.2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
+            custom={0.2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -50px 0px' }}
             onSubmit={handleSubmit}
-            className="flex flex-col gap-6 sm:gap-8"
+            className="flex flex-col gap-10 md:gap-14 max-w-3xl mx-auto"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-              <div className="flex flex-col gap-2">
-                <label htmlFor="name" className="font-sans text-xs tracking-widest uppercase text-primary/60">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="name" className="font-sans text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-[--color-warm-text]">
                   {t('nameLabel')} *
                 </label>
                 <input 
                   type="text" id="name" name="name" required
-                  className="bg-transparent border-b border-primary/20 py-3 text-primary focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-transparent border-b border-[--color-section-text]/20 pb-3 pt-1 text-[--color-section-text] focus:outline-none focus:border-[--color-gold-warm] transition-colors rounded-none font-sans text-base"
                 />
               </div>
 
-              <div className="flex flex-col gap-2 relative">
-                <label htmlFor="type" className="font-sans text-xs tracking-widest uppercase text-primary/60">
+              <div className="flex flex-col gap-3 relative">
+                <label htmlFor="type" className="font-sans text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-[--color-warm-text]">
                   {t('typeLabel')} *
                 </label>
                 <select 
                   id="type" name="type" required defaultValue=""
-                  className="bg-transparent border-b border-primary/20 py-3 text-primary appearance-none focus:outline-none focus:border-gold transition-colors cursor-pointer"
+                  className="w-full bg-transparent border-b border-[--color-section-text]/20 pb-3 pt-1 text-[--color-section-text] appearance-none focus:outline-none focus:border-[--color-gold-warm] transition-colors cursor-pointer rounded-none font-sans text-base"
                 >
-                  <option value="" disabled className="text-black">-- Select --</option>
-                  <option value="group" className="text-black">{t('types.group')}</option>
-                  <option value="member" className="text-black">{t('types.member')}</option>
-                  <option value="promotional" className="text-black">{t('types.promotional')}</option>
+                  <option value="" disabled>-- Select --</option>
+                  <option value="group">{t('types.group')}</option>
+                  <option value="member">{t('types.member')}</option>
+                  <option value="promotional">{t('types.promotional')}</option>
                 </select>
-                <ChevronDown className="absolute right-0 bottom-4 w-4 h-4 text-primary/50 pointer-events-none" />
+                <ChevronDown className="absolute right-0 bottom-4 w-4 h-4 text-[--color-section-text]/40 pointer-events-none" />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label htmlFor="pax" className="font-sans text-xs tracking-widest uppercase text-primary/60">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="pax" className="font-sans text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-[--color-warm-text]">
                   {t('paxLabel')} *
                 </label>
                 <input 
                   type="number" id="pax" name="pax" required min="1"
-                  className="bg-transparent border-b border-primary/20 py-3 text-primary focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-transparent border-b border-[--color-section-text]/20 pb-3 pt-1 text-[--color-section-text] focus:outline-none focus:border-[--color-gold-warm] transition-colors rounded-none font-sans text-base"
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label htmlFor="dates" className="font-sans text-xs tracking-widest uppercase text-primary/60">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="dates" className="font-sans text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-[--color-warm-text]">
                   {t('dateLabel')}
                 </label>
                 <input 
                   type="date" id="dates" name="dates" 
-                  className="bg-transparent border-b border-primary/20 py-2.5 text-primary focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-transparent border-b border-[--color-section-text]/20 pb-2.5 pt-1 text-[--color-section-text] focus:outline-none focus:border-[--color-gold-warm] transition-colors rounded-none font-sans text-base"
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label htmlFor="email" className="font-sans text-xs tracking-widest uppercase text-primary/60">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="email" className="font-sans text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-[--color-warm-text]">
                   {t('emailLabel')}
                 </label>
                 <input 
                   type="email" id="email" name="email" 
-                  className="bg-transparent border-b border-primary/20 py-3 text-primary focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-transparent border-b border-[--color-section-text]/20 pb-3 pt-1 text-[--color-section-text] focus:outline-none focus:border-[--color-gold-warm] transition-colors rounded-none font-sans text-base"
                 />
               </div>
 
-              <div className="flex flex-col gap-2">
-                <label htmlFor="social" className="font-sans text-xs tracking-widest uppercase text-primary/60">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="social" className="font-sans text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-[--color-warm-text]">
                   {t('socialLabel')}
                 </label>
                 <input 
                   type="text" id="social" name="social" 
-                  className="bg-transparent border-b border-primary/20 py-3 text-primary focus:outline-none focus:border-gold transition-colors"
+                  className="w-full bg-transparent border-b border-[--color-section-text]/20 pb-3 pt-1 text-[--color-section-text] focus:outline-none focus:border-[--color-gold-warm] transition-colors rounded-none font-sans text-base"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-2">
-              <label htmlFor="notes" className="font-sans text-xs tracking-widest uppercase text-primary/60">
+            <div className="flex flex-col gap-3 mt-4">
+              <label htmlFor="notes" className="font-sans text-[0.65rem] md:text-xs tracking-[0.25em] uppercase text-[--color-warm-text]">
                 {t('noteLabel')}
               </label>
               <textarea 
-                id="notes" name="notes" rows={3}
-                className="bg-transparent border-b border-primary/20 py-3 text-primary focus:outline-none focus:border-gold transition-colors resize-none"
+                id="notes" name="notes" rows={1}
+                placeholder="在此输入您的具体需求或细节..."
+                className="w-full bg-transparent border-b border-[--color-section-text]/20 pb-4 pt-1 text-[--color-section-text] placeholder:-translate-y-1 placeholder:text-[--color-warm-text]/40 focus:outline-none focus:border-[--color-gold-warm] transition-colors resize-none rounded-none font-sans text-base"
               />
             </div>
 
@@ -187,15 +182,18 @@ export default function OffersContactForm() {
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="inline-flex items-center justify-center min-h-11 border border-primary bg-transparent text-primary px-12 py-4 text-sm font-bold tracking-widest uppercase transition-colors hover:border-primary-light hover:text-primary-light disabled:opacity-70"
+                className="inline-flex min-h-11 items-center justify-center bg-primary text-white px-14 py-4 mb-8 text-xs md:text-sm tracking-[0.25em] uppercase transition-colors duration-300 hover:bg-primary-light disabled:opacity-70"
               >
                 {isSubmitting ? '...' : t('submitBtn')}
               </button>
+              
+              <div className="flex items-center gap-4 text-xs font-sans tracking-widest uppercase">
+                <span className="text-[--color-warm-text]">{t('whatsappAlt')}</span>
+                <a href="https://wa.me/60112780399" className="text-[--color-gold-warm] hover:text-[--color-section-text] transition-colors border-b border-[--color-gold-warm]/30 pb-0.5" target="_blank" rel="noreferrer">
+                  WhatsApp
+                </a>
+              </div>
             </div>
-            
-            <p className="text-center text-primary/40 text-xs mt-4">
-              {t('whatsappAlt')} <a href="https://wa.me/60112780399" className="text-gold-warm hover:underline" target="_blank" rel="noreferrer">WhatsApp</a>
-            </p>
           </motion.form>
         )}
       </div>
