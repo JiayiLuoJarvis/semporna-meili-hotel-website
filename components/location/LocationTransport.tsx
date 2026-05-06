@@ -46,37 +46,22 @@ export default function LocationTransport() {
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
 
-  const leftInView = useInView(leftRef, { once: true, margin: '0px 0px -20px 0px', amount: 0.02 });
-  const rightInView = useInView(rightRef, { once: true, margin: '0px 0px -20px 0px', amount: 0.02 });
+  const leftInView = useInView(leftRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
+  const rightInView = useInView(rightRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
     <section
       id="location-transport"
       className="bg-cream pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-20 md:pb-28 lg:pb-36"
     >
-      <div className="px-page max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
+      <div className="px-page max-w-350 mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
         
         {/* ════════════════════════════════════════
             左列：到达路线图 & 联系方式
         ════════════════════════════════════════ */}
         <div ref={leftRef} className="w-full lg:w-5/12 flex flex-col">
-          {/* 章节标签 */}
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
-          >
-            <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold-warm">03</span>
-            <div className="w-8 sm:w-12 h-px bg-gold-warm" />
-            <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-              {t('route.tag')}
-            </span>
-          </motion.div>
-
           <motion.h2
-            custom={0.05}
+            custom={0}
             variants={fadeUp}
             initial="hidden"
             animate={leftInView ? 'visible' : 'hidden'}
@@ -197,22 +182,8 @@ export default function LocationTransport() {
         ════════════════════════════════════════ */}
         <div ref={rightRef} className="w-full lg:w-7/12 mt-20 lg:mt-0">
           {/* 将 schedule 整体对齐上沿 */}
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={rightInView ? 'visible' : 'hidden'}
-            className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
-          >
-            <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold-warm">04</span>
-            <div className="w-8 sm:w-12 h-px bg-gold-warm" />
-            <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-              {t('schedule.tag')}
-            </span>
-          </motion.div>
-
           <motion.h2
-            custom={0.05}
+            custom={0}
             variants={fadeUp}
             initial="hidden"
             animate={rightInView ? 'visible' : 'hidden'}
@@ -228,7 +199,7 @@ export default function LocationTransport() {
             variants={fadeUp}
             initial="hidden"
             animate={rightInView ? 'visible' : 'hidden'}
-            className="bg-white p-8 sm:p-10 md:p-12 rounded-sm"
+            className="overflow-x-auto"
           >
             <table className="w-full border-collapse">
               <thead>
@@ -249,12 +220,12 @@ export default function LocationTransport() {
                 </tr>
                 {arrivalRows.map((row) => (
                   <tr key={row.route} className="border-b border-[--color-section-text]/5">
-                    <td className="py-4 pr-2 font-sans text-[--color-section-text]/75 text-sm leading-snug whitespace-nowrap">{row.route}</td>
+                    <td className="py-4 pr-2 font-sans text-[--color-section-text]/75 text-sm leading-snug">{row.route}</td>
                     <td className="py-4 px-2 text-center">
-                      <span className="font-serif text-[--color-section-text] text-[1.1rem] sm:text-lg">{row.time1}</span>
+                      <span className="font-serif text-[--color-section-text] text-lg">{row.time1}</span>
                     </td>
                     <td className="py-4 text-center">
-                      <span className="font-serif text-[--color-section-text] text-[1.1rem] sm:text-lg">{row.time2}</span>
+                      <span className="font-serif text-[--color-section-text] text-lg">{row.time2}</span>
                     </td>
                   </tr>
                 ))}
@@ -268,12 +239,12 @@ export default function LocationTransport() {
                 </tr>
                 {departureRows.map((row) => (
                   <tr key={row.route} className="border-b border-[--color-section-text]/5">
-                    <td className="py-4 pr-2 font-sans text-[--color-section-text]/75 text-sm leading-snug whitespace-nowrap">{row.route}</td>
+                    <td className="py-4 pr-2 font-sans text-[--color-section-text]/75 text-sm leading-snug">{row.route}</td>
                     <td className="py-4 px-2 text-center">
-                      <span className="font-serif text-[--color-section-text] text-[1.1rem] sm:text-lg">{row.time1}</span>
+                      <span className="font-serif text-[--color-section-text] text-lg">{row.time1}</span>
                     </td>
                     <td className="py-4 text-center">
-                      <span className="font-serif text-[--color-section-text] text-[1.1rem] sm:text-lg">{row.time2}</span>
+                      <span className="font-serif text-[--color-section-text] text-lg">{row.time2}</span>
                     </td>
                   </tr>
                 ))}

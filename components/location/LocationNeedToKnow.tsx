@@ -25,41 +25,24 @@ export default function LocationNeedToKnow() {
 
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
-  const leftInView = useInView(leftRef, { once: true, margin: '0px 0px -20px 0px', amount: 0.02 });
-  const rightInView = useInView(rightRef, { once: true, margin: '0px 0px -20px 0px', amount: 0.02 });
+  const leftInView = useInView(leftRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
+  const rightInView = useInView(rightRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
     <section
       id="location-info"
-      className="bg-white pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-0"
+      className="bg-white pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-16 sm:pb-20"
     >
-      <div className="px-page max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
+      <div className="px-page max-w-350 mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
 
         {/* ════════════════════════════════════════
             左列：行前清单  BUTLER'S NOTE
         ════════════════════════════════════════ */}
         <div ref={leftRef} className="w-full lg:w-1/2">
 
-          {/* 01 章节标签 */}
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={leftInView ? 'visible' : 'hidden'}
-            className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
-          >
-            <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold-warm">
-              05
-            </span>
-            <div className="w-8 sm:w-12 h-px bg-gold-warm" />
-            <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-              {t('info.checklistTag')}
-            </span>
-          </motion.div>
-
           {/* 主标题 */}
           <motion.h2
-            custom={0.05}
+            custom={0}
             variants={fadeUp}
             initial="hidden"
             animate={leftInView ? 'visible' : 'hidden'}
@@ -108,26 +91,9 @@ export default function LocationNeedToKnow() {
         ════════════════════════════════════════ */}
         <div ref={rightRef} className="w-full lg:w-1/2">
 
-          {/* 02 章节标签 */}
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={rightInView ? 'visible' : 'hidden'}
-            className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
-          >
-            <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold-warm">
-              06
-            </span>
-            <div className="w-8 sm:w-12 h-px bg-gold-warm" />
-            <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-              {t('info.stayTag')}
-            </span>
-          </motion.div>
-
           {/* 主标题（替代原本巨大的时间显示，与左侧标题对齐对称） */}
           <motion.h2
-            custom={0.05}
+            custom={0}
             variants={fadeUp}
             initial="hidden"
             animate={rightInView ? 'visible' : 'hidden'}
@@ -149,10 +115,10 @@ export default function LocationNeedToKnow() {
             <li className="flex items-start gap-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold-warm/60 shrink-0 mt-2" />
               <span className="font-sans text-sm sm:text-base text-[--color-section-text]/75 leading-relaxed tracking-wide">
-                <span className="font-medium text-[--color-section-text]">{t('info.checkinLabel')}：</span>
+                <span className="text-[--color-section-text]">{t('info.checkinLabel')}：</span>
                 {t('info.checkinValue')} 
                 <span className="mx-3 opacity-40">|</span> 
-                <span className="font-medium text-[--color-section-text]">{t('info.checkoutLabel')}：</span>
+                <span className="text-[--color-section-text]">{t('info.checkoutLabel')}：</span>
                 {t('info.checkoutValue')}
               </span>
             </li>

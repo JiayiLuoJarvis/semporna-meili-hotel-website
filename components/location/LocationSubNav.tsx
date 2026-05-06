@@ -14,7 +14,7 @@ const SECTIONS = [
 
 const navContainer = {
   initial: {},
-  animate: { transition: { staggerChildren: 0.1, delayChildren: 0.6 } },
+  animate: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
 };
 
 const navItem = {
@@ -69,98 +69,10 @@ export default function LocationSubNav() {
 
   return (
     <div className="bg-primary">
-      {/* ── 固定导航的占位空间 ── */}
-      <div className="h-17 sm:h-20" />
+      {/* Header 高度占位 */}
+      <div style={{ height: 'var(--header-height, 72px)' }} />
 
-      {/* ── 页面标题区 ── */}
-      <div className="text-center px-page pt-14 sm:pt-18 md:pt-22 pb-8">
-        <motion.p
-          className="font-sans text-[0.55rem] sm:text-[0.6rem] uppercase tracking-[0.45em] text-white/50 mb-5"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
-        >
-          {t('pageTag')}
-        </motion.p>
-        <motion.h1
-          className="font-serif text-white leading-[1.05]"
-          style={{ fontSize: 'clamp(1.8rem, 4vw, 4rem)' }}
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, ease: [0.25, 0.1, 0.25, 1], delay: 0.2 }}
-        >
-          {t('pageTitle')}
-        </motion.h1>
-      </div>
-
-      {/* ── 简介与地址（创新排版：居中对称、细致分隔） ── */}
-      <div className="px-page mb-10 max-w-3xl mx-auto text-center">
-        <motion.p
-          className="font-sans text-white/70 text-sm sm:text-base leading-relaxed font-light mb-8"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: [0.25, 0.1, 0.25, 1], delay: 0.35 }}
-        >
-          {t('description')}
-        </motion.p>
-
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-y-3 sm:gap-x-6 font-sans text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] text-white/40"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-        >
-          <span>{t('address')}</span>
-          <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-white/50" />
-          <a href={`tel:${t('phone').replace(/\s/g, '')}`} className="hover:text-white transition-colors underline underline-offset-4 decoration-white/20">
-            {t('phone')}
-          </a>
-          <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-white/50" />
-          <a href="#map" className="hover:text-white transition-colors underline underline-offset-4 decoration-white/20">
-            {t('map')}
-          </a>
-        </motion.div>
-      </div>
-
-      {/* ── 悬浮感联系卡片（替代原图中的生硬白框） ── */}
-      <div className="px-page pb-12">
-        <motion.div
-          className="max-w-4xl mx-auto relative group"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.5 }}
-        >
-          <div className="absolute inset-0 bg-linear-to-r from-transparent via-/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-          <div className="bg-white/5 border border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6 backdrop-blur-sm transition-colors hover:border-white/20">
-            <p className="text-white/90 font-serif text-lg sm:text-xl tracking-wide text-center md:text-left">
-              {t('contactText')}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-              <a href={`tel:${t('phone').replace(/\s/g, '')}`} className="font-sans text-white text-sm uppercase tracking-[0.15em] hover:text-white/80 transition-colors whitespace-nowrap">
-                {t('phone')}
-              </a>
-              <button className="bg-white text-primary px-8 py-3.5 font-sans text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] hover:bg-white/90 transition-colors w-full sm:w-auto">
-                {t('contactBtn')}
-              </button>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* ── 分隔线 ── */}
-      <div className="px-page">
-        <div className="max-w-5xl mx-auto overflow-hidden">
-          <motion.div
-            className="h-px bg-white/10"
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1], delay: 0.55 }}
-            style={{ transformOrigin: 'left' }}
-          />
-        </div>
-      </div>
-
-      {/* ── Sub-nav tabs ── */}
+      {/* Sub-nav */}
       <nav aria-label="位置页内导航">
         <motion.div
           className="flex justify-center items-center px-page flex-wrap"
@@ -174,7 +86,7 @@ export default function LocationSubNav() {
               <motion.span key={id} className="flex items-center shrink-0" variants={navItem} transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}>
                 {idx > 0 && (
                   <span
-                    className="mx-4 sm:mx-8 lg:mx-12 text-/30 select-none font-sans text-xs"
+                    className="mx-4 sm:mx-8 lg:mx-12 text-white/30 select-none font-sans text-xs"
                     aria-hidden="true"
                   >
                     •
