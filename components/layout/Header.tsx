@@ -54,7 +54,7 @@ export function Header() {
   const currentShort = LOCALES.find((l) => l.code === locale)?.short ?? locale.toUpperCase();
 
   // 在图库页面始终使用实色主题背景（不使用渐变）
-  const isGallery = pathname === '/gallery';
+  const isGallery = pathname === '/gallery' || pathname === '/contact';
 
   // useLenis 替代 window.addEventListener('scroll') — 与 lenis 平滑滚动完全同步
   useLenis(

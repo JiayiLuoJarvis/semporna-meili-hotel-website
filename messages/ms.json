@@ -713,6 +713,96 @@
       "title": "Tawaran",
       "description": "Terokai tawaran eksklusif di Meili Resort Semporna — keistimewaan ahli, pakej kumpulan, dan kadar promosi terhad untuk percutian pulau mewah anda.",
       "keywords": "tawaran Semporna, pakej vila atas air Malaysia, promosi resort, faedah ahli, perjalanan kumpulan Semporna"
+    },
+    "contact": {
+      "title": "Hubungi Kami | Meili Resort Semporna",
+      "description": "Hubungi Meili Resort Semporna — WhatsApp, e-mel, atau tempah dalam talian. Perkhidmatan butler 24 jam, sentiasa di sini untuk anda."
+    }
+  },
+  "ContactPage": {
+    "hero": {
+      "title": "Hubungi Kami",
+      "subtitle": "Meili Resort Semporna",
+      "addressLabel": "Alamat",
+      "addressValue": "Semporna, Sabah, Malaysia 91308",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "+6011 2780 3997",
+      "emailLabel": "E-mel",
+      "emailValue": "amy@meilihotel.com",
+      "bookingLabel": "Tempahan",
+      "bookingValue": "Tempah Sekarang",
+      "whatsappCta": "Hubungi Kami",
+      "emailCta": "E-mel Kami",
+      "bookingDesc": "Harga terbaik · Tempah terus"
+    },
+    "form": {
+      "title": "Hantar Mesej",
+      "subtitle": "Kami akan membalas dalam masa 24 jam.",
+      "nameLabel": "Nama",
+      "emailLabel": "E-mel",
+      "phoneLabel": "Nombor Telefon",
+      "typeLabel": "Jenis Pertanyaan",
+      "dateLabel": "Anggaran Tarikh Ketibaan",
+      "messageLabel": "Mesej",
+      "messagePlaceholder": "Bagaimana kami boleh membantu anda?",
+      "submitBtn": "Hantar",
+      "successMsg": "Terima kasih atas mesej anda. Kami akan menghubungi anda dalam masa 24 jam.",
+      "whatsappAlt": "Untuk bantuan segera, sila hubungi kami melalui WhatsApp.",
+      "types": {
+        "reservation": "Pertanyaan Tempahan",
+        "packages": "Pakej & Tawaran",
+        "transfer": "Pengaturan Pemindahan",
+        "honeymoon": "Bulan Madu & Perayaan Istimewa",
+        "other": "Lain-lain"
+      }
+    },
+    "faq": {
+      "label": "Perlu Diketahui",
+      "title": "Soalan Lazim",
+      "categories": [
+        {
+          "category": "Tempahan & Pembayaran",
+          "questions": [
+            { "q": "Bagaimana untuk membuat tempahan?", "a": "Anda boleh menempah melalui laman web rasmi kami, Trip.com, Booking.com, atau hubungi kami melalui WhatsApp (+6011 2780 3997) atau E-mel (amy@meilihotel.com). Tempahan terus menawarkan harga terbaik. Kami menantikan kehadiran anda di laut kaca peribadi ini." },
+            { "q": "Kaedah pembayaran apa yang diterima?", "a": "Kami menerima pindahan bank dan kad kredit/debit utama. Butiran pembayaran akan diberikan dalam pengesahan tempahan anda." },
+            { "q": "Adakah deposit diperlukan?", "a": "Ya, deposit diperlukan untuk mengesahkan tempahan anda. Jumlah deposit dan arahan pembayaran akan diperincikan dalam surat pengesahan anda. Sesetengah pakej memerlukan prabayar penuh." }
+          ]
+        },
+        {
+          "category": "Ketibaan & Penginapan",
+          "questions": [
+            { "q": "Apakah waktu daftar masuk dan daftar keluar?", "a": "Daftar masuk bermula dari pukul 14:00. Daftar keluar sebelum pukul 12:00 (Tengah Hari). Daftar masuk awal atau daftar keluar lewat tertakluk kepada ketersediaan dan mungkin dikenakan caj tambahan." },
+            { "q": "Bagaimana untuk sampai ke resort?", "a": "Perjalanan anda adalah sebahagian daripada pengalaman. Pakej all-inclusive termasuk pemindahan pergi-balik: Lapangan Terbang Tawau ke Jeti Semporna melalui darat (lebih kurang 1 jam), kemudian bot laju peribadi ke Meili Resort (lebih kurang 30 minit). Sila berikan maklumat ketibaan penuh sekurang-kurangnya 3 hari lebih awal." },
+            { "q": "Adakah pemindahan lapangan terbang disediakan?", "a": "Ya, pemindahan lapangan terbang pergi-balik termasuk dalam pakej all-inclusive. Sila berikan maklumat ketibaan lengkap anda terlebih dahulu." },
+            { "q": "Apa yang perlu dibawa semasa penginapan?", "a": "Kami mengesyorkan: pasport atau ID yang sah, pengesahan tempahan, ubat peribadi, pakaian mandi (beberapa set), pelindung matahari mesra terumbu karang, dan kasut tidak licin untuk dek bot laju." }
+          ]
+        },
+        {
+          "category": "Polisi & Kemudahan",
+          "questions": [
+            { "q": "Apakah polisi pembatalan?", "a": "Pembatalan percuma tersedia dalam tempoh yang ditetapkan (lihat terma tempahan anda). Pembatalan lewat atau tidak hadir akan dikenakan caj. Sesetengah pakej promosi tidak boleh dikembalikan wang dan memerlukan prabayar penuh." },
+            { "q": "Adakah makanan disertakan?", "a": "Pakej all-inclusive kami termasuk sarapan, makan tengah hari, makan malam, dan teh petang harian untuk dua orang. Sila rujuk terma pakej tempahan anda." },
+            { "q": "Adakah Wi-Fi tersedia?", "a": "Ya, Wi-Fi percuma tersedia di seluruh resort — di vila dan semua kawasan awam — supaya anda boleh berkongsi perjalanan anda bila-bila masa." },
+            { "q": "Apakah polisi merokok?", "a": "Untuk melindungi persekitaran semula jadi kami yang bersih dan memastikan keselesaan semua tetamu, merokok hanya dibenarkan di kawasan luar yang ditetapkan." }
+          ]
+        },
+        {
+          "category": "Kemudahan & Perkhidmatan",
+          "questions": [
+            { "q": "Apa kemudahan yang ditawarkan resort?", "a": "Kolam renang infiniti, restoran dan bar atas air, kelab selam bintang lima, padang golf laut, pusat kecergasan, pusat spa & kesihatan, teater bintang enam, paviliun acara atas air, taman air kanak-kanak, teres laut di bumbung, pemerhatian bintang, dan perkhidmatan butler peribadi 24 jam." },
+            { "q": "Bolehkah bulan madu atau perayaan istimewa diaturkan?", "a": "Sudah tentu! Kami akan gembira menjadikan momen istimewa anda tidak terlupakan. Sila maklumkan keperluan anda lebih awal dan pasukan kami akan mencipta pengaturan khusus untuk anda. (Caj tambahan mungkin dikenakan untuk pemasangan khas.)" }
+          ]
+        },
+        {
+          "category": "Keluarga & Lain-lain",
+          "questions": [
+            { "q": "Adakah kanak-kanak dialu-alukan?", "a": "Sangat dialu-alukan! Kanak-kanak berumur 5 tahun ke bawah yang berkongsi katil sedia ada dengan ibu bapa boleh menginap secara percuma. Semangat penerokaan di sini sesuai untuk semua peringkat umur." },
+            { "q": "Bolehkah katil tambahan diaturkan?", "a": "Ya, katil tambahan boleh diaturkan atas permintaan, tertakluk kepada keadaan bilik. Caj tambahan akan dikenakan." },
+            { "q": "Adakah tempat letak kereta tersedia?", "a": "Memandangkan resort hanya boleh dicapai dengan bot laju peribadi, tempat letak kereta tidak tersedia di jeti berlepas. Kami mengesyorkan menggunakan tempat letak kereta awam di bandar Semporna." },
+            { "q": "Adakah haiwan peliharaan dibenarkan?", "a": "Kami menyesal bahawa untuk melindungi ekosistem pulau yang rapuh dan memastikan keselesaan semua tetamu, haiwan peliharaan tidak dibenarkan di pulau ini." }
+          ]
+        }
+      ]
     }
   }
 }
