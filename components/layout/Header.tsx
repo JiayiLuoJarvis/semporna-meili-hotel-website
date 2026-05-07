@@ -53,6 +53,9 @@ export function Header() {
 
   const currentShort = LOCALES.find((l) => l.code === locale)?.short ?? locale.toUpperCase();
 
+  // 在图库页面始终使用实色主题背景（不使用渐变）
+  const isGallery = pathname === '/gallery';
+
   // useLenis 替代 window.addEventListener('scroll') — 与 lenis 平滑滚动完全同步
   useLenis(
     ({ scroll }) => {
@@ -79,8 +82,8 @@ export function Header() {
         {/* ======================= */}
         <nav
           className={`pointer-events-auto relative z-50 hidden w-full transition-all duration-700 lg:block ${
-            isScrolled
-              ? 'bg-primary py-3 text-white shadow-sm backdrop-blur-sm'
+            isGallery || isScrolled
+              ? 'bg-primary py-3 text-white shadow-sm'
               : 'from-primary/95 bg-linear-to-b to-transparent py-5'
           }`}
         >
@@ -183,10 +186,10 @@ export function Header() {
         {/* ======================= */}
         {/*     Mobile Header       */}
         {/* ======================= */}
-        <div className="pointer-events-auto flex h-17 w-full items-center justify-between bg-white px-4 shadow-xs transition-all duration-300 sm:h-20 sm:px-6 lg:hidden">
+        <div className={`pointer-events-auto flex h-17 w-full items-center justify-between px-4 shadow-xs transition-all duration-300 sm:h-20 sm:px-6 lg:hidden ${isGallery ? 'bg-primary' : 'bg-white'}`}>
           <Link href="/" className="shrink-0">
             <Image
-              src="/images/logo-color.png"
+              src={isGallery ? '/images/logo-h-new.png' : '/images/logo-color.png'}
               alt="Logo"
               width={140}
               height={40}
@@ -196,7 +199,7 @@ export function Header() {
           <div className="flex shrink-0 items-center justify-end gap-3 sm:gap-4">
             <button
               onClick={() => setMobileNavOpen(true)}
-              className="-mr-1 cursor-pointer p-1 text-black transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2"
+              className={`-mr-1 cursor-pointer p-1 transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2 ${isGallery ? 'text-white' : 'text-black'}`}
               aria-label="Open Menu"
             >
               <svg

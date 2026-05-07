@@ -21,10 +21,10 @@ export default function GalleryVideo() {
       <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 max-w-4xl mx-auto h-full">
         {/* Decorative elements */}
         <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
-          <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-[--color-gold-warm]">
+          <span className="font-sans text-xs uppercase tracking-[0.35em] text-gold-warm">
             {t('tag')}
           </span>
-          <div className="w-8 sm:w-12 h-px bg-[--color-gold-warm]" />
+          <div className="w-8 sm:w-12 h-px bg-gold-warm" />
         </div>
 
         {/* Text */}
@@ -46,7 +46,7 @@ export default function GalleryVideo() {
           </svg>
         </button>
 
-        <span className="mt-4 font-sans text-[0.65rem] tracking-widest text-white/50 uppercase">
+        <span className="mt-4 font-sans text-xs tracking-widest text-white/50 uppercase">
           {t('cta')}
         </span>
       </div>

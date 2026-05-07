@@ -4,7 +4,7 @@ export default function GalleryPageHeader() {
   const t = useTranslations('Gallery.Hero');
 
   return (
-    <section className="bg-primary px-page pt-32 pb-16 sm:pt-36 sm:pb-20 md:pt-44 md:pb-24 text-center">
+    <section className="bg-[--color-about-bg] px-page pt-32 pb-16 sm:pt-36 sm:pb-20 md:pt-44 md:pb-24 text-center">
       {/* 微标签 */}
       <div className="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
         <div className="h-px w-8 sm:w-12 bg-gold/50" />
@@ -16,7 +16,7 @@ export default function GalleryPageHeader() {
 
       {/* 主标题 */}
       <h1
-        className="font-serif text-white leading-[1.05] tracking-[0.04em]"
+        className="font-serif text-[--color-section-text] max-w-4xl mx-auto leading-[1.05] tracking-[0.04em]"
         style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)' }}
       >
         {t('line1')}
@@ -28,7 +28,7 @@ export default function GalleryPageHeader() {
       </div>
 
       {/* 副标题 */}
-      <p className="font-sans text-xs text-white/45 tracking-[0.4em] uppercase">
+      <p className="font-sans text-xs text-[--color-warm-text] tracking-[0.4em] uppercase">
         {t('line2')}
       </p>
     </section>

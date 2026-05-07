@@ -1,5 +1,4 @@
-import GalleryPageHeader from '@/components/gallery/GalleryPageHeader';
-import GalleryGSAPShowcase from '@/components/gallery/GalleryGSAPShowcase';
+import GalleryThemes from '@/components/gallery/GalleryThemes';
 import GalleryVideo from '@/components/gallery/GalleryVideo';
 import GalleryCTA from '@/components/gallery/GalleryCTA';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -38,11 +37,8 @@ export default async function GalleryPage({ params }: Props) {
   const themes = tGallery.raw('Themes') as ThemeData[];
 
   return (
-    <main className="w-full flex-1">
-      <GalleryPageHeader />
-
-      {/* GSAP Cinematic Plunge Gallery (Replaces all individual theme blocks) */}
-      <GalleryGSAPShowcase themes={themes} />
+    <main className="w-full flex-1 pt-17 sm:pt-20 lg:pt-21">
+      <GalleryThemes themes={themes} />
 
       <GalleryVideo />
 
