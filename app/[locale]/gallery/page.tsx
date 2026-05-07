@@ -22,10 +22,11 @@ interface Props {
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Gallery' });
+  const t = await getTranslations({ locale, namespace: 'PageMeta' });
   return {
-    title: t('Hero.line1'),
-    description: 'Explore the beauty of Semporna',
+    title: t('gallery.title'),
+    description: t('gallery.description'),
+    keywords: t('gallery.keywords'),
   };
 }
 

@@ -693,5 +693,26 @@
     "submitBtn": "Send Inquiry",
     "successMsg": "Thank you. We will contact you within 48 hours.",
     "whatsappAlt": "Or reach us instantly via WhatsApp:"
+  },
+  "PageMeta": {
+    "siteName": "Meili Resort Semporna",
+    "siteNameFull": "Meili Resort Semporna | MEILI RESORT SEMPORNA",
+    "siteDescription": "An all-overwater private villa sanctuary at 4°N in the Coral Triangle, Semporna. Adjacent to world-class Sipadan diving, all-inclusive luxury and 24-hour butler service await.",
+    "siteKeywords": "Semporna resort, overwater villa, diving, Sipadan, Sabah, Malaysia, Coral Triangle, Meili Resort, Borneo",
+    "gallery": {
+      "title": "Gallery",
+      "description": "Discover the stunning imagery of Meili Resort Semporna — crystal-clear waters, century-old ironwood overwater villas, world-class Coral Triangle diving, and dining above the sea.",
+      "keywords": "Semporna photos, overwater villa gallery, coral reef diving Malaysia, Sipadan, resort imagery, Meili Resort"
+    },
+    "location": {
+      "title": "Location",
+      "description": "Meili Resort Semporna sits at 4°N in the heart of the Coral Triangle, Sabah, Malaysia — minutes from Sipadan Island by speedboat, reachable via Tawau Airport. Typhoon-free, warm year-round.",
+      "keywords": "Semporna location, how to get to Semporna, Sipadan, Tawau Airport, Sabah Malaysia, Coral Triangle resort"
+    },
+    "offers": {
+      "title": "Offers",
+      "description": "Explore exclusive deals at Meili Resort Semporna — member privileges, group packages, and limited-time early-bird promotional rates for your luxury island escape.",
+      "keywords": "Semporna deals, Malaysia overwater villa packages, resort promotions, member benefits, group travel Semporna"
+    }
   }
 }

@@ -693,5 +693,26 @@
     "submitBtn": "Hantar Pertanyaan",
     "successMsg": "Terima kasih. Kami akan menghubungi anda dlm 48 jam.",
     "whatsappAlt": "Atau hubungi kami melalui WhatsApp:"
+  },
+  "PageMeta": {
+    "siteName": "Meili Resort Semporna",
+    "siteNameFull": "Meili Resort Semporna | MEILI RESORT SEMPORNA",
+    "siteDescription": "Sanctuary vila terapung peribadi di 4°N Coral Triangle, Semporna. Berdekatan dengan tapak menyelam bertaraf dunia Sipadan, kemewahan all-inclusive dan perkhidmatan butler 24 jam menanti.",
+    "siteKeywords": "resort Semporna, vila atas air, menyelam, Sipadan, Sabah, Malaysia, Coral Triangle, Meili Resort, Borneo",
+    "gallery": {
+      "title": "Galeri",
+      "description": "Temui gambar-gambar menakjubkan Meili Resort Semporna — perairan kristal jernih, vila kayu besi berusia berabad-abad, menyelam Coral Triangle bertaraf dunia, dan jamuan makan di atas laut.",
+      "keywords": "gambar Semporna, galeri vila atas air, menyelam terumbu karang Malaysia, Sipadan, gambar resort, Meili Resort"
+    },
+    "location": {
+      "title": "Lokasi",
+      "description": "Meili Resort Semporna terletak di 4°N di jantung Coral Triangle, Sabah, Malaysia — beberapa minit dari Pulau Sipadan melalui bot laju, boleh dicapai melalui Lapangan Terbang Tawau. Tiada taufan, hangat sepanjang tahun.",
+      "keywords": "lokasi Semporna, cara ke Semporna, Sipadan, Lapangan Terbang Tawau, Sabah Malaysia, resort Coral Triangle"
+    },
+    "offers": {
+      "title": "Tawaran",
+      "description": "Terokai tawaran eksklusif di Meili Resort Semporna — keistimewaan ahli, pakej kumpulan, dan kadar promosi terhad untuk percutian pulau mewah anda.",
+      "keywords": "tawaran Semporna, pakej vila atas air Malaysia, promosi resort, faedah ahli, perjalanan kumpulan Semporna"
+    }
   }
 }
