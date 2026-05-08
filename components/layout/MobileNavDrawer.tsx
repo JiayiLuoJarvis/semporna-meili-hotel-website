@@ -75,7 +75,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
             <div ref={langRef} className="relative flex items-center pr-2">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold tracking-wider text-black/80 uppercase transition-opacity hover:opacity-70"
+                className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold tracking-wider text-foreground uppercase transition-opacity hover:opacity-70"
                 aria-label="Select language"
               >
                 <span>{locales.find((l) => l.code === locale)?.label ?? locale.toUpperCase()}</span>
@@ -118,7 +118,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
                       className={`flex w-full items-center justify-between px-4 py-3 text-left tracking-widest transition-colors duration-150 ${
                         locale === loc.code
                           ? 'bg-black/5 font-semibold text-black'
-                          : 'text-black/60 hover:bg-black/5 hover:text-black'
+                          : 'text-muted-foreground hover:bg-black/5 hover:text-black'
                       }`}
                     >
                       <span className="text-[12px] uppercase">{loc.label}</span>

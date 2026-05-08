@@ -70,10 +70,10 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
           <button className="group flex flex-1 cursor-pointer items-center gap-2.5 rounded-lg border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white">
             <CalendarDays
               size={15}
-              className="flex-shrink-0 text-black/40 transition-colors group-hover:text-black/70"
+              className="flex-shrink-0 text-muted-foreground transition-colors group-hover:text-foreground"
             />
             <div className="flex min-w-0 flex-col items-start">
-              <span className="text-[0.55rem] uppercase tracking-[0.2em] text-black/45 leading-none mb-1">
+              <span className="text-[0.55rem] uppercase tracking-[0.2em] text-muted-foreground leading-none mb-1">
                 {t('checkin')}
               </span>
               <span className="text-[0.82rem] font-sans text-black tracking-wide leading-none">
@@ -83,17 +83,17 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
           </button>
 
           <div className="hidden w-5 flex-shrink-0 items-center justify-center md:flex">
-            <ArrowRight size={12} className="text-black/25" />
+            <ArrowRight size={12} className="text-muted-foreground" />
           </div>
 
           {/* Check-out */}
           <button className="group flex flex-1 cursor-pointer items-center gap-2.5 rounded-lg border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white">
             <CalendarDays
               size={15}
-              className="flex-shrink-0 text-black/40 transition-colors group-hover:text-black/70"
+              className="flex-shrink-0 text-muted-foreground transition-colors group-hover:text-foreground"
             />
             <div className="flex min-w-0 flex-col items-start">
-              <span className="text-[0.55rem] uppercase tracking-[0.2em] text-black/45 leading-none mb-1">
+              <span className="text-[0.55rem] uppercase tracking-[0.2em] text-muted-foreground leading-none mb-1">
                 {t('checkout')}
               </span>
               <span className="text-[0.82rem] font-sans text-black tracking-wide leading-none">
@@ -113,10 +113,10 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
             >
               <Users
                 size={15}
-                className="flex-shrink-0 text-black/40 transition-colors group-hover:text-black/70"
+                className="flex-shrink-0 text-muted-foreground transition-colors group-hover:text-foreground"
               />
               <div className="flex min-w-0 flex-1 flex-col items-start">
-                <span className="text-[0.55rem] uppercase tracking-[0.2em] text-black/45 leading-none mb-1">
+                <span className="text-[0.55rem] uppercase tracking-[0.2em] text-muted-foreground leading-none mb-1">
                   {t('guests')}
                 </span>
                 <span className="text-[0.82rem] font-sans text-black tracking-wide leading-none">
@@ -126,7 +126,7 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
               </div>
               <ChevronDown
                 size={12}
-                className={`flex-shrink-0 text-black/30 transition-transform duration-300 ${guestOpen ? 'rotate-180' : ''}`}
+                className={`flex-shrink-0 text-muted-foreground transition-transform duration-300 ${guestOpen ? 'rotate-180' : ''}`}
               />
             </button>
 
@@ -147,13 +147,13 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
                   { label: t('children'), value: children, set: setChildren, min: 0 },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center justify-between">
-                    <span className="text-[0.7rem] text-black/55 font-sans tracking-wider">
+                    <span className="text-[0.7rem] text-muted-foreground font-sans tracking-wider">
                       {item.label}
                     </span>
                     <div className="flex items-center gap-3">
                       <button
                         onClick={() => item.set(Math.max(item.min, item.value - 1))}
-                        className="flex h-6 w-6 items-center justify-center rounded-full bg-black/5 text-black/40 transition-all hover:bg-black/10 hover:text-black/70"
+                        className="flex h-6 w-6 items-center justify-center rounded-full bg-black/5 text-muted-foreground transition-all hover:bg-black/10 hover:text-foreground"
                       >
                         <Minus size={9} />
                       </button>
@@ -162,7 +162,7 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
                       </span>
                       <button
                         onClick={() => item.set(item.value + 1)}
-                        className="flex h-6 w-6 items-center justify-center rounded-full bg-black/5 text-black/40 transition-all hover:bg-black/10 hover:text-black/70"
+                        className="flex h-6 w-6 items-center justify-center rounded-full bg-black/5 text-muted-foreground transition-all hover:bg-black/10 hover:text-foreground"
                       >
                         <Plus size={9} />
                       </button>

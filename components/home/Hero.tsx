@@ -121,7 +121,7 @@ export function Hero() {
             </span>
             <a
               href="tel:+60123456789"
-              className="font-sans text-xs font-light tracking-[0.12em] text-white transition-colors duration-500 hover:text-white/70"
+              className="font-sans text-xs font-light tracking-[0.12em] text-white transition-colors duration-500"
               style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
             >
               {t('phone')}
@@ -143,8 +143,8 @@ export function Hero() {
               href="/location"
               className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm border border-white/10 bg-black/60 backdrop-blur-sm transition-colors hover:bg-black/75 md:h-24 md:w-24"
             >
-              <MapPin className="h-4 w-4 text-white/70 transition-colors group-hover:text-white" strokeWidth={1.2} />
-              <span className="font-sans text-xs font-light tracking-widest text-white/80 transition-colors group-hover:text-white">
+              <MapPin className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+              <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
                 {t('heroCards.0')}
               </span>
             </Link>
@@ -152,8 +152,8 @@ export function Hero() {
               href="#villas"
               className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm border border-white/10 bg-black/60 backdrop-blur-sm transition-colors hover:bg-black/75 md:h-24 md:w-24"
             >
-              <BedDouble className="h-4 w-4 text-white/70 transition-colors group-hover:text-white" strokeWidth={1.2} />
-              <span className="font-sans text-xs font-light tracking-widest text-white/80 transition-colors group-hover:text-white">
+              <BedDouble className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+              <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
                 {t('heroCards.1')}
               </span>
             </a>
@@ -161,8 +161,8 @@ export function Hero() {
               href="/gallery"
               className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm border border-white/10 bg-black/60 backdrop-blur-sm transition-colors hover:bg-black/75 md:h-24 md:w-24"
             >
-              <ImageIcon className="h-4 w-4 text-white/70 transition-colors group-hover:text-white" strokeWidth={1.2} />
-              <span className="font-sans text-xs font-light tracking-widest text-white/80 transition-colors group-hover:text-white">
+              <ImageIcon className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+              <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
                 {t('heroCards.2')}
               </span>
             </Link>
@@ -181,8 +181,8 @@ export function Hero() {
           href="/location"
           className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm border border-white/5 bg-neutral-900/90 backdrop-blur-md transition-colors hover:bg-neutral-800/90"
         >
-          <MapPin className="h-5 w-5 text-white/70 transition-colors group-hover:text-white" strokeWidth={1.2} />
-          <span className="font-sans text-xs font-light tracking-widest text-white/80 transition-colors group-hover:text-white">
+          <MapPin className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+          <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
             {t('heroCards.0')}
           </span>
         </Link>
@@ -190,8 +190,8 @@ export function Hero() {
           href="#villas"
           className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm border border-white/5 bg-neutral-900/90 backdrop-blur-md transition-colors hover:bg-neutral-800/90"
         >
-          <BedDouble className="h-5 w-5 text-white/70 transition-colors group-hover:text-white" strokeWidth={1.2} />
-          <span className="font-sans text-xs font-light tracking-widest text-white/80 transition-colors group-hover:text-white">
+          <BedDouble className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+          <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
             {t('heroCards.1')}
           </span>
         </a>
@@ -199,8 +199,8 @@ export function Hero() {
           href="/gallery"
           className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm border border-white/5 bg-neutral-900/90 backdrop-blur-md transition-colors hover:bg-neutral-800/90"
         >
-          <ImageIcon className="h-5 w-5 text-white/70 transition-colors group-hover:text-white" strokeWidth={1.2} />
-          <span className="font-sans text-xs font-light tracking-widest text-white/80 transition-colors group-hover:text-white">
+          <ImageIcon className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+          <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
             {t('heroCards.2')}
           </span>
         </Link>

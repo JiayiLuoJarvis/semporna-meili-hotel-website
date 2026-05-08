@@ -60,7 +60,7 @@ export function Footer() {
             <h2 className="font-serif text-3xl md:text-5xl tracking-wide text-white leading-tight mb-2">
               MEILI
             </h2>
-            <span className="font-sans text-xs uppercase tracking-[0.4em] text-white/60 mb-8 block">
+            <span className="font-sans text-xs uppercase tracking-[0.4em] text-white mb-8 block">
               RESORT HOTEL
             </span>
             <p className="font-sans text-sm font-light leading-relaxed text-white">
@@ -75,18 +75,18 @@ export function Footer() {
             <h3 className="font-sans text-xs font-semibold tracking-[0.25em] uppercase text-white mb-6">
               {t('newsletter')}
             </h3>
-            <p className="font-sans text-sm font-light text-white/80 mb-6 max-w-sm">
+            <p className="font-sans text-sm font-light text-white mb-6 max-w-sm">
               {t('newsletterDesc')}
             </p>
             <div className="flex border-b border-white/20 pb-2 transition-colors focus-within:border-white/60 group">
               <input 
                 type="email" 
                 placeholder={t('emailPlaceholder')}
-                className="bg-transparent flex-1 text-sm font-light text-white placeholder:text-white/50 focus:outline-none"
+                className="bg-transparent flex-1 text-sm font-light text-white placeholder:text-white focus:outline-none"
               />
               <button 
                 type="button" 
-                className="text-white/80 hover:text-white transition-colors px-2"
+                className="text-white hover:text-white transition-colors px-2"
                 aria-label={t('subscribe')}
               >
                 <ArrowRight size={16} strokeWidth={1.5} />
@@ -103,7 +103,7 @@ export function Footer() {
               key={col.heading}
               custom={0.2 + idx * 0.1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
             >
-              <h3 className="mb-6 font-sans text-[10px] font-semibold tracking-[0.2em] text-white/60 uppercase">
+              <h3 className="mb-6 font-sans text-[10px] font-semibold tracking-[0.2em] text-white uppercase">
                 {col.heading}
               </h3>
               <ul className="space-y-4">
@@ -130,7 +130,7 @@ export function Footer() {
           custom={0.6} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
           className="mt-20 md:mt-32 pt-8 border-t border-white/10 flex flex-col items-center gap-6 sm:flex-row sm:justify-between"
         >
-          <p className="font-sans text-[10px] sm:text-xs font-light uppercase tracking-widest text-white/60">
+          <p className="font-sans text-[10px] sm:text-xs font-light uppercase tracking-widest text-white">
             &copy; {new Date().getFullYear()} {t('copyright')}
           </p>
 
@@ -146,7 +146,7 @@ export function Footer() {
               <Link
                 key={item}
                 href="/"
-                className="font-sans text-[10px] sm:text-xs font-light uppercase tracking-widest text-white/60 transition-colors duration-300 hover:text-white"
+                className="font-sans text-[10px] sm:text-xs font-light uppercase tracking-widest text-white transition-colors duration-300 hover:text-white"
               >
                 {item}
               </Link>

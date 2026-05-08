@@ -35,7 +35,7 @@ export default function GalleryVideo() {
           {t('title')}
         </h2>
 
-        <p className="font-sans text-white/70 max-w-lg mx-auto text-sm sm:text-base leading-relaxed mb-10 sm:mb-12 md:mb-16">
+        <p className="font-sans text-white max-w-lg mx-auto text-sm sm:text-base leading-relaxed mb-10 sm:mb-12 md:mb-16">
           {t('desc')}
         </p>
 
@@ -46,7 +46,7 @@ export default function GalleryVideo() {
           </svg>
         </button>
 
-        <span className="mt-4 font-sans text-xs tracking-widest text-white/50 uppercase">
+        <span className="mt-4 font-sans text-xs tracking-widest text-white uppercase">
           {t('cta')}
         </span>
       </div>

@@ -118,8 +118,8 @@ export function Header() {
                           ? 'font-normal text-white after:scale-x-100 after:bg-white'
                           : 'font-light text-white after:scale-x-100 after:bg-white'
                         : isScrolled
-                          ? 'font-normal text-white/80 after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
-                          : 'font-light text-white/90 after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
+                          ? 'font-normal text-white after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
+                          : 'font-light text-white after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
                     }`}
                   >
                     {t(item.key)}
@@ -131,7 +131,7 @@ export function Header() {
               <div className="relative" ref={langRef}>
                 <button
                   onClick={() => setLangOpen(!langOpen)}
-                  className={`flex items-center gap-1.5 font-sans text-[0.75rem] tracking-widest transition-colors duration-500 ${isScrolled ? 'font-light text-white/80 hover:text-white' : 'font-light text-white/80 hover:text-white'}`}
+                  className={`flex items-center gap-1.5 font-sans text-[0.75rem] tracking-widest transition-colors duration-500 ${isScrolled ? 'font-light text-white hover:text-white' : 'font-light text-white hover:text-white'}`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

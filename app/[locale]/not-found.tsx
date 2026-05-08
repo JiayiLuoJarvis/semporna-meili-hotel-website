@@ -9,7 +9,7 @@ export default function NotFoundPage() {
       <h1 className="text-8xl md:text-9xl font-serif text-primary mb-4 tracking-widest">
         404
       </h1>
-      <h2 className="text-2xl md:text-3xl font-serif text-primary/80 mb-6">
+      <h2 className="text-2xl md:text-3xl font-serif text-primary mb-6">
         {t('title')}
       </h2>
       <p className="max-w-md text-muted-foreground font-sans mb-10 leading-relaxed mx-auto">

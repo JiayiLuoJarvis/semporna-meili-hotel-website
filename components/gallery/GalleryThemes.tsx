@@ -107,7 +107,7 @@ function ThemeCarousel({ theme, isCream }: { theme: ThemeData; isCream: boolean 
           <button
             onClick={scrollPrev}
             disabled={prevBtnDisabled}
-            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/70 text-black/80 backdrop-blur-md shadow-sm transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 disabled:opacity-0 z-10"
+            className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/70 text-foreground backdrop-blur-md shadow-sm transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 disabled:opacity-0 z-10"
             aria-label="Previous slide"
           >
             <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 font-light" strokeWidth={1.5} />
@@ -116,7 +116,7 @@ function ThemeCarousel({ theme, isCream }: { theme: ThemeData; isCream: boolean 
           <button
             onClick={scrollNext}
             disabled={nextBtnDisabled}
-            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/70 text-black/80 backdrop-blur-md shadow-sm transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 disabled:opacity-0 z-10"
+            className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full bg-white/70 text-foreground backdrop-blur-md shadow-sm transition-all duration-300 hover:bg-white hover:text-black hover:scale-105 disabled:opacity-0 z-10"
             aria-label="Next slide"
           >
             <ChevronRight className="w-6 h-6 md:w-8 md:h-8 font-light" strokeWidth={1.5} />

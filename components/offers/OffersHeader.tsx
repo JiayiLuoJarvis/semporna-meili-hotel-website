@@ -97,7 +97,7 @@ export default function OffersHeader() {
               >
                 {idx > 0 && (
                   <span
-                    className="mx-4 font-sans text-xs text-white/30 select-none sm:mx-8 lg:mx-12"
+                    className="mx-4 font-sans text-xs text-white select-none sm:mx-8 lg:mx-12"
                     aria-hidden="true"
                   >
                     •
@@ -112,7 +112,7 @@ export default function OffersHeader() {
                   <span
                     className={clsx(
                       'font-sans text-sm tracking-[0.2em] whitespace-nowrap transition-colors duration-300 sm:text-base',
-                      isActive ? 'text-white' : 'text-white/60 group-hover:text-white',
+                      isActive ? 'text-white' : 'text-white group-hover:text-white',
                     )}
                   >
                     {labels[key]}
@@ -122,7 +122,7 @@ export default function OffersHeader() {
                   <span
                     className={clsx(
                       'font-sans text-[0.5rem] tracking-[0.25em] whitespace-nowrap uppercase transition-colors duration-300 sm:text-[0.55rem]',
-                      isActive ? 'text-white/55' : 'text-white/30 group-hover:text-white/60',
+                      isActive ? 'text-white' : 'text-white group-hover:text-white',
                     )}
                   >
                     {en}
