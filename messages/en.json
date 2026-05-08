@@ -763,46 +763,159 @@
         {
           "category": "Reservation & Booking",
           "questions": [
-            { "q": "How do I make a reservation?", "a": "You can book through our official website, Trip.com, Booking.com, or contact us via WhatsApp (+6011 2780 3997) or Email (amy@meilihotel.com). Direct booking offers the best rates. We look forward to welcoming you to this private glass sea." },
-            { "q": "What payment methods do you accept?", "a": "We accept bank transfers and major credit/debit cards. Payment details will be provided in your booking confirmation." },
-            { "q": "Is a deposit required?", "a": "Yes, a deposit is required to secure your booking. The deposit amount and payment instructions will be detailed in your confirmation. Some packages (e.g. all-inclusive) require full prepayment." }
+            {
+              "q": "How do I make a reservation?",
+              "a": "You can book through our official website, Trip.com, Booking.com, or contact us via WhatsApp (+6011 2780 3997) or Email (amy@meilihotel.com). Direct booking offers the best rates. We look forward to welcoming you to this private glass sea."
+            },
+            {
+              "q": "What payment methods do you accept?",
+              "a": "We accept bank transfers and major credit/debit cards. Payment details will be provided in your booking confirmation."
+            },
+            {
+              "q": "Is a deposit required?",
+              "a": "Yes, a deposit is required to secure your booking. The deposit amount and payment instructions will be detailed in your confirmation. Some packages (e.g. all-inclusive) require full prepayment."
+            }
           ]
         },
         {
           "category": "Arrival & Stay",
           "questions": [
-            { "q": "What are the check-in and check-out times?", "a": "Check-in is from 14:00 (2:00 PM). Check-out is by 12:00 (Noon). Early check-in or late check-out is subject to availability and may incur additional charges." },
-            { "q": "How do I get to the resort?", "a": "Your journey is part of the experience. All-inclusive packages include round-trip transfers: Tawau Airport to Semporna Jetty by land (approx. 1 hr), then a private speedboat to Meili Resort (approx. 30 mins). Please provide full arrival details at least 3 days in advance." },
-            { "q": "Do you provide airport transfers?", "a": "Yes, round-trip airport transfers are included in all-inclusive packages. Please provide your complete arrival details so our team can be there to welcome you." },
-            { "q": "What should I bring for my stay?", "a": "We recommend: passport or valid ID, booking confirmation, personal medication, swimwear (multiple sets), reef-safe sunscreen, and non-slip shoes for the speedboat deck." }
+            {
+              "q": "What are the check-in and check-out times?",
+              "a": "Check-in is from 14:00 (2:00 PM). Check-out is by 12:00 (Noon). Early check-in or late check-out is subject to availability and may incur additional charges."
+            },
+            {
+              "q": "How do I get to the resort?",
+              "a": "Your journey is part of the experience. All-inclusive packages include round-trip transfers: Tawau Airport to Semporna Jetty by land (approx. 1 hr), then a private speedboat to Meili Resort (approx. 30 mins). Please provide full arrival details at least 3 days in advance."
+            },
+            {
+              "q": "Do you provide airport transfers?",
+              "a": "Yes, round-trip airport transfers are included in all-inclusive packages. Please provide your complete arrival details so our team can be there to welcome you."
+            },
+            {
+              "q": "What should I bring for my stay?",
+              "a": "We recommend: passport or valid ID, booking confirmation, personal medication, swimwear (multiple sets), reef-safe sunscreen, and non-slip shoes for the speedboat deck."
+            }
           ]
         },
         {
           "category": "Policies & Amenities",
           "questions": [
-            { "q": "What is the cancellation policy?", "a": "Free cancellation is available within the stipulated timeframe (see your booking terms). Late cancellations or no-shows will incur charges. Some promotional packages are non-refundable and require full prepayment." },
-            { "q": "Are meals included?", "a": "Our all-inclusive packages include daily breakfast, lunch, dinner, and afternoon tea for two. Please refer to your specific package terms." },
-            { "q": "Is Wi-Fi available?", "a": "Yes, complimentary Wi-Fi is available throughout the resort — in villas and all public areas — so you can share your journey whenever you wish." },
-            { "q": "What is the smoking policy?", "a": "To protect our pristine natural environment and ensure comfort for all guests, smoking is permitted only in designated outdoor areas." }
+            {
+              "q": "What is the cancellation policy?",
+              "a": "Free cancellation is available within the stipulated timeframe (see your booking terms). Late cancellations or no-shows will incur charges. Some promotional packages are non-refundable and require full prepayment."
+            },
+            {
+              "q": "Are meals included?",
+              "a": "Our all-inclusive packages include daily breakfast, lunch, dinner, and afternoon tea for two. Please refer to your specific package terms."
+            },
+            {
+              "q": "Is Wi-Fi available?",
+              "a": "Yes, complimentary Wi-Fi is available throughout the resort — in villas and all public areas — so you can share your journey whenever you wish."
+            },
+            {
+              "q": "What is the smoking policy?",
+              "a": "To protect our pristine natural environment and ensure comfort for all guests, smoking is permitted only in designated outdoor areas."
+            }
           ]
         },
         {
           "category": "Facilities & Services",
           "questions": [
-            { "q": "What facilities does the resort offer?", "a": "Infinity pool, overwater restaurants and bar, five-star dive club, sea golf practice range, full fitness centre, spa & wellness centre, six-star theatre, overwater event pavilion, children's water park, rooftop ocean terrace, stargazing, and 24-hour personal butler service." },
-            { "q": "Can you arrange honeymoon or special celebrations?", "a": "Absolutely! We would be delighted to make your special moment unforgettable. Please let us know your requirements in advance and our team will create a bespoke arrangement. (Additional charges may apply for special setups.)" }
+            {
+              "q": "What facilities does the resort offer?",
+              "a": "Infinity pool, overwater restaurants and bar, five-star dive club, sea golf practice range, full fitness centre, spa & wellness centre, six-star theatre, overwater event pavilion, children's water park, rooftop ocean terrace, stargazing, and 24-hour personal butler service."
+            },
+            {
+              "q": "Can you arrange honeymoon or special celebrations?",
+              "a": "Absolutely! We would be delighted to make your special moment unforgettable. Please let us know your requirements in advance and our team will create a bespoke arrangement. (Additional charges may apply for special setups.)"
+            }
           ]
         },
         {
           "category": "Family & Practicalities",
           "questions": [
-            { "q": "Are children welcome?", "a": "Most welcome! Children aged 5 and under sharing an existing bed with parents stay complimentary. The spirit of exploration here is for all ages." },
-            { "q": "Can extra beds be arranged?", "a": "Yes, extra beds can be arranged upon request, subject to room conditions. Additional charges will apply." },
-            { "q": "Is there parking available?", "a": "As the resort is reached by private speedboat, parking is not available at the departure jetty. We recommend using public parking in Semporna town." },
-            { "q": "Are pets allowed?", "a": "We regret that to protect the island's delicate ecosystem and ensure comfort for all guests, pets are not permitted on the island." }
+            {
+              "q": "Are children welcome?",
+              "a": "Most welcome! Children aged 5 and under sharing an existing bed with parents stay complimentary. The spirit of exploration here is for all ages."
+            },
+            {
+              "q": "Can extra beds be arranged?",
+              "a": "Yes, extra beds can be arranged upon request, subject to room conditions. Additional charges will apply."
+            },
+            {
+              "q": "Is there parking available?",
+              "a": "As the resort is reached by private speedboat, parking is not available at the departure jetty. We recommend using public parking in Semporna town."
+            },
+            {
+              "q": "Are pets allowed?",
+              "a": "We regret that to protect the island's delicate ecosystem and ensure comfort for all guests, pets are not permitted on the island."
+            }
           ]
         }
       ]
+    }
+  },
+  "BookingPage": {
+    "hero": {
+      "title": "Meili Resort Villas & Suites",
+      "description": "Settle into an overwater villa of ancient BELIAN ironwood, suspended above the heart of the Coral Triangle. Everything is taken care of — full-board dining, roundtrip transfers, and a 24-hour personal butler — so all that remains is to lose yourself in the crystalline sea."
+    },
+    "tabs": {
+      "all": "All Accommodations",
+      "waterVillas": "Overwater Villas",
+      "signatureVillas": "Signature Suites"
+    },
+    "room": {
+      "size": "Size",
+      "capacity": "Max Occupancy",
+      "bedding": "Bedding",
+      "checkRates": "Check Rates",
+      "book": "Book Now"
+    },
+    "amenities": {
+      "title": "Features & Amenities",
+      "viewAll": "View All",
+      "items": [
+        {
+          "title": "Free High-Speed Wi-Fi"
+        },
+        {
+          "title": "24-hour Butler Service"
+        },
+        {
+          "title": "Full-Board Dining"
+        },
+        {
+          "title": "Water Sports Center"
+        },
+        {
+          "title": "Roundtrip Transfers"
+        }
+      ]
+    },
+    "policies": {
+      "title": "Policies",
+      "checkInTime": "Check-in: 3:00 PM / Check-out: 12:00 PM",
+      "items": [
+        {
+          "title": "Early Arrival & Late Departure",
+          "desc": "If your arrival or departure falls outside of standard times, we recommend letting us know in advance to accommodate your schedule, subject to availability."
+        },
+        {
+          "title": "Payment Methods",
+          "desc": "We accept bank transfers and major credit cards. A deposit is required to confirm your reservation."
+        },
+        {
+          "title": "Family Policy",
+          "desc": "Children 5 years and under stay free of charge when sharing existing bedding with parents. Extra beds may incur additional fees."
+        }
+      ]
+    },
+    "contactBanner": {
+      "text": "Our reservations team is delighted to arrange your exclusive journey.",
+      "contact": "Contact Reservations",
+      "phone": "+6011 2780 3997"
     }
   }
 }
