@@ -7,13 +7,13 @@ type Tab = 'all' | 'waterVillas' | 'signatureVillas';
 const VALID_TABS: Tab[] = ['all', 'waterVillas', 'signatureVillas'];
 
 interface Props {
-  tab: string;
+  tab: Tab;
 }
 
 export function BookingRoomList({ tab }: Props) {
   const tBooking = useTranslations('BookingPage');
 
-  const activeTab: Tab = VALID_TABS.includes(tab as Tab) ? (tab as Tab) : 'all';
+  const activeTab: Tab = VALID_TABS.includes(tab) ? tab : 'all';
 
   const allRooms = [
     { id: 0, category: 'waterVillas', size: '150 ㎡', capacity: '2', bedding: '1 King Bed' },
