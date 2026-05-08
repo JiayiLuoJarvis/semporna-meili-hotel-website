@@ -67,7 +67,7 @@ export function Header() {
 
   const navItems = [
     { key: 'nav1', href: '/' },
-    { key: 'nav2', href: '/booking' },
+    { key: 'nav2', href: '/booking/all' },
     { key: 'nav3', href: '/gallery' },
     { key: 'nav4', href: '/location' },
     { key: 'nav5', href: '/offers' },
@@ -103,7 +103,10 @@ export function Header() {
             {/* Desktop Nav Links */}
             <div className="flex items-center gap-7 lg:gap-9">
               {navItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive =
+                  item.href === '/'
+                    ? pathname === '/'
+                    : pathname === item.href || pathname.startsWith(`${item.href}/`);
                 return (
                   <Link
                     key={item.key}

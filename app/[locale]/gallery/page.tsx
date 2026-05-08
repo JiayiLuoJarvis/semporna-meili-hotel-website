@@ -1,6 +1,7 @@
 import GalleryThemes from '@/components/gallery/GalleryThemes';
 import GalleryVideo from '@/components/gallery/GalleryVideo';
 import GalleryCTA from '@/components/gallery/GalleryCTA';
+import { BookingBar } from '@/components/home/BookingBar';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 interface GalleryImage {
@@ -39,8 +40,9 @@ export default async function GalleryPage({ params }: Props) {
 
   return (
     <main className="w-full flex-1 pt-17 sm:pt-20 lg:pt-21">
-      <GalleryThemes themes={themes} />
+      <BookingBar delayMs={2000} />
 
+      <GalleryThemes themes={themes} />
       <GalleryVideo />
 
       <GalleryCTA />

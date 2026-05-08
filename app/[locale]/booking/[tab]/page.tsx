@@ -5,6 +5,7 @@ import { BookingRoomList } from '@/components/booking/BookingRoomList';
 import { BookingAmenities } from '@/components/booking/BookingAmenities';
 import { BookingPolicies } from '@/components/booking/BookingPolicies';
 import { BookingContactBanner } from '@/components/booking/BookingContactBanner';
+import { BookingBar } from '@/components/home/BookingBar';
 
 const VALID_TABS = ['all', 'waterVillas', 'signatureVillas'] as const;
 type Tab = typeof VALID_TABS[number];
@@ -34,6 +35,7 @@ export default async function BookingTabPage({
   return (
     <main className="flex flex-col min-h-screen bg-background">
       <BookingPageHeader />
+      <BookingBar delayMs={2000} />
       <BookingRoomList tab={tab as Tab} />
       <BookingAmenities />
       <BookingPolicies />

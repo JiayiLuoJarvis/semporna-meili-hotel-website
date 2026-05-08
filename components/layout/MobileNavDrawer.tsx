@@ -206,12 +206,12 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
               {t('nav1')}
             </Link>
             <Link
-              href="/booking"
+              href="/booking/all"
               prefetch={false}
               onClick={onClose}
               className="relative flex cursor-pointer items-center hover:opacity-70"
             >
-              {pathname === '/booking' && (
+              {pathname.startsWith('/booking') && (
               <svg className="absolute -left-6.25 h-3.5 w-3" viewBox="0 0 10 14" fill="black">
                 <path d="M0 0l10 7-10 7z" />
               </svg>

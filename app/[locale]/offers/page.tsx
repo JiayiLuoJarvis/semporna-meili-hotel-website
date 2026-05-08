@@ -3,6 +3,7 @@ import OffersGroup from '@/components/offers/OffersGroup';
 import OffersMember from '@/components/offers/OffersMember';
 import OffersPromotional from '@/components/offers/OffersPromotional';
 import OffersContactForm from '@/components/offers/OffersContactForm';
+import { BookingBar } from '@/components/home/BookingBar';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 
@@ -24,6 +25,7 @@ export default function OffersPage() {
   return (
     <main className="w-full flex-1">
       <OffersHeader />
+      <BookingBar delayMs={2000} />
       <OffersGroup />
       <OffersMember />
       <OffersPromotional />
