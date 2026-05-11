@@ -12,7 +12,7 @@ RUN corepack enable
 # 1. Depedencies: Install dependencies based on pnpm-lock.yaml
 FROM base AS deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml* ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml* .npmrc* ./
 RUN pnpm install --frozen-lockfile
 
 # 2. Builder: Rebuild the source code only when needed
