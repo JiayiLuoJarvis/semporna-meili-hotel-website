@@ -129,7 +129,7 @@ export function Header() {
               {!isBookingOpen && (
               <button
                 onClick={() => setIsBookingOpen(true)}
-                className={`flex items-center gap-1.5 rounded-full border px-4 py-1.5 transition-all duration-500 ${isScrolled ? 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15' : 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15'}`}
+                className={`flex items-center gap-1.5 border px-4 py-1.5 transition-all duration-500 ${isScrolled ? 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15' : 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15'}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

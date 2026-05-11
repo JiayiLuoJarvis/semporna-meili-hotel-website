@@ -62,7 +62,7 @@ export function BookingBar({ isOpen, onClose }: BookingBarProps) {
       <div className="mx-auto max-w-350 px-6 py-3.5 md:px-10 md:py-4 lg:px-16">
         <div className="flex flex-col items-stretch gap-3 md:flex-row md:items-center md:gap-2.5">
           {/* Check-in */}
-          <button className="group flex flex-1 cursor-pointer items-center gap-2.5 rounded-lg border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white">
+          <button className="group flex flex-1 cursor-pointer items-center gap-2.5 border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white">
             <CalendarDays
               size={15}
               className="flex-shrink-0 text-muted-foreground transition-colors group-hover:text-foreground"
@@ -82,7 +82,7 @@ export function BookingBar({ isOpen, onClose }: BookingBarProps) {
           </div>
 
           {/* Check-out */}
-          <button className="group flex flex-1 cursor-pointer items-center gap-2.5 rounded-lg border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white">
+          <button className="group flex flex-1 cursor-pointer items-center gap-2.5 border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white">
             <CalendarDays
               size={15}
               className="flex-shrink-0 text-muted-foreground transition-colors group-hover:text-foreground"
@@ -104,7 +104,7 @@ export function BookingBar({ isOpen, onClose }: BookingBarProps) {
                 e.stopPropagation();
                 setGuestOpen(!guestOpen);
               }}
-              className="group flex w-full cursor-pointer items-center gap-2.5 rounded-lg border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white"
+              className="group flex w-full cursor-pointer items-center gap-2.5 border border-black/12 bg-white px-3.5 py-2.5 transition-all duration-200 hover:border-black/25 hover:bg-white"
             >
               <Users
                 size={15}
@@ -171,7 +171,7 @@ export function BookingBar({ isOpen, onClose }: BookingBarProps) {
           {/* CTA */}
           <div className="flex-shrink-0 md:self-stretch">
             <button
-              className="h-full w-full whitespace-nowrap rounded-lg px-6 py-2.5 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300"
+              className="h-full w-full whitespace-nowrap px-6 py-2.5 font-sans text-[0.7rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300"
               style={{
                 background: 'var(--color-primary)',
                 color: 'white',

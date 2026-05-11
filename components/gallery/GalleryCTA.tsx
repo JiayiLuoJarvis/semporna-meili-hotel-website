@@ -39,11 +39,11 @@ export default function GalleryCTA() {
             href="https://wa.me/something"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-8 py-3.5 md:py-4 rounded-full border border-border text-section-text font-sans uppercase tracking-widest text-xs sm:text-sm hover:bg-muted transition-colors duration-300 w-full sm:w-auto"
+            className="flex items-center justify-center gap-2 px-8 py-3.5 md:py-4 border border-border text-section-text font-sans uppercase tracking-widest text-xs sm:text-sm hover:bg-muted transition-colors duration-300 w-full sm:w-auto"
           >
             {t('whatsapp')}
           </a>
-          <button className="px-8 py-3.5 md:py-4 rounded-full bg-primary text-white font-sans uppercase tracking-widest text-xs sm:text-sm hover:bg-primary-light transition-colors duration-300 w-full sm:w-auto shadow-md">
+          <button className="px-8 py-3.5 md:py-4 bg-primary text-white font-sans uppercase tracking-widest text-xs sm:text-sm hover:bg-primary-light transition-colors duration-300 w-full sm:w-auto shadow-md">
             {t('button')}
           </button>
         </div>
