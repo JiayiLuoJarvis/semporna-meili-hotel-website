@@ -53,9 +53,6 @@ export function Header() {
 
   const currentShort = LOCALES.find((l) => l.code === locale)?.short ?? locale.toUpperCase();
 
-  // 在图库页面始终使用实色主题背景（不使用渐变）
-  const isGallery = pathname === '/gallery' || pathname === '/contact';
-
   // useLenis 替代 window.addEventListener('scroll') — 与 lenis 平滑滚动完全同步
   useLenis(
     ({ scroll }) => {
@@ -67,7 +64,7 @@ export function Header() {
 
   const navItems = [
     { key: 'nav1', href: '/' },
-    { key: 'nav2', href: '/booking/all' },
+    { key: 'nav2', href: '/booking' },
     { key: 'nav3', href: '/gallery' },
     { key: 'nav4', href: '/location' },
     { key: 'nav5', href: '/offers' },
@@ -82,14 +79,18 @@ export function Header() {
         {/* ======================= */}
         <nav
           className={`pointer-events-auto relative z-50 hidden w-full transition-all duration-700 lg:block ${
-            isGallery || isScrolled
-              ? 'bg-primary py-3 text-white shadow-sm'
-              : 'from-primary/95 bg-linear-to-b to-transparent py-5'
+            isScrolled
+              ? 'bg-primary py-3 shadow-sm backdrop-blur-sm text-white'
+              : 'py-5 text-white'
           }`}
+          style={!isScrolled ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.92), rgba(0,47,86,0.45))' } : undefined}
         >
           <div className="mx-auto flex max-w-350 items-center justify-between px-6 lg:px-20">
             {/* Logo */}
-            <Link href="/" className="shrink-0 transition-opacity hover:opacity-80">
+            <Link
+              href="/"
+              className="shrink-0 transition-opacity hover:opacity-80"
+            >
               <Image
                 src="/images/logo-h-new.png"
                 alt="Meili Resort Hotel"
@@ -103,11 +104,7 @@ export function Header() {
             {/* Desktop Nav Links */}
             <div className="flex items-center gap-7 lg:gap-9">
               {navItems.map((item) => {
-                const basePath = item.href === '/booking/all' ? '/booking' : item.href;
-                const isActive =
-                  basePath === '/'
-                    ? pathname === '/'
-                    : pathname === basePath || pathname.startsWith(`${basePath}/`);
+                const isActive = pathname === item.href;
                 return (
                   <Link
                     key={item.key}
@@ -119,14 +116,42 @@ export function Header() {
                           ? 'font-normal text-white after:scale-x-100 after:bg-white'
                           : 'font-light text-white after:scale-x-100 after:bg-white'
                         : isScrolled
-                          ? 'font-normal text-white after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
-                          : 'font-light text-white after:scale-x-0 after:bg-white hover:text-white hover:after:scale-x-100'
+                          ? 'font-normal text-white/80 hover:text-white after:scale-x-0 after:bg-white hover:after:scale-x-100'
+                          : 'font-light text-white/90 hover:text-white after:scale-x-0 after:bg-white hover:after:scale-x-100'
                     }`}
                   >
                     {t(item.key)}
                   </Link>
                 );
               })}
+
+              {/* Booking Toggle — 仅在 BookingBar 关闭时显示 */}
+              {!isBookingOpen && (
+              <button
+                onClick={() => setIsBookingOpen(true)}
+                className={`flex items-center gap-1.5 rounded-full border px-4 py-1.5 transition-all duration-500 ${isScrolled ? 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15' : 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15'}`}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                <span className="font-sans text-[0.6875rem] tracking-[0.12em]">
+                  {tBooking('show')}
+                </span>
+              </button>
+              )}
 
               {/* Language Switcher */}
               <div className="relative" ref={langRef}>
@@ -173,8 +198,8 @@ export function Header() {
                         onClick={() => switchLocale(loc.code)}
                         className={`block w-full px-4 py-2.5 text-left font-sans text-xs tracking-wide transition-colors ${
                           locale === loc.code
-                            ? 'text-primary bg-[--color-cream] font-medium'
-                            : 'hover:text-primary text-zinc-700 hover:bg-[--color-cream]'
+                            ? 'bg-[--color-cream] font-medium text-primary'
+                            : 'text-zinc-700 hover:bg-[--color-cream] hover:text-primary'
                         }`}
                       >
                         {loc.label}
@@ -190,10 +215,10 @@ export function Header() {
         {/* ======================= */}
         {/*     Mobile Header       */}
         {/* ======================= */}
-        <div className={`pointer-events-auto flex h-17 w-full items-center justify-between px-4 shadow-xs transition-all duration-300 sm:h-20 sm:px-6 lg:hidden ${isGallery ? 'bg-primary' : 'bg-white'}`}>
+        <div className="pointer-events-auto flex h-17 w-full items-center justify-between bg-white px-4 shadow-xs transition-all duration-300 sm:h-20 sm:px-6 lg:hidden">
           <Link href="/" className="shrink-0">
             <Image
-              src={isGallery ? '/images/logo-h-new.png' : '/images/logo-color.png'}
+              src="/images/logo-color.png"
               alt="Logo"
               width={140}
               height={40}
@@ -203,7 +228,7 @@ export function Header() {
           <div className="flex shrink-0 items-center justify-end gap-3 sm:gap-4">
             <button
               onClick={() => setMobileNavOpen(true)}
-              className={`-mr-1 cursor-pointer p-1 transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2 ${isGallery ? 'text-white' : 'text-black'}`}
+              className="-mr-1 cursor-pointer p-1 text-black transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2"
               aria-label="Open Menu"
             >
               <svg
@@ -223,6 +248,16 @@ export function Header() {
               </svg>
             </button>
           </div>
+        </div>
+
+        {/* ======================= */}
+        {/*      Booking Bar        */}
+        {/* ======================= */}
+        <div className="pointer-events-auto hidden lg:block">
+          <BookingBar
+            isOpen={isBookingOpen}
+            onClose={() => setIsBookingOpen(false)}
+          />
         </div>
       </header>
 

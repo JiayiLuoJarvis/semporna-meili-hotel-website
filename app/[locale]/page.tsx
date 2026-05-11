@@ -11,9 +11,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* 1. Hero 视频大图 */}
       <Hero />
 
-      {/* 2. BookingBar — sticky，顶部贴紧 header 后固定，只在 md+ 显示 */}
-      <BookingBar />
-
       {/* 3. 酒店介绍 */}
       <HotelIntro />
 

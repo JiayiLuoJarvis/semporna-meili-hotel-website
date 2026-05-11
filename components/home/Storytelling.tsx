@@ -41,8 +41,8 @@ export function Storytelling() {
             {t('subtitle')}
           </p>
           <h2 
-            className="font-serif font-light leading-[1.3] tracking-wider text-[--color-section-text] text-balance max-w-3xl"
-            style={{ fontSize: 'clamp(1.8rem, 4vw, 3.5rem)' }}
+            className="font-serif font-light italic leading-snug tracking-wide text-[--color-section-text] text-balance max-w-3xl"
+            style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
           >
             {t('title')}
           </h2>

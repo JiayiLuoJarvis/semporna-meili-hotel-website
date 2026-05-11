@@ -31,55 +31,58 @@ export function HotelIntro() {
     <section
       id="about"
       ref={sectionRef}
-      className="relative z-10 w-full overflow-hidden bg-background"
+      className="relative z-10 w-full bg-warm-light"
     >
-      {/* Soneva Style 极大留白：通过夸张的 padding 制造呼吸感和高级感 */}
-      <div className="py-12 md:py-28 lg:py-40">
-        <div className="mx-auto max-w-4xl px-page text-center flex flex-col items-center">
-          
-          {/* Title - Soneva Style 优雅字号，克制不臃肿 */}
-          <motion.h2
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="font-serif font-light leading-[1.2] tracking-wide text-[--color-section-text] text-balance mb-6 md:mb-8"
-            style={{ fontSize: 'clamp(2rem, 3.5vw, 2.75rem)' }}
-          >
-            {t('headingLine1')}
-          </motion.h2>
+      <div className="mx-auto max-w-3xl px-8 py-12 text-center md:py-16 lg:py-20">
 
-          {/* Body Text - Soneva Style 窄容器、浅灰色、行高舒展 */}
-          <motion.div
-            custom={0.1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="max-w-2xl font-sans text-sm md:text-[0.95rem] font-light leading-relaxed md:leading-loose text-[--color-warm-text]"
-          >
-            <p>{t('body1')}</p>
-          </motion.div>
+        {/* 细线 */}
+        <motion.div
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="mx-auto mb-6 h-px w-8 bg-[--color-section-text]/25"
+        />
 
-          {/* CTA - 极其细微的点缀 */}
-          <motion.div
-            custom={0.2}
-            variants={fadeUp}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-            className="mt-10 md:mt-16"
-          >
-            <Link
-              href="/villas"
-              className="group inline-flex items-center gap-3 font-sans text-[0.65rem] md:text-[0.7rem] uppercase tracking-[0.25em] md:tracking-[0.3em] text-[--color-section-text] border-b border-[--color-section-text]/30 pb-2 transition-colors hover:border-[--color-section-text]"
-            >
-              {t('cta')}
-              <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">
-                &#8594;
-              </span>
-            </Link>
-          </motion.div>
+        {/* 标题 */}
+        <motion.h2
+          custom={0.08}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="mb-6 font-serif font-light italic leading-snug tracking-wide text-[--color-section-text]"
+          style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
+        >
+          {t('headingLine1')}
+        </motion.h2>
 
-        </div>
+        {/* Body */}
+        <motion.p
+          custom={0.16}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="mb-8 font-sans text-sm font-light leading-loose text-[--color-warm-text] md:text-[0.9rem]"
+        >
+          {t('body1')}
+        </motion.p>
+
+        {/* CTA */}
+        <motion.div
+          custom={0.24}
+          variants={fadeUp}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+        >
+          <Link
+            href="/villas"
+            className="group inline-flex items-center gap-3 border-b border-[--color-section-text]/30 pb-1 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-[--color-section-text] transition-colors hover:border-[--color-section-text]"
+          >
+            {t('cta')}
+            <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">&#8594;</span>
+          </Link>
+        </motion.div>
+
       </div>
     </section>
   );

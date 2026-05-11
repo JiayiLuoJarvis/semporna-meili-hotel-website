@@ -6,11 +6,11 @@ import { ChevronDown, Minus, Plus, ArrowRight, CalendarDays, Users } from 'lucid
 import { AnimatePresence, motion } from 'framer-motion';
 
 interface BookingBarProps {
-  /** 延迟多少毫秒后展开，默认 3500ms（与首页 Hero 动画同步） */
-  delayMs?: number;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
+export function BookingBar({ isOpen, onClose }: BookingBarProps) {
   const t = useTranslations('BookingBar');
 
   const today = new Date();
@@ -19,16 +19,10 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
 
   const dayNames = ['日', '一', '二', '三', '四', '五', '六'];
 
-  const [isVisible, setIsVisible] = useState(false);
   const [rooms, setRooms] = useState(1);
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
   const [guestOpen, setGuestOpen] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), delayMs);
-    return () => clearTimeout(timer);
-  }, [delayMs]);
 
   useEffect(() => {
     if (!guestOpen) return;
@@ -43,17 +37,18 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
   return (
     <div className="sticky z-40 hidden md:block" style={{ top: 'var(--header-height, 72px)' }}>
       <AnimatePresence>
-        {isVisible && (
+        {isOpen && (
           <motion.div
             key="booking-bar"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
+            initial={{ clipPath: 'inset(0 0 100% 78% round 24px)', opacity: 0 }}
+            animate={{ clipPath: 'inset(0 0 0% 0% round 0px)', opacity: 1 }}
+            exit={{ clipPath: 'inset(0 0 100% 78% round 24px)', opacity: 0 }}
             transition={{
-              height: { type: 'spring', stiffness: 320, damping: 36, mass: 0.8 },
-              opacity: { duration: 0.2, ease: 'easeOut' },
+              clipPath: { duration: 0.52, ease: [0.16, 1, 0.3, 1] },
+              opacity: { duration: 0.18, ease: 'easeOut' },
             }}
-            className="w-full overflow-hidden"
-            style={{ willChange: 'height' }}
+            className="w-full"
+            style={{ willChange: 'clip-path, opacity' }}
           >
           <div
       className="relative w-full"
@@ -198,6 +193,18 @@ export function BookingBar({ delayMs = 3500 }: BookingBarProps) {
               {t('submit')}
             </button>
           </div>
+
+          {/* Close */}
+          <button
+            onClick={onClose}
+            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-black/8 hover:text-foreground"
+            aria-label="Close booking bar"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>

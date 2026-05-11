@@ -141,7 +141,10 @@ export function Hero() {
           >
             <Link
               href="/location"
-              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm border border-white/10 bg-black/60 backdrop-blur-sm transition-colors hover:bg-black/75 md:h-24 md:w-24"
+              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
+              style={{ background: 'rgba(0,31,63,0.65)' }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
             >
               <MapPin className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
               <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
@@ -150,7 +153,10 @@ export function Hero() {
             </Link>
             <a
               href="#villas"
-              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm border border-white/10 bg-black/60 backdrop-blur-sm transition-colors hover:bg-black/75 md:h-24 md:w-24"
+              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
+              style={{ background: 'rgba(0,31,63,0.65)' }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
             >
               <BedDouble className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
               <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
@@ -159,7 +165,10 @@ export function Hero() {
             </a>
             <Link
               href="/gallery"
-              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm border border-white/10 bg-black/60 backdrop-blur-sm transition-colors hover:bg-black/75 md:h-24 md:w-24"
+              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
+              style={{ background: 'rgba(0,31,63,0.65)' }}
+              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
             >
               <ImageIcon className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
               <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
@@ -179,7 +188,10 @@ export function Hero() {
       >
         <Link
           href="/location"
-          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm border border-white/5 bg-neutral-900/90 backdrop-blur-md transition-colors hover:bg-neutral-800/90"
+          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
+          style={{ background: 'rgba(0,31,63,0.65)' }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
         >
           <MapPin className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
           <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
@@ -188,7 +200,10 @@ export function Hero() {
         </Link>
         <a
           href="#villas"
-          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm border border-white/5 bg-neutral-900/90 backdrop-blur-md transition-colors hover:bg-neutral-800/90"
+          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
+          style={{ background: 'rgba(0,31,63,0.65)' }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
         >
           <BedDouble className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
           <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
@@ -197,7 +212,10 @@ export function Hero() {
         </a>
         <Link
           href="/gallery"
-          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm border border-white/5 bg-neutral-900/90 backdrop-blur-md transition-colors hover:bg-neutral-800/90"
+          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
+          style={{ background: 'rgba(0,31,63,0.65)' }}
+          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
         >
           <ImageIcon className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
           <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
