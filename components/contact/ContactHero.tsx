@@ -8,31 +8,30 @@ export default function ContactHero() {
   const t = useTranslations('ContactPage.hero');
 
   return (
-    <section className="bg-primary w-full px-page pt-32 pb-24 md:pt-40 md:pb-32 text-white">
+    <section className="bg-primary w-full px-page pt-28 pb-12 text-white text-center flex flex-col items-center">
 
       {/* 标题区 */}
       <motion.div
-        className="max-w-5xl mx-auto text-center mb-20 md:mb-28"
-        initial={{ opacity: 0, y: 20 }}
+        className="max-w-2xl flex flex-col items-center mb-10"
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.8 }}
       >
-        <p className="font-sans text-[10px] tracking-[0.4em] uppercase text-white/50 mb-8">
+        <span className="font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase block mb-5">
           {t('subtitle')}
-        </p>
-        <h1 className="font-serif font-light tracking-widest text-white mb-10" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}>
+        </span>
+        <h1 className="font-serif text-3xl sm:text-4xl tracking-widest font-light mb-8">
           {t('title')}
         </h1>
-        {/* 金色装饰线 */}
-        <div className="w-8 h-px bg-[--color-gold-warm] mx-auto mb-8" />
-        <p className="font-sans text-[10px] tracking-[0.25em] uppercase text-white/50">
+        {/* 金色装饰线不用了，和其它保持一致，或者保留？如果完全一致就去掉金线 */}
+        <p className="font-sans text-xs sm:text-sm tracking-[0.2em] uppercase text-white/70">
           {t('addressValue')}
         </p>
       </motion.div>
 
       {/* 联系渠道 — 三列纯文字，无卡片 */}
       <motion.div
-        className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-14 sm:gap-0 text-center"
+        className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-14 sm:gap-0 text-center mb-10"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}

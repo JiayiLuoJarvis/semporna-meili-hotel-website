@@ -60,7 +60,7 @@ export default function OffersHeader() {
 
       {/* 顶部：标题与描述区 */}
       <motion.div
-        className="max-w-2xl flex flex-col items-center mb-16"
+        className="max-w-2xl flex flex-col items-center mb-10"
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -68,7 +68,7 @@ export default function OffersHeader() {
         <span className="font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase block mb-5">
           {tHeader('pageTag')}
         </span>
-        <h1 className="font-serif font-light tracking-widest mb-8" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}>
+        <h1 className="font-serif text-3xl sm:text-4xl tracking-widest font-light mb-8">
           {tHeader('pageTitle')}
         </h1>
         <p className="font-serif text-sm sm:text-base leading-loose">
