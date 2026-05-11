@@ -231,3 +231,36 @@
 .booking-bar-toggle.collapsed::after {
   transform: rotate(-135deg) translateY(-2px); /* ∧ 朝上 */
 }
+
+/* ==========================================
+   YARL Lightbox — 优雅开启 & 图片载入动画
+   ========================================== */
+.yarl__container {
+  animation: yarl-backdrop-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes yarl-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 图片首次出现：轻微 scale-up + 淡入 */
+.yarl__slide_image {
+  animation: yarl-image-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes yarl-image-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 切换时图片：覆盖 YARL 默认，使用更平滑的 ease-out */
+.yarl__slide_current .yarl__slide_image {
+  animation: none;
+}

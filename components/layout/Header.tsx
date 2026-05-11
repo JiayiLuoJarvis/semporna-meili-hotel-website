@@ -71,6 +71,8 @@ export function Header() {
     { key: 'nav6', href: '/contact' },
   ] as const;
 
+  const isGallery = pathname === '/gallery';
+
   return (
     <>
       <header className="pointer-events-none fixed top-0 right-0 left-0 z-50 flex w-full flex-col">
@@ -79,11 +81,11 @@ export function Header() {
         {/* ======================= */}
         <nav
           className={`pointer-events-auto relative z-50 hidden w-full transition-all duration-700 lg:block ${
-            isScrolled
+            isScrolled || isGallery
               ? 'bg-primary py-3 shadow-sm backdrop-blur-sm text-white'
               : 'py-5 text-white'
           }`}
-          style={!isScrolled ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.85), transparent)' } : undefined}
+          style={!isScrolled && !isGallery ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.85), transparent)' } : undefined}
         >
           <div className="mx-auto flex max-w-350 items-center justify-between px-6 lg:px-20">
             {/* Logo */}

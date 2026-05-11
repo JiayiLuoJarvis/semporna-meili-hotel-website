@@ -1,7 +1,6 @@
 import GalleryThemes from '@/components/gallery/GalleryThemes';
-import GalleryVideo from '@/components/gallery/GalleryVideo';
-import GalleryCTA from '@/components/gallery/GalleryCTA';
-import { BookingBar } from '@/components/home/BookingBar';
+
+import GalleryPageHeader from '@/components/gallery/GalleryPageHeader';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 interface GalleryImage {
@@ -39,11 +38,12 @@ export default async function GalleryPage({ params }: Props) {
   const themes = tGallery.raw('Themes') as ThemeData[];
 
   return (
-    <main className="w-full flex-1 pt-17 sm:pt-20 lg:pt-21">
-      <GalleryThemes themes={themes} />
-      <GalleryVideo />
+    <main className="w-full flex-1">
+      <GalleryPageHeader
+        items={themes.map((t) => ({ id: t.id, title: t.title, subtitle: t.subtitle }))}
+      />
 
-      <GalleryCTA />
+      <GalleryThemes themes={themes} />
     </main>
   );
 }
