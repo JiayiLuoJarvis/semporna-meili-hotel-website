@@ -22,7 +22,7 @@ const fadeUp = {
 // 使用不同质感的高级实景图代表不同的团购场景
 const SCENE_IMAGES = [
   'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1200',
-  'https://images.unsplash.com/photo-1542314831-c6a4d14fff8e?auto=format&fit=crop&q=80&w=1200',
+  'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200',
   'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200'
 ];
 
@@ -39,7 +39,7 @@ export default function OffersMember() {
     { title: t('badge'), image: SCENE_IMAGES[2], paragraphs: [items[4], items[5]].filter(Boolean) }
   ].filter(scene => scene.paragraphs.length > 0);
   return (
-    <section id="group" className="bg-cream py-12 md:py-20 lg:py-28 overflow-hidden">
+    <section id="member" className="bg-warm-light py-12 md:py-20 lg:py-28 overflow-hidden">
       <div className="max-w-350 mx-auto">
         
         {/* 引言区：高对比度的极简排版 */}
@@ -50,7 +50,7 @@ export default function OffersMember() {
           >
             <h2 
               className="font-serif text-[--color-section-text] leading-[1.15] tracking-[0.04em] text-balance mb-8"
-              style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+              style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
             >
               {t('badge')}
             </h2>
@@ -84,12 +84,12 @@ export default function OffersMember() {
 
               {/* 取消罗列与数字，采用情绪化标题+正文段落组合 */}
               <div className="flex-1 flex flex-col">
-                <h3 className="font-serif text-xl md:text-2xl text-[--color-section-text] mb-5 md:mb-6 leading-tight">
+                <h3 className="font-serif text-sm md:text-base text-[--color-section-text] mb-5 md:mb-6 leading-tight">
                   {scene.title}
                 </h3>
                 <div className="w-8 h-px bg-[--color-gold-warm]/40 mb-4 md:mb-5 transition-all duration-500 group-hover:w-16" />
                 
-                <p className="font-sans text-[--color-warm-text] text-sm md:text-[0.95rem] leading-relaxed font-light">
+                <p className="font-sans text-[--color-warm-text] text-xs md:text-sm leading-relaxed font-light">
                   {scene.paragraphs.join('，')}
                 </p>
               </div>

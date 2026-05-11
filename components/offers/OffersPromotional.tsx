@@ -39,7 +39,7 @@ export default function OffersPromotional() {
     { title: t('badge'), image: SCENE_IMAGES[2], paragraphs: [items[4], items[5]].filter(Boolean) }
   ].filter(scene => scene.paragraphs.length > 0);
   return (
-    <section id="group" className="bg-cream py-12 md:py-20 lg:py-28 overflow-hidden">
+    <section id="offers" className="bg-white py-12 md:py-20 lg:py-28 overflow-hidden">
       <div className="max-w-350 mx-auto">
         
         {/* 引言区：高对比度的极简排版 */}
@@ -50,7 +50,7 @@ export default function OffersPromotional() {
           >
             <h2 
               className="font-serif text-[--color-section-text] leading-[1.15] tracking-[0.04em] text-balance mb-8"
-              style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+              style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
             >
               {t('badge')}
             </h2>
@@ -71,7 +71,7 @@ export default function OffersPromotional() {
               className="flex flex-col group w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center"
             >
               {/* 大比例沉浸式图片，不添加任何边框与阴影 */}
-              <div className="relative aspect-[3/4] sm:aspect-[4/3] md:aspect-[4/5] w-full overflow-hidden bg-muted mb-6 md:mb-10">
+              <div className="relative aspect-3/4 sm:aspect-4/3 md:aspect-4/5 w-full overflow-hidden bg-muted mb-6 md:mb-10">
                 <Image 
                   src={scene.image}
                   alt={scene.title}
@@ -84,12 +84,12 @@ export default function OffersPromotional() {
 
               {/* 取消罗列与数字，采用情绪化标题+正文段落组合 */}
               <div className="flex-1 flex flex-col">
-                <h3 className="font-serif text-xl md:text-2xl text-[--color-section-text] mb-5 md:mb-6 leading-tight">
+                <h3 className="font-serif text-sm md:text-base text-[--color-section-text] mb-5 md:mb-6 leading-tight">
                   {scene.title}
                 </h3>
                 <div className="w-8 h-px bg-[--color-gold-warm]/40 mb-4 md:mb-5 transition-all duration-500 group-hover:w-16" />
                 
-                <p className="font-sans text-[--color-warm-text] text-sm md:text-[0.95rem] leading-relaxed font-light">
+                <p className="font-sans text-[--color-warm-text] text-xs md:text-sm leading-relaxed font-light">
                   {scene.paragraphs.join('，')}
                 </p>
               </div>
@@ -112,7 +112,7 @@ export default function OffersPromotional() {
               href="https://wa.me/60112780399" 
               target="_blank" 
               rel="noreferrer"
-              className="group flex flex-shrink-0 items-center min-h-11 gap-4 text-sm tracking-[0.2em] text-[--color-gold-warm] uppercase transition-colors hover:text-[--color-section-text]"
+              className="group flex shrink-0 items-center min-h-11 gap-4 text-sm tracking-[0.2em] text-[--color-gold-warm] uppercase transition-colors hover:text-[--color-section-text]"
             >
               {t('ctaSub')}
               <ArrowRight className="w-5 h-5 transition-transform duration-500 ease-out group-hover:translate-x-2" />

@@ -38,8 +38,8 @@ export default function ContactFAQ() {
   const activeFaqs = categories[activeCategory]?.questions ?? [];
 
   return (
-    <section className="bg-cream py-20 md:py-32">
-      <div className="max-w-4xl mx-auto px-page">
+    <section className="bg-warm-light py-20 md:py-32">
+      <div className="max-w-5xl mx-auto px-page">
         <motion.div 
           custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -50px 0px' }}
           className="text-center mb-16 md:mb-20"
@@ -48,8 +48,8 @@ export default function ContactFAQ() {
             {t('label')}
           </span>
           <h2 
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-8" 
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+            className="font-serif text-[--color-section-text] leading-snug mb-8"
+            style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
           >
             {t('title')}
           </h2>

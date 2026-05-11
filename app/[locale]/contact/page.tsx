@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import ContactHero from '@/components/contact/ContactHero';
 import ContactForm from '@/components/contact/ContactForm';
 import ContactFAQ from '@/components/contact/ContactFAQ';
-import { BookingBar } from '@/components/home/BookingBar';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -20,8 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default function ContactPage() {
   return (
-    <main className="w-full flex-1 pt-17 sm:pt-20 lg:pt-21">
-      <BookingBar delayMs={2000} />
+    <main className="w-full flex-1">
       <ContactHero />
 
       <ContactForm />

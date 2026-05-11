@@ -59,7 +59,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="bg-warm-light py-20 md:py-32">
+    <section className="bg-white py-20 md:py-32">
       <div className="max-w-5xl mx-auto px-page">
 
         <motion.div
@@ -67,8 +67,8 @@ export default function ContactForm() {
           className="text-center mb-16 md:mb-20"
         >
           <h2
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-6"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.5rem)', letterSpacing: '0.04em' }}
+            className="font-serif text-[--color-section-text] leading-snug mb-6"
+            style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)', letterSpacing: '0.04em' }}
           >
             {t('title')}
           </h2>
@@ -83,7 +83,7 @@ export default function ContactForm() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <p className="font-serif text-[--color-section-text] mb-6" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}>
+            <p className="font-serif text-[--color-section-text] mb-6" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}>
               {t('successMsg')}
             </p>
             <p className="font-sans text-[--color-warm-text] mb-12 text-sm md:text-base">

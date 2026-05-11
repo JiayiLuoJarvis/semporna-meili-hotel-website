@@ -10,7 +10,6 @@ const SECTIONS = [
   { id: 'group', key: 'group' as const },
   { id: 'member', key: 'member' as const },
   { id: 'offers', key: 'promotional' as const },
-  { id: 'contact-form', key: 'contact' as const },
 ] as const;
 
 export default function OffersHeader() {
@@ -69,7 +68,7 @@ export default function OffersHeader() {
         <span className="font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase block mb-5">
           {tHeader('pageTag')}
         </span>
-        <h1 className="font-serif text-3xl sm:text-4xl tracking-widest font-light mb-8">
+        <h1 className="font-serif font-light tracking-widest mb-8" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}>
           {tHeader('pageTitle')}
         </h1>
         <p className="font-serif text-sm sm:text-base leading-loose">
