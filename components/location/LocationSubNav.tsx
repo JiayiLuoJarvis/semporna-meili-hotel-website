@@ -1,26 +1,16 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useLenis } from 'lenis/react';
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
 
 const SECTIONS = [
-  { id: 'location-culture', key: 'culture' as const, en: 'Culture' },
-  { id: 'location-transport', key: 'transport' as const, en: 'Getting Here' },
-  { id: 'location-info', key: 'info' as const, en: 'Need to Know' },
+  { id: 'location-culture', key: 'culture' as const },
+  { id: 'location-transport', key: 'transport' as const },
+  { id: 'location-info', key: 'info' as const },
 ] as const;
-
-const navContainer = {
-  initial: {},
-  animate: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-};
-
-const navItem = {
-  initial: { opacity: 0, y: 10 },
-  animate: { opacity: 1, y: 0 },
-};
 
 export default function LocationSubNav() {
   const t = useTranslations('Location.nav');
@@ -49,96 +39,94 @@ export default function LocationSubNav() {
     return () => observer.disconnect();
   }, []);
 
-  const handleClick = (id: string) => {
+  const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
-    const offset = -80;
+    const offset = -60;
     if (lenis) {
       lenis.scrollTo(el, {
         offset,
-        duration: 1.4,
-        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 1.2,
+        easing: (x: number) => Math.min(1, 1.001 - Math.pow(2, -10 * x)),
       });
     } else {
-      const top = el.getBoundingClientRect().top + window.scrollY + offset;
-      window.scrollTo({ top, behavior: 'smooth' });
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY + offset, behavior: 'smooth' });
     }
   };
 
-  const labels: Record<string, string> = {
-    culture: t('culture'),
-    transport: t('transport'),
-    info: t('info'),
-  };
-
   return (
-    <div className="bg-primary">
-      {/* Header 高度占位 */}
-      <div style={{ height: 'var(--header-height, 72px)' }} />
+    <div className="bg-primary w-full px-page pt-28 pb-12 text-white text-center flex flex-col items-center">
+      
+      {/* 顶部：标题与描述区（完美居中对称） */}
+      <motion.div 
+        className="max-w-2xl flex flex-col items-center mb-10"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <span className="font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase block mb-5">
+          {t('pageTag')}
+        </span>
+        <h1 className="font-serif text-3xl sm:text-4xl tracking-widest font-light mb-8">
+          {t('pageTitle')}
+        </h1>
+        <p className="font-serif text-sm sm:text-base leading-loose">
+          {t('description')}
+        </p>
+      </motion.div>
 
-      {/* Sub-nav */}
-      <nav aria-label="位置页内导航">
-        <motion.div
-          className="px-page flex flex-wrap items-center justify-center"
-          variants={navContainer}
-          initial="initial"
-          animate="animate"
-        >
-          {SECTIONS.map(({ id, key, en }, idx) => {
-            const isActive = active === id;
-            return (
-              <motion.span
-                key={id}
-                className="flex shrink-0 items-center"
-                variants={navItem}
-                transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-              >
-                {idx > 0 && (
-                  <span
-                    className="mx-4 font-sans text-xs text-white select-none sm:mx-8 lg:mx-12"
-                    aria-hidden="true"
-                  >
-                    •
-                  </span>
+      {/* 中部：地址及联系信息 */}
+      <motion.div 
+        className="flex flex-col items-center gap-4 mb-20"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        <p className="font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light">
+          {t('address')}
+        </p>
+        <div className="flex items-center gap-10 mt-1">
+          <a
+            href={`tel:${t('phone')}`}
+            className="font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light hover:underline underline-offset-4"
+          >
+            {t('phone')}
+          </a>
+          <button className="font-sans text-[10px] sm:text-xs tracking-[0.2em] uppercase font-light hover:underline underline-offset-4">
+            {t('map')}
+          </button>
+        </div>
+      </motion.div>
+
+      {/* 最底部：导航菜单（去数字、取消圆点，保留最纯净下划线） */}
+      <motion.nav 
+        className="flex flex-col sm:flex-row items-center justify-center gap-10 sm:gap-24 mb-4"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+      >
+        {SECTIONS.map((sec) => {
+          const isActive = active === sec.id;
+          return (
+            <button
+              key={sec.id}
+              onClick={() => scrollToSection(sec.id)}
+              className="relative pb-2 group focus-visible:outline-none"
+            >
+              <span className="font-sans text-xs sm:text-sm tracking-[0.25em] uppercase">
+                {t(sec.key)}
+              </span>
+              <span 
+                className={clsx(
+                  "absolute bottom-0 left-0 h-px bg-white transition-all duration-300",
+                  isActive ? "w-full" : "w-0 group-hover:w-full"
                 )}
-
-                <button
-                  onClick={() => handleClick(id)}
-                  className="group relative flex cursor-pointer flex-col items-center gap-1.5 pt-6 pb-8 focus-visible:outline-none sm:gap-2 sm:pt-8 sm:pb-10"
-                >
-                  {/* 中文主标签 */}
-                  <span
-                    className={clsx(
-                      'font-sans text-sm tracking-[0.2em] whitespace-nowrap transition-colors duration-300 sm:text-base',
-                      isActive ? 'text-white' : 'text-white group-hover:text-white',
-                    )}
-                  >
-                    {labels[key]}
-                  </span>
-
-                  {/* 英文副标签 */}
-                  <span
-                    className={clsx(
-                      'font-sans text-[0.5rem] tracking-[0.25em] whitespace-nowrap uppercase transition-colors duration-300 sm:text-[0.55rem]',
-                      isActive ? 'text-white' : 'text-white group-hover:text-white',
-                    )}
-                  >
-                    {en}
-                  </span>
-
-                  {/* 激活指示线 */}
-                  <span
-                    className={clsx(
-                      'absolute bottom-4 left-1/2 h-px -translate-x-1/2 bg-white transition-all duration-500 sm:bottom-5',
-                      isActive ? 'w-6 opacity-100' : 'w-0 opacity-0',
-                    )}
-                  />
-                </button>
-              </motion.span>
-            );
-          })}
-        </motion.div>
-      </nav>
+              />
+            </button>
+          );
+        })}
+      </motion.nav>
     </div>
   );
 }
+

@@ -173,6 +173,11 @@
     ]
   },
   "Offers": {
+    "header": {
+      "pageTag": "SPECIAL OFFERS",
+      "pageTitle": "优惠精选",
+      "description": "从团体专属礼遇到会员尊享权益，每一份方案都为您量身定制，让您的仙本那之旅更加难忘。"
+    },
     "nav": {
       "group": "团购专属",
       "member": "会员专享",
