@@ -1,6 +1,7 @@
 ﻿import LocationSubNav from '@/components/location/LocationSubNav';
 import LocationCulture from '@/components/location/LocationCulture';
-import LocationArrival from '@/components/location/LocationArrival';
+import LocationTransport from '@/components/location/LocationTransport';
+import LocationNeedToKnow from '@/components/location/LocationNeedToKnow';
 
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
@@ -24,7 +25,8 @@ export default function LocationPage() {
     <main className="w-full flex-1">
       <LocationSubNav />
       <LocationCulture />
-      <LocationArrival />
+      <LocationTransport />
+      <LocationNeedToKnow />
     </main>
   );
 }

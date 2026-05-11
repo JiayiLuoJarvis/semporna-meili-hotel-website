@@ -8,7 +8,8 @@ import { motion } from 'framer-motion';
 
 const SECTIONS = [
   { id: 'location-culture', key: 'culture' as const, en: 'Culture' },
-  { id: 'location-arrival', key: 'transport' as const, en: 'Getting Here' },
+  { id: 'location-transport', key: 'transport' as const, en: 'Getting Here' },
+  { id: 'location-info', key: 'info' as const, en: 'Need to Know' },
 ] as const;
 
 const navContainer = {
@@ -67,6 +68,7 @@ export default function LocationSubNav() {
   const labels: Record<string, string> = {
     culture: t('culture'),
     transport: t('transport'),
+    info: t('info'),
   };
 
   return (

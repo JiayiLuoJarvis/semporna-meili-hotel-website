@@ -27,29 +27,30 @@ export default function LocationNeedToKnow() {
   return (
     <section
       id="location-info"
-      className="bg-white pt-24 sm:pt-32 md:pt-40 pb-24 sm:pb-32 md:pb-40"
+      className="bg-background pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28"
     >
-      <div ref={ref} className="px-page max-w-4xl mx-auto flex flex-col">
+      <div ref={ref} className="px-page mx-auto max-w-350 flex flex-col">
+        <div className="max-w-4xl">
 
         <motion.div
           custom={0}
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="mb-16 sm:mb-24 flex flex-col items-center text-center"
+          className="mb-12 sm:mb-16 flex flex-col"
         >
-          <span className="font-serif italic text-[--color-section-text]/30 text-2xl sm:text-3xl mb-6">
+          <span className="font-serif italic text-[--color-section-text]/30 text-base mb-4 block uppercase tracking-widest">
             {t('essentialInfo.tag')}
           </span>
           <h2
             className="font-serif text-[--color-section-text] leading-[1.15]"
-            style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+            style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
           >
             {t('essentialInfo.title')}
           </h2>
         </motion.div>
 
-        <div className="flex flex-col gap-12 sm:gap-16 w-full text-left border-t border-[--color-section-text]/10 pt-16 sm:pt-20">
+        <div className="flex flex-col gap-10 sm:gap-12 w-full text-left border-t border-[--color-section-text]/10 pt-12 sm:pt-16">
           {items.map((item, index) => (
             <motion.div
               key={item.heading}
@@ -59,7 +60,10 @@ export default function LocationNeedToKnow() {
               animate={inView ? 'visible' : 'hidden'}
               className="flex flex-col md:flex-row gap-4 md:gap-16"
             >
-              <h3 className="font-serif text-lg sm:text-xl text-[--color-section-text] w-full md:w-1/3 shrink-0 pt-1">
+              <h3
+                className="font-serif text-[--color-section-text] w-full md:w-1/3 shrink-0 pt-1"
+                style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)' }}
+              >
                 {item.heading}
               </h3>
               <p className="font-sans text-sm sm:text-base text-[--color-section-text]/75 leading-relaxed md:w-2/3">
@@ -68,7 +72,7 @@ export default function LocationNeedToKnow() {
             </motion.div>
           ))}
         </div>
-        
+        </div>
       </div>
     </section>
   );

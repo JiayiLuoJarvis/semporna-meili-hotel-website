@@ -26,15 +26,15 @@ export default function LocationTransport() {
   return (
     <section
       id="location-transport"
-      className="bg-cream pt-20 sm:pt-28 md:pt-36 pb-20 sm:pb-28 md:pb-36"
+      className="bg-cream pt-16 sm:pt-20 md:pt-28 pb-16 sm:pb-20 md:pb-28"
     >
-      <div ref={ref} className="px-page max-w-6xl mx-auto flex flex-col items-center">
+      <div ref={ref} className="px-page mx-auto max-w-350 flex flex-col">
         <motion.div
           custom={0}
           variants={fadeUp}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="flex flex-col items-center text-center mb-16 sm:mb-24 md:mb-32"
+          className="flex flex-col items-center text-center mb-12 sm:mb-16 md:mb-20"
         >
           <h2
             className="font-serif text-[--color-section-text] leading-[1.15] mb-6"
@@ -47,13 +47,16 @@ export default function LocationTransport() {
           </p>
         </motion.div>
 
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-16">
+        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 lg:gap-16 max-w-4xl mx-auto">
           
           <motion.div custom={0.1} variants={fadeUp} initial="hidden" animate={inView ? 'visible' : 'hidden'} className="flex flex-col items-center text-center">
             <span className="font-serif italic text-3xl sm:text-4xl text-[--color-section-text]/20 mb-6">
               01
             </span>
-            <h3 className="font-serif text-[--color-section-text] text-xl sm:text-2xl mb-4">
+            <h3
+              className="font-serif text-[--color-section-text] mb-4"
+              style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}
+            >
               {t('arrival.stage1Label')}
             </h3>
             <p className="font-sans text-[--color-section-text]/75 text-sm leading-loose max-w-70 md:max-w-none lg:px-4">
@@ -65,7 +68,10 @@ export default function LocationTransport() {
             <span className="font-serif italic text-3xl sm:text-4xl text-[--color-section-text]/20 mb-6">
               02
             </span>
-            <h3 className="font-serif text-[--color-section-text] text-xl sm:text-2xl mb-4">
+            <h3
+              className="font-serif text-[--color-section-text] mb-4"
+              style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}
+            >
               {t('arrival.stage2Label')}
             </h3>
             <p className="font-sans text-[--color-section-text]/75 text-sm leading-loose max-w-70 md:max-w-none lg:px-4">
@@ -77,7 +83,10 @@ export default function LocationTransport() {
             <span className="font-serif italic text-3xl sm:text-4xl text-[--color-section-text]/20 mb-6">
               03
             </span>
-            <h3 className="font-serif text-[--color-section-text] text-xl sm:text-2xl mb-4">
+            <h3
+              className="font-serif text-[--color-section-text] mb-4"
+              style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)' }}
+            >
               {t('arrival.stage3Label')}
             </h3>
             <p className="font-sans text-[--color-section-text]/75 text-sm leading-loose max-w-70 md:max-w-none lg:px-4">
