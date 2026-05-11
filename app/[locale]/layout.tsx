@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import '../globals.css';
 
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import SmoothScrolling from '@/components/SmoothScrolling';
@@ -42,7 +42,8 @@ export default async function RootLayout({
   if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
-  
+
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (
