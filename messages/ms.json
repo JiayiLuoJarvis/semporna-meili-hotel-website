@@ -177,7 +177,10 @@
     "header": {
       "pageTag": "TAWARAN ISTIMEWA",
       "pageTitle": "Tawaran",
-      "description": "Daripada eksklusif kumpulan kepada keistimewaan ahli — setiap tawaran direka untuk menjadikan percutian Semporna anda benar-benar luar biasa."
+      "description": "Daripada eksklusif kumpulan kepada keistimewaan ahli — setiap tawaran direka untuk menjadikan percutian Semporna anda benar-benar luar biasa.",
+      "directBookText": "Tempah terus untuk jaminan harga terbaik dan manfaat ahli eksklusif.",
+      "bookNowBtn": "Tempah Sekarang",
+      "contactBtn": "Hubungi Kami"
     },
     "nav": {
       "group": "Tawaran Kumpulan",
@@ -864,7 +867,9 @@
   },
   "BookingPage": {
     "hero": {
-      "title": "Meili Resort Vila & Suite",
+      "pageTag": "VILLAS & SUITES",
+      "title": "Vila & Suite",
+      "quote": "Terapung di atas laut jernih, di mana ombak berbisik dan masa berhenti",
       "description": "Menetap di vila atas air yang dibina daripada kayu besi BELIAN berusia ratusan tahun, terapung di atas Segitiga Terumbu Karang. Segalanya telah disediakan — sajian penuh harian, pengangkutan pergi-balik, dan butler peribadi 24-jam — agar anda bebas menikmati ketenangan laut yang jernih ini."
     },
     "tabs": {

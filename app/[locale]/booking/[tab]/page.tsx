@@ -35,7 +35,6 @@ export default async function BookingTabPage({
   return (
     <main className="flex flex-col min-h-screen bg-background">
       <BookingPageHeader />
-      <BookingBar delayMs={2000} />
       <BookingRoomList tab={tab as Tab} />
       <BookingAmenities />
       <BookingPolicies />

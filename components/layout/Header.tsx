@@ -64,7 +64,7 @@ export function Header() {
 
   const navItems = [
     { key: 'nav1', href: '/' },
-    { key: 'nav2', href: '/booking' },
+    { key: 'nav2', href: '/booking/all' },
     { key: 'nav3', href: '/gallery' },
     { key: 'nav4', href: '/location' },
     { key: 'nav5', href: '/offers' },
@@ -83,7 +83,7 @@ export function Header() {
               ? 'bg-primary py-3 shadow-sm backdrop-blur-sm text-white'
               : 'py-5 text-white'
           }`}
-          style={!isScrolled ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.92), rgba(0,47,86,0.45))' } : undefined}
+          style={!isScrolled ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.85), transparent)' } : undefined}
         >
           <div className="mx-auto flex max-w-350 items-center justify-between px-6 lg:px-20">
             {/* Logo */}

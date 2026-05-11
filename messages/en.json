@@ -177,7 +177,10 @@
     "header": {
       "pageTag": "SPECIAL OFFERS",
       "pageTitle": "Offers",
-      "description": "From group exclusives to member privileges — every offer is crafted to make your Semporna escape truly unforgettable."
+      "description": "From group exclusives to member privileges — every offer is crafted to make your Semporna escape truly unforgettable.",
+      "directBookText": "Book direct for our best rate guarantee and exclusive member benefits.",
+      "bookNowBtn": "Book Now",
+      "contactBtn": "Contact Us"
     },
     "nav": {
       "group": "Group Deals",
@@ -864,7 +867,9 @@
   },
   "BookingPage": {
     "hero": {
-      "title": "Meili Resort Villas & Suites",
+      "pageTag": "VILLAS & SUITES",
+      "title": "Villas & Suites",
+      "quote": "Suspended above the crystal sea, where the tide whispers and time stands still",
       "description": "Settle into an overwater villa of ancient BELIAN ironwood, suspended above the heart of the Coral Triangle. Everything is taken care of — full-board dining, roundtrip transfers, and a 24-hour personal butler — so all that remains is to lose yourself in the crystalline sea."
     },
     "tabs": {

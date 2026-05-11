@@ -1,21 +1,34 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 
 export function BookingPageHeader() {
   const t = useTranslations('BookingPage.hero');
 
   return (
-    <section className="bg-primary text-white pt-32 pb-16 md:pt-40 md:pb-24 px-page text-center flex flex-col items-center justify-center">
-      <div className="max-w-4xl mx-auto space-y-6">
-        <h1
-          className="font-serif leading-[1.05] tracking-[0.04em]"
-          style={{ fontSize: 'clamp(1.8rem, 4vw, 4rem)' }}
-        >
+    <section className="bg-primary w-full px-page pt-28 pb-12 text-white text-center flex flex-col items-center">
+      <motion.div
+        className="max-w-2xl flex flex-col items-center"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <span className="font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase block mb-5">
+          {t('pageTag')}
+        </span>
+        <h1 className="font-serif text-3xl sm:text-4xl tracking-widest font-light mb-8">
           {t('title')}
         </h1>
-        <p className="font-text text-white max-w-2xl mx-auto text-sm md:text-base leading-relaxed opacity-90">
+        <motion.p
+          className="font-serif text-sm sm:text-base leading-loose"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           {t('description')}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
     </section>
   );
 }

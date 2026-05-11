@@ -176,7 +176,10 @@
     "header": {
       "pageTag": "SPECIAL OFFERS",
       "pageTitle": "优惠精选",
-      "description": "从团体专属礼遇到会员尊享权益，每一份方案都为您量身定制，让您的仙本那之旅更加难忘。"
+      "description": "从团体专属礼遇到会员尊享权益，每一份方案都为您量身定制，让您的仙本那之旅更加难忘。",
+      "directBookText": "直接预订，享受最优价格保证及会员专属礼遇",
+      "bookNowBtn": "立即预订",
+      "contactBtn": "联系顾问"
     },
     "nav": {
       "group": "团购专属",
@@ -858,7 +861,9 @@
   },
   "BookingPage": {
     "hero": {
-      "title": "美丽度假酒店别苑与套房",
+      "pageTag": "VILLAS & SUITES",
+      "title": "别墅与套房",
+      "quote": "悬于玻璃海之上，在潮声与星光之间，时间悄然静止",
       "description": "居于百年 BELIAN 铁木筑就的海上别墅，凌空俯瞰珊瑚金三角的万千海色。全包套餐已为您备好一切——每日三餐与下午茶、往返专属接送、24 小时贴身管家——让您只需沉醉于这片玻璃海之上的无忧时光。"
     },
     "tabs": {
