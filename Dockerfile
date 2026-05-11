@@ -13,7 +13,10 @@ RUN corepack enable
 FROM base AS deps
 WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml* .npmrc* ./
-RUN pnpm install --frozen-lockfile
+# pnpm v10 默认阻止未批准包的 build scripts；
+# 先 --ignore-scripts 安装全部依赖，再显式 rebuild 需要原生编译的包
+RUN pnpm install --frozen-lockfile --ignore-scripts && \
+    pnpm rebuild @parcel/watcher @swc/core sharp
 
 # 2. Builder: Rebuild the source code only when needed
 FROM base AS builder
