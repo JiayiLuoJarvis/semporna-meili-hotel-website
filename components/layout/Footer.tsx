@@ -42,58 +42,47 @@ export function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative overflow-hidden py-10 md:py-16"
-      style={{ backgroundColor: 'var(--color-primary)', color: 'white' }}
+      className="relative overflow-hidden py-10 md:py-16 bg-primary text-white"
     >
       {/* 装饰性背景 */}
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(0,0,0,0.2)_100%)] pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-350 px-6 md:px-12 lg:px-20">
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12 lg:px-20">
         
-        {/* 顶部: Logo & Newsletter */}
-        <div className="flex flex-col md:flex-row items-start justify-between gap-16 mb-20 md:mb-28">
-          
-          <motion.div 
-            custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="flex flex-col max-w-sm"
-          >
-            <h2 className="font-serif text-3xl md:text-5xl tracking-wide text-white leading-tight mb-2">
-              MEILI
-            </h2>
-            <span className="font-sans text-xs uppercase tracking-[0.4em] text-white mb-8 block">
-              RESORT HOTEL
-            </span>
-            <p className="font-sans text-sm font-light leading-relaxed text-white">
-              {t('address')}
-            </p>
-          </motion.div>
-
-          <motion.div 
+        {/* 顶部: 预定联系方式 */}
+        <div className="w-full mb-16 md:mb-20">
+          <motion.div
             custom={0.1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="w-full md:w-auto relative"
+            className="w-full bg-white flex flex-col md:flex-row p-6 md:p-8 lg:p-12 items-center"
           >
-            <h3 className="font-sans text-xs font-semibold tracking-[0.25em] uppercase text-white mb-6">
-              {t('newsletter')}
-            </h3>
-            <p className="font-sans text-sm font-light text-white mb-6 max-w-sm">
-              {t('newsletterDesc')}
-            </p>
-            <div className="flex border-b border-white/20 pb-2 transition-colors focus-within:border-white/60 group">
-              <input 
-                type="email" 
-                placeholder={t('emailPlaceholder')}
-                className="bg-transparent flex-1 text-sm font-light text-white placeholder:text-white focus:outline-none"
-              />
-              <button 
-                type="button" 
-                className="text-white hover:text-white transition-colors px-2"
-                aria-label={t('subscribe')}
-              >
-                <ArrowRight size={16} strokeWidth={1.5} />
-              </button>
+            {/* 左侧：文字说明 */}
+            <div className="w-full md:w-1/2 flex flex-col mb-8 md:mb-0 md:pr-10 lg:pr-16 md:border-r border-black/10">
+              <h4 className="font-sans text-[13px] md:text-sm font-bold tracking-[0.15em] leading-relaxed mb-4 text-black max-w-70">
+                {t('contactHeadline')}
+              </h4>
+              <p className="font-sans text-[10px] md:text-xs font-light tracking-wide text-black/70 leading-[1.8] max-w-sm">
+                {t('contactDesc')}
+              </p>
+            </div>
+
+            {/* 右侧：联系方式行动点 */}
+            <div className="w-full md:w-1/2 flex flex-col md:pl-10 lg:pl-16">
+              {[
+                { label: t('ctaEmailLabel'), href: `mailto:${t('col3.link1')}` },
+                { label: t('ctaPhoneLabel'), href: `tel:${t('col3.link2').replace(/\s/g, '')}` },
+                { label: t('ctaChatLabel'), href: '/contact' },
+              ].map(({ label, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  className="group flex items-center justify-between py-3 md:py-4 border-b border-black/10 last:border-b-0 font-sans text-xs md:text-[13px] font-medium tracking-widest text-black hover:text-black/60 transition-colors duration-300"
+                >
+                  <span>{label}</span>
+                  <ArrowRight size={14} strokeWidth={1.5} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </a>
+              ))}
             </div>
           </motion.div>
-
         </div>
 
         {/* 中部: 4列导航 */}
@@ -111,7 +100,7 @@ export function Footer() {
                   <li key={link}>
                     <Link
                       href="/"
-                      className="group inline-flex items-center font-sans text-sm font-light text-white transition-colors duration-300 hover:text-white"
+                      className="group inline-flex items-center font-sans text-sm font-light text-white transition-colors duration-300"
                     >
                       <span className="relative overflow-hidden">
                         {link}
@@ -146,7 +135,7 @@ export function Footer() {
               <Link
                 key={item}
                 href="/"
-                className="font-sans text-[10px] sm:text-xs font-light uppercase tracking-widest text-white transition-colors duration-300 hover:text-white"
+                className="font-sans text-[10px] sm:text-xs font-light uppercase tracking-widest text-white transition-colors duration-300"
               >
                 {item}
               </Link>

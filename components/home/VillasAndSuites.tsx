@@ -86,8 +86,8 @@ export function VillasAndSuites() {
   }, [emblaApi, onSelect]);
 
   return (
-    <section id="villas" className="w-full overflow-hidden bg-background py-20 md:py-32">
-      <div className="mx-auto max-w-350 px-page mb-10 text-center sm:mb-16">
+    <section id="villas" className="w-full overflow-hidden bg-background py-12 md:py-20">
+      <div className="mx-auto max-w-350 px-page mb-8 text-center sm:mb-12">
         <h2 className="mb-4 font-serif font-light italic tracking-wide text-[--color-section-text]" style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}>
           {t('subtitle')}
         </h2>
@@ -132,7 +132,7 @@ export function VillasAndSuites() {
                     </div>
 
                     <div className="flex flex-1 flex-col items-center p-6 text-center md:p-8">
-                      <h3 className="font-serif text-base font-bold text-[--color-section-text] md:text-lg">
+                      <h3 className="font-serif text-base font-light text-[--color-section-text] md:text-lg">
                         {room.title}
                       </h3>
 
