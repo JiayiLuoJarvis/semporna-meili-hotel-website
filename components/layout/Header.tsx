@@ -103,10 +103,11 @@ export function Header() {
             {/* Desktop Nav Links */}
             <div className="flex items-center gap-7 lg:gap-9">
               {navItems.map((item) => {
+                const basePath = item.href === '/booking/all' ? '/booking' : item.href;
                 const isActive =
-                  item.href === '/'
+                  basePath === '/'
                     ? pathname === '/'
-                    : pathname === item.href || pathname.startsWith(`${item.href}/`);
+                    : pathname === basePath || pathname.startsWith(`${basePath}/`);
                 return (
                   <Link
                     key={item.key}
