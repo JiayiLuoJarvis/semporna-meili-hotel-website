@@ -18,7 +18,7 @@ export default function Loading() {
             cx="100"
             cy="100"
             r="92"
-            stroke="#003865"
+            stroke="#002f56"
             strokeWidth="1"
             strokeLinecap="round"
             strokeDasharray="433 145"

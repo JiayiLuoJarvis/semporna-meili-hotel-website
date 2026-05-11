@@ -8,7 +8,7 @@
 
 客户要求第一屏高度还原高奢度假村官网体验，核心细节如下：
 
-1. **顶部导航栏 (Header) 与粘性交互**：导航栏使用粘性吸顶布局 (`fixed` 或 `sticky` + `top-0 z-50`)。初始在顶部时背景拟态化（`bg-[#003865]/60 backdrop-blur-md`）；当用户任意向下滚动后，必须增加一层优雅的底部阴影（Box-shadow），从视觉上与下面滚动的图层形成分离感。
+1. **顶部导航栏 (Header) 与粘性交互**：导航栏使用粘性吸顶布局 (`fixed` 或 `sticky` + `top-0 z-50`)。初始在顶部时背景拟态化（`bg-[#002f56]/60 backdrop-blur-md`）；当用户任意向下滚动后，必须增加一层优雅的底部阴影（Box-shadow），从视觉上与下面滚动的图层形成分离感。
 2. **预订搜索栏 (Booking Bar)**：拟态化毛玻璃效果。背景带有垂直线性渐变及模糊处理。包含日期选区、宾客选区、促销代码及“查看房价”按钮。
 3. **背景层 (Background)**：全尺寸自适应全屏。目前暂无视频，先让 v0 自动生成高清海岛图片作为背景。
 4. **左下角文案区 (Typography)**：包含酒店次级标题、巨大视觉冲击力的沉浸式大标题（Serif 字体）及白色的联系方式（带文本阴影以防看不清）。
@@ -37,7 +37,7 @@ Requirements must be strictly followed, ensuring pixel-perfect responsive design
 
 **2. Top Header (Navigation):**
 - Pinned at the top. Left: Resort Name "MEILI RESORT". Right/Center: Nav links (Overview, Villas & Suites, Photos, Location, Offers).
-- **Background Material (Crucial):** Do NOT use solid black. Use a deep ocean blue with glassmorphism: `bg-[#003865]/60 backdrop-blur-md`. White elegant text.
+- **Background Material (Crucial):** Do NOT use solid black. Use a deep ocean blue with glassmorphism: `bg-[#002f56]/60 backdrop-blur-md`. White elegant text.
 
 **3. Booking Bar (Below Header):**
 - A horizontal floating bar right beneath the header.

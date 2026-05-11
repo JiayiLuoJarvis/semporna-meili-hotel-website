@@ -51,7 +51,7 @@
 大海是最核心的视觉语言。设计原则：
 - 摄影优先——图片永远是主角，UI 是容器
 - 全宽铺满（edge-to-edge），不要用边框或 padding 把大图"框住"
-- 主色 `--color-primary`（深海蓝 `#003865`）和辅色 `--color-accent`（天空蓝 `#0091da`）都来自这片海，保持色彩系统与场景的一致性
+- 主色 `--color-primary`（深海蓝 `#002f56`）和辅色 `--color-accent`（天空蓝 `#0091da`）都来自这片海，保持色彩系统与场景的一致性
 - 深色区块（`--color-villas-bg`）模拟深夜海面，让页面有"入水"的沉浸感
 
 #### 支柱二：木质奢华感（BELIAN Warmth）
@@ -173,7 +173,7 @@ Hero 全宽图 → 文字内容区（cream/about-bg 浅色基底）→ 全宽图
 
 | CSS 变量 | 色值 | Tailwind 类 | 用途 |
 |---|---|---|---|
-| `--color-primary` | `#003865` 深海蓝 | `bg-primary` / `text-primary` | 导航背景、主按钮底色、品牌主色 |
+| `--color-primary` | `#002f56` 深海蓝 | `bg-primary` / `text-primary` | 导航背景、主按钮底色、品牌主色 |
 | `--color-primary-light` | `#004d8a` | `bg-primary-light` | 主按钮 hover 态 |
 | `--color-primary-dark` | `#001f3f` | `bg-primary-dark` / `text-primary-dark` | 深色标题、强调色 |
 | `--color-accent` | `#0091da` 天空蓝 | `text-accent` / `bg-accent` | 链接、标题蓝色强调行、图标 hover |
