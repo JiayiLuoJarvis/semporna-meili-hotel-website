@@ -34,10 +34,10 @@ export function BookingRoomList({ tab }: Props) {
   ];
 
   return (
-    <section className="bg-background py-20 sm:py-28 md:py-36 px-page">
+    <section className="bg-background py-12 md:py-20 px-page">
       <div className="max-w-4xl mx-auto">
         {/* Tabs — left-aligned, pipe separators */}
-        <nav className="flex items-center mb-14 md:mb-20">
+        <nav className="flex items-center mb-10 md:mb-14">
           {tabs.flatMap((tabItem, i, arr) => {
             const link = (
               <Link

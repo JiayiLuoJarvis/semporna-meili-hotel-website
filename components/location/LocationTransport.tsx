@@ -73,7 +73,7 @@ export default function LocationTransport() {
           </span>
           <h2
             className="font-serif italic font-light text-[--color-section-text] leading-[1.15]"
-            style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)' }}
+            style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
           >
             {t('title')}
           </h2>

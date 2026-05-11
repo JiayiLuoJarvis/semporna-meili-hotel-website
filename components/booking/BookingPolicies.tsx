@@ -14,8 +14,8 @@ export function BookingPolicies() {
     <section id="policies" className="py-20 md:py-32 px-page bg-background">
       <div className="max-w-4xl mx-auto">
         <h2
-          className="font-serif leading-[1.15] text-[--color-section-text] tracking-wide mb-10 text-center"
-          style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+          className="font-serif italic font-light leading-[1.15] text-[--color-section-text] tracking-wide mb-10 text-center"
+          style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
         >{t('title')}</h2>
         
         <div className="flex items-center justify-center gap-2 text-xs text-[--color-warm-text] tracking-[0.2em] uppercase mb-14">

@@ -95,8 +95,8 @@ export function BookingRoomCard({ index, size, capacity, bedding }: BookingRoomC
       {/* Content */}
       <div className="p-6 md:p-8 flex flex-col flex-grow">
         <h3
-          className="font-serif leading-tight text-[--color-section-text] tracking-wide mb-3"
-          style={{ fontSize: 'clamp(1.2rem, 2.5vw, 1.8rem)' }}
+          className="font-serif font-light leading-tight text-[--color-section-text] tracking-wide mb-3"
+          style={{ fontSize: 'clamp(1.25rem, 2vw, 1.5rem)' }}
         >
           {title}
         </h3>

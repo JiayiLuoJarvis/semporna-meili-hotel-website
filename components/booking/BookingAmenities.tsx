@@ -18,8 +18,8 @@ export function BookingAmenities() {
       <div className="max-w-4xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12 md:mb-16">
           <h2
-            className="font-serif leading-[1.15] text-[--color-section-text] tracking-wide"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
+            className="font-serif italic font-light leading-[1.15] text-[--color-section-text] tracking-wide"
+            style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
           >{t('title')}</h2>
           <button className="text-[--color-section-text] border-b border-[--color-section-text] pb-1 text-sm mt-6 md:mt-0 font-sans tracking-widest uppercase hover:text-primary-dark hover:border-primary-dark transition-colors">
             {t('viewAll')}
