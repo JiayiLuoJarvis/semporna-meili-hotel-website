@@ -40,8 +40,6 @@ export default async function GalleryPage({ params }: Props) {
 
   return (
     <main className="w-full flex-1 pt-17 sm:pt-20 lg:pt-21">
-      <BookingBar delayMs={2000} />
-
       <GalleryThemes themes={themes} />
       <GalleryVideo />
 
