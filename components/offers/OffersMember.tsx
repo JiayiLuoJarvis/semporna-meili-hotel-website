@@ -1,125 +1,155 @@
 'use client';
 
+import { useRef, useCallback, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 30 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1,
+      duration: 0.8,
       delay,
-      ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     },
   }),
 };
 
-// 使用不同质感的高级实景图代表不同的团购场景
-const SCENE_IMAGES = [
+const IMAGES = [
   'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1200',
   'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200',
-  'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200'
+  'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200',
 ];
 
 export default function OffersMember() {
   const t = useTranslations('OffersMember');
-  
-  // 巧妙利用现有的 translation keys，将其进行重组，融入到无边框的画报式卡片中
-  // 摒弃 01、02 的冰冷合同式罗列，改为“场景-体验”式的叙事
-  const items = (t.raw('items') || []) as string[];
-  
-  const scenes = [
-    { title: t('badge'), image: SCENE_IMAGES[0], paragraphs: [items[0], items[1]].filter(Boolean) },
-    { title: t('badge'), image: SCENE_IMAGES[1], paragraphs: [items[2], items[3]].filter(Boolean) },
-    { title: t('badge'), image: SCENE_IMAGES[2], paragraphs: [items[4], items[5]].filter(Boolean) }
-  ].filter(scene => scene.paragraphs.length > 0);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi]);
+
   return (
-    <section id="member" className="bg-warm-light py-12 md:py-20 lg:py-28 overflow-hidden">
-      <div className="max-w-350 mx-auto">
-        
-        {/* 引言区：高对比度的极简排版 */}
-        <div className="flex flex-col items-center text-center gap-8 mb-10 md:mb-16 px-page">
-          <motion.div 
-            custom={0} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -50px 0px' }}
-            className="max-w-3xl flex flex-col items-center"
+    <section id="member" className="bg-warm-light overflow-hidden">
+      <div className="px-page mx-auto max-w-350">
+        <div className="border-warm-gray relative w-full border-b">
+          <div
+            ref={ref}
+            className="group border-warm-gray flex flex-col gap-6 py-8 md:flex-row md:gap-16 md:py-20 lg:gap-24 lg:py-24"
           >
-            <h2 
-              className="font-serif text-[--color-section-text] leading-[1.15] tracking-[0.04em] text-balance mb-8"
-              style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
+            {/* 左图 */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              className="w-full shrink-0 md:w-5/12"
             >
-              {t('badge')}
-            </h2>
-            <div className="w-12 sm:w-16 h-px bg-[--color-gold-warm]" />
-          </motion.div>
-        </div>
-
-        {/* 画报式无边框排版（移动端横向滑动，桌面网格） */}
-        <div className="flex flex-nowrap overflow-x-auto md:grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-16 snap-x snap-mandatory px-page pb-8 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
-          {scenes.map((scene, idx) => (
-            <motion.div 
-              key={idx}
-              custom={idx * 0.15} 
-              variants={fadeUp} 
-              initial="hidden" 
-              whileInView="visible" 
-              viewport={{ once: true, margin: '0px 0px -50px 0px' }}
-              className="flex flex-col group w-[85vw] sm:w-[60vw] md:w-auto shrink-0 snap-center"
-            >
-              {/* 大比例沉浸式图片，不添加任何边框与阴影 */}
-              <div className="relative aspect-[3/4] sm:aspect-[4/3] md:aspect-[4/5] w-full overflow-hidden bg-muted mb-6 md:mb-10">
-                <Image 
-                  src={scene.image}
-                  alt={scene.title}
-                  fill
-                  className="object-cover transition-transform duration-[2.5s] ease-out group-hover:scale-105"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-black/5" />
-              </div>
-
-              {/* 取消罗列与数字，采用情绪化标题+正文段落组合 */}
-              <div className="flex-1 flex flex-col">
-                <h3 className="font-serif text-sm md:text-base text-[--color-section-text] mb-5 md:mb-6 leading-tight">
-                  {scene.title}
-                </h3>
-                <div className="w-8 h-px bg-[--color-gold-warm]/40 mb-4 md:mb-5 transition-all duration-500 group-hover:w-16" />
-                
-                <p className="font-sans text-[--color-warm-text] text-xs md:text-sm leading-relaxed font-light">
-                  {scene.paragraphs.join('，')}
-                </p>
+              <div className="relative aspect-video w-full overflow-hidden md:aspect-4/3" ref={emblaRef}>
+                <div className="flex h-full">
+                  {IMAGES.map((src, idx) => (
+                    <div key={idx} className="relative flex-[0_0_100%] min-w-0">
+                      <Image
+                        src={src}
+                        alt={`${t('badge')} ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 45vw"
+                        unoptimized
+                      />
+                    </div>
+                  ))}
+                </div>
+                {/* 左右箭头 */}
+                <button
+                  onClick={scrollPrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+                  aria-label="上一张"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  onClick={scrollNext}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+                  aria-label="下一张"
+                >
+                  <ChevronRight size={16} />
+                </button>
+                {/* 指示点 */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {IMAGES.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`block h-1 rounded-full transition-all duration-300 ${
+                        idx === selectedIndex ? 'w-4 bg-white' : 'w-1 bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </motion.div>
-          ))}
-        </div>
 
-        <div className="px-page mt-10 md:mt-24 pt-8 md:pt-12 border-t border-[--color-gold-warm]/20">
-          <motion.div 
-            custom={0.5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '0px 0px -50px 0px' }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-10"
-          >
-            <Link 
-              href="#contact-form"
-              className="inline-flex min-h-11 items-center justify-center bg-primary text-white px-8 py-3 text-xs md:text-sm tracking-[0.2em] uppercase transition-colors hover:bg-primary-light"
-            >
-              {t('ctaMain')}
-            </Link>
-            <a 
-              href="https://wa.me/60112780399" 
-              target="_blank" 
-              rel="noreferrer"
-              className="group flex flex-shrink-0 items-center min-h-11 gap-4 text-sm tracking-[0.2em] text-[--color-gold-warm] uppercase transition-colors hover:text-[--color-section-text]"
-            >
-              {t('ctaSub')}
-              <ArrowRight className="w-5 h-5 transition-transform duration-500 ease-out group-hover:translate-x-2" />
-            </a>
-          </motion.div>
+            {/* 右文 */}
+            <div className="flex w-full flex-col justify-center py-4 md:w-7/12 lg:py-10">
+              <div className="flex max-w-lg flex-col lg:pl-8">
+                <motion.h3
+                  custom={0}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
+                  className="mb-4 font-serif text-xl leading-[1.3] font-light tracking-wide text-[--color-section-text] md:mb-6 md:text-2xl lg:text-[2rem]"
+                >
+                  {t('badge')}
+                </motion.h3>
+                <motion.p
+                  custom={0.15}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
+                  className="text-[--color-warm-text] mb-8 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
+                >
+                  {t('subtitle')}
+                </motion.p>
+                <motion.div
+                  custom={0.28}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
+                  className="flex flex-col sm:flex-row gap-4 sm:items-center"
+                >
+                  <Link
+                    href="#contact-form"
+                    className="inline-flex min-h-11 items-center justify-center bg-primary text-white px-8 py-3 text-xs tracking-[0.2em] uppercase transition-colors hover:bg-primary-light"
+                  >
+                    {t('ctaMain')}
+                  </Link>
+                  <a
+                    href="mailto:amy@meilihotel.com"
+                    className="group/link flex items-center gap-3 text-xs tracking-[0.2em] text-[--color-gold-warm] uppercase transition-colors hover:text-[--color-section-text]"
+                  >
+                    {t('ctaSub')}
+                    <ArrowRight className="w-4 h-4 transition-transform duration-500 ease-out group-hover/link:translate-x-2" />
+                  </a>
+                </motion.div>
+              </div>
+            </div>
+          </div>
         </div>
-
       </div>
     </section>
   );
