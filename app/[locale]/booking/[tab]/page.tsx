@@ -5,7 +5,6 @@ import { BookingRoomList } from '@/components/booking/BookingRoomList';
 import { BookingAmenities } from '@/components/booking/BookingAmenities';
 import { BookingPolicies } from '@/components/booking/BookingPolicies';
 import { BookingContactBanner } from '@/components/booking/BookingContactBanner';
-import { BookingBar } from '@/components/home/BookingBar';
 
 const VALID_TABS = ['all', 'waterVillas', 'signatureVillas'] as const;
 type Tab = typeof VALID_TABS[number];

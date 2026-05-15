@@ -46,6 +46,19 @@ export function Header() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  useEffect(() => {
+    const update = () => {
+      const height = isBookingOpen && window.innerWidth >= 1024 ? '72px' : '0px';
+      document.documentElement.style.setProperty('--booking-bar-h', height);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('resize', update);
+      document.documentElement.style.setProperty('--booking-bar-h', '0px');
+    };
+  }, [isBookingOpen]);
+
   const switchLocale = (next: string) => {
     router.replace(pathname, { locale: next });
     setLangOpen(false);
@@ -71,7 +84,7 @@ export function Header() {
     { key: 'nav6', href: '/contact' },
   ] as const;
 
-  const isGallery = pathname === '/gallery';
+  const isHomepage = pathname === '/';
 
   return (
     <>
@@ -81,11 +94,11 @@ export function Header() {
         {/* ======================= */}
         <nav
           className={`pointer-events-auto relative z-50 hidden w-full transition-all duration-700 lg:block ${
-            isScrolled || isGallery
-              ? 'bg-primary py-3 shadow-sm backdrop-blur-sm text-white'
+            !isHomepage || isScrolled
+              ? 'bg-primary py-3 text-white'
               : 'py-5 text-white'
           }`}
-          style={!isScrolled && !isGallery ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.85), transparent)' } : undefined}
+          style={isHomepage && !isScrolled ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.85), transparent)' } : undefined}
         >
           <div className="mx-auto flex max-w-350 items-center justify-between px-6 lg:px-20">
             {/* Logo */}
@@ -217,10 +230,10 @@ export function Header() {
         {/* ======================= */}
         {/*     Mobile Header       */}
         {/* ======================= */}
-        <div className="pointer-events-auto flex h-17 w-full items-center justify-between bg-white px-4 shadow-xs transition-all duration-300 sm:h-20 sm:px-6 lg:hidden">
+        <div className={`pointer-events-auto flex h-17 w-full items-center justify-between px-4 transition-all duration-300 sm:h-20 sm:px-6 lg:hidden ${isHomepage ? 'bg-white shadow-xs' : 'bg-primary'}`}>
           <Link href="/" className="shrink-0">
             <Image
-              src="/images/logo-color.png"
+              src={isHomepage ? '/images/logo-color.png' : '/images/logo-h-new.png'}
               alt="Logo"
               width={140}
               height={40}
@@ -230,7 +243,7 @@ export function Header() {
           <div className="flex shrink-0 items-center justify-end gap-3 sm:gap-4">
             <button
               onClick={() => setMobileNavOpen(true)}
-              className="-mr-1 cursor-pointer p-1 text-black transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2"
+              className={`-mr-1 cursor-pointer p-1 transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2 ${isHomepage ? 'text-black' : 'text-white'}`}
               aria-label="Open Menu"
             >
               <svg

@@ -3,12 +3,13 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
+import { PageHeroShell } from '@/components/layout/PageHeroShell';
 
 export default function ContactHero() {
   const t = useTranslations('ContactPage.hero');
 
   return (
-    <section className="bg-primary w-full px-page pt-28 pb-12 text-white text-center flex flex-col items-center">
+    <PageHeroShell>
 
       {/* 标题区 */}
       <motion.div
@@ -108,6 +109,6 @@ export default function ContactHero() {
         </div>
 
       </motion.div>
-    </section>
+    </PageHeroShell>
   );
 }

@@ -2,12 +2,13 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { PageHeroShell } from '@/components/layout/PageHeroShell';
 
 export function BookingPageHeader() {
   const t = useTranslations('BookingPage.hero');
 
   return (
-    <section className="bg-primary w-full px-page pt-28 pb-12 text-white text-center flex flex-col items-center">
+    <PageHeroShell>
       <motion.div
         className="max-w-2xl flex flex-col items-center"
         initial={{ opacity: 0, y: 15 }}
@@ -29,6 +30,6 @@ export function BookingPageHeader() {
           {t('description')}
         </motion.p>
       </motion.div>
-    </section>
+    </PageHeroShell>
   );
 }

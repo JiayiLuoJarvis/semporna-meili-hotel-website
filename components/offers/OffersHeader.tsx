@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { useLenis } from 'lenis/react';
 import { clsx } from 'clsx';
 import { motion } from 'framer-motion';
+import { PageHeroShell } from '@/components/layout/PageHeroShell';
 
 const SECTIONS = [
   { id: 'group', key: 'group' as const },
@@ -56,7 +57,7 @@ export default function OffersHeader() {
   };
 
   return (
-    <div className="bg-primary w-full px-page pt-28 pb-12 text-white text-center flex flex-col items-center">
+    <PageHeroShell>
 
       {/* 顶部：标题与描述区 */}
       <motion.div
@@ -106,6 +107,6 @@ export default function OffersHeader() {
         })}
       </motion.nav>
 
-    </div>
+    </PageHeroShell>
   );
 }
