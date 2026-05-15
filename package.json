@@ -15,6 +15,7 @@
     "@fontsource-variable/newsreader": "^5.2.10",
     "@fontsource-variable/playfair-display": "^5.2.8",
     "@fontsource/cormorant-garamond": "^5.2.11",
+    "@fontsource/noto-sans-sc": "^5.2.9",
     "@fontsource/noto-serif-sc": "^5.2.8",
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.2.2",
@@ -36,9 +37,11 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "react-hook-form": "^7.72.1",
+    "react-masonry-css": "^1.0.16",
     "remark-gfm": "^4.0.1",
     "tailwind-merge": "^3.5.0",
     "tailwindcss-animate": "^1.0.7",
+    "yet-another-react-lightbox": "^3.32.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -57,5 +60,14 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "typescript-eslint": "^8.58.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core",
+      "core-js",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }

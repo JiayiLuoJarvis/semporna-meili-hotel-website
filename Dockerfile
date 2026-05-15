@@ -12,8 +12,11 @@ RUN corepack enable
 # 1. Depedencies: Install dependencies based on pnpm-lock.yaml
 FROM base AS deps
 WORKDIR /app
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml* ./
-RUN pnpm install --frozen-lockfile
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml* .npmrc* ./
+# pnpm v10 默认阻止未批准包的 build scripts；
+# 先 --ignore-scripts 安装全部依赖，再显式 rebuild 需要原生编译的包
+RUN pnpm install --frozen-lockfile --ignore-scripts && \
+    pnpm rebuild @parcel/watcher @swc/core sharp
 
 # 2. Builder: Rebuild the source code only when needed
 FROM base AS builder

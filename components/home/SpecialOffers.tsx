@@ -58,7 +58,7 @@ export function SpecialOffers() {
 
                 <div className="absolute inset-x-0 bottom-0 flex translate-y-4 flex-col items-start p-8 transition-transform duration-500 group-hover:translate-y-0">
                   <h3 className="mb-3 font-serif text-2xl leading-tight">{item.title}</h3>
-                  <p className="mb-6 line-clamp-2 font-sans text-sm text-white/80 opacity-0 transition-opacity delay-100 duration-500 group-hover:opacity-100">
+                  <p className="mb-6 line-clamp-2 font-sans text-sm text-white opacity-0 transition-opacity delay-100 duration-500 group-hover:opacity-100">
                     {item.desc}
                   </p>
                   <span className="inline-block border-b border-[--color-gold] pb-1 font-sans text-sm tracking-widest text-[--color-gold] uppercase transition-colors hover:border-white hover:text-white">

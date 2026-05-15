@@ -12,7 +12,8 @@ export const routing = defineRouting({
     '/location': '/location',
     '/offers': '/offers',
     '/contact': '/contact',
-    '/booking': '/booking'
+    '/booking': '/booking',
+    '/booking/all': '/booking/all'
   }
 });
 

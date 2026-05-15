@@ -18,7 +18,28 @@
 
 ## 2. 颜色标定 (Colors)
 
-在 `tailwind.config.ts` 中定义的品牌色阶。采用黑白灰作为骨架，海岛主题色作为灵魂。
+在 `app/globals.css` 的 `@theme` 块中定义所有颜色 Design Token（HSL 格式，兼容旧版 iOS WebView）。
+
+### ⚠️ 严禁：字体颜色使用 opacity 修饰符
+
+**绝对禁止** 在任何 `className` 中通过 opacity 降低文字对比度，包括：
+
+```tsx
+// ❌ 禁止 — 透明度会导致文字可读性差，且在旧版 iOS WebView 上可能完全透明
+text-white/70   text-white/80   text-black/40   text-primary/80
+hover:text-white/70   group-hover:text-black/70
+```
+
+**正确做法**：直接使用实色，层级通过**字号、字重、间距**来区分，而不是颜色透明度：
+
+| 场景 | 正确写法 | 说明 |
+|---|---|---|
+| 深色背景（Header、Footer、SubNav、Hero、GalleryVideo） | `text-white` | 全部使用实色白，不加透明度 |
+| 浅色背景主要文字（BookingBar、Drawer） | `text-foreground` | `hsl(240,10%,4%)` 近黑 |
+| 浅色背景次要/辅助文字（图标、label、占位） | `text-muted-foreground` | `hsl(215,16%,47%)` 中灰 |
+| 404/错误页面主色副标题 | `text-primary` | 直接使用主色，不加 `/80` |
+
+> Hover 交互效果通过 `opacity-*` 加在元素上（非文字颜色），或用 `underline`、`scale` 等非颜色方式表达。
 
 ```css
 /* src: globals.css (shadcn/ui 设定格式) */

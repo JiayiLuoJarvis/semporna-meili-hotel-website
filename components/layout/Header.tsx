@@ -46,6 +46,19 @@ export function Header() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  useEffect(() => {
+    const update = () => {
+      const height = isBookingOpen && window.innerWidth >= 1024 ? '72px' : '0px';
+      document.documentElement.style.setProperty('--booking-bar-h', height);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => {
+      window.removeEventListener('resize', update);
+      document.documentElement.style.setProperty('--booking-bar-h', '0px');
+    };
+  }, [isBookingOpen]);
+
   const switchLocale = (next: string) => {
     router.replace(pathname, { locale: next });
     setLangOpen(false);
@@ -64,12 +77,14 @@ export function Header() {
 
   const navItems = [
     { key: 'nav1', href: '/' },
-    { key: 'nav2', href: '/booking' },
+    { key: 'nav2', href: '/booking/all' },
     { key: 'nav3', href: '/gallery' },
     { key: 'nav4', href: '/location' },
     { key: 'nav5', href: '/offers' },
     { key: 'nav6', href: '/contact' },
   ] as const;
+
+  const isHomepage = pathname === '/';
 
   return (
     <>
@@ -79,10 +94,11 @@ export function Header() {
         {/* ======================= */}
         <nav
           className={`pointer-events-auto relative z-50 hidden w-full transition-all duration-700 lg:block ${
-            isScrolled
-              ? 'bg-primary py-3 shadow-sm backdrop-blur-sm text-white'
-              : 'from-primary/95 bg-linear-to-b to-transparent py-5'
+            !isHomepage || isScrolled
+              ? 'bg-primary py-3 text-white'
+              : 'py-5 text-white'
           }`}
+          style={isHomepage && !isScrolled ? { background: 'linear-gradient(to bottom, rgba(0,47,86,0.85), transparent)' } : undefined}
         >
           <div className="mx-auto flex max-w-350 items-center justify-between px-6 lg:px-20">
             {/* Logo */}
@@ -124,10 +140,11 @@ export function Header() {
                 );
               })}
 
-              {/* Booking Toggle */}
+              {/* Booking Toggle — 仅在 BookingBar 关闭时显示 */}
+              {!isBookingOpen && (
               <button
-                onClick={() => setIsBookingOpen((v) => !v)}
-                className={`flex items-center gap-1.5 rounded-full border px-4 py-1.5 transition-all duration-500 ${isScrolled ? 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15' : 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15'}`}
+                onClick={() => setIsBookingOpen(true)}
+                className={`flex items-center gap-1.5 border px-4 py-1.5 transition-all duration-500 ${isScrolled ? 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15' : 'border-white/40 text-white/90 hover:border-white/60 hover:bg-white/15'}`}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -146,15 +163,16 @@ export function Header() {
                   <line x1="3" y1="10" x2="21" y2="10" />
                 </svg>
                 <span className="font-sans text-[0.6875rem] tracking-[0.12em]">
-                  {isBookingOpen ? tBooking('hide') : tBooking('show')}
+                  {tBooking('show')}
                 </span>
               </button>
+              )}
 
               {/* Language Switcher */}
               <div className="relative" ref={langRef}>
                 <button
                   onClick={() => setLangOpen(!langOpen)}
-                  className={`flex items-center gap-1.5 font-sans text-[0.75rem] tracking-widest transition-colors duration-500 ${isScrolled ? 'font-light text-white/80 hover:text-white' : 'font-light text-white/80 hover:text-white'}`}
+                  className={`flex items-center gap-1.5 font-sans text-[0.75rem] tracking-widest transition-colors duration-500 ${isScrolled ? 'font-light text-white hover:text-white' : 'font-light text-white hover:text-white'}`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -212,10 +230,10 @@ export function Header() {
         {/* ======================= */}
         {/*     Mobile Header       */}
         {/* ======================= */}
-        <div className="pointer-events-auto flex h-17 w-full items-center justify-between bg-white px-4 shadow-xs transition-all duration-300 sm:h-20 sm:px-6 lg:hidden">
+        <div className={`pointer-events-auto flex h-17 w-full items-center justify-between px-4 transition-all duration-300 sm:h-20 sm:px-6 lg:hidden ${isHomepage ? 'bg-white shadow-xs' : 'bg-primary'}`}>
           <Link href="/" className="shrink-0">
             <Image
-              src="/images/logo-color.png"
+              src={isHomepage ? '/images/logo-color.png' : '/images/logo-h-new.png'}
               alt="Logo"
               width={140}
               height={40}
@@ -225,7 +243,7 @@ export function Header() {
           <div className="flex shrink-0 items-center justify-end gap-3 sm:gap-4">
             <button
               onClick={() => setMobileNavOpen(true)}
-              className="-mr-1 cursor-pointer p-1 text-black transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2"
+              className={`-mr-1 cursor-pointer p-1 transition-opacity hover:opacity-70 sm:-mr-2 sm:p-2 ${isHomepage ? 'text-black' : 'text-white'}`}
               aria-label="Open Menu"
             >
               <svg
@@ -250,11 +268,10 @@ export function Header() {
         {/* ======================= */}
         {/*      Booking Bar        */}
         {/* ======================= */}
-        <div className="hidden lg:block">
+        <div className="pointer-events-auto hidden lg:block">
           <BookingBar
             isOpen={isBookingOpen}
             onClose={() => setIsBookingOpen(false)}
-            isScrolled={isScrolled}
           />
         </div>
       </header>

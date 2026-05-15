@@ -1,7 +1,6 @@
+import GalleryThemes from '@/components/gallery/GalleryThemes';
+
 import GalleryPageHeader from '@/components/gallery/GalleryPageHeader';
-import GalleryGSAPShowcase from '@/components/gallery/GalleryGSAPShowcase';
-import GalleryVideo from '@/components/gallery/GalleryVideo';
-import GalleryCTA from '@/components/gallery/GalleryCTA';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 interface GalleryImage {
@@ -23,10 +22,11 @@ interface Props {
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Gallery' });
+  const t = await getTranslations({ locale, namespace: 'PageMeta' });
   return {
-    title: t('Hero.line1'),
-    description: 'Explore the beauty of Semporna',
+    title: t('gallery.title'),
+    description: t('gallery.description'),
+    keywords: t('gallery.keywords'),
   };
 }
 
@@ -39,14 +39,11 @@ export default async function GalleryPage({ params }: Props) {
 
   return (
     <main className="w-full flex-1">
-      <GalleryPageHeader />
+      <GalleryPageHeader
+        items={themes.map((t) => ({ id: t.id, title: t.title, subtitle: t.subtitle }))}
+      />
 
-      {/* GSAP Cinematic Plunge Gallery (Replaces all individual theme blocks) */}
-      <GalleryGSAPShowcase themes={themes} />
-
-      <GalleryVideo />
-
-      <GalleryCTA />
+      <GalleryThemes themes={themes} />
     </main>
   );
 }

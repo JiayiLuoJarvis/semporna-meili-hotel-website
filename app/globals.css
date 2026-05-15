@@ -8,11 +8,9 @@
 /* 英文正文衬线 / 大段落：Newsreader（36pt 光学尺寸，优雅排版） */
 @import '@fontsource-variable/newsreader/opsz.css';
 @import '@fontsource-variable/newsreader/opsz-italic.css';
-/* 中文衬线：思源宋体 Noto Serif SC（简中子集，按需按字重加载） */
-@import '@fontsource/noto-serif-sc/chinese-simplified-400.css';
-@import '@fontsource/noto-serif-sc/chinese-simplified-500.css';
-@import '@fontsource/noto-serif-sc/chinese-simplified-600.css';
-@import '@fontsource/noto-serif-sc/chinese-simplified-700.css';
+/* 中文黑体：思源黑体 Noto Sans SC 300（细黑，中文全站主字体） */
+@import '@fontsource/noto-sans-sc/chinese-simplified-300.css';
+
 
 @plugin 'tailwindcss-animate';
 @plugin '@tailwindcss/typography';
@@ -27,7 +25,7 @@
   --color-background: hsl(0, 0%, 100%); /* 极简亮白，#FFFFFF */
   --color-foreground: hsl(240, 10%, 4%); /* 接近纯黑，用于正文 */
 
-  --color-primary: #003865; /* 仙本那深海蓝 (Semporna Deep Sea) */
+  --color-primary: #002f56; /* 仙本那深海蓝 (Semporna Deep Sea) */
   --color-primary-foreground: hsl(0, 0%, 100%);
   --color-accent: #0091da;  /* 仙本那浅海蓝辅助色 */
   --color-gold: #b18b74;    /* 品牌金色 */
@@ -41,18 +39,18 @@
   /* --- 字体 Typography --- */
   /* 角色分工：
      sans  = Newsreader Variable     — 英文正文段落 / 大号排版引言 (取代过去的无衬线)
-                                       + Noto Serif SC 作为中文 fallback
+                                       + Noto Sans SC 作为中文 fallback（黑体）
      serif = Cinzel Variable         — 英文大标题（h1/h2，全大写碑铭气质）
-                                       + Noto Serif SC 作为中文 fallback
+                                       + Noto Sans SC 作为中文 fallback（黑体）
      text  = Newsreader Variable     — 给部分强声明准备的 alias
   */
-  --font-sans: 'Newsreader Variable', 'Newsreader', 'Noto Serif SC', '思源宋体', serif;
-  --font-serif: 'Cinzel Variable', 'Cinzel', 'Noto Serif SC', '思源宋体', serif;
-  --font-text: 'Newsreader Variable', 'Newsreader', 'Noto Serif SC', '思源宋体', serif;
+  --font-sans: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', sans-serif;
+  --font-serif: 'Cinzel Variable', 'Cinzel', 'Noto Sans SC', sans-serif;
+  --font-text: 'Newsreader Variable', 'Newsreader', 'Noto Sans SC', sans-serif;
 
   /* --- v19 品牌颜色 Token (从 Semporna Meili Resort Web_v19 迁移) --- */
-  /* Primary Theme Color — 仙本那深海蓝 #003365 */
-  --color-primary-light: #004d8a;
+  /* Primary Theme Color — 仙本那深海蓝 #002f56 */
+  --color-primary-light: #002f56;
   --color-primary-dark: #001f3f;
   /* Cream — 米白色 #FAFAF8 */
   --color-cream: hsl(60, 11%, 98%);
@@ -77,6 +75,10 @@
 }
 
 @layer base {
+  :root {
+    --header-height: 72px;
+  }
+
   * {
     border-color: var(--color-border);
   }
@@ -94,10 +96,10 @@
     overscroll-behavior-y: none;
   }
 
-  /* 使得所有引用 font-serif（大标题）默认成为 SemiBold (600) */
+  /* 使得所有引用 font-serif（大标题）默认成为 Light (300) */
   h1, h2, h3, h4, h5, h6, .font-serif {
     font-family: var(--font-serif);
-    font-weight: 600;
+    font-weight: 300;
   }
 
   /* 针对 Lenis 平滑滚动的核心托底 */
@@ -228,4 +230,37 @@
 /* 折叠状态：chevron 朝上 */
 .booking-bar-toggle.collapsed::after {
   transform: rotate(-135deg) translateY(-2px); /* ∧ 朝上 */
+}
+
+/* ==========================================
+   YARL Lightbox — 优雅开启 & 图片载入动画
+   ========================================== */
+.yarl__container {
+  animation: yarl-backdrop-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes yarl-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* 图片首次出现：轻微 scale-up + 淡入 */
+.yarl__slide_image {
+  animation: yarl-image-in 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes yarl-image-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 切换时图片：覆盖 YARL 默认，使用更平滑的 ease-out */
+.yarl__slide_current .yarl__slide_image {
+  animation: none;
 }

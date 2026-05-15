@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import '../globals.css';
 
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { notFound } from 'next/navigation';
 import SmoothScrolling from '@/components/SmoothScrolling';
@@ -19,13 +19,15 @@ export async function generateMetadata({
   if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
-  
-  const messages = await getMessages();
 
-  const m = messages as Record<string, Record<string, string>>;
+  const t = await getTranslations({ locale, namespace: 'PageMeta' });
   return {
-    title: m.LocaleLayout?.title ?? 'Meili Resort Semporna',
-    description: m.LocaleLayout?.description ?? 'Meili Resort Semporna',
+    title: {
+      template: `%s | ${t('siteName')}`,
+      default: t('siteNameFull'),
+    },
+    description: t('siteDescription'),
+    keywords: t('siteKeywords'),
   };
 }
 
@@ -40,7 +42,8 @@ export default async function RootLayout({
   if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
-  
+
+  setRequestLocale(locale);
   const messages = await getMessages();
 
   return (

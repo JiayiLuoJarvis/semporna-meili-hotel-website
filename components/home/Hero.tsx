@@ -2,10 +2,10 @@
 
 import { useTranslations } from 'next-intl';
 import { useRef, useState, useEffect } from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLenis } from 'lenis/react';
-import { Play, Pause } from 'lucide-react';
+import { Play, Pause, MapPin, BedDouble, Image as ImageIcon } from 'lucide-react';
+import { Link } from '@/i18n/routing';
 
 const HERO_VIDEO =
   'https://mgx-backend-cdn.metadl.com/generate/videos/1129659/2026-04-18/m2r2dqqaae6q/hero-resort-aerial.mp4';
@@ -16,9 +16,10 @@ export function Hero() {
   const t = useTranslations('Index');
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [hasScrolled, setHasScrolled] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const hasScrolledRef = useRef(false);
   const [isMd, setIsMd] = useState<boolean>(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false,
   );
 
   useEffect(() => {
@@ -29,10 +30,11 @@ export function Hero() {
   }, []);
 
   useLenis(({ scroll }) => {
-    if (scroll > 20 && !hasScrolled) {
-      setHasScrolled(true);
+    setScrollY(scroll);
+    if (scroll > 20 && !hasScrolledRef.current) {
+      hasScrolledRef.current = true;
     }
-  }, [hasScrolled]);
+  }, []);
 
   const togglePlay = () => {
     if (videoRef.current) {
@@ -46,179 +48,212 @@ export function Hero() {
   };
 
   return (
-    <>
-      {/* ======================= */}
-      {/*    Desktop Hero (md+)   */}
-      {/* ======================= */}
-      <motion.section
-        initial={{ height: '100vh' }}
-        animate={{ height: isMd ? 'calc(100vh - 80px)' : '100vh' }}
-        transition={{ delay: 3, duration: 1, ease: 'easeInOut' }}
-        className="relative z-20 hidden min-h-175 overflow-hidden bg-primary md:block"
-      >
-        {/* Video Background */}
-        <div className="absolute inset-0">
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={HERO_IMAGE}
-            className="h-full w-full object-cover"
+    <motion.section
+      initial={{ height: '100vh' }}
+      animate={{ height: isMd ? 'calc(100vh - 80px)' : '100vh' }}
+      transition={{ delay: 3, duration: 1, ease: 'easeInOut' }}
+      className="bg-primary relative z-20 overflow-hidden"
+    >
+      {/* Video Background */}
+      <div className="absolute inset-0">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={HERO_IMAGE}
+          className="h-full w-full object-cover"
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/15 to-black/60" />
+        <div className="absolute inset-0 bg-linear-to-r from-black/50 via-transparent to-transparent" />
+      </div>
+
+      {/* Content — left-aligned editorial layout */}
+      <div className="relative z-10 h-full w-full pb-12 md:pb-20">
+        <div className="flex h-full w-full flex-col items-start justify-end px-6 md:px-10 lg:px-14">
+          {/* Subtitle */}
+          <p
+            className="animate-fade-in mb-2 font-sans text-xs tracking-[0.35em] text-white uppercase md:mb-3 md:text-sm md:tracking-[0.4em]"
+            style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
           >
-            <source src={HERO_VIDEO} type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/15 to-black/60" />
-          <div className="absolute inset-0 bg-linear-to-r from-black/50 via-transparent to-transparent" />
-        </div>
-
-        {/* Content 鈥?left-aligned editorial layout */}
-        <div className="relative z-10 h-full w-full pb-20 md:pb-28">
-          <div className="flex h-full w-full flex-col items-start justify-end px-6 md:px-12 lg:px-20 xl:pl-[8vw] xl:pr-6">
-            {/* Subtitle */}
-            <p
-              className="animate-fade-in mb-4 font-sans text-xs uppercase tracking-[0.4em] text-white/70 md:text-sm"
-              style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
-            >
-              {t('subtitle')}
-            </p>
-
-            {/* Main Title */}
-            <h1
-              className="animate-fade-in-up max-w-3xl font-serif leading-[1.05] text-white"
-              style={{
-                fontSize: 'clamp(1.8rem, 4vw, 4rem)',
-                letterSpacing: '0.04em',
-                animationDelay: '0.6s',
-                animationFillMode: 'both',
-                textShadow: '0 2px 20px rgba(0,0,0,0.3)',
-              }}
-            >
-              {t('title')}
-            </h1>
-
-            {/* Tagline */}
-            <p
-              className="animate-fade-in mt-6 max-w-lg font-sans text-sm font-light leading-relaxed text-white/80 md:text-base"
-              style={{
-                animationDelay: '1s',
-                animationFillMode: 'both',
-                textShadow: '0 1px 8px rgba(0,0,0,0.2)',
-              }}
-            >
-              {t('description')}
-            </p>
-
-            {/* Bottom info bar */}
-            <div
-              className="animate-fade-in mt-12 flex flex-wrap items-center gap-6 border-t border-white/20 pt-6 md:mt-16 md:gap-10"
-              style={{ animationDelay: '1.3s', animationFillMode: 'both' }}
-            >
-              <span
-                className="font-sans text-[0.6875rem] font-light uppercase tracking-[0.12em] text-white/70"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}
-              >
-                {t('address')}
-              </span>
-              <a
-                href="tel:+60123456789"
-                className="font-sans text-[0.6875rem] font-light tracking-[0.12em] text-white/70 transition-colors duration-500 hover:text-white"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}
-              >
-                {t('phone')}
-              </a>
-              <span
-                className="font-sans text-[0.6875rem] font-light tracking-[0.12em] text-white/70"
-                style={{ textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}
-              >
-                reservations@sempornameili.com
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Video control */}
-        <button
-          onClick={togglePlay}
-          className="absolute right-6 bottom-20 z-20 flex h-8 w-8 items-center justify-center rounded-full border border-white/50 bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-          aria-label={isPlaying ? 'Pause video' : 'Play video'}
-        >
-          {isPlaying ? (
-            <Pause size={14} strokeWidth={1.5} />
-          ) : (
-            <Play size={14} strokeWidth={1.5} className="ml-0.5" />
-          )}
-        </button>
-
-        {/* Scroll indicator */}
-        <div
-          className={`absolute bottom-0 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center transition-opacity duration-700 ${
-            hasScrolled ? 'opacity-0' : 'opacity-100'
-          }`}
-          style={{ transitionDelay: hasScrolled ? '0s' : '3.5s' }}
-        >
-          <span className="mb-3 ml-[0.3em] font-sans text-[0.6rem] uppercase tracking-[0.3em] text-white/50">
-            {t('scroll')}
-          </span>
-          <div className="relative h-10 w-px overflow-hidden bg-white/30">
-            <motion.div
-              initial={{ y: '-100%' }}
-              animate={{ y: '100%' }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: 'linear' }}
-              className="h-full w-full bg-white"
-            />
-          </div>
-        </div>
-      </motion.section>
-
-      {/* ======================= */}
-      {/*   Mobile Hero  (<md)    */}
-      {/* ======================= */}
-      <section className="flex w-full flex-col overflow-x-hidden bg-background pt-17 sm:pt-20 md:hidden">
-        {/* Full-width image with title overlay */}
-        <div className="relative h-[50vh] min-h-80 w-full">
-          <Image
-            src={HERO_IMAGE}
-            alt="Meili Resort Semporna"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-linear-to-t from-black via-black/30 to-black/20" />
-          <div className="absolute bottom-8 left-0 z-10 flex w-full flex-col items-center px-4 text-center text-white">
-            <p className="mb-2 font-sans text-[10px] font-bold uppercase italic tracking-[0.2em] text-white/90 drop-shadow-md sm:text-[11px] sm:tracking-[0.3em]">
-              {t('subtitle')}
-            </p>
-            <h1 className="font-serif text-4xl leading-none tracking-widest drop-shadow-xl sm:text-5xl">
-              {t('title')}
-            </h1>
-          </div>
-        </div>
-
-        {/* Elegant Content Area */}
-        <div className="flex w-full flex-col items-center justify-center px-8 py-16 pb-24 text-center text-black">
-          <p className="mb-6 font-sans text-[10px] leading-relaxed uppercase tracking-[0.2em] text-zinc-500 max-w-xs">
-            {t('address')}
+            {t('subtitle')}
           </p>
-          
-          <div className="flex flex-col flex-wrap items-center justify-center gap-4 text-center font-sans text-[11px] tracking-widest text-zinc-800 uppercase sm:flex-row sm:gap-8">
+
+          {/* Main Title */}
+          <h1
+            className="animate-fade-in-up max-w-2xl font-serif leading-[1.05] text-white"
+            style={{
+              fontSize: 'clamp(1.75rem, 5vw, 3rem)',
+              letterSpacing: '0.04em',
+              animationDelay: '0.6s',
+              animationFillMode: 'both',
+              textShadow: '0 2px 20px rgba(0,0,0,0.3)',
+            }}
+          >
+            {t('title')}
+          </h1>
+
+          {/* Tagline */}
+          <p
+            className="animate-fade-in mt-2 max-w-sm font-sans text-xs leading-relaxed font-light text-white md:mt-3 md:max-w-md md:text-sm"
+            style={{
+              animationDelay: '1s',
+              animationFillMode: 'both',
+              textShadow: '0 1px 8px rgba(0,0,0,0.2)',
+            }}
+          >
+            {t('description')}
+          </p>
+
+          {/* Bottom info bar */}
+          <div
+            className="animate-fade-in mt-4 flex flex-wrap items-center gap-3 border-t border-white/20 pt-3 md:mt-6 md:gap-4 md:pt-4"
+            style={{ animationDelay: '1.3s', animationFillMode: 'both' }}
+          >
+            <span
+              className="font-sans text-xs font-light tracking-[0.12em] text-white uppercase"
+              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
+            >
+              {t('address')}
+            </span>
             <a
               href="tel:+60123456789"
-              className="transition-colors hover:text-zinc-500"
+              className="font-sans text-xs font-light tracking-[0.12em] text-white transition-colors duration-500"
+              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
             >
               {t('phone')}
             </a>
-            <span className="hidden h-3 w-px bg-zinc-300 sm:block" />
-            <a
-              href="mailto:reservations@sempornameili.com"
-              className="transition-colors hover:text-zinc-500"
+            <span
+              className="hidden font-sans text-xs font-light tracking-[0.12em] text-white xl:inline"
+              style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
             >
               reservations@sempornameili.com
-            </a>
+            </span>
+          </div>
+
+          {/* 快捷导航卡片（< xl 显示，横向排列在信息栏下方，正方形） */}
+          <div
+            className="animate-fade-in mt-4 flex gap-2 xl:hidden"
+            style={{ animationDelay: '1.5s', animationFillMode: 'both' }}
+          >
+            <Link
+              href="/location"
+              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
+              style={{ background: 'rgba(0,31,63,0.65)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+            >
+              <MapPin
+                className="h-4 w-4 text-white transition-colors group-hover:text-white"
+                strokeWidth={1.2}
+              />
+              <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
+                {t('heroCards.0')}
+              </span>
+            </Link>
+            <Link
+              href="/booking/all"
+              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
+              style={{ background: 'rgba(0,31,63,0.65)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+            >
+              <BedDouble
+                className="h-4 w-4 text-white transition-colors group-hover:text-white"
+                strokeWidth={1.2}
+              />
+              <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
+                {t('heroCards.1')}
+              </span>
+            </Link>
+            <Link
+              href="/gallery"
+              className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
+              style={{ background: 'rgba(0,31,63,0.65)' }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+            >
+              <ImageIcon
+                className="h-4 w-4 text-white transition-colors group-hover:text-white"
+                strokeWidth={1.2}
+              />
+              <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
+                {t('heroCards.2')}
+              </span>
+            </Link>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      {/* xl+ 导航卡片（绝对定位右下角，滚动时向右淡出） */}
+      <motion.div
+        animate={{ x: scrollY > 80 ? 80 : 0, opacity: scrollY > 80 ? 0 : 1 }}
+        transition={{ duration: 0.55, ease: 'easeInOut' }}
+        style={{ pointerEvents: scrollY > 80 ? 'none' : 'auto' }}
+        className="absolute right-10 bottom-24 z-20 hidden items-center gap-1.5 xl:flex"
+      >
+        <Link
+          href="/location"
+          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
+          style={{ background: 'rgba(0,31,63,0.65)' }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+        >
+          <MapPin
+            className="h-5 w-5 text-white transition-colors group-hover:text-white"
+            strokeWidth={1.2}
+          />
+          <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
+            {t('heroCards.0')}
+          </span>
+        </Link>
+        <Link
+          href="/booking/all"
+          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
+          style={{ background: 'rgba(0,31,63,0.65)' }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+        >
+          <BedDouble
+            className="h-5 w-5 text-white transition-colors group-hover:text-white"
+            strokeWidth={1.2}
+          />
+          <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
+            {t('heroCards.1')}
+          </span>
+        </Link>
+        <Link
+          href="/gallery"
+          className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
+          style={{ background: 'rgba(0,31,63,0.65)' }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+        >
+          <ImageIcon
+            className="h-5 w-5 text-white transition-colors group-hover:text-white"
+            strokeWidth={1.2}
+          />
+          <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
+            {t('heroCards.2')}
+          </span>
+        </Link>
+      </motion.div>
+
+      {/* Video control */}
+      <button
+        onClick={togglePlay}
+        className="absolute right-6 bottom-6 z-20 flex h-8 w-8 items-center justify-center rounded-full border border-white/50 bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-white/20 md:right-10 md:bottom-8"
+        aria-label={isPlaying ? 'Pause video' : 'Play video'}
+      >
+        {isPlaying ? (
+          <Pause size={14} strokeWidth={1.5} />
+        ) : (
+          <Play size={14} strokeWidth={1.5} className="ml-0.5" />
+        )}
+      </button>
+    </motion.section>
   );
 }

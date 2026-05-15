@@ -1,36 +1,45 @@
-import { useTranslations } from 'next-intl';
+'use client';
 
-export default function GalleryPageHeader() {
+import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
+import { PageHeroShell } from '@/components/layout/PageHeroShell';
+import PageSectionNav from '@/components/layout/PageSectionNav';
+
+interface NavItem {
+  id: string;
+  title: string;
+  subtitle: string;
+}
+
+export default function GalleryPageHeader({ items }: { items: NavItem[] }) {
   const t = useTranslations('Gallery.Hero');
 
+  const sections = items.map((item) => ({ id: item.id, label: item.title }));
+
   return (
-    <section className="bg-primary px-page pt-32 pb-16 sm:pt-36 sm:pb-20 md:pt-44 md:pb-24 text-center">
-      {/* 微标签 */}
-      <div className="flex items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10">
-        <div className="h-px w-8 sm:w-12 bg-gold/50" />
-        <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.35em] text-gold">
-          PHOTOS &amp; VIDEOS
-        </span>
-        <div className="h-px w-8 sm:w-12 bg-gold/50" />
-      </div>
+    <PageHeroShell>
 
-      {/* 主标题 */}
-      <h1
-        className="font-serif text-white leading-[1.05] tracking-[0.04em]"
-        style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)' }}
+      {/* 顶部：标题与描述区 */}
+      <motion.div
+        className="max-w-2xl flex flex-col items-center mb-10"
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        {t('line1')}
-      </h1>
+        <span className="font-sans text-[10px] sm:text-xs tracking-[0.3em] uppercase block mb-5">
+          {t('pageTag')}
+        </span>
+        <h1 className="font-serif text-3xl sm:text-4xl tracking-widest font-light mb-8">
+          {t('line1')}
+        </h1>
+        <p className="font-serif text-sm sm:text-base leading-loose">
+          {t('description')}
+        </p>
+      </motion.div>
 
-      {/* 装饰金线 */}
-      <div className="flex justify-center mt-8 sm:mt-10 mb-6 sm:mb-7">
-        <div className="h-px w-12 sm:w-16 bg-gold/60" />
-      </div>
-
-      {/* 副标题 */}
-      <p className="font-sans text-xs text-white/45 tracking-[0.4em] uppercase">
-        {t('line2')}
-      </p>
-    </section>
+      {/* 底部：主题导航 */}
+      <PageSectionNav items={sections} idPrefix="gallery-" ariaLabel="图片主题导航" />
+    </PageHeroShell>
   );
 }
+

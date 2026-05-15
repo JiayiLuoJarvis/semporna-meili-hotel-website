@@ -9,6 +9,8 @@
   ```
   matcher: ['/((?!api|_next|_vercel|planning|.*\\..*).*)']
   ```
+- **CSS Variable class syntax forbidden:** Never write `bg-[--color-*]`, `text-[--color-*]`, or `border-[--color-*]` in className. These are not valid Tailwind v4 utility classes. Use the semantic token class directly: `bg-primary`, `text-section-text`, `border-border`, `bg-gold-warm`, etc. If a token class does not exist, add it to `globals.css` `@theme` and `tailwind.config.ts`.
+- **No opacity modifier on critical UI colors:** Never use `bg-primary/50`, `bg-black/5`, or any opacity modifier on buttons, backgrounds, or text that is part of key UI. Older iOS WebViews silently render these as transparent. Use a solid token (e.g. `bg-primary-light`, `bg-muted`) instead.
 
 ---
 
@@ -138,3 +140,18 @@ Tailwind CSS v4 enables modern CSS color syntax (`oklch()`, `color-mix()`) by de
 
 - Yes **Split components by responsibility:** Never put hundreds of lines in a single file. Break large sections into focused components (e.g. `Header.tsx`, `BookingBar.tsx`, `Hero.tsx`). Each component should have a single, clear responsibility.
 - Yes **Mobile-first, strictly responsive:** All pages and components must be designed for mobile vertical stacking first, then adapted to desktop layouts using `md:`, `lg:`, `xl:` breakpoints. Fixed widths that cause content overflow or horizontal scrollbars on mobile are never acceptable. When using relatively positioned overlapping layers (e.g. a Hero image behind a Header), handle height collapse correctly at every breakpoint.
+
+---
+
+# Project-Specific Conventions
+
+## Gallery Page (`/gallery`)
+
+- **Architecture:** `app/[locale]/gallery/page.tsx` is a Server Component. It fetches `Gallery.Themes` from i18n messages and passes them as props to `<GalleryThemes>`.
+- **Components:** `components/gallery/GalleryThemes.tsx` (carousel, `'use client'`), `GalleryVideo.tsx` (server), `GalleryCTA.tsx` (`'use client'`, motion).
+- **Carousel:** Uses `embla-carousel-react`. The `useEmblaCarousel` + `useEffect` + `onSelect` pattern triggers a lint warning (`react-hooks/set-state-in-effect`). Suppress it with `// eslint-disable-next-line react-hooks/set-state-in-effect` on the `onSelect(emblaApi)` call — this is the official Embla pattern and is intentional.
+- **Image height:** Gallery carousel images use `h-[45vh] min-h-80 md:h-[55vh] md:max-h-150` (vh-based height with pixel floor). This is intentional to prevent images from collapsing when the viewport width is narrowed. Do NOT replace with `aspect-ratio` classes — they will cause height to collapse proportionally with width.
+- **Alternating backgrounds:** Odd-indexed themes use `bg-warm-light` (#F9F8F6), even-indexed use `bg-white`. Never hardcode hex values — use the `bg-warm-light` token.
+- **Header on `/gallery`:** `Header.tsx` detects `pathname === '/gallery'` via `usePathname()` and applies `bg-primary` (solid, no gradient) for both desktop nav and mobile bar. The mobile logo switches to `logo-h-new.png` (white version) and the hamburger icon uses `text-white`.
+- **Page top padding:** `app/[locale]/gallery/page.tsx` uses `pt-17 sm:pt-20 lg:pt-21` (pixel-precise header offset) instead of generic `pt-24 md:pt-32`. Do not revert this to generic spacing.
+- **No text on images:** Gallery is a pure visual experience. Never add per-image captions or description overlays. Only a section title (`theme.title`) is shown, styled as italic serif above the carousel.

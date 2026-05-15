@@ -1,11 +1,12 @@
 'use client';
 
+import { useRef, useCallback, useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Clock, Tag, Gift, Bell, MessageCircle, Lock } from 'lucide-react';
-import Link from 'next/link';
 import Image from 'next/image';
+import { motion, useInView } from 'framer-motion';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import Link from 'next/link';
+import useEmblaCarousel from 'embla-carousel-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -20,115 +21,135 @@ const fadeUp = {
   }),
 };
 
-const fadeScale = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 1.2,
-      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
-    },
-  },
-};
-
-const icons = [Clock, Tag, Gift, Bell, MessageCircle, Lock];
+const IMAGES = [
+  'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=1200',
+  'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200',
+  'https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1200',
+];
 
 export default function OffersMember() {
   const t = useTranslations('OffersMember');
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, {
-    once: true,
-    margin: '0px 0px -20% 0px',
-    amount: 0.2,
-  });
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi]);
 
   return (
-    <section id="member" className="bg-background py-16 sm:py-20 md:py-28 lg:py-36 xl:py-44 px-page overflow-hidden" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
-        
-        {/* Left: Image Card Side */}
-        <motion.div 
-          custom={0} variants={fadeScale} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-          className="w-full lg:w-[45%] relative aspect-4/5 sm:aspect-4/5 lg:aspect-3/4 shrink-0"
-        >
-          <Image 
-            src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=1200" 
-            alt="Member Privileges" 
-            fill 
-            className="object-cover"
-            unoptimized
-          />
-          {/* Subtle gold border decoration around the image */}
-          <div className="absolute -inset-4 md:-inset-6 border border-gold-warm/30 z-[-1] hidden md:block" />
-        </motion.div>
-
-        {/* Right: Content Side */}
-        <div className="w-full lg:w-[55%] flex flex-col justify-center text-left">
-          
-          <motion.div 
-            custom={0.1} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="inline-flex border border-gold-warm px-4 py-2 text-gold-warm text-xs font-sans tracking-[0.25em] mb-8 w-fit uppercase"
+    <section id="member" className="bg-warm-light overflow-hidden">
+      <div className="px-page mx-auto max-w-350">
+        <div className="border-warm-gray relative w-full border-b">
+          <div
+            ref={ref}
+            className="group border-warm-gray flex flex-col gap-6 py-8 md:flex-row md:gap-16 md:py-20 lg:gap-24 lg:py-24"
           >
-            {t('badge')}
-          </motion.div>
-
-          <motion.p
-            custom={0.2} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="font-text italic text-section-text/90 leading-[1.2] mb-12"
-            style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)' }}
-          >
-            &ldquo;{t('subtitle')}&rdquo;
-          </motion.p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-10 mb-16 w-full">
-            {icons.map((Icon, idx) => {
-              const text = t(`items.${idx}`);
-              return (
-                <motion.div 
-                  key={idx}
-                  custom={0.3 + idx * 0.05} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-                  className="flex items-start gap-4 group"
+            {/* 左图 */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate={inView ? 'visible' : 'hidden'}
+              className="w-full shrink-0 md:w-5/12"
+            >
+              <div className="relative aspect-video w-full overflow-hidden md:aspect-4/3" ref={emblaRef}>
+                <div className="flex h-full">
+                  {IMAGES.map((src, idx) => (
+                    <div key={idx} className="relative flex-[0_0_100%] min-w-0">
+                      <Image
+                        src={src}
+                        alt={`${t('badge')} ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 45vw"
+                        unoptimized
+                      />
+                    </div>
+                  ))}
+                </div>
+                {/* 左右箭头 */}
+                <button
+                  onClick={scrollPrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+                  aria-label="上一张"
                 >
-                  <div className="w-12 h-12 rounded-full border border-gold-warm/30 flex items-center justify-center shrink-0 text-gold-warm transition-colors duration-500 group-hover:border-gold-warm group-hover:text-gold-warm mt-1">
-                    <Icon className="w-5 h-5" strokeWidth={1.5} />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-center min-h-12">
-                    <h3 className="font-serif text-section-text text-base leading-snug group-hover:text-gold-warm transition-colors duration-300">
-                      {text}
-                    </h3>
-                  </div>
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  onClick={scrollNext}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50"
+                  aria-label="下一张"
+                >
+                  <ChevronRight size={16} />
+                </button>
+                {/* 指示点 */}
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                  {IMAGES.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`block h-1 rounded-full transition-all duration-300 ${
+                        idx === selectedIndex ? 'w-4 bg-white' : 'w-1 bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            {/* 右文 */}
+            <div className="flex w-full flex-col justify-center py-4 md:w-7/12 lg:py-10">
+              <div className="flex max-w-lg flex-col lg:pl-8">
+                <motion.h3
+                  custom={0}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
+                  className="mb-4 font-serif text-xl leading-[1.3] font-light tracking-wide text-[--color-section-text] md:mb-6 md:text-2xl lg:text-[2rem]"
+                >
+                  {t('badge')}
+                </motion.h3>
+                <motion.p
+                  custom={0.15}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
+                  className="text-[--color-warm-text] mb-8 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
+                >
+                  {t('subtitle')}
+                </motion.p>
+                <motion.div
+                  custom={0.28}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={inView ? 'visible' : 'hidden'}
+                  className="flex flex-col sm:flex-row gap-4 sm:items-center"
+                >
+                  <Link
+                    href="#contact-form"
+                    className="inline-flex min-h-11 items-center justify-center bg-primary text-white px-8 py-3 text-xs tracking-[0.2em] uppercase transition-colors hover:bg-primary-light"
+                  >
+                    {t('ctaMain')}
+                  </Link>
+                  <a
+                    href="mailto:amy@meilihotel.com"
+                    className="group/link flex items-center gap-3 text-xs tracking-[0.2em] text-[--color-gold-warm] uppercase transition-colors hover:text-[--color-section-text]"
+                  >
+                    {t('ctaSub')}
+                    <ArrowRight className="w-4 h-4 transition-transform duration-500 ease-out group-hover/link:translate-x-2" />
+                  </a>
                 </motion.div>
-              );
-            })}
-          </div>
-
-          <motion.div 
-            custom={0.6} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-            className="pt-10 border-t border-section-text/10 w-full"
-          >
-            <p className="font-sans text-sm text-warm-text mb-10 leading-relaxed max-w-lg">
-              {t('note')}
-            </p>
-
-            <div className="flex flex-wrap gap-x-6 gap-y-4 items-center">
-              <Link 
-                href="#contact-form"
-                className="flex items-center justify-center min-w-40 min-h-11 border border-section-text bg-transparent text-section-text px-8 py-3 text-sm font-bold tracking-widest uppercase transition-colors hover:border-primary-light hover:text-primary-light"
-              >
-                {t('ctaMain')}
-              </Link>
-              <a 
-                href="mailto:amy@meilihotel.com" 
-                className="inline-flex items-center"
-              >
-                {t('ctaSub')}
-              </a>
+              </div>
             </div>
-          </motion.div>
-
+          </div>
         </div>
-
       </div>
     </section>
   );

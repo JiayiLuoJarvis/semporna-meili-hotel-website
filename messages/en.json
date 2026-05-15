@@ -14,6 +14,8 @@
     "language": "English",
     "brand": "Meili Resort",
     "resort": "Meili Resort Semporna",
+    "bookNow": "Book Now",
+    "openMenu": "Open Menu",
     "nav1": "Overview",
     "nav2": "Booking",
     "nav3": "Gallery",
@@ -103,10 +105,11 @@
     "contactTitle": "Contact",
     "address": "Semporna, Sabah 91308, Malaysia",
     "followUs": "Follow Us",
-    "newsletter": "Newsletter",
-    "newsletterDesc": "Subscribe for latest offers and events",
-    "subscribe": "Subscribe",
-    "emailPlaceholder": "Enter your email",
+    "contactHeadline": "Speak directly with our Reservations Team",
+    "contactDesc": "Our dedicated specialists can advise on villas, overwater suites, and travel arrangements — ensuring every detail of your Semporna escape is perfectly in place.",
+    "ctaEmailLabel": "Email",
+    "ctaPhoneLabel": "Phone",
+    "ctaChatLabel": "Live Chat",
     "col1": {
       "heading": "Quick Links",
       "link1": "Overview",
@@ -151,50 +154,40 @@
     "btn": "EXPLORE OUR JOURNEY",
     "posts": [
       {
-        "tag": "Marine Life",
-        "title": "Swimming with Mantas: A Pre-Dawn Encounter",
-        "date": "Nov 12, 2025"
+        "tag": "Ecological Conservation",
+        "date": "Apr 2026",
+        "title": "A Poem for the Ocean: Our Pledge from the Depths",
+        "desc": "Built upon century-old ironwood, our zero-emission living-water filtration system flows in endless cycles. Here, we never conquer nature — we bow before it in the most devoted reverence."
       },
       {
-        "tag": "Island Living",
-        "title": "72 Hours of Pure Life in the Overwater Suite",
-        "date": "Oct 28, 2025"
+        "tag": "Cultural Exploration",
+        "date": "Mar 2026",
+        "title": "Sea Gypsies: A Thousand-Year Ballad of the Bajau",
+        "desc": "Board a wooden boat into a hidden shallow-water village. In the pure, boundless smiles and bonfire songs of the indigenous people, slow the clock and engage in a dialogue that transcends language across time."
       },
       {
-        "tag": "Slow Travel",
-        "title": "Semporna's Last Handcraft Fishing Village",
-        "date": "Oct 5, 2025"
-      },
-      {
-        "tag": "Gastronomy",
-        "title": "Born of the Sea: A Late-Night Feast",
-        "date": "Sep 18, 2025"
-      },
-      {
-        "tag": "Conservation",
-        "title": "A Day in the Life of a Reef Restorer",
-        "date": "Aug 30, 2025"
+        "tag": "Culinary Discovery",
+        "date": "Jan 2026",
+        "title": "Deep-Sea Freshness: A Symphony of Flavour at the Cliff's Edge",
+        "desc": "The freshest deep-sea catch delivered directly from morning fishing boats, paired with the chef's signature Nanyang treasures. In a clifftop restaurant suspended above the sea, let the ocean breeze and fine wine grace every private moment."
       }
     ]
   },
   "Offers": {
-    "title": "Special Offers",
-    "viewOffer": "View Offer",
-    "allOffers": "All Offers",
-    "items": [
-      {
-        "title": "Advance Purchase",
-        "desc": "Book 60 days in advance to enjoy up to a 20% discount on your stay."
-      },
-      {
-        "title": "Resort Credit Experience",
-        "desc": "Includes $200 daily resort credit for Michelin-grade dining and spa."
-      },
-      {
-        "title": "Romantic Honeymoon",
-        "desc": "Custom beach champagne dinner and couples aromatherapy treatments."
-      }
-    ]
+    "header": {
+      "pageTag": "SPECIAL OFFERS",
+      "pageTitle": "Offers",
+      "description": "From group exclusives to member privileges — every offer is crafted to make your Semporna escape truly unforgettable.",
+      "directBookText": "Book direct for our best rate guarantee and exclusive member benefits.",
+      "bookNowBtn": "Book Now",
+      "contactBtn": "Contact Us"
+    },
+    "nav": {
+      "group": "Group Deals",
+      "member": "Members",
+      "promotional": "Promotions",
+      "contact": "Enquire"
+    }
   },
   "Location": {
     "nav": {
@@ -267,26 +260,6 @@
         "Pets are not permitted; smoking in designated outdoor areas only"
       ]
     },
-    "route": {
-      "tag": "ARRIVAL ROUTE · FULL TRANSFER",
-      "title": "All-Inclusive Arrival Transfers",
-      "selfZone": "Arranged by you",
-      "airport": "Any Airport in Malaysia",
-      "airportHint": "We recommend flying direct via Tawau (TWU)",
-      "divider": "Everything below is arranged by Meili Resort",
-      "tawauLabel": "Tawau Airport",
-      "tawauSub": "Tawau Airport · TWU",
-      "tawauMode": "Private Hotel Vehicle",
-      "tawauDuration": "~ 1 hour",
-      "jettyLabel": "Semporna Jetty",
-      "jettySub": "Semporna Jetty",
-      "jettyMode": "Private Speedboat",
-      "jettyDuration": "~ 30 minutes",
-      "resortLabel": "Meili Resort Hotel",
-      "resortSub": "Meili Resort Hotel ★",
-      "included": "Included in all-inclusive package",
-      "promise": "From Tawau Airport onward, our team accompanies you every step of the way. At every transfer point, someone from our team will be waiting."
-    },
     "schedule": {
       "tag": "TRANSFER SCHEDULE",
       "title": "Private Transfer Schedule",
@@ -307,22 +280,6 @@
     "map": {
       "tag": "EXPLORE THE AREA",
       "caption": "★ Meili Resort · 📍 Semporna Jetty · ✈️ Tawau Airport · 🤿 Sipadan Island"
-    },
-    "prepare": {
-      "tag": "BUTLER'S NOTE",
-      "title": "We've Thought of Everything",
-      "subtitle": "This list is drawn from years of welcoming guests like you",
-      "items": [
-        "Passport or ID document",
-        "Booking confirmation (screenshot is fine — we already have your record)",
-        "Personal medications",
-        "Swimwear (multiple sets)",
-        "Sunscreen (reef-safe recommended)",
-        "Non-slip shoes (for the speedboat deck)",
-        "Sunglasses and sun hat",
-        "Underwater camera equipment (optional)"
-      ],
-      "tip": "Everything on the island is prepared for you. Travel light. Your personal butler handles the rest."
     },
     "cta": {
       "title": "Your Journey Begins the Moment You Book",
@@ -353,18 +310,41 @@
       "scheduleDep2": "Semporna Jetty → Tawau Airport",
       "footer": "Your arrival is handled from the moment you land. Share your flight details after booking, and your personal butler will take care of the rest.",
       "cta": "Contact Us to Arrange Transfers"
+    },
+    "essentialInfo": {
+      "tag": "NOTE",
+      "title": "Essential Information",
+      "items": [
+        {
+          "heading": "Passports and Visas",
+          "content": "All international travelers arriving in Sabah, Malaysia, must hold a passport valid for at least six months, along with a valid Malaysian visa or visa-free/visa-on-arrival entry permit. Entry policies may change over time, so please consult the relevant authorities regarding the latest requirements before your departure."
+        },
+        {
+          "heading": "Flights and Transfers",
+          "content": "Guests are required to book their own flights to Tawau Airport (TWU). Upon arrival in Tawau, a 70-minute drive will take you to Semporna Pier. From there, we will arrange a private speedboat to carry you across the crystal-blue waters for about 45 minutes to our overwater resort. For safety reasons, speedboat transfers may be restricted at night; late arrivals may require an overnight stay in Semporna town before transferring to the island the following morning."
+        },
+        {
+          "heading": "Climate and Attire",
+          "content": "Located near the equator, Semporna enjoys a warm, sun-drenched climate year-round. We recommend packing light and comfortable summer clothing, non-slip shoes for the speedboat deck, and ample sun protection. To preserve our fragile coral reef ecosystem and protect turtles and marine life, we kindly request that you bring and use only reef-safe sunscreen."
+        }
+      ]
     }
   },
   "Gallery": {
     "Hero": {
       "line1": "Half Sanctuary, Half Ocean",
-      "line2": "MEILI RESORT HOTEL · SEMPORNA · 4°N · CORAL TRIANGLE"
+      "line2": "MEILI RESORT HOTEL · SEMPORNA · 4°N · CORAL TRIANGLE",
+      "pageTag": "THE GALLERY",
+      "description": "A 360° visual archive — every frame a window into life above the sea.",
+      "infoLine": "MEILI RESORT · SEMPORNA · MALAYSIA",
+      "stat1": "4 THEMES",
+      "stat2": "33 PHOTOS"
     },
     "Themes": [
       {
         "id": "01",
-        "title": "Sky & Sea",
-        "subtitle": "SKY & SEA",
+        "title": "The Resort",
+        "subtitle": "THE RESORT",
         "images": [
           {
             "src": "https://picsum.photos/seed/meili_0/1920/1080",
@@ -372,93 +352,93 @@
             "desc": "The crystal clear glass sea reflects the pure sky unique to the equator."
           },
           {
-            "src": "https://picsum.photos/seed/meili_1/1920/1080",
-            "title": "Every Morning Belongs to You",
-            "desc": "Gently awakened by the waves, opening the window reveals an endless blue canvas."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_2/1920/1080",
-            "title": "Unrushed Sunsets",
-            "desc": "Rose-colored glowing clouds slowly burn on the sea level, making time stand still."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_3/1920/1080",
-            "title": "A Century Without Typhoons",
-            "desc": "In this sea blessed by gods, the brilliant starry sky quietly accompanies every night."
-          },
-          {
             "src": "https://picsum.photos/seed/meili_4/1920/1080",
             "title": "Coral Triangle, Semporna",
             "desc": "The world's richest marine habitat, where life blooms brilliantly."
           },
           {
-            "src": "https://picsum.photos/seed/meili_5/1920/1080",
-            "title": "Land Below the Wind",
-            "desc": "Warm all year round, sheltered from monsoons, leaving only gentle sea breezes."
+            "src": "https://picsum.photos/seed/meili_26/1920/1080",
+            "title": "396,000 sqm Built on Water",
+            "desc": "A massive engineering scale, growing a magnificent sea city on shallow shoals far from land."
           },
           {
-            "src": "https://picsum.photos/seed/meili_6/1920/1080",
-            "title": "Nature's Unique Miracles",
-            "desc": "Every day's tide and cloud movement is a unique painting tailored by nature."
+            "src": "https://picsum.photos/seed/meili_27/1920/1080",
+            "title": "Tons of Immortal Ironwood",
+            "desc": "Precious century-old preserved timber builds the massive structure, resilient to crashing waves."
+          },
+          {
+            "src": "https://picsum.photos/seed/meili_28/1920/1080",
+            "title": "Walking on Water",
+            "desc": "Look down to spy schools of fish darting between the pilings; architecture and ocean coexist."
+          },
+          {
+            "src": "https://picsum.photos/seed/meili_29/1920/1080",
+            "title": "300+ Villas · A City Upon the Ocean",
+            "desc": "The scattered villa clusters resemble a magnificent pearl necklace draped across the sea surface."
+          },
+          {
+            "src": "https://picsum.photos/seed/meili_30/1920/1080",
+            "title": "100% Secure & Guarded",
+            "desc": "Exclusive security forces patrol and station here, ensuring absolute peace of mind for every stay."
+          },
+          {
+            "src": "https://picsum.photos/seed/meili_31/1920/1080",
+            "title": "The Birth of a Legend",
+            "desc": "Gathering exceptional craftsmanship to stand this awe-inspiring legacy deep in the ocean."
           }
         ]
       },
       {
         "id": "02",
-        "title": "Ocean & Diving",
-        "subtitle": "OCEAN & DIVING",
+        "title": "Amenities",
+        "subtitle": "AMENITIES",
         "images": [
           {
-            "src": "https://picsum.photos/seed/meili_7/1920/1080",
-            "title": "3,000 Species of Fish",
-            "desc": "Colorful schools of fish dart through, forming a vibrant underwater palace."
+            "src": "https://picsum.photos/seed/meili_32/1920/1080",
+            "title": "Infinity Pool",
+            "desc": "The pool blends seamlessly with the sea, as if you are swimming far across the grand Pacific."
           },
           {
-            "src": "https://picsum.photos/seed/meili_8/1920/1080",
-            "title": "Barracuda Tornado",
-            "desc": "Thousands of barracudas spiral and migrate, forming a breathtaking underwater tornado."
+            "src": "https://picsum.photos/seed/meili_33/1920/1080",
+            "title": "Ocean View Spa",
+            "desc": "Accompanied by ocean waves, let body and mind stretch fully under the care of premium oils."
           },
           {
-            "src": "https://picsum.photos/seed/meili_9/1920/1080",
-            "title": "Swim with Sea Turtles",
-            "desc": "In the gentle ocean currents, roam alongside these ancient wise creatures of the sea."
+            "src": "https://picsum.photos/seed/meili_34/1920/1080",
+            "title": "Ocean View Gym",
+            "desc": "Sweat before an open ocean view, giving exercise a touch of expansive freedom."
           },
           {
-            "src": "https://picsum.photos/seed/meili_10/1920/1080",
-            "title": "Sipadan, Top Diving Spot",
-            "desc": "Cliffs on the edge of the abyss harbor the lifelong yearning of diving enthusiasts."
+            "src": "https://picsum.photos/seed/meili_35/1920/1080",
+            "title": "Yoga Pavilion",
+            "desc": "Facing the ocean sunrise, sit on the tranquil wooden deck to find inner balance."
           },
           {
-            "src": "https://picsum.photos/seed/meili_11/1920/1080",
-            "title": "Five-Star Diving Club",
-            "desc": "Professional team escorts all the way, making every dive into the deep blue a safe adventure."
+            "src": "https://picsum.photos/seed/meili_36/1920/1080",
+            "title": "Water Sports Center",
+            "desc": "Paddleboarding, kayaking, island hopping—endless water activities to keep you thrilled."
           },
           {
-            "src": "https://picsum.photos/seed/meili_12/1920/1080",
-            "title": "Half Ocean, Half Sun",
-            "desc": "Sunlight penetrates the surface, refracting layered light and shadows, lighting up every coral."
+            "src": "https://picsum.photos/seed/meili_37/1920/1080",
+            "title": "Boutique Gallery",
+            "desc": "Stroll through this miniature gallery and choose a souvenir infused with ocean vibes."
           },
           {
-            "src": "https://picsum.photos/seed/meili_13/1920/1080",
-            "title": "76% of Global Coral Species",
-            "desc": "Here lies the densest treasure trove of coral species on Earth, bursting with colors."
+            "src": "https://picsum.photos/seed/meili_38/1920/1080",
+            "title": "Banquet Hall",
+            "desc": "Host meetings or parties between sea and sky, creating lifelong unique memories."
           },
           {
-            "src": "https://picsum.photos/seed/meili_14/1920/1080",
-            "title": "Professional Guidance",
-            "desc": "From beginners to veteran divers, everyone can find their own deep-sea paradise here."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_15/1920/1080",
-            "title": "Vibrant Night Dive",
-            "desc": "Night dives unveil another layer of mystery, with nocturnal creatures bringing stunning contrasts."
+            "src": "https://picsum.photos/seed/meili_39/1920/1080",
+            "title": "Mini Golf",
+            "desc": "A mini putting green amidst sea breezes brings you the relaxed pleasure of a lightweight swing."
           }
         ]
       },
       {
         "id": "03",
-        "title": "Villa & Stay",
-        "subtitle": "VILLA & STAY",
+        "title": "Villas & Suites",
+        "subtitle": "VILLAS & SUITES",
         "images": [
           {
             "src": "https://picsum.photos/seed/meili_16/1920/1080",
@@ -514,90 +494,6 @@
       },
       {
         "id": "04",
-        "title": "Architecture",
-        "subtitle": "ARCHITECTURE",
-        "images": [
-          {
-            "src": "https://picsum.photos/seed/meili_26/1920/1080",
-            "title": "396,000 sqm Built on Water",
-            "desc": "A massive engineering scale, growing a magnificent sea city on shallow shoals far from land."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_27/1920/1080",
-            "title": "Tons of Immortal Wood",
-            "desc": "Precious century-old preserved timber builds the massive structure, resilient to crashing waves."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_28/1920/1080",
-            "title": "Wooden Bridge Above the Deep",
-            "desc": "Look down to spy schools of fish darting between the pilings; architecture and ocean coexist."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_29/1920/1080",
-            "title": "A City Upon the Ocean",
-            "desc": "The scattered villa clusters resemble a magnificent pearl necklace draped across the sea surface."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_30/1920/1080",
-            "title": "100% Secure & Guarded",
-            "desc": "Exclusive security forces patrol and station here, ensuring absolute peace of mind for every stay."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_31/1920/1080",
-            "title": "The Birth of a Legend",
-            "desc": "Gathering exceptional craftsmanship to stand this awe-inspiring legacy deep in the ocean."
-          }
-        ]
-      },
-      {
-        "id": "05",
-        "title": "Amenities",
-        "subtitle": "AMENITIES",
-        "images": [
-          {
-            "src": "https://picsum.photos/seed/meili_32/1920/1080",
-            "title": "Infinity Pool",
-            "desc": "The pool blends seamlessly with the sea, as if you are swimming far across the grand Pacific."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_33/1920/1080",
-            "title": "Ocean View Spa",
-            "desc": "Accompianied by ocean waves, let body and mind stretch fully under the care of premium oils."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_34/1920/1080",
-            "title": "Ocean View Gym",
-            "desc": "Sweat before an open ocean view, giving exercise a touch of expansive freedom."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_35/1920/1080",
-            "title": "Yoga Pavilion",
-            "desc": "Facing the ocean sunrise, sit on the tranquil wooden deck to find inner balance."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_36/1920/1080",
-            "title": "Water Sports Center",
-            "desc": "Paddleboarding, kayaking, island hopping—endless water activities to keep you thrilled."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_37/1920/1080",
-            "title": "Boutique Shopping",
-            "desc": "Stroll through this miniature gallery and choose a souvenir infused with ocean vibes."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_38/1920/1080",
-            "title": "Banquet Hall",
-            "desc": "Host meetings or parties between sea and sky, creating lifelong unique memories."
-          },
-          {
-            "src": "https://picsum.photos/seed/meili_39/1920/1080",
-            "title": "Mini Golf",
-            "desc": "A mini putting green amidst sea breezes brings you the relaxed pleasure of a lightweight swing."
-          }
-        ]
-      },
-      {
-        "id": "06",
         "title": "Dining & Views",
         "subtitle": "DINING & VIEWS",
         "images": [
@@ -672,14 +568,14 @@
     "ctaSub": "Direct via WhatsApp wa.me/60112780399"
   },
   "OffersMember": {
-    "items": {
-      "0": "Priority booking before public release",
-      "1": "Exclusive member discount rate",
-      "2": "Birthday privileges: room upgrade or custom welcome gift",
-      "3": "First access to new offers & events",
-      "4": "Dedicated service channel via WeChat or Email",
-      "5": "Member-only packages, not listed publicly"
-    },
+    "items": [
+      "Priority booking before public release",
+      "Exclusive member discount rate",
+      "Birthday privileges: room upgrade or custom welcome gift",
+      "First access to new offers & events",
+      "Dedicated service channel via WeChat or Email",
+      "Member-only packages, not listed publicly"
+    ],
     "badge": "MEMBER ONLY",
     "subtitle": "No threshold. Priority access. Hidden perks — Join before the doors open.",
     "note": "Submit the registration form below. Our team will confirm within 48 hours. No annual fee, zero threshold.",
@@ -687,13 +583,6 @@
     "ctaSub": "Email us at amy@meilihotel.com"
   },
   "OffersPromotional": {
-    "includes": [
-      "Meili Breeze Villa accommodation × 1",
-      "Daily full board meals: Breakfast/Lunch/Dinner/Tea × 2 pax",
-      "Tawau Airport ↔ Semporna Jetty land transfer",
-      "Semporna Jetty ↔ Resort speedboat transfer",
-      "Snorkeling/Diving · Stargazing · Infinity Pool · Overwater Gym"
-    ],
     "badge": "EARLY BIRD",
     "tag": "Limited Opening Offer",
     "title": "Exclusive Full Board Escape",
@@ -708,7 +597,14 @@
     "termsTitle": "Terms & Conditions",
     "terms": "Non-refundable · Full prepayment required · Passenger info required 3 days prior · For 2 guests",
     "ctaMain": "Book Now",
-    "ctaSub": "Direct via WhatsApp wa.me/60112780399"
+    "ctaSub": "Direct via WhatsApp wa.me/60112780399",
+    "items": [
+      "Meili Breeze Villa accommodation × 1",
+      "Daily full board meals: Breakfast/Lunch/Dinner/Tea × 2 pax",
+      "Tawau Airport ↔ Semporna Jetty land transfer",
+      "Semporna Jetty ↔ Resort speedboat transfer",
+      "Snorkeling/Diving · Stargazing · Infinity Pool · Overwater Gym"
+    ]
   },
   "OffersContactForm": {
     "title": "One Step. We'll Take It From Here.",
@@ -727,5 +623,231 @@
     "submitBtn": "Send Inquiry",
     "successMsg": "Thank you. We will contact you within 48 hours.",
     "whatsappAlt": "Or reach us instantly via WhatsApp:"
+  },
+  "PageMeta": {
+    "siteName": "Meili Resort Semporna",
+    "siteNameFull": "Meili Resort Semporna | MEILI RESORT SEMPORNA",
+    "siteDescription": "An all-overwater private villa sanctuary at 4°N in the Coral Triangle, Semporna. Adjacent to world-class Sipadan diving, all-inclusive luxury and 24-hour butler service await.",
+    "siteKeywords": "Semporna resort, overwater villa, diving, Sipadan, Sabah, Malaysia, Coral Triangle, Meili Resort, Borneo",
+    "gallery": {
+      "title": "Gallery",
+      "description": "Discover the stunning imagery of Meili Resort Semporna — crystal-clear waters, century-old ironwood overwater villas, world-class Coral Triangle diving, and dining above the sea.",
+      "keywords": "Semporna photos, overwater villa gallery, coral reef diving Malaysia, Sipadan, resort imagery, Meili Resort"
+    },
+    "location": {
+      "title": "Location",
+      "description": "Meili Resort Semporna sits at 4°N in the heart of the Coral Triangle, Sabah, Malaysia — minutes from Sipadan Island by speedboat, reachable via Tawau Airport. Typhoon-free, warm year-round.",
+      "keywords": "Semporna location, how to get to Semporna, Sipadan, Tawau Airport, Sabah Malaysia, Coral Triangle resort"
+    },
+    "offers": {
+      "title": "Offers",
+      "description": "Explore exclusive deals at Meili Resort Semporna — member privileges, group packages, and limited-time early-bird promotional rates for your luxury island escape.",
+      "keywords": "Semporna deals, Malaysia overwater villa packages, resort promotions, member benefits, group travel Semporna"
+    },
+    "contact": {
+      "title": "Contact Us | Meili Resort Semporna",
+      "description": "Contact Meili Resort Semporna — reach us via WhatsApp, email, or book online. 24-hour butler service, always here for you."
+    }
+  },
+  "ContactPage": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "Meili Resort Semporna",
+      "addressLabel": "Address",
+      "addressValue": "Semporna, Sabah, Malaysia 91308",
+      "whatsappLabel": "WhatsApp",
+      "whatsappValue": "+6011 2780 3997",
+      "emailLabel": "Email",
+      "emailValue": "amy@meilihotel.com",
+      "bookingLabel": "Reservations",
+      "bookingValue": "Book Online",
+      "whatsappCta": "Message Us",
+      "emailCta": "Email Us",
+      "bookingDesc": "Best rates · Book direct"
+    },
+    "form": {
+      "title": "Send a Message",
+      "subtitle": "We will respond within 24 hours.",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "phoneLabel": "Phone Number",
+      "typeLabel": "Inquiry Type",
+      "dateLabel": "Estimated Arrival Date",
+      "messageLabel": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "submitBtn": "Submit",
+      "successMsg": "Thank you for your message. We will be in touch within 24 hours.",
+      "whatsappAlt": "For immediate assistance, please contact us via WhatsApp.",
+      "types": {
+        "reservation": "Reservation Enquiry",
+        "packages": "Packages & Offers",
+        "transfer": "Transfer Arrangement",
+        "honeymoon": "Honeymoon & Celebrations",
+        "other": "Others"
+      }
+    },
+    "faq": {
+      "label": "Need to Know",
+      "title": "Frequently Asked Questions",
+      "categories": [
+        {
+          "category": "Reservation & Booking",
+          "questions": [
+            {
+              "q": "How do I make a reservation?",
+              "a": "You can book through our official website, Trip.com, Booking.com, or contact us via WhatsApp (+6011 2780 3997) or Email (amy@meilihotel.com). Direct booking offers the best rates. We look forward to welcoming you to this private glass sea."
+            },
+            {
+              "q": "What payment methods do you accept?",
+              "a": "We accept bank transfers and major credit/debit cards. Payment details will be provided in your booking confirmation."
+            },
+            {
+              "q": "Is a deposit required?",
+              "a": "Yes, a deposit is required to secure your booking. The deposit amount and payment instructions will be detailed in your confirmation. Some packages (e.g. all-inclusive) require full prepayment."
+            }
+          ]
+        },
+        {
+          "category": "Arrival & Stay",
+          "questions": [
+            {
+              "q": "What are the check-in and check-out times?",
+              "a": "Check-in is from 14:00 (2:00 PM). Check-out is by 12:00 (Noon). Early check-in or late check-out is subject to availability and may incur additional charges."
+            },
+            {
+              "q": "How do I get to the resort?",
+              "a": "Your journey is part of the experience. All-inclusive packages include round-trip transfers: Tawau Airport to Semporna Jetty by land (approx. 1 hr), then a private speedboat to Meili Resort (approx. 30 mins). Please provide full arrival details at least 3 days in advance."
+            },
+            {
+              "q": "Do you provide airport transfers?",
+              "a": "Yes, round-trip airport transfers are included in all-inclusive packages. Please provide your complete arrival details so our team can be there to welcome you."
+            },
+            {
+              "q": "What should I bring for my stay?",
+              "a": "We recommend: passport or valid ID, booking confirmation, personal medication, swimwear (multiple sets), reef-safe sunscreen, and non-slip shoes for the speedboat deck."
+            }
+          ]
+        },
+        {
+          "category": "Policies & Amenities",
+          "questions": [
+            {
+              "q": "What is the cancellation policy?",
+              "a": "Free cancellation is available within the stipulated timeframe (see your booking terms). Late cancellations or no-shows will incur charges. Some promotional packages are non-refundable and require full prepayment."
+            },
+            {
+              "q": "Are meals included?",
+              "a": "Our all-inclusive packages include daily breakfast, lunch, dinner, and afternoon tea for two. Please refer to your specific package terms."
+            },
+            {
+              "q": "Is Wi-Fi available?",
+              "a": "Yes, complimentary Wi-Fi is available throughout the resort — in villas and all public areas — so you can share your journey whenever you wish."
+            },
+            {
+              "q": "What is the smoking policy?",
+              "a": "To protect our pristine natural environment and ensure comfort for all guests, smoking is permitted only in designated outdoor areas."
+            }
+          ]
+        },
+        {
+          "category": "Facilities & Services",
+          "questions": [
+            {
+              "q": "What facilities does the resort offer?",
+              "a": "Infinity pool, overwater restaurants and bar, five-star dive club, sea golf practice range, full fitness centre, spa & wellness centre, six-star theatre, overwater event pavilion, children's water park, rooftop ocean terrace, stargazing, and 24-hour personal butler service."
+            },
+            {
+              "q": "Can you arrange honeymoon or special celebrations?",
+              "a": "Absolutely! We would be delighted to make your special moment unforgettable. Please let us know your requirements in advance and our team will create a bespoke arrangement. (Additional charges may apply for special setups.)"
+            }
+          ]
+        },
+        {
+          "category": "Family & Practicalities",
+          "questions": [
+            {
+              "q": "Are children welcome?",
+              "a": "Most welcome! Children aged 5 and under sharing an existing bed with parents stay complimentary. The spirit of exploration here is for all ages."
+            },
+            {
+              "q": "Can extra beds be arranged?",
+              "a": "Yes, extra beds can be arranged upon request, subject to room conditions. Additional charges will apply."
+            },
+            {
+              "q": "Is there parking available?",
+              "a": "As the resort is reached by private speedboat, parking is not available at the departure jetty. We recommend using public parking in Semporna town."
+            },
+            {
+              "q": "Are pets allowed?",
+              "a": "We regret that to protect the island's delicate ecosystem and ensure comfort for all guests, pets are not permitted on the island."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "BookingPage": {
+    "hero": {
+      "pageTag": "VILLAS & SUITES",
+      "title": "Villas & Suites",
+      "quote": "Suspended above the crystal sea, where the tide whispers and time stands still",
+      "description": "Settle into an overwater villa of ancient BELIAN ironwood, suspended above the heart of the Coral Triangle. Everything is taken care of — full-board dining, roundtrip transfers, and a 24-hour personal butler — so all that remains is to lose yourself in the crystalline sea."
+    },
+    "tabs": {
+      "all": "All Accommodations",
+      "waterVillas": "Overwater Villas",
+      "signatureVillas": "Signature Suites"
+    },
+    "room": {
+      "size": "Size",
+      "capacity": "Max Occupancy",
+      "bedding": "Bedding",
+      "checkRates": "Check Rates",
+      "book": "Book Now"
+    },
+    "amenities": {
+      "title": "Features & Amenities",
+      "viewAll": "View All",
+      "items": [
+        {
+          "title": "Free High-Speed Wi-Fi"
+        },
+        {
+          "title": "24-hour Butler Service"
+        },
+        {
+          "title": "Full-Board Dining"
+        },
+        {
+          "title": "Water Sports Center"
+        },
+        {
+          "title": "Roundtrip Transfers"
+        }
+      ]
+    },
+    "policies": {
+      "title": "Policies",
+      "checkInTime": "Check-in: 3:00 PM / Check-out: 12:00 PM",
+      "items": [
+        {
+          "title": "Early Arrival & Late Departure",
+          "desc": "If your arrival or departure falls outside of standard times, we recommend letting us know in advance to accommodate your schedule, subject to availability."
+        },
+        {
+          "title": "Payment Methods",
+          "desc": "We accept bank transfers and major credit cards. A deposit is required to confirm your reservation."
+        },
+        {
+          "title": "Family Policy",
+          "desc": "Children 5 years and under stay free of charge when sharing existing bedding with parents. Extra beds may incur additional fees."
+        }
+      ]
+    },
+    "contactBanner": {
+      "text": "Our reservations team is delighted to arrange your exclusive journey.",
+      "contact": "Contact Reservations",
+      "phone": "+6011 2780 3997"
+    }
   }
 }

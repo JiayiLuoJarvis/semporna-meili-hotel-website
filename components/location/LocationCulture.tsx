@@ -24,165 +24,139 @@ export default function LocationCulture() {
   const geoRef = useRef<HTMLDivElement>(null);
   const bajauRef = useRef<HTMLDivElement>(null);
 
-  const geoInView = useInView(geoRef, { once: true, margin: '0px 0px -20px 0px', amount: 0.02 });
-  const bajauInView = useInView(bajauRef, { once: true, margin: '0px 0px -20px 0px', amount: 0.02 });
+  const geoInView = useInView(geoRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
+  const bajauInView = useInView(bajauRef, { once: true, margin: '0px 0px -40px 0px', amount: 0.1 });
 
   return (
-    <section
-      id="location-culture"
-      className="bg-[--color-about-bg] pt-16 sm:pt-24 md:pt-28 lg:pt-32 xl:pt-40 pb-0"
-    >
-      {/* 1-A 地理优势 */}
-      <div
-        ref={geoRef}
-        className="flex flex-col md:flex-row items-center px-page gap-12 md:gap-0 max-w-7xl mx-auto"
-      >
-        {/* 左图 */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={geoInView ? 'visible' : 'hidden'}
-          className="w-full md:w-1/2 relative aspect-4/3 overflow-hidden shrink-0 rounded-sm"
-        >
-          <Image
-            src="https://picsum.photos/seed/meili_loc_1/1920/1080"
-            alt={t('info.imageAlt.geo')}
-            fill
-            className="object-cover"
-          />
-        </motion.div>
+    <section id="location-culture" className="bg-[--color-about-bg]">
+      <div className="px-page mx-auto max-w-350">
+        <div className="border-warm-gray relative w-full border-b">
+          {/* ── 1-A 地理优势 ── */}
+          <div
+            ref={geoRef}
+            className="group border-warm-gray flex flex-col gap-6 py-8 md:flex-row md:gap-16 md:py-20 lg:gap-24 lg:py-24"
+          >
+            {/* 左图 */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate={geoInView ? 'visible' : 'hidden'}
+              className="w-full shrink-0 md:w-5/12"
+            >
+              <div className="relative aspect-video w-full overflow-hidden md:aspect-4/3">
+                <Image
+                  src="https://picsum.photos/seed/meili_loc_1/1920/1080"
+                  alt={t('info.imageAlt.geo')}
+                  fill
+                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+              </div>
+            </motion.div>
 
-        {/* 右文 */}
-        <div className="w-full md:w-1/2 md:pl-16 lg:pl-24 flex flex-col justify-center">
-          {/* 章节标签 */}
-          <motion.div
-            custom={0.05}
-            variants={fadeUp}
-            initial="hidden"
-            animate={geoInView ? 'visible' : 'hidden'}
-            className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
-          >
-            <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold-warm">01</span>
-            <div className="w-8 sm:w-12 h-px bg-gold-warm" />
-            <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-              {t('intro.tag')}
-            </span>
-          </motion.div>
+            {/* 右文 */}
+            <div className="flex w-full flex-col justify-center py-4 md:w-7/12 lg:py-10">
+              <div className="flex max-w-lg flex-col lg:pl-8">
+                <motion.h3
+                  custom={0}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={geoInView ? 'visible' : 'hidden'}
+                  className="mb-4 font-serif text-xl leading-[1.3] font-light tracking-wide text-[--color-section-text] md:mb-8 md:text-2xl lg:text-[2rem]"
+                >
+                  {t('intro.title1')}
+                </motion.h3>
 
-          {/* 主标题 */}
-          <motion.h2
-            custom={0.1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={geoInView ? 'visible' : 'hidden'}
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-8 sm:mb-10"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
-          >
-            {t('intro.title1')}
-          </motion.h2>
+                <motion.p
+                  custom={0.15}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={geoInView ? 'visible' : 'hidden'}
+                  className="text-warm-text mb-4 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
+                >
+                  {t('intro.desc1')}
+                </motion.p>
+                <motion.p
+                  custom={0.2}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={geoInView ? 'visible' : 'hidden'}
+                  className="text-warm-text mb-4 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
+                >
+                  {t('intro.desc2')}
+                </motion.p>
+                <motion.p
+                  custom={0.25}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={geoInView ? 'visible' : 'hidden'}
+                  className="text-warm-text font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
+                >
+                  {t('intro.desc3')}
+                </motion.p>
+              </div>
+            </div>
+          </div>
 
-          {/* 正文三段 */}
-          <motion.p
-            custom={0.15}
-            variants={fadeUp}
-            initial="hidden"
-            animate={geoInView ? 'visible' : 'hidden'}
-            className="font-sans text-[--color-section-text]/75 text-sm sm:text-base leading-relaxed mb-5"
+          {/* ── 1-B 巴瑶族 ── */}
+          <div
+            ref={bajauRef}
+            className="group border-warm-gray flex flex-col gap-6 border-t py-8 md:flex-row md:gap-16 md:py-20 lg:gap-24 lg:py-24"
           >
-            {t('intro.desc1')}
-          </motion.p>
-          <motion.p
-            custom={0.2}
-            variants={fadeUp}
-            initial="hidden"
-            animate={geoInView ? 'visible' : 'hidden'}
-            className="font-sans text-[--color-section-text]/75 text-sm sm:text-base leading-relaxed mb-5"
-          >
-            {t('intro.desc2')}
-          </motion.p>
-          <motion.p
-            custom={0.25}
-            variants={fadeUp}
-            initial="hidden"
-            animate={geoInView ? 'visible' : 'hidden'}
-            className="font-sans text-[--color-section-text]/75 text-sm sm:text-base leading-relaxed mb-10 sm:mb-14"
-          >
-            {t('intro.desc3')}
-          </motion.p>
-        </div>
-      </div>
+            {/* 左图 */}
+            <motion.div
+              custom={0}
+              variants={fadeUp}
+              initial="hidden"
+              animate={bajauInView ? 'visible' : 'hidden'}
+              className="w-full shrink-0 md:w-5/12"
+            >
+              <div className="relative aspect-video w-full overflow-hidden md:aspect-4/3">
+                <Image
+                  src="https://picsum.photos/seed/meili_loc_2/1920/1080"
+                  alt={t('info.imageAlt.bajau')}
+                  fill
+                  className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 45vw"
+                />
+              </div>
+            </motion.div>
 
-      {/* 分割空间 */}
-      <div className="h-20 sm:h-28 md:h-36" />
+            {/* 右文 */}
+            <div className="flex w-full flex-col justify-center py-4 md:w-7/12 lg:py-10">
+              <div className="flex max-w-lg flex-col lg:pl-8">
+                <motion.h3
+                  custom={0}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={bajauInView ? 'visible' : 'hidden'}
+                  className="mb-4 font-serif text-xl leading-[1.3] font-light tracking-wide text-[--color-section-text] md:mb-8 md:text-2xl lg:text-[2rem]"
+                >
+                  {t('culture.bajau.title')}
+                </motion.h3>
 
-      {/* 1-B 巴瑶族 */}
-      <div
-        ref={bajauRef}
-        className="flex flex-col md:flex-row-reverse items-center px-page gap-12 md:gap-0 max-w-7xl mx-auto"
-      >
-        {/* 右图（桌面右，移动上） */}
-        <motion.div
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate={bajauInView ? 'visible' : 'hidden'}
-          className="w-full md:w-1/2 relative aspect-4/3 overflow-hidden shrink-0 rounded-sm"
-        >
-          <Image
-            src="https://picsum.photos/seed/meili_loc_2/1920/1080"
-            alt={t('info.imageAlt.bajau')}
-            fill
-            className="object-cover"
-          />
-        </motion.div>
-
-        {/* 左文 */}
-        <div className="w-full md:w-1/2 md:pr-16 lg:pr-24 flex flex-col justify-center">
-          {/* 章节标签 */}
-          <motion.div
-            custom={0.05}
-            variants={fadeUp}
-            initial="hidden"
-            animate={bajauInView ? 'visible' : 'hidden'}
-            className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8"
-          >
-            <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold-warm">02</span>
-            <div className="w-8 sm:w-12 h-px bg-gold-warm" />
-            <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-              {t('culture.bajau.tag')}
-            </span>
-          </motion.div>
-
-          <motion.h2
-            custom={0.1}
-            variants={fadeUp}
-            initial="hidden"
-            animate={bajauInView ? 'visible' : 'hidden'}
-            className="font-serif text-[--color-section-text] leading-[1.15] mb-8 sm:mb-10"
-            style={{ fontSize: 'clamp(1.6rem, 4vw, 2.8rem)' }}
-          >
-            {t('culture.bajau.title')}
-          </motion.h2>
-
-          <motion.p
-            custom={0.15}
-            variants={fadeUp}
-            initial="hidden"
-            animate={bajauInView ? 'visible' : 'hidden'}
-            className="font-sans text-[--color-section-text]/75 text-sm sm:text-base leading-relaxed mb-5"
-          >
-            {t('culture.bajau.desc1')}
-          </motion.p>
-          <motion.p
-            custom={0.2}
-            variants={fadeUp}
-            initial="hidden"
-            animate={bajauInView ? 'visible' : 'hidden'}
-            className="font-sans text-[--color-section-text]/75 text-sm sm:text-base leading-relaxed"
-          >
-            {t('culture.bajau.desc2')}
-          </motion.p>
+                <motion.p
+                  custom={0.15}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={bajauInView ? 'visible' : 'hidden'}
+                  className="text-warm-text mb-4 font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
+                >
+                  {t('culture.bajau.desc1')}
+                </motion.p>
+                <motion.p
+                  custom={0.2}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate={bajauInView ? 'visible' : 'hidden'}
+                  className="text-warm-text font-sans text-sm leading-relaxed font-light md:leading-[2.2]"
+                >
+                  {t('culture.bajau.desc2')}
+                </motion.p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

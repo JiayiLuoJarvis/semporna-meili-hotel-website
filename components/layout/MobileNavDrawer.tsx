@@ -37,7 +37,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
     <>
       {/* Backdrop overlay */}
       <div
-        className={`fixed inset-0 z-100 bg-black/40 transition-opacity duration-500 lg:hidden ${
+        className={`fixed inset-0 z-100 bg-black/40 transition-opacity duration-500 ${
           isOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={onClose}
@@ -45,7 +45,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
 
       {/* Drawer */}
       <div
-        className={`fixed inset-y-0 right-0 z-101 flex h-full w-[88vw] max-w-100 flex-col bg-white text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:hidden ${
+        className={`fixed inset-y-0 right-0 z-101 flex h-full w-[88vw] max-w-100 flex-col bg-white text-black transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -75,7 +75,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
             <div ref={langRef} className="relative flex items-center pr-2">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold tracking-wider text-black/80 uppercase transition-opacity hover:opacity-70"
+                className="flex cursor-pointer items-center gap-1.5 text-[11px] font-semibold tracking-wider text-foreground uppercase transition-opacity hover:opacity-70"
                 aria-label="Select language"
               >
                 <span>{locales.find((l) => l.code === locale)?.label ?? locale.toUpperCase()}</span>
@@ -118,7 +118,7 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
                       className={`flex w-full items-center justify-between px-4 py-3 text-left tracking-widest transition-colors duration-150 ${
                         locale === loc.code
                           ? 'bg-black/5 font-semibold text-black'
-                          : 'text-black/60 hover:bg-black/5 hover:text-black'
+                          : 'text-muted-foreground hover:bg-black/5 hover:text-black'
                       }`}
                     >
                       <span className="text-[12px] uppercase">{loc.label}</span>
@@ -206,12 +206,12 @@ export function MobileNavDrawer({ isOpen, onClose, locales }: MobileNavDrawerPro
               {t('nav1')}
             </Link>
             <Link
-              href="/booking"
+              href="/booking/all"
               prefetch={false}
               onClick={onClose}
               className="relative flex cursor-pointer items-center hover:opacity-70"
             >
-              {pathname === '/booking' && (
+              {pathname.startsWith('/booking') && (
               <svg className="absolute -left-6.25 h-3.5 w-3" viewBox="0 0 10 14" fill="black">
                 <path d="M0 0l10 7-10 7z" />
               </svg>

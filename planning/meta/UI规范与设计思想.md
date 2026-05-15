@@ -1,6 +1,6 @@
 # 美丽度假酒店官网 — UI 规范与设计思想
 
-> **文档版本**：v3.2 | 更新日期：2026-04-23
+> **文档版本**：v4.0 | 更新日期：2026-05-06
 > **唯一真相来源**：`app/globals.css` → `@theme` 块。新模块开发请以此为参考。
 > 品牌背景见 `planning/00-项目背景与叙事策略.md`。
 
@@ -51,14 +51,14 @@
 大海是最核心的视觉语言。设计原则：
 - 摄影优先——图片永远是主角，UI 是容器
 - 全宽铺满（edge-to-edge），不要用边框或 padding 把大图"框住"
-- 主色 `--color-primary`（深海蓝 `#003865`）和辅色 `--color-accent`（天空蓝 `#0091da`）都来自这片海，保持色彩系统与场景的一致性
+- 主色 `--color-primary`（深海蓝 `#002f56`）和辅色 `--color-accent`（天空蓝 `#0091da`）都来自这片海，保持色彩系统与场景的一致性
 - 深色区块（`--color-villas-bg`）模拟深夜海面，让页面有"入水"的沉浸感
 
 #### 支柱二：木质奢华感（BELIAN Warmth）
 
 BELIAN 铁木是酒店最核心的物质差异，UI 需要把这种质感带入屏幕：
 - `--color-gold`（品牌金 `#b18b74`）和 `--color-gold-warm`（`#c2996c`）直接取自铁木色调
-- 金色只做点睛——章节序号、CTA 底线、装饰金线——不做大面积填充
+- 金色只做点睛——CTA 底线、预订按钮边框、价格数字——不做大面积填充，绝对禁止作为小标题前缀使用
 - 暖米色区块（`--color-about-bg`）是呼应木质温度的背景色
 - 字体 Cinzel 的碑铭气质，类似铁木雕刻的厚重感
 
@@ -173,7 +173,7 @@ Hero 全宽图 → 文字内容区（cream/about-bg 浅色基底）→ 全宽图
 
 | CSS 变量 | 色值 | Tailwind 类 | 用途 |
 |---|---|---|---|
-| `--color-primary` | `#003865` 深海蓝 | `bg-primary` / `text-primary` | 导航背景、主按钮底色、品牌主色 |
+| `--color-primary` | `#002f56` 深海蓝 | `bg-primary` / `text-primary` | 导航背景、主按钮底色、品牌主色 |
 | `--color-primary-light` | `#004d8a` | `bg-primary-light` | 主按钮 hover 态 |
 | `--color-primary-dark` | `#001f3f` | `bg-primary-dark` / `text-primary-dark` | 深色标题、强调色 |
 | `--color-accent` | `#0091da` 天空蓝 | `text-accent` / `bg-accent` | 链接、标题蓝色强调行、图标 hover |
@@ -280,6 +280,76 @@ Hero 全宽图 → 文字内容区（cream/about-bg 浅色基底）→ 全宽图
 <section className="bg-cream px-page py-20 md:py-32">...</section>
 ```
 
+### 1.5 内容页区块节奏规范（强制执行）
+
+> 本节针对**二级内容页**（Location、Gallery、Offers 等，区别于首页），给出背景色与区块排序的强制规范。首页架构见 Part 10。
+
+#### 禁止使用黑色/深色背景
+
+```
+❌ 禁止在内容页中间区块使用：
+  bg-villas-bg（深夜蓝）  
+  bg-primary（深海蓝）  
+  bg-primary-dark
+  任何自定义深色（即使不是纯黑）
+```
+
+**原因**：内容页的任务是**传递信息与建立信任**，不是制造戏剧性沉浸感。深色背景在首页/图片页等情感区块有其位置，但在位置说明、行前须知、套餐详情等实用型内容区块中，深色背景会降低可读性、破坏信息层级，让访客感到疲劳。
+
+#### 三段式区块结构
+
+内容页的所有区块按照**首—中—尾**三段划分，每段有不同的背景色使用权限：
+
+```
+┌──────────────────────────────────────────────────────┐
+│  HEAD（首段）                                          │
+│  首个内容区块，紧跟 SubNav / Hero 之后                   │
+│  允许使用：bg-[--color-about-bg]（暖米，提供开场温度感）  │
+│  允许使用：bg-cream（奶白，轻盈起笔）                    │
+└──────────────────────────────────────────────────────┘
+        ↓ 交替流动，不做色彩冲击
+┌──────────────────────────────────────────────────────┐
+│  BODY（中段，可有多个区块）                             │
+│  严格限定：bg-background（纯白）与 bg-cream（奶白）交替  │
+│  禁止引入任何深色、主题色或其他浅色变体                   │
+│  两个区块之间的差异靠内容密度节奏体现，不靠颜色切换        │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  TAIL（尾段）                                          │
+│  最后一个内容区块，通常是 CTA / 行动召唤                  │
+│  允许使用：bg-primary（深海蓝，提供结尾重量感）            │
+│  允许使用：全宽实景图叠遮罩（最推荐，情绪最强）            │
+│  允许使用：bg-[--color-about-bg]（温和收尾）             │
+│  禁止使用：纯黑 / villas-bg（视觉过于沉重，结尾压抑）      │
+└──────────────────────────────────────────────────────┘
+```
+
+#### 主题色背景的使用约束
+
+`bg-primary`（深海蓝）作为背景色，仅在以下情况允许使用：
+
+| 场景 | 允许 | 说明 |
+|---|---|---|
+| TAIL 尾段 CTA 区块 | ✅ | 给结尾提供品牌重量感 |
+| Header / Footer | ✅ | 全局导航组件，不受内容页规范约束 |
+| BODY 中间内容区块 | ❌ | 会与白/奶白形成强烈对比，破坏叙事流 |
+| 连续两个区块 | ❌ | 任何情况下，主题深色不得连续出现 |
+
+#### Location 页具体应用示例
+
+```
+LocationSubNav（sticky 导航条，bg-primary/90 backdrop-blur，全局组件）
+    ↓
+LocationCulture     → HEAD   bg-[--color-about-bg]（暖米，文化叙事开场）
+    ↓
+LocationTransport   → BODY   bg-background 或 bg-cream
+    ↓
+LocationNeedToKnow  → BODY   bg-cream 或 bg-background（与上方交替）
+    ↓
+LocationCTA         → TAIL   全宽实景图 + 遮罩（最推荐）或 bg-primary
+```
+
 ---
 
 ## Part 2：响应式规范 (Mobile-First Responsive)
@@ -348,7 +418,66 @@ xl:      padding-inline: 4rem   (64px)
 
 > Edge-to-edge 例外：横向滑动卡片列表用 `pl-6 lg:pl-20`（右侧露出下一张提示滑动）。
 
-### 2.5 区块垂直间距
+### 2.5 内容最大宽度（Max-Width 容器系统）
+
+> ⚠️ **这是目前代码中最严重的不一致问题。** 不同组件各自硬写了不同的 `max-w-*` 值，导致在宽屏（1440px+、2K、4K）上各区块的内容边界参差不齐，整体感破碎。**新建任何区块前，必须先确认它属于哪一类容器，并套用下方对应的类名。**
+
+#### 三级容器体系
+
+| 级别 | 用途 | 类名 | 实际宽度 |
+|------|------|------|---------|
+| **A 级 — 全宽溢出组件** | Embla 轮播轨道、全宽视频、Hero | 不设 max-w 或 `max-w-480` | 不限（允许超出屏幕） |
+| **B 级 — 标准内容容器** | 绝大多数区块（正文、列表、网格） | `max-w-350 mx-auto px-page` | **87.5rem / 1400px** |
+| **C 级 — 窄栏居中容器** | 序章引言、单列叙事（HotelIntro） | `max-w-4xl mx-auto px-page` | 56rem / 896px |
+
+#### 文字行宽限制（叠加在容器之内）
+
+在 B 级 / C 级容器内部，进一步约束文字行宽以提升可读性：
+
+| 元素 | 类名 | 说明 |
+|------|------|------|
+| 区块主标题 | `max-w-3xl` | 避免超宽屏标题过长 |
+| 正文段落 | `max-w-2xl` 或 `max-w-prose` | 保持 ~65ch 行宽 |
+| 卡片内右文区 | `max-w-lg` | 双列布局中的右侧文字列 |
+
+#### 标准用法
+
+```tsx
+{/* B 级 — 绝大多数区块的外容器 */}
+<section className="bg-background py-20 md:py-32">
+  <div className="mx-auto max-w-350 px-page">
+    {/* 内容 */}
+  </div>
+</section>
+
+{/* C 级 — 序章 / 引言区块 */}
+<section className="bg-background py-12 md:py-28 lg:py-40">
+  <div className="mx-auto max-w-4xl px-page text-center">
+    {/* 内容 */}
+  </div>
+</section>
+
+{/* A 级 — 轮播，标题区用 B 级，轮播轨道突破为 A 级 */}
+<section className="bg-cream py-20 md:py-32 overflow-hidden">
+  {/* ✅ 标题区：B 级标准容器，与其他区块对齐 */}
+  <div className="mx-auto max-w-350 px-page mb-10 text-center">
+    <h2 ...>标题</h2>
+  </div>
+  {/* ✅ 轮播轨道：A 级，允许溢出屏幕显示左右卡片 */}
+  <div className="relative mx-auto w-full max-w-480">
+    {/* Embla ref */}
+  </div>
+</section>
+```
+
+#### 已知技术债（最大宽度层面）
+
+| 组件 | 当前值 | 问题 | 应改为 |
+|------|--------|------|--------|
+| `BookingBar.tsx` | `max-w-350 px-6 ... md:px-10 ... lg:px-16` | max-w 已正确，但 px 未用 `px-page`；BookingBar 是特殊浮层，允许保留自定义 px 作为例外 | 保持现状（特殊场景例外） |
+| 任意新区块 | — | 不得自行发明 `max-w-320`、`max-w-340`、`max-w-360` 等新值 | 从以上三级体系选取 |
+
+### 2.6 区块垂直间距
 
 ```tsx
 // 标准区块（桌面大留白）
@@ -385,7 +514,7 @@ className="mb-4 sm:mb-6 md:mb-8 lg:mb-10"
 > <section className="py-20">区块 B</section>
 > ```
 
-### 2.6 触摸目标尺寸
+### 2.7 触摸目标尺寸
 
 移动端所有按钮、链接最小触摸区域 **44×44px**：
 
@@ -496,11 +625,11 @@ className="mb-4 sm:mb-6 md:mb-8 lg:mb-10"
 ```
 ✅ 金色的正确使用场景：
   - CTA 链接文字（"立即预订"底线）
-  - 章节序号与装饰横线
   - Header 预订按钮边框
   - 价格数字强调
 
 ❌ 金色的错误使用：
+  - 页面设置不要使用金色之类小字标题这种取巧性的设计，拉低整体的档次
   - 大面积背景填充
   - 同一视口内超过 3 处金色元素
   - 替代主色（primary）用于普通按钮
@@ -538,9 +667,9 @@ className="mb-4 sm:mb-6 md:mb-8 lg:mb-10"
 
 ## Part 5：动效规范 (Motion)
 
-项目统一使用 **Framer Motion** + **Lenis 平滑滚动**，不混用 CSS animation 与 motion（Hero 除外）。
+项目统一使用 **Framer Motion** + **Lenis 平滑滚动**，不混用 CSS animation 与 motion（**Hero 首屏是唯一例外，使用 CSS animation**）。
 
-### 5.1 标准 fadeUp Variant（所有区块共用，直接复制）
+### 5.1 标准 fadeUp Variant（所有非 Hero 区块共用）
 
 ```tsx
 const fadeUp = {
@@ -557,14 +686,16 @@ const fadeUp = {
 };
 ```
 
+> **HotelIntro 例外**：序章区块使用 `y: 24, duration: 1`，入场更舒缓。这是设计意图，**不要复制到其他区块**。
+
 ### 5.2 标准 useInView 配置
 
 ```tsx
 const sectionRef = useRef<HTMLDivElement>(null);
 const isInView = useInView(sectionRef, {
   once: true,
-  margin: '0px 0px -20px 0px',
-  amount: 0.02,
+  margin: '0px 0px -40px 0px',   // 进入视口 40px 后触发（实测值）
+  amount: 0.1,
 });
 ```
 
@@ -572,27 +703,74 @@ const isInView = useInView(sectionRef, {
 
 ```tsx
 <motion.div custom={0}    variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>章节标签</motion.div>
-<motion.div custom={0.1}  variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>quote 引言</motion.div>
-<motion.div custom={0.15} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>主标题</motion.div>
-<motion.div custom={0.2}  variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>装饰线</motion.div>
-<motion.div custom={0.25} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>正文段落</motion.div>
+<motion.div custom={0.1}  variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>主标题</motion.div>
+<motion.div custom={0.15} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}>正文段落</motion.div>
 ```
 
-### 5.4 Hero 入场（CSS animation，来自 globals.css）
+### 5.4 whileInView 替代写法（列表型区块，每条独立触发）
+
+当区块内每个条目需要独立入场动画时（如 Storytelling 多条故事、功能列表），用 `whileInView` 代替父级 `isInView`，避免整个列表同时闪入：
 
 ```tsx
-{/* 仅 Hero 使用 */}
-<h1 className="animate-fade-in-up font-serif text-white"
-    style={{ animationDelay: '0.6s', animationFillMode: 'both' }} />
-<p  className="animate-fade-in font-sans text-white/80"
-    style={{ animationDelay: '1s', animationFillMode: 'both' }} />
+<motion.div
+  variants={fadeUp}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+/>
 ```
 
-### 5.5 图片 Hover（仅桌面端有效）
+### 5.5 Hero 入场（CSS animation，不用 motion variant）
+
+Hero 的 `motion.section` 用于高度过渡动画，若同时使用 framer-motion 入场 variant 会产生冲突。Hero 内部所有元素使用 `globals.css` 中定义的 CSS animation 类：
+
+```tsx
+{/* Hero 内容专用 —— animate-fade-in / animate-fade-in-up 来自 globals.css */}
+<p  className="animate-fade-in font-sans text-white/80"
+    style={{ animationDelay: '0.4s', animationFillMode: 'both' }} />
+<h1 className="animate-fade-in-up font-serif text-white"
+    style={{ animationDelay: '0.6s', animationFillMode: 'both' }} />
+<div className="animate-fade-in"
+     style={{ animationDelay: '1.0s', animationFillMode: 'both' }}>
+  {/* 快捷导航卡片 */}
+</div>
+```
+
+### 5.6 Hero 高度过渡（motion.section）
+
+Hero section 本身通过 `motion.section` 在加载 3s 后从 100vh 收缩，为桌面端 Header 腾出空间：
+
+```tsx
+<motion.section
+  initial={{ height: '100vh' }}
+  animate={{ height: isMd ? 'calc(100vh - 80px)' : '100vh' }}
+  transition={{ delay: 3, duration: 1, ease: 'easeInOut' }}
+>
+```
+
+> `isMd` 通过 `useEffect + window.matchMedia` 初始化，避免 SSR 报错。
+
+### 5.7 useLenis 滚动追踪（ref 替代 state 的关键模式）
+
+用 `useLenis` 监听滚动时，**「是否已滚动过」这类 flag 用 `useRef`，不用 `useState`**。`setState` 会触发重渲染，导致 `useLenis` 回调被重新订阅并产生 stale closure 警告：
+
+```tsx
+const [scrollY, setScrollY] = useState(0);
+const hasScrolledRef = useRef(false);           // ✅ ref，不触发重渲染
+
+useLenis(({ scroll }) => {
+  setScrollY(scroll);                           // 只有 scrollY 需要驱动 UI
+  if (scroll > 20 && !hasScrolledRef.current) {
+    hasScrolledRef.current = true;              // ✅ 改 ref，无副作用
+  }
+}, []);                                         // 空依赖数组，回调只注册一次
+```
+
+### 5.8 图片 Hover（仅桌面端有效）
 
 ```tsx
 <div className="group overflow-hidden">
-  <Image className="object-cover transition-transform duration-1000 group-hover:scale-105" />
+  <Image className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105" />
   <div className="absolute inset-0 bg-black/40 transition-colors duration-500 group-hover:bg-black/55" />
 </div>
 ```
@@ -601,31 +779,21 @@ const isInView = useInView(sectionRef, {
 
 ## Part 6：组件模式库 (Component Patterns)
 
-### 6.1 章节标签
+### 6.1 章节标签排版排雷（封禁规范）
 
-**亮色区块**：
+**🚫 绝对禁止项（取巧性设计）**：页面结构设置**不要使用金色之类小字标题**（或带前缀序号、花哨修饰）这种取巧性的设计，会拉低整体的奢华档次。应当放弃利用那些细碎花边填充空白的偷懒做法，直接用足够自信的大片留白配合主体排版。
 
 ```tsx
-<motion.div
-  custom={0} variants={fadeUp} initial="hidden" animate={isInView ? 'visible' : 'hidden'}
-  className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center"
->
-  <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-[--color-gold-warm]">01</span>
-  <div className="w-8 sm:w-12 h-px bg-[--color-gold-warm]" />
-  <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-[--color-warm-text]">
-    ABOUT MEILI
-  </span>
+// ❌ 错误示范：绝对禁止使用细碎的金色小字附带装饰线
+<motion.div>
+  <div className="flex items-center gap-3 mb-6 justify-center">
+    <span className="text-[0.6rem] tracking-[0.35em] text-[--color-gold-warm]">01</span>
+    <div className="w-8 h-px bg-[--color-gold-warm]" />
+    <span className="text-[0.6rem] text-[--color-warm-text]">ABOUT MEILI</span>
+  </div>
 </motion.div>
-```
 
-**深色区块（villas-bg 背景）**：
-
-```tsx
-<div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8 justify-center">
-  <span className="font-sans text-[0.6rem] uppercase tracking-[0.35em] text-gold">02</span>
-  <div className="w-8 sm:w-12 h-px bg-gold/40" />
-  <span className="font-sans text-[0.6rem] sm:text-[0.65rem] uppercase tracking-[0.3em] text-white/50">OUR VILLAS</span>
-</div>
+// ✅ 正确做法：直接依赖主题文字本身的字号落差与极致留白（详见附带的标题模式）
 ```
 
 ### 6.2 标题模式
@@ -747,6 +915,186 @@ const isInView = useInView(sectionRef, {
 </div>
 ```
 
+### 6.6 Hero 快捷导航卡片（三断点响应）
+
+Hero 右下角快捷导航使用**三段响应策略**：
+
+| 断点 | 显示位置 | 尺寸 |
+|------|----------|------|
+| `< xl`（移动/平板） | 内容流中、信息栏下方，横排 | `h-20 w-20`（`md:h-24 md:w-24`）|
+| `xl+`（宽桌面） | 绝对定位，右下角，滚动淡出 | `h-28 w-28` |
+
+```tsx
+{/* < xl：内联横排，正方形，CSS animation 入场 */}
+<div className="animate-fade-in mt-4 flex gap-2 xl:hidden"
+     style={{ animationDelay: '1.5s', animationFillMode: 'both' }}>
+  <Link
+    href="/location"
+    className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm border border-white/10 bg-black/60 backdrop-blur-sm transition-colors hover:bg-black/75 md:h-24 md:w-24"
+  >
+    <MapPin className="h-4 w-4 text-white/70 group-hover:text-white" strokeWidth={1.2} />
+    <span className="font-sans text-xs font-light tracking-widest text-white/80 group-hover:text-white">
+      {t('heroCards.0')}
+    </span>
+  </Link>
+  {/* ... 其余两个卡片同结构 */}
+</div>
+
+{/* xl+：绝对定位，scrollY > 80px 时向右滑出并淡出 */}
+<motion.div
+  animate={{ x: scrollY > 80 ? 80 : 0, opacity: scrollY > 80 ? 0 : 1 }}
+  transition={{ duration: 0.55, ease: 'easeInOut' }}
+  style={{ pointerEvents: scrollY > 80 ? 'none' : 'auto' }}
+  className="absolute right-10 bottom-24 z-20 hidden items-center gap-1.5 xl:flex"
+>
+  {/* h-28 w-28 正方形，bg-neutral-900/90 backdrop-blur-md */}
+</motion.div>
+```
+
+> **页内锚点 vs. 跨页路由**：锚点跳转（如 `#villas`）用原生 `<a href="#villas">`，Lenis 会自动接管平滑滚动。跨页路由用 `<Link href="/location">` (next-intl)。
+
+### 6.7 Hero 视频背景（双层渐变遮罩）
+
+```tsx
+<div className="absolute inset-0">
+  <video
+    ref={videoRef}
+    autoPlay muted loop playsInline
+    poster={HERO_IMAGE}
+    className="h-full w-full object-cover"
+  >
+    <source src={HERO_VIDEO} type="video/mp4" />
+  </video>
+  {/* 上下渐变：让文字区域（左下）对比度足够 */}
+  <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/15 to-black/60" />
+  {/* 左侧渐变：强化左侧文字可读性 */}
+  <div className="absolute inset-0 bg-linear-to-r from-black/50 via-transparent to-transparent" />
+</div>
+```
+
+> `poster` 作为视频加载前的占位背景，避免白屏。`autoPlay muted loop playsInline` 四属性缺一不可——iOS Safari 要求 `playsInline` 才允许自动播放。
+
+### 6.8 BookingBar 毛玻璃浮层
+
+BookingBar 和 Hero 动画同步（延迟 3.5s 后展开），`sticky` 贴紧 Header 下方，仅 `md+` 显示：
+
+```tsx
+{/* page.tsx — sticky 容器 */}
+<div id="booking-bar" className="sticky z-40 hidden md:block"
+     style={{ top: 'var(--header-height, 72px)' }}>
+  <BookingBar />
+</div>
+
+{/* BookingBar.tsx — 毛玻璃样式（必须用 inline style，Tailwind 无法组合 saturate） */}
+<div
+  style={{
+    background: 'rgba(255, 255, 255, 0.82)',
+    backdropFilter: 'blur(24px) saturate(1.8)',
+    WebkitBackdropFilter: 'blur(24px) saturate(1.8)',
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.10)',
+  }}
+>
+```
+
+> BookingBar 是**本项目唯一允许 inline style 颜色值的组件**，因为 `backdrop-filter: saturate()` 无法通过 Tailwind 表达。其余所有组件禁止硬编码颜色。
+
+### 6.9 Embla 横向轮播（活跃/非活跃卡片）
+
+中心对齐轮播，活跃卡片放大且满透明度，非活跃卡片缩小+半透明：
+
+```tsx
+const [emblaRef, emblaApi] = useEmblaCarousel({
+  loop: true,
+  align: 'center',
+  skipSnaps: false,
+  dragFree: false,
+});
+
+{/* 活跃 vs 非活跃状态：inline style 驱动，避免 className 条件切换导致 purge 问题 */}
+<div
+  style={{
+    transition: 'all 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+    opacity: isActive ? 1 : 0.4,
+    transform: isActive ? 'scale(1)' : 'scale(0.85)',
+    boxShadow: isActive ? '0 25px 50px -12px rgb(0 0 0 / 0.25)' : 'none',
+  }}
+>
+```
+
+卡片宽度响应式（Embla flex-basis 写法）：
+
+```tsx
+className="flex-[0_0_78%] sm:flex-[0_0_55%] md:flex-[0_0_42%] lg:flex-[0_0_40%] xl:flex-[0_0_30%] 2xl:flex-[0_0_25%]"
+```
+
+图片比例随活跃状态动态切换（宽版 vs. 竖版）：
+
+```tsx
+style={{
+  paddingBottom: isActive ? '80%' : '130%',
+  transition: 'padding-bottom 0.6s cubic-bezier(0.25, 1, 0.5, 1)',
+}}
+```
+
+### 6.10 Storytelling 左图右文列表
+
+长叙事内容区块（品牌故事、新闻列表等）使用「左图 + 右文」水平条目结构，条目之间用细线分隔：
+
+```tsx
+<div className="border-b border-[--color-warm-gray]">
+  {items.map((item, index) => (
+    <div key={index}
+         className="group flex flex-col border-t border-[--color-warm-gray] py-8 md:flex-row md:gap-16 md:py-20 lg:gap-24 lg:py-24">
+
+      {/* 左：固定比例图 —— 移动端 aspect-video，桌面端 aspect-4/3 */}
+      <motion.div variants={fadeUp} initial="hidden" whileInView="visible"
+                  viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+                  className="w-full shrink-0 md:w-5/12 lg:w-[45%]">
+        <div className="relative aspect-video w-full overflow-hidden md:aspect-4/3">
+          <Image src={imgSrc} alt={item.title} fill
+                 className="object-cover transition-transform duration-[2s] ease-out group-hover:scale-105"
+                 sizes="(max-width: 768px) 100vw, 45vw" />
+        </div>
+      </motion.div>
+
+      {/* 右：标签 + 标题 + 摘要 + CTA */}
+      <motion.div variants={fadeUp} initial="hidden" whileInView="visible"
+                  viewport={{ once: true, margin: '0px 0px -50px 0px' }}
+                  className="flex w-full flex-col justify-center py-4 md:w-7/12 lg:w-[55%] lg:py-10">
+        <div className="flex max-w-lg flex-col lg:pl-8">
+          {/* 装饰线 + 标签 */}
+          <div className="mb-5 flex items-center gap-4 font-sans text-xs tracking-[0.25em] uppercase text-[--color-warm-text] md:mb-10">
+            <span className="block h-px w-6 bg-[--color-warm-text]/50 md:w-8" />
+            <span>{item.tag}&nbsp;&nbsp;|&nbsp;&nbsp;{item.date}</span>
+          </div>
+
+          <h3 className="mb-4 font-serif font-light text-xl leading-[1.3] tracking-wide text-[--color-section-text] md:mb-8 md:text-2xl">
+            {item.title}
+          </h3>
+
+          <p className="mb-8 font-sans text-sm font-light leading-relaxed text-[--color-warm-text] md:mb-12 md:leading-loose">
+            {item.desc}
+          </p>
+
+          {/* 底线 CTA */}
+          <button className="group/btn self-start flex items-center gap-4">
+            <span className="border-b border-[--color-section-text]/30 pb-1 font-sans text-xs tracking-[0.25em] uppercase text-[--color-section-text] transition-colors group-hover/btn:border-[--color-section-text]">
+              {t('btn')}
+            </span>
+            <svg width="16" height="8" viewBox="0 0 16 8" fill="none"
+                 className="text-[--color-section-text] transition-transform duration-500 ease-out group-hover/btn:translate-x-2">
+              <path d="M0 4h14M11 1l3 3-3 3" stroke="currentColor" strokeWidth="1"
+                    strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </motion.div>
+
+    </div>
+  ))}
+</div>
+```
+
 ---
 
 ## Part 7：图片规范
@@ -835,7 +1183,76 @@ export default function LocationPage() {
 
 ---
 
-## Part 10：快速开发 Checklist
+## Part 10：首页架构参考（Homepage Architecture Reference）
+
+> 首页是整站的视觉基准。每个新页面开发前，先对照这套架构理解节奏感的来源。
+
+### 10.1 区块序列与背景色节奏
+
+```
+┌──────────────────────────────────────────────────────┐
+│  Hero（全宽视频，100vh，视频本身作为背景色）              │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  BookingBar（sticky，md+ 显示，毛玻璃浮层）              │
+│  top: var(--header-height, 72px)  |  z-40             │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  HotelIntro（序章，单列居中）                           │
+│  bg-background（纯白）｜ py-12 md:py-28 lg:py-40       │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  VillasAndSuites（Embla 轮播，居中对齐）                │
+│  bg-[--color-cream]（米白）｜ py-20 md:py-32           │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  Storytelling（左图右文列表）                           │
+│  bg-background（纯白）｜ py-10 md:py-16 lg:py-20       │
+└──────────────────────────────────────────────────────┘
+```
+
+**背景色节奏**：视频 → 白 → 米白 → 白。白↔米白差异极为细微，形成「流动」感而非「切换」感，符合 Part 1.4 的叙事流原则。
+
+### 10.2 z-index 层级
+
+| 元素 | z-index | 说明 |
+|------|---------|------|
+| Header | `z-50` | 始终最上层 |
+| BookingBar 容器 | `z-40` | sticky 层 |
+| Hero 快捷导航卡片（xl+） | `z-20` | absolute 定位，高于视频遮罩 |
+| Hero 视频遮罩 | 跟随父元素 | 无额外 z-index |
+
+### 10.3 组件文件职责
+
+| 文件 | 职责 | RSC / Client |
+|------|------|-------------|
+| `app/[locale]/page.tsx` | 区块组合编排，零业务 JSX | **Server** |
+| `Hero.tsx` | 视频背景 + 内容排版 + 快捷导航卡片 | Client（state + useLenis）|
+| `BookingBar.tsx` | 预订表单浮层（毛玻璃） | Client（state + AnimatePresence）|
+| `HotelIntro.tsx` | 序章文字 + CTA | Client（useInView）|
+| `VillasAndSuites.tsx` | Embla 轮播房型卡片 | Client（Embla + useCallback）|
+| `Storytelling.tsx` | 左图右文故事列表 | Client（useInView）|
+
+### 10.4 首页已知技术债（待修复）
+
+| 组件 | 问题 | 修复方向 |
+|------|------|---------|
+| `VillasAndSuites.tsx` | 房型数据硬编码（中文字符串在 `.tsx` 内） | 迁移至 `messages/*.json` |
+| `VillasAndSuites.tsx` | `h2` 用阶梯字号 `text-3xl md:text-4xl lg:text-5xl`，违反 clamp 规范 | 改为 `clamp()` inline style |
+| `VillasAndSuites.tsx` | 卡片 `h3` 用 `font-bold` | 改为 `font-light`（品牌轻量感） |
+| `Storytelling.tsx` | `border-[#e0dad0]`、`text-[#a59a85]`、`text-[#5a5347]` 裸 hex | 迁移至 `globals.css @theme` 变量 |
+| `HotelIntro.tsx` | `text-[0.95rem]` 任意值 | 改为 `text-sm` 或 `text-base` |
+| `BookingBar.tsx` | `text-[0.55rem]`、`text-[0.82rem]` 任意值 | 用最近的 Tailwind 字号类替代 |
+| `HotelIntro.tsx` | 使用 `next/link` 而非 `@/i18n/routing` 的 `Link` | 换用 i18n Link |
+| `BookingBar.tsx` | `max-w-350 px-6 ... md:px-10 ... lg:px-16`，px 未用 `px-page` | 特殊浮层，允许保留自定义 px，不强制修改 |
+
+---
+
+## Part 11：快速开发 Checklist
 
 新建区块时，逐条确认：
 
@@ -848,7 +1265,8 @@ export default function LocationPage() {
 ### 响应式（移动端优先）
 - [ ] 布局是否先写移动端纵向，再用 `md:`/`lg:` 扩展横向？
 - [ ] 标题是否用 `clamp()` 实现流式字号？
-- [ ] 水平 padding 是否用 `px-page`？
+- [ ] **外容器 max-width 是否遵循三级体系？（B 级标准内容用 `max-w-340`，C 级窄栏用 `max-w-4xl`，A 级轮播不限）**
+- [ ] **水平内边距是否统一用 `px-page`？（禁止 `px-5 sm:px-8 lg:px-12` 等手写响应式 px）**
 - [ ] 触摸目标是否 ≥ 44px？
 - [ ] 在 375px 宽度下测试是否无横向溢出？
 
@@ -867,7 +1285,51 @@ export default function LocationPage() {
 - [ ] 是否需要 `'use client'`（仅有 state/effect/事件时才加）？
 - [ ] 文字是否全部走 `useTranslations`？
 - [ ] 图片是否 `<Image />` + 有意义 alt？
+- [ ] 比例类名是否用 Tailwind 原生类（`aspect-4/5`、`aspect-video`、`aspect-square`），而非 `aspect-[4/5]` 任意值？
+- [ ] 是否混用了 `inline-block` 与 `flex`？若需行内 flex，直接用 `inline-flex`。
 
-### 2.7 比例与显示属性 (Aspect Ratio & Display)
-- ❌ 禁止 `aspect-[4/5]` 等任意值，✅ 应当使用 Tailwind 原生比例类名，如 `aspect-4/5`、`aspect-3/4`、`aspect-square`。
-- ❌ 禁止混用 `inline-block` 与 `flex`。如果需要行内且内容使用 Flex 布局，✅ 直接使用 `inline-flex`。
+---
+
+## Part 12：Location 页面架构参考
+
+Location 页面是标准的展示型页面，其结构完美遵循了「全宽图作叙事间隔」以及「禁用取巧性小标题设计」的奢华品牌调性。
+
+### 12.1 页面区块流 (Content Flow)
+
+```text
+┌──────────────────────────────────────────────────────┐
+│  GalleryPageHeader（页头引言，深色遮罩）                 │
+│  bg-[--color-about-bg]｜ 含有 H1 和极简引言              │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationSubNav (子导航 sticky)                        │
+│  bg-[--color-subnav-bg]｜ 随滚动吸顶                     │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationCulture（在地文化 - 文字+图片网格）             │
+│  bg-background（纯白）｜ 极简标题 + 留白，无廉价金色序号标签 │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  全屏过度大图（作为叙事分割线，不使用硬性底色切换）         │
+│  （在 Location 页面中可能表现为大图 banner）             │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationArrival（抵达方式 - 信息列表）                  │
+│  bg-[--color-cream]（米白）｜ 仅用文字间距和大小区分层级     │
+└──────────────────────────────────────────────────────┘
+        ↓
+┌──────────────────────────────────────────────────────┐
+│  LocationCTA（图文覆盖的尾部引导）                       │
+│  底图铺满 (h-[85vh]) ｜ 文字带半透明遮挡 ｜ 优雅收尾        │
+└──────────────────────────────────────────────────────┘
+```
+
+### 12.2 核心启示
+
+- **绝对禁用小装饰**：`LocationCulture` 和 `LocationArrival` 原本被添加了金色 `01` 之类的序号和下折线，已被彻底禁用并移除。这种强商业属性的设计会让奢华度假村页面显得廉价。只用纯净的字号落差（如 H2 和正文的区别）即可。
+- **页面不是 PPT**：PPT 倾向于给每页上方加一个规整的装饰条和小标题。酒店网站是连贯的画轴。不许为了填补页面上方所谓的"空白"去随意增加装饰线和标码标题，留白本身就是一种"重"。
+- **背景连贯与吸顶体验**：通过 `<div className="sticky top-0 z-40 bg-[--color-subnav-bg]">`，子导航以及预订条可以在不打断正常流的情况下完成吸附。不要滥用复杂的 `useLenis` 来计算高度或手动监听滚动，原生的 CSS Sticky 最顺滑且不干扰页面布局。
