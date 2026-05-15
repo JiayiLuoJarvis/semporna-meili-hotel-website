@@ -21,7 +21,7 @@ export function BookingAmenities() {
             className="font-serif italic font-light leading-[1.15] text-[--color-section-text] tracking-wide"
             style={{ fontSize: 'clamp(1.25rem, 2vw, 1.75rem)' }}
           >{t('title')}</h2>
-          <button className="text-[--color-section-text] border-b border-[--color-section-text] pb-1 text-sm mt-6 md:mt-0 font-sans tracking-widest uppercase hover:text-primary-dark hover:border-primary-dark transition-colors">
+          <button className="text-gold border-b border-gold pb-1 text-sm mt-6 md:mt-0 font-sans tracking-widest uppercase hover:text-primary-dark hover:border-primary-dark transition-colors">
             {t('viewAll')}
           </button>
         </div>

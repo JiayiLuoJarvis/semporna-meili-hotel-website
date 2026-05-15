@@ -23,7 +23,7 @@ export function BookingContactBanner() {
           </Link>
           <a
             href={`tel:${t('phone').replace(/\s/g, '')}`}
-            className="min-h-11 px-10 py-3 border border-warm-gray text-section-text hover:bg-warm-gray transition-colors font-sans text-xs tracking-[0.2em] uppercase"
+            className="min-h-11 px-10 py-3 border border-warm-gray text-gold hover:bg-warm-gray transition-colors font-sans text-xs tracking-[0.2em] uppercase"
           >
             {t('phone')}
           </a>

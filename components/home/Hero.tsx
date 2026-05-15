@@ -19,7 +19,7 @@ export function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const hasScrolledRef = useRef(false);
   const [isMd, setIsMd] = useState<boolean>(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false
+    typeof window !== 'undefined' ? window.matchMedia('(min-width: 768px)').matches : false,
   );
 
   useEffect(() => {
@@ -52,7 +52,7 @@ export function Hero() {
       initial={{ height: '100vh' }}
       animate={{ height: isMd ? 'calc(100vh - 80px)' : '100vh' }}
       transition={{ delay: 3, duration: 1, ease: 'easeInOut' }}
-      className="relative z-20 overflow-hidden bg-primary"
+      className="bg-primary relative z-20 overflow-hidden"
     >
       {/* Video Background */}
       <div className="absolute inset-0">
@@ -76,7 +76,7 @@ export function Hero() {
         <div className="flex h-full w-full flex-col items-start justify-end px-6 md:px-10 lg:px-14">
           {/* Subtitle */}
           <p
-            className="animate-fade-in mb-2 font-sans text-xs uppercase tracking-[0.35em] text-white md:mb-3 md:text-sm md:tracking-[0.4em]"
+            className="animate-fade-in mb-2 font-sans text-xs tracking-[0.35em] text-white uppercase md:mb-3 md:text-sm md:tracking-[0.4em]"
             style={{ animationDelay: '0.4s', animationFillMode: 'both' }}
           >
             {t('subtitle')}
@@ -98,7 +98,7 @@ export function Hero() {
 
           {/* Tagline */}
           <p
-            className="animate-fade-in mt-2 max-w-sm font-sans text-xs font-light leading-relaxed text-white md:mt-3 md:max-w-md md:text-sm"
+            className="animate-fade-in mt-2 max-w-sm font-sans text-xs leading-relaxed font-light text-white md:mt-3 md:max-w-md md:text-sm"
             style={{
               animationDelay: '1s',
               animationFillMode: 'both',
@@ -114,7 +114,7 @@ export function Hero() {
             style={{ animationDelay: '1.3s', animationFillMode: 'both' }}
           >
             <span
-              className="font-sans text-xs font-light uppercase tracking-[0.12em] text-white"
+              className="font-sans text-xs font-light tracking-[0.12em] text-white uppercase"
               style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
             >
               {t('address')}
@@ -143,34 +143,43 @@ export function Hero() {
               href="/location"
               className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
               style={{ background: 'rgba(0,31,63,0.65)' }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
             >
-              <MapPin className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+              <MapPin
+                className="h-4 w-4 text-white transition-colors group-hover:text-white"
+                strokeWidth={1.2}
+              />
               <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
                 {t('heroCards.0')}
               </span>
             </Link>
-            <a
-              href="#villas"
+            <Link
+              href="/booking/all"
               className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
               style={{ background: 'rgba(0,31,63,0.65)' }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
             >
-              <BedDouble className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+              <BedDouble
+                className="h-4 w-4 text-white transition-colors group-hover:text-white"
+                strokeWidth={1.2}
+              />
               <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
                 {t('heroCards.1')}
               </span>
-            </a>
+            </Link>
             <Link
               href="/gallery"
               className="group flex h-20 w-20 flex-col items-center justify-center gap-2 rounded-sm backdrop-blur-md transition-all duration-300 md:h-24 md:w-24"
               style={{ background: 'rgba(0,31,63,0.65)' }}
-              onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
-              onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
             >
-              <ImageIcon className="h-4 w-4 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+              <ImageIcon
+                className="h-4 w-4 text-white transition-colors group-hover:text-white"
+                strokeWidth={1.2}
+              />
               <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
                 {t('heroCards.2')}
               </span>
@@ -190,34 +199,43 @@ export function Hero() {
           href="/location"
           className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
           style={{ background: 'rgba(0,31,63,0.65)' }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
         >
-          <MapPin className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+          <MapPin
+            className="h-5 w-5 text-white transition-colors group-hover:text-white"
+            strokeWidth={1.2}
+          />
           <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
             {t('heroCards.0')}
           </span>
         </Link>
-        <a
-          href="#villas"
+        <Link
+          href="/booking/all"
           className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
           style={{ background: 'rgba(0,31,63,0.65)' }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
         >
-          <BedDouble className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+          <BedDouble
+            className="h-5 w-5 text-white transition-colors group-hover:text-white"
+            strokeWidth={1.2}
+          />
           <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
             {t('heroCards.1')}
           </span>
-        </a>
+        </Link>
         <Link
           href="/gallery"
           className="group flex h-28 w-28 flex-col items-center justify-center gap-3 rounded-sm backdrop-blur-md transition-all duration-300"
           style={{ background: 'rgba(0,31,63,0.65)' }}
-          onMouseEnter={e => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
-          onMouseLeave={e => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(0,20,43,0.80)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'rgba(0,31,63,0.65)')}
         >
-          <ImageIcon className="h-5 w-5 text-white transition-colors group-hover:text-white" strokeWidth={1.2} />
+          <ImageIcon
+            className="h-5 w-5 text-white transition-colors group-hover:text-white"
+            strokeWidth={1.2}
+          />
           <span className="font-sans text-xs font-light tracking-widest text-white transition-colors group-hover:text-white">
             {t('heroCards.2')}
           </span>
@@ -236,8 +254,6 @@ export function Hero() {
           <Play size={14} strokeWidth={1.5} className="ml-0.5" />
         )}
       </button>
-
-
     </motion.section>
   );
 }

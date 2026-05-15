@@ -76,7 +76,7 @@ export function HotelIntro() {
         >
           <Link
             href="/villas"
-            className="group inline-flex items-center gap-3 border-b border-[--color-section-text]/30 pb-1 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-[--color-section-text] transition-colors hover:border-[--color-section-text]"
+            className="group inline-flex items-center gap-3 border-b border-gold/30 pb-1 font-sans text-[0.65rem] uppercase tracking-[0.25em] text-gold transition-colors hover:border-gold"
           >
             {t('cta')}
             <span className="transition-transform duration-500 ease-out group-hover:translate-x-1">&#8594;</span>

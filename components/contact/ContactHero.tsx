@@ -50,7 +50,7 @@ export default function ContactHero() {
             href="https://wa.me/60112780399"
             target="_blank"
             rel="noreferrer"
-            className="font-sans text-[10px] tracking-[0.25em] uppercase text-white pb-px border-b border-white/30 hover:border-white transition-colors duration-200"
+            className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold pb-px border-b border-gold/30 hover:border-gold transition-colors duration-200"
           >
             {t('whatsappCta')}
           </a>
@@ -69,7 +69,7 @@ export default function ContactHero() {
             </p>
             <a
               href={`mailto:${t('emailValue')}`}
-              className="font-sans text-[10px] tracking-[0.25em] uppercase text-white pb-px border-b border-white/30 hover:border-white transition-colors duration-200"
+              className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold pb-px border-b border-gold/30 hover:border-gold transition-colors duration-200"
             >
               {t('emailCta')}
             </a>
@@ -86,7 +86,7 @@ export default function ContactHero() {
           </p>
           <a
             href={`mailto:${t('emailValue')}`}
-            className="font-sans text-[10px] tracking-[0.25em] uppercase text-white pb-px border-b border-white/30 hover:border-white transition-colors duration-200"
+            className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold pb-px border-b border-gold/30 hover:border-gold transition-colors duration-200"
           >
             {t('emailCta')}
           </a>
@@ -102,7 +102,7 @@ export default function ContactHero() {
           </p>
           <Link
             href="/booking/all"
-            className="font-sans text-[10px] tracking-[0.25em] uppercase text-white pb-px border-b border-white/30 hover:border-white transition-colors duration-200"
+            className="font-sans text-[10px] tracking-[0.25em] uppercase text-gold pb-px border-b border-gold/30 hover:border-gold transition-colors duration-200"
           >
             {t('bookingValue')}
           </Link>

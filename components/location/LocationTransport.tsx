@@ -134,7 +134,7 @@ export default function LocationTransport() {
           </p>
           <Link
             href="/contact"
-            className="font-sans text-xs uppercase tracking-widest text-primary border border-primary/40 px-6 py-3 hover:bg-primary hover:text-white transition-colors duration-300 shrink-0"
+            className="font-sans text-xs uppercase tracking-widest text-gold border border-gold/40 px-6 py-3 hover:bg-gold hover:text-white transition-colors duration-300 shrink-0"
           >
             {t('cta')}
           </Link>

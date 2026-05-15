@@ -124,7 +124,7 @@ export function BookingRoomCard({ index, size, capacity, bedding }: BookingRoomC
         <div className="mt-auto grid grid-cols-2 gap-4">
           <Link 
             href="#policies" 
-            className="flex items-center justify-center py-3 border border-[--color-section-text] text-[--color-section-text] hover:bg-[--color-section-text]/5 transition-colors text-sm font-medium tracking-widest uppercase"
+            className="flex items-center justify-center py-3 border border-gold text-gold hover:bg-gold/5 transition-colors text-sm font-medium tracking-widest uppercase"
           >
             {tBooking('checkRates')}
           </Link>
